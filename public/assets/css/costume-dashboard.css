@@ -1,0 +1,66 @@
+
+/*-------------------------------*/
+/*dashboard-page*/
+
+.dash-row .card{
+	border-radius: 8px;
+}
+.dash-row .col-lg-3{
+	min-width: 269px !important;
+}
+.dash-row .item-1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dash-row .item-1 i{
+	font-size: 5rem;
+	margin-bottom: 0;
+
+}
+.dash-row .item-2 h1{
+	font-size: 4.5rem;
+	margin-bottom: 0;
+}
+.dash-row .item-2 p{
+	margin-top: -5px;
+}
+.dash-row .col-lg-3{
+	min-width: 250px !important;
+}
+.dash-row.small .item-1 i{
+	font-size: 3rem;
+}
+.dash-row.small .item-2 h1{
+	font-size: 2.5rem;
+}
+.dash-row.small .item-2 p{
+	font-size:  .8rem;
+}
+/*-------------------------------------------------------------*/
+.datepicker-dropdown{
+	z-index: 99999 !important;
+}
+/*-------------------------------------------------------------*/
+
+.dash-chart{
+    padding: 30px;
+    
+}
+.dash-chart .item{
+    padding-bottom: 40px;
+    border-radius:  10px;
+    transition:  .4s;
+    text-align: center;
+}
+.dash-chart:hover .item{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+.dash-chart .item h2{
+    font-size: 2.5rem ;
+}
+.dash-chart .item i{
+
+    font-size:  8rem ;
+}

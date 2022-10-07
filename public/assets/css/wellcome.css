@@ -1,0 +1,186 @@
+/*---------------------------*/
+/*global*/
+:root {
+
+	/*global*/
+	--transition-a  : .3s ;
+	--font-size     : .7rem;
+
+	--color-1: #ffffff ;
+	--color-2: #00cc83 ;
+	--color-2-hover: #009962 ;
+	--color-3: #6f42c1 ;
+
+
+}
+
+body, pre
+{font-family: 'proxima' !important}
+body .select2-container {
+	z-index: 9999 !important;
+	font-size: var(--font-size);
+}
+button.btn.btn-green,
+.btn.btn-green
+{
+	background-color: var(--color-2) !important;
+	color:  var(--color-1) !important;
+	transition: var(--transition-a);
+}
+button.btn.btn-green:hover,
+.btn.btn-green:hover
+{
+	background-color: var(--color-2-hover) !important;
+
+}
+.quote
+{
+	margin-top: 3rem;
+}
+.quote:before
+{
+	content: "\201C";
+	font-size: 6rem;
+	line-height: 0rem;
+	position: absolute;
+}
+
+.swiper {
+	width: 80%;
+	height: 320px;
+}
+
+.swiper-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 18px;
+}
+.cursor-pointer{
+	cursor: pointer !important;
+}
+
+section
+{
+	overflow: hidden;
+	padding-bottom: 3rem;
+}
+section .title
+{
+	padding-top: 10rem;
+	text-align: center;
+	margin-bottom: 5rem;
+}
+section .title span
+{
+	font-weight: bold;
+	color: #6f42c1;
+}
+
+.fs-mini-size
+{
+	font-size: var(--font-size) !important;
+}
+
+/*.waves{position: absolute}*/
+.border-line
+{
+	height: 1px;
+	width: 100%;
+}
+
+
+/*---------------------------*/
+/*box-ratio=global*/
+
+.box-ratio
+{
+	position: relative;
+	width:  100%;
+}
+.box-ratio.ratio-1-1{padding-top: 100%; /* 1:1 Aspect Ratio */}
+.box-ratio.ratio-3-2{padding-top: 66.66%; /* 3:2 Aspect Ratio (divide 2 by 3 = 0.6666)  */}
+.box-ratio.ratio-4-3{padding-top: 75%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */}
+.box-ratio .content
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	transition: .3s;
+}
+.box-ratio .body
+{
+	position:  relative;
+	width:  100%;
+	height:  100%;
+	overflow:  hidden;
+	transition: .3s;
+}
+
+/*---------------------------*/
+/*navbar*/
+
+
+.navbar
+{
+	position: fixed;
+	width:  100%;
+	background-color: transparent ;
+	z-index: 1000;
+	transition: .6s;
+}
+.navbar a,
+.navbar .nav-user-active i
+{
+	color: var(--color-1) !important;
+	transition:  .4s;
+}
+
+
+.navbar-scroll
+{
+	background-color: #FFFFFF !important;
+	padding: 17px 0;
+	box-shadow: 2px 5px 8px -6px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 2px 5px 8px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 2px 5px 8px -6px rgba(0,0,0,0.75);
+}
+.navbar-scroll.navbar a,
+.navbar-scroll.navbar .nav-user-active i
+{
+	color: var(--color-3) !important;
+}
+.collapse:not(.show) {
+	display: none;
+}
+#navbarScroll
+{
+	min-height:60px
+}
+
+/*---------------------------*/
+/*accordion*/
+
+.nav-pills .nav-link.active
+{
+	background-color: var(--color-3) !important;
+}
+
+.accordion.accordion-1 button.accordion-button
+{
+	background-color:  var(--color-3);
+	color: var(--color-1);
+}
+.accordion.accordion-1 .accordion-button:not(.collapsed)::after {
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion.accordion-1 .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+
+/*---------------------------*/
+/*hero*/

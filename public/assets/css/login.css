@@ -1,0 +1,62 @@
+.modal{
+	font-size: .7rem !important;
+
+}
+
+.modal
+{
+	transition: opacity .15s linear;
+	background-color: rgba(0, 0, 26, .5);
+}
+
+.select2-container--default .select2-results > .select2-results__options{
+	font-size:  .7rem;
+}
+
+section.login{
+	width: 100%;
+	height: 100vh;
+	min-height: 100vh;
+	background-color: #6f42c1;
+}
+section.login::before{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(./../../files/background/bg-login.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: .2;
+}
+
+section.login .login-content{
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	border-radius: 20px;
+	background-color: #ffffff;
+}
+section.login input{
+	padding: 20px 30px;
+	border-radius: 30px;
+	margin-bottom: 20px;
+	transition: .3s;
+}
+section.login button{
+	background-color: #520dc2;
+	color:  #ffffff;
+	border-radius: 30px;
+	padding: 15px 90px;
+	margin-top: 50px;
+	transition: .3s;
+}
+section.login input:focus{
+   border-color: #520dc2;
+   box-shadow: none !important;
+}
+section.login button:hover{
+	background-color: #a98eda;
+	color:  #ffffff;
+	
+}

@@ -1,0 +1,43 @@
+/*-------------------------------------------------------*/
+/*width < 650*/
+@media (max-width: 650px)
+{
+	.d-flex.nav-search
+	{
+		display: none !important;
+	}
+	.navbar .container-fluid
+	{
+		padding-top: .5rem;
+		padding-bottom: 0.3rem;
+	}
+}
+/*-------------------------------------------------------*/
+/*width < 500*/
+@media (max-width: 500px)
+{
+	#sidebar-wrapper
+	{
+
+		margin-left: -300px;
+	}
+	.togle #sidebar-wrapper
+	{
+		margin-left: 0;
+	}
+
+	button.btn.togle-btn-left,
+	a.btn.togle-btn-left
+	{
+		display: none;
+	}
+
+	.togle-btn-btm-right
+	{
+		display: block;
+	}
+	.sidebar-header button.btn
+	{
+		display:  none;
+	}
+}
