@@ -12,7 +12,7 @@ class database {
 	$host="localhost", 
 	$user="root", 
 	$pass="dot", 
-	$db="me_db_template" ;
+	$db="project_2022_asdp_ternate" ;
 
 	private static function con()
 	{
