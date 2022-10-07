@@ -23,6 +23,5 @@ class Wellcome extends Controler{
 		endif;
 		$this->model->ResponseApi();
 	}
-	
 
 }
