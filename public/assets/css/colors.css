@@ -1,3 +1,13 @@
+/*---------------------------*/
+/*global*/
+:root {
+
+	/*global*/
+	--primary-collor  : #3c8dbc ;
+	--second-collor : #d66716 ;
+
+}
+
 .text-dark-100{	color: #4b4b4b !important;}
 
 .text-blue{	color: #0d6efd !important;}

@@ -1,20 +1,20 @@
 <div id="page-wrapper">
 	<!-- navbar wrapper -->
-	<nav class="navbar navbar-light bg-white shadow-sm py-2">
+	<nav class="navbar navbar-dark second-bg shadow-sm py-2">
 		<div class="container-fluid">
-			<div class="text-purple ps-3 d-flex align-items-center">
+			<div class="text-white ps-3 d-flex align-items-center">
 				<!-- <i class="bi bi-geo-fill fs-2 me-2"></i> -->
 				<h6 class="mt-2 ms-2">Your Name Aplication</h6>
 			</div>
 			<a href="#" class="me-4 ms-auto position-relative">
-				<i class="bi bi-bell fs-5"></i>
-				<span class="position-absolute top-1 translate-middle p-1 bg-red-400 rounded-circle"></span>
+				<i class="bi bi-bell fs-5 text-white"></i>
+				<span class="position-absolute top-1 translate-middle p-1 bg-white rounded-circle"></span>
 			</a>
 
 			<div class="dropdown border-start ps-3">
 				<a class="navbar-brand fs-7 dropdown-toggle" href="#" role="button" id="navUser" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="<?= BaseAssets ?>/icon/user-man.png" class="rounded-circle overflow-hidden me-2" alt="" width="30px" height="30px">
-					<span class="col-lg-12 text-dark-100">Unknow</span>
+					<span class="col-lg-12 ">Unknow</span>
 				</a>
 
 				<ul class="dropdown-menu dropdown-menu-end shadow animated flipInX fs-7" aria-labelledby="navUser">

@@ -1,6 +1,19 @@
 
 /*-------------------------------*/
 /*dashboard-page*/
+.content .container-xxl{
+	padding-right: 40px !important;
+	padding-left: 40px !important;
+}
+
+.second-collor{
+	color: var(--second-collor) !important; 
+}
+.second-bg{
+	background-color : var(--second-collor) !important;
+}
+/*-------------------------------*/
+/*dashboard-page*/
 
 .dash-row .card{
 	border-radius: 8px;
@@ -63,4 +76,12 @@
 .dash-chart .item i{
 
     font-size:  8rem ;
+}
+/*-------------------------------------------------------------*/
+.h1, h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+.fs-5 {
+  font-size: 12px !important;
 }

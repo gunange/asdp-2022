@@ -1,7 +1,7 @@
 <?php
 
 class ModelUser{
-	private $tokenName = 'tokenNameTemplate';
+	private $tokenName = 'ASDPTernate';
 	public $userAllow = [1,2,3];
 	public 
 		$token,
@@ -61,9 +61,7 @@ class ModelUser{
 	}
 	public function logOut()
 	{
-		$_SESSION = [];
-	    session_unset();
-	    session_destroy();
+		$_SESSION[$this->tokenName] = false;
 	    tools::redirect(BASEURL);
 	    exit();
 	}

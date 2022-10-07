@@ -7,13 +7,13 @@
 					<i class="bi bi-app-indicator fs-2 text-white"></i>
 					<h5 class="fs-5 ms-3 text-white">Dashboard</h5>
 				</div>
-				<button class="btn text-white" data-bs-toggle="tooltip" onclick="toogleSidebar()" data-bs-placement="right" title="Close Sidebar">
-					<i class="bi bi-arrow-left-square-fill"></i>
+				<button class="btn second-collor" data-bs-toggle="tooltip" onclick="toogleSidebar()" data-bs-placement="right" title="Close Sidebar">
+					<i class="bi bi-arrow-left-circle"></i>
 				</button>
 			</div>
-			<div class="bio mx-auto px-3 pt-4 pb-2 lh-1">
-				<p class="fs-6 text-yellow">Account Level</p>
-				<p class="text-yellow-200">Admin</p>
+			<div class="bio mx-auto px-3 pt-3 pb-2 lh-1 text-center">
+				<p class="fs-7 mb-1 text-yellow">Account Level</p>
+				<p class="text-yellow-200 mb-2">Admin</p>
 			</div>
 
 			<div class="sidebar-list">

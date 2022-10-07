@@ -69,6 +69,7 @@ body {
     font-size : var(--font-size) ;
     transition: all 0.5s;
     box-sizing: border-box;
+    background: #f1f5f9;
 }
 /*---------------------------*/
 /*Sidebar*/
@@ -294,14 +295,14 @@ body {
     left: -50vw;
     position: absolute;
     top: 70px;
-    background-color:  var(--bs-purple) ; 
+    background-color:  var(--gardient-bg ) ; 
 }
 .togle-btn-btm-right{
     display: none;
     right: 20px;
     bottom: 20px;
     position: fixed;
-    background-color:  var(--bs-indigo) ; 
+    background-color:  var(--gardient-bg ) ; 
 }
 .togle-btn-left i{
     color : var(--side-list-color-1);
