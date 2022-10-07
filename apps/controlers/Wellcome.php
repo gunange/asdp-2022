@@ -12,10 +12,6 @@ class Wellcome extends Controler{
 	}
 	
 	public function Main(){
-		$this->view('wellcome/main');
-	}
-
-	public function FormLogin(){
 		$this->view('wellcome/login');
 	}
 
@@ -27,9 +23,6 @@ class Wellcome extends Controler{
 		endif;
 		$this->model->ResponseApi();
 	}
-	public function ModalTest()
-	{
-		$this->view('wellcome/modal-test');
-	}
+	
 
 }
