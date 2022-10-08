@@ -24,14 +24,8 @@ class DashAdmin extends Controler {
 	public function Main(){
 		$this->viewDashboard ('dashboard');
 	}
-	public function DashboardEmpatRow(){
-		$this->viewDashboard ('dashboard-4-row');
-	}
-	public function DashboardChart(){
-		$this->viewDashboard ('dashboard-chart');
-	}
-	public function ExampleCrud(){
-		$this->viewDashboard ('crud');
+	public function PengelolahanUser(){
+		$this->viewDashboard ('user');
 	}
 	
 }

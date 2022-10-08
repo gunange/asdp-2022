@@ -13,13 +13,13 @@
 		<span>Pengelolahan</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>PengelolahanUser">
 			<i class="bi bi-grid"></i>
 			<span>User</span>
 		</a>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>PengelolahanUser">
 			<i class="bi bi-grid"></i>
 			<span>Kapal</span>
 		</a>

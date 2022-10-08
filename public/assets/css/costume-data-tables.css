@@ -10,10 +10,10 @@
     /*data-tables*/
     --data-table-info-text  : #404646 ;
     --data-table-th-collor  : #ffffff ;
-    --data-table-th-bg      : #6c5ce7 ;
+    --data-table-th-bg      : var(--primary-collor) ;
 
-    --data-table-btn-next-bg: #6c5ce7 ;
-    --data-table-btn-prev-bg: #ffc107 ;
+    --data-table-btn-next-bg: var(--primary-collor) ;
+    --data-table-btn-prev-bg: var(--second-collor) ;
 
 
 
@@ -110,10 +110,15 @@ div.dataTables_wrapper .paging_simple .previous .page-link
 }
 .dataTables_wrapper .row:nth-child(1) .col-sm-12.col-md-6:nth-child(1)
 {
-    display: none;
+    /*display: none;*/
 }
 .dataTables_paginate ul.pagination
 {
     display: flex;
     justify-content: end;
+}
+
+table.dataTable > thead > tr > th:not(.sorting_disabled), table.dataTable > thead > tr > td:not(.sorting_disabled) {
+  padding: 0px 10px !important;
+  
 }

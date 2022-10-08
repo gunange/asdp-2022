@@ -26,7 +26,7 @@
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> Settings CRUD
+						<i class="bi bi-box text-yellow-500 me-2"></i> Settings User
 					</h6>
 					<div class="btn-toolbar mb-2 mb-md-0 btn-group">
 						<button class="btn btn-sm bg-purple text-white" 

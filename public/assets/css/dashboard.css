@@ -207,11 +207,12 @@ body {
 .sidebar-footer a{
     width:  86%;
     transition:  .3s;
+    opacity: .48;
 }
 
 .sidebar-footer button:hover,
 .sidebar-footer a:hover{
-    opacity: .8;
+    opacity: 1;
 }
 .togle #sidebar-wrapper{
     margin-left: -300px;
@@ -433,4 +434,59 @@ div.dataTables_wrapper .paging_simple .previous .page-link{
 .page-not-found p {
     text-align: center;
     font-size: 1.3rem;
+}
+
+
+/*---------------------------*/
+/*loader*/
+
+#preloader {
+    background-image: url("./../../../files/images/bg-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-position: center;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+}
+
+#preloader::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    background: var(--gardient-bg);
+    background: linear-gradient(169deg, var(--gardient-form) 0%, var(--gardient-to) 100%);
+    opacity: .8;
+}
+
+#status,
+.status-mes {
+    background-image: url("./../../../files/images/puff.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    color:  #ffffff;
+}
+
+.status-mes {
+    background: none;
+    left: 0;
+    margin: 0;
+    text-align: center;
+    top: 65%;
 }
