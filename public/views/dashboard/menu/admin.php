@@ -19,7 +19,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>PengelolahanUser">
+		<a href="<?= $this->gLink ?>Kabid">
 			<i class="bi bi-grid"></i>
 			<span>Kabid</span>
 		</a>

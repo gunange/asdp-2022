@@ -9,8 +9,11 @@ trait ComponentAdmin{
 		endif;
 		$this->viewDash('settings/petugas');
 	}
-	public function PdfExample()
-	{
-		$this->viewDash('settings/pdf-table');
+	public function SetKabid($page=null, $key=null){
+		$this->setPage = $page ;
+		if(!is_null($key) ):
+			$this->data  =  $this->model->GetKabid()[$key];
+		endif;
+		$this->viewDash('settings/kabid');
 	}
 }
