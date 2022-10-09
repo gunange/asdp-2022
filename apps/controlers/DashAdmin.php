@@ -24,8 +24,8 @@ class DashAdmin extends Controler {
 	public function Main(){
 		$this->viewDashboard ('dashboard');
 	}
-	public function PengelolahanUser(){
-		$this->viewDashboard ('user');
+	public function Petugas(){
+		$this->viewDashboard ('petugas');
 	}
 	
 }

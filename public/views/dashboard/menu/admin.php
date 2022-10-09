@@ -10,13 +10,22 @@
 	</li>
 	
 	<li class="header-menu">
-		<span>Pengelolahan</span>
+		<span>Users</span>
+	</li>
+	<li>
+		<a href="<?= $this->gLink ?>Petugas">
+			<i class="bi bi-grid"></i>
+			<span>Petugas</span>
+		</a>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>PengelolahanUser">
 			<i class="bi bi-grid"></i>
-			<span>User</span>
+			<span>Kabid</span>
 		</a>
+	</li>
+	<li class="header-menu">
+		<span>Management</span>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>PengelolahanUser">

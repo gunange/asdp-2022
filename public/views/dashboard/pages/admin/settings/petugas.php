@@ -7,7 +7,7 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-md-12 mb-3">
-					<label class="form-label">Nama User</label>
+					<label class="form-label">Nama Petugas</label>
 					<input class="form-control form-control-sm" type="text" placeholder="Nama Lengkap" name="nama" required autocomplete="off">
 				</div>
 				<div class="col-md-12 mb-3">
@@ -46,7 +46,22 @@
 			<pre class="modal-title fs-6 text-purple"><i class="bi bi-vector-pen"></i> Update</pre>
 		</div>
 		<div class="modal-body">
-			
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Nama Petugas</label>
+					<input class="form-control form-control-sm" type="text" placeholder="Nama Lengkap" name="nama" required autocomplete="off" value="<?= $this->data['nama'] ?>">
+				</div>
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Jenis Kelamin</label>
+					<select class="form-select form-select-sm sel-all" name="id_jenis_kelamin">
+						<option value="<?= $this->data['id_jenis_kelamin'] ?>"><?= $this->data['jenis_kelamin'] ?></option>
+						<?php foreach ($this->model->sGetJenisKelamin("WHERE id != '{$this->data['id_jenis_kelamin']}'") as $opsi) : ?>
+							<option value="<?= $opsi['id'] ?>"><?= $opsi['jenis_kelamin'] ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<input type="hidden" value="<?= $this->data['id_user'] ?>" name="id_user">
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -67,22 +82,6 @@
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id_login'] ?>" >Hapus</button>
-		</div>
-	</form>
-
-<?php elseif ($this->setPage == "Pdf"): ?>
-	<!-- PDF -->
-	<form class="modal-content" method="POST">
-		<div class="modal-header">
-			<pre class="modal-title fs-6 text-teal"><i class="bi bi-filetype-pdf"></i> PDF</pre>
-		</div>
-		<div class="modal-body p-0">
-			
-			<iframe  width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>PdfExample"></iframe>
-
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</form>
 

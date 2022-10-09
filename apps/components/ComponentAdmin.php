@@ -2,12 +2,12 @@
 
 trait ComponentAdmin{
 
-	public function SetCrud($page=null, $key=null){
+	public function SetPetugas($page=null, $key=null){
 		$this->setPage = $page ;
 		if(!is_null($key) ):
-			$this->data  =  [];
+			$this->data  =  $this->model->GetPetugas()[$key];
 		endif;
-		$this->viewDash('settings/crud');
+		$this->viewDash('settings/petugas');
 	}
 	public function PdfExample()
 	{
