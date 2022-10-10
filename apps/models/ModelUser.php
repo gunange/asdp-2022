@@ -70,9 +70,9 @@ class ModelUser{
 		if ($id_level == 1):
 			$ret = BaseAdmin ;
 		elseif ($id_level == 2):
-			$ret = BaseProdi ;
+			$ret = BaseKabid ;
 		elseif ($id_level == 3):
-			$ret = BaseMahasiswa ;
+			$ret = BasePetugas ;
 		else:
 			$ret = BASEURL ;
 		endif;

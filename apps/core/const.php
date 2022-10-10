@@ -13,4 +13,6 @@ define('BaseFiles', BASEURL . 'public/files/');
 
 /*HOME BASE*/
 define('BaseAdmin', BASEURL . 'DashAdmin/');
+define('BaseKabid', BASEURL . 'DashKabid/');
+define('BasePetugas', BASEURL . 'DashPetugas/');
 define('BaseWellcome', BASEURL . 'Wellcome/');
