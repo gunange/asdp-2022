@@ -28,9 +28,15 @@
 		<span>Management</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>PengelolahanUser">
+		<a href="<?= $this->gLink ?>Kapal">
 			<i class="bi bi-grid"></i>
 			<span>Kapal</span>
+		</a>
+	</li>
+	<li>
+		<a href="<?= $this->gLink ?>Dermaga">
+			<i class="bi bi-grid"></i>
+			<span>Dermaga</span>
 		</a>
 	</li>
 	

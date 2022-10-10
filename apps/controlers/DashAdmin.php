@@ -30,5 +30,11 @@ class DashAdmin extends Controler {
 	public function Kabid(){
 		$this->viewDashboard ('kabid');
 	}
+	public function Kapal(){
+		$this->viewDashboard ('kapal');
+	}
+	public function Dermaga(){
+		$this->viewDashboard ('dermaga');
+	}
 	
 }

@@ -107,13 +107,19 @@ class ModelAdmin extends Controler{
 
 	public function DelPetugas()
 	{
-		$set['tbl']		= "tbl_login";
-		$set['key']		= "id";
-		$set['val']		= $_POST['del'];
-	
-		database::delete($set);
-		msg::$msg = "Data berhasil dihapus ";
-		msg::success();
+		try{
+
+			$set['tbl']		= "tbl_login";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
 	}
 	public function GetKabid()
 	{
@@ -179,13 +185,129 @@ class ModelAdmin extends Controler{
 	}
 	public function DelKabid()
 	{
-		$set['tbl']		= "tbl_login";
-		$set['key']		= "id";
-		$set['val']		= $_POST['del'];
-	
-		database::delete($set);
-		msg::$msg = "Data berhasil dihapus ";
+		try {
+			$set['tbl']		= "tbl_login";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+		
+	}
+	public function GetKapal()
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_kapal';
+		$set['query']	= "";
+
+		return database::select($set);
+	}
+	public function AddKapal()
+	{
+		$set['set'] = [
+			"nama_kapal" => $_POST['nama_kapal'],
+			"perusahaan" => $_POST['perusahaan'],
+			"gt"         => $_POST['gt'],
+			"pajak"      => $_POST['pajak'],
+		];
+		$set['tbl'] 	= "tbl_kapal";
+		database::insert($set);
+
+		msg::$msg = "Data berhasil ditambahkan";
 		msg::success();
+	}
+
+	public function UpKapal()
+	{
+		$set['tbl']	= "tbl_kapal" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"nama_kapal" => $_POST['nama_kapal'],
+			"perusahaan" => $_POST['perusahaan'],
+			"gt"         => $_POST['gt'],
+			"pajak"      => $_POST['pajak'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+
+	public function DelKapal()
+	{
+		try{
+			$set['tbl']		= "tbl_kapal";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
+	public function GetDermaga()
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_dermaga';
+		$set['query']	= "";
+
+		return database::select($set);
+	}
+	public function AddDermaga()
+	{
+		$set['set'] = [
+			"dermaga" => $_POST['dermaga'],
+		];
+		$set['tbl'] 	= "tbl_dermaga";
+		database::insert($set);
+
+		msg::$msg = "Data berhasil ditambahkan";
+		msg::success();
+	}
+
+	public function UpDermaga()
+	{
+		$set['tbl']	= "tbl_dermaga" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"dermaga" => $_POST['dermaga'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+
+	public function DelDermaga()
+	{
+		try{
+			$set['tbl']		= "tbl_dermaga";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
 	}
 
 }
