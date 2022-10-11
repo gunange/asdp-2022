@@ -3,11 +3,11 @@ if (isset($_POST['add'])) :
 	$this->model->AddTangkiKapal();
 endif;
 
-if(isset($_POST['up'])):
+if (isset($_POST['up'])) :
 	$this->model->UpTankiKapal();
 endif;
 
-if (isset($_POST['del'])):
+if (isset($_POST['del'])) :
 	$this->model->DelTankiKapal();
 endif;
 
@@ -67,51 +67,26 @@ endif;
 						</thead>
 						<tbody>
 
-<<<<<<< HEAD
 							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d) : ?>
 								<tr>
 									<td><?= $k + 1 ?></td>
-									<td><?= $d['nama_tanki'] ?></td>
+									<td><?= $d['jenis_tanki'] ?></td>
 									<td><?= $d['panjang'] ?> cm</td>
 									<td><?= $d['lebar'] ?> cm</td>
 									<td><?= $d['tinggi'] ?> cm</td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
-											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>', 
+											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>/<?= $this->data['id'] ?>', 
 											()=>{injectJsDashboardPrimary();})">
 												<i class="bi bi-pencil-fill"></i>
 											</button>
-											<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>')">
+											<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>/<?= $this->data['id'] ?>')">
 												<i class="bi bi-trash-fill"></i>
 											</button>
 										</div>
 									</td>
 
 								</tr>
-=======
-							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d ): ?>
-							<tr>
-								<td><?= $k + 1 ?></td>
-								<td><?= $d['jenis_tanki'] ?></td>
-								<td><?= $d['panjang'] ?> cm</td>
-								<td><?= $d['lebar'] ?> cm</td>
-								<td><?= $d['tinggi'] ?> cm</td>
-								<td class="text-center" width="120px">
-									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>/<?= $this->data['id'] ?>', 
-											()=>{injectJsDashboardPrimary();})">
-											<i class="bi bi-pencil-fill"></i>
-										</button>
-										<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>/<?= $this->data['id'] ?>')">
-											<i class="bi bi-trash-fill"></i>
-										</button>
-									</div>
-								</td>
-								
-							</tr>
->>>>>>> f3cd505b4c41b4baf7ce894607c5949a44def245
 							<?php endforeach; ?>
 						</tbody>
 
