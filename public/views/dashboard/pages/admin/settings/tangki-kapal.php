@@ -7,8 +7,13 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-md-12 mb-3">
-					<label class="form-label">Nama Tangki</label>
-					<input class="form-control form-control-sm" type="text" placeholder="Nama Tangki Kapal" name="nama_tanki" required autocomplete="off">
+					<label class="form-label">Jenis Tanki</label>
+					<select class="form-select form-select-sm sel-all" name="id_jenis_tanki">
+						<option value=""></option>
+						<?php foreach ($this->model->sGetJenisTanki() as $opsi) : ?>
+							<option value="<?= $opsi['id'] ?>"><?= $opsi['jenis_tanki'] ?></option>
+						<?php endforeach; ?>
+					</select>
 				</div>
 				
 				<div class="col-12 mb-3">
@@ -49,10 +54,15 @@
 			<pre class="modal-title fs-6 text-purple"><i class="bi bi-vector-pen"></i> Update</pre>
 		</div>
 		<div class="modal-body">
-			<div class="row">
+			<div class="row"> 
 				<div class="col-md-12 mb-3">
-					<label class="form-label">Nama Tangki</label>
-					<input class="form-control form-control-sm" type="text" placeholder="Nama Tangki Kapal" name="nama_tanki" required autocomplete="off" value="">
+					<label class="form-label">Jenis Tanki</label>
+					<select class="form-select form-select-sm sel-all" name="id_jenis_tanki">
+						<option value="<?= $this->data['id_jenis_tanki'] ?>"><?= $this->data['jenis_tanki'] ?></option>
+						<?php foreach ($this->model->sGetJenisTanki("WHERE id != '{$this->data['id_jenis_tanki']}' ") as $opsi) : ?>
+							<option value="<?= $opsi['id'] ?>"><?= $opsi['jenis_tanki'] ?></option>
+						<?php endforeach; ?>
+					</select>
 				</div>
 				
 				<div class="col-12 mb-3">

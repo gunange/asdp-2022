@@ -354,18 +354,17 @@ class ModelAdmin extends Controler{
 	}
 	public function GetTangkiKapalById($id=null)
 	{
-		$set['set'] 	= '*';
-		$set['tbl'] 	= 'tbl_tanki';
-		$set['query']	= "WHERE id_kapal = '{$id}'";
+		$set 	= $this->TankiKapalJoin();
+		$set['query']	= "WHERE tanki.id_kapal = '{$id}'";
 
-		return database::select($set);
+		return database::join($set);
 	}
 
 	public function AddTangkiKapal()
 	{
 		$set['set'] = [
 			"id_kapal" => $_POST['id_kapal'],
-			"nama_tanki" => $_POST['nama_tanki'],
+			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
 			"panjang" => $_POST['panjang'],
 			"lebar" => $_POST['lebar'],
 			"tinggi" => $_POST['tinggi'],
