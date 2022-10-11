@@ -54,21 +54,27 @@
 		</div>
 	</form>
 
-<?php elseif ($this->setPage == "del"): ?>
-	<!-- DEL -->
-	<form class="modal-content" method="POST">
-		<div class="modal-header">
-			<pre class="modal-title fs-6 text-red"><i class="bi bi-trash-fill"></i> Delete</pre>
-		</div>
-		<div class="modal-body">
-			<p class="fs-6">Apakah anda akan menghapus <span class="text-red-400"><?= $this->data['nama'] ?></span> ?</p>
+<?php elseif ($this->setPage == "getGrafikKapal"): ?>
+	<div class="col-md-6 mt-3 mb-4">
+		<section>
+			<div class="container-tangki mx-auto">
+				<div class="isi-tangki">
+					<div class="value-tengki" style="height: 80%;">
+						<div class="transisi-tengki"></div>
+					</div>
+				</div>
+				<div class="text-tangki text-center">
+					<h3>80%</h3>
+					<h2>0 <span> (litter)</span></h2>
+				</div>
+			</div>
+			<div class="text-center">
+				<p class="mt-2 mb-1">Tangki Utama</p>
+				<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
+			</div>
+		</section>
+	</div>
 
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id_login'] ?>" >Hapus</button>
-		</div>
-	</form>
 
 <?php elseif ($this->setPage == "getOption"): ?>
 	<?php foreach ($this->data as $k => $d): ?>

@@ -41,7 +41,7 @@
 
 						<div class="col-md-12 mb-3">
 							<label class="form-label">Pilih Kapal</label>
-							<select class="form-select form-select-sm sel-all" name="id_kapal" onchange="getTangki(this.value)">
+							<select class="form-select form-select-sm sel-all" name="id_kapal" onchange="getTangki(this.value); getGrafikTangki(this.value)">
 								<option value=""></option>
 								<?php foreach ($this->model->sGetKapal() as $opsi) : ?>
 									<option value="<?= $opsi['id'] ?>"><?= $opsi['nama_kapal'] ?></option>
@@ -98,54 +98,8 @@
 
 		<div class="card-body">
 			<div class="row" id="outputGrafik">
-				<div class="col-md-6 mt-3 mb-4">
-					<section>
-						<div class="container-tangki mx-auto">
-							<div class="isi-tangki"></div>
-							<div class="text-tangki text-center">
-								<h3>50%</h3>
-								<h2>3407 <span> (litter)</span></h2>
-							</div>
-						</div>
-						<div class="text-center">
-							<p class="mt-2 mb-1">Tangki Utama</p>
-							<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
-						</div>
-					</section>
-
-				</div>
-				<div class="col-md-6 mt-3 mb-4">
-					<section>
-						<div class="container-tangki mx-auto">
-							<div class="isi-tangki"></div>
-							<div class="text-tangki text-center">
-								<h3>50%</h3>
-								<h2>3407 <span> (litter)</span></h2>
-							</div>
-						</div>
-						<div class="text-center">
-							<p class="mt-2 mb-1">Tangki Utama</p>
-							<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
-						</div>
-					</section>
-
-				</div>
-				<div class="col-md-6 mt-3 mb-4">
-					<section>
-						<div class="container-tangki mx-auto">
-							<div class="isi-tangki"></div>
-							<div class="text-tangki text-center">
-								<h3>50%</h3>
-								<h2>3407 <span> (litter)</span></h2>
-							</div>
-						</div>
-						<div class="text-center">
-							<p class="mt-2 mb-1">Tangki Utama</p>
-							<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
-						</div>
-					</section>
-
-				</div>
+				
+				<h5 class="text-center mt-3">Load data sedang diproses ..</h5>
 			</div>
 		</div><!-- card-body -->
 
@@ -158,5 +112,8 @@
 <script>
 	function getTangki(idKapal){
 		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/null/' + idKapal);
+	}
+	function getGrafikTangki(idKapal){
+		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/null/' + idKapal);
 	}
 </script>

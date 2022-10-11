@@ -121,13 +121,32 @@
 	border-radius: 30px;
 }
 
-.isi-tangki::before{
-	content: '';
+.isi-tangki .value-tengki{
 	position: absolute;
 	bottom: 0;
 	width:  100%;
-	height: 60%;
+	height: 0%;
+	transition: .3s;
+	transition-delay: 2s;
+	/*overflow: hidden;*/
+}
+@keyframes inComeValueTengki {
+  0% {
+    height: 0%;
+
+  }
+  100% {
+    height: 100%;
+  }
+}
+.isi-tangki .value-tengki .transisi-tengki{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 0%;
 	background-color: #13e700;
+	animation: 1s ease-out 1s forwards inComeValueTengki;
+
 }
 
 .text-tangki{
