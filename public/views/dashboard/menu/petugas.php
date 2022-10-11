@@ -37,13 +37,13 @@
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>InvoiceDataSandar">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-receipt-cutoff"></i>
 			<span>Data Sandar</span>
 		</a>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>InvoiceAirTawar">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-receipt-cutoff"></i>
 			<span>Air Tawar</span>
 		</a>
 	</li>
@@ -52,14 +52,14 @@
 		<span>Delayed</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
-			<i class="bi bi-grid"></i>
+		<a href="<?= $this->gLink ?>DelayedDataSandar">
+			<i class="bi bi-file-earmark-excel-fill"></i>
 			<span>Data Sandar</span>
 		</a>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
-			<i class="bi bi-grid"></i>
+		<a href="<?= $this->gLink ?>DelayedAirTawar">
+			<i class="bi bi-file-earmark-excel-fill"></i>
 			<span>Air Tawar</span>
 		</a>
 	</li>
