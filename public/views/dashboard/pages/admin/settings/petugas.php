@@ -1,4 +1,4 @@
-<?php if ($this->setPage == "add"): ?>
+<?php if ($this->setPage == "add") : ?>
 	<!-- UP -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -39,7 +39,7 @@
 			<button type="submit" class="btn btn-sm bg-purple text-white" name="add">Submit</button>
 		</div>
 	</form>
-<?php elseif ($this->setPage == "up"): ?>
+<?php elseif ($this->setPage == "up") : ?>
 	<!-- UP -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -69,7 +69,7 @@
 		</div>
 	</form>
 
-<?php elseif ($this->setPage == "del"): ?>
+<?php elseif ($this->setPage == "del") : ?>
 	<!-- DEL -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -81,11 +81,11 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id_login'] ?>" >Hapus</button>
+			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id_login'] ?>">Hapus</button>
 		</div>
 	</form>
 
-<?php elseif ($this->setPage == "upAkun"): ?>
+<?php elseif ($this->setPage == "upAkun") : ?>
 	<!-- UPDATE AKUN -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -109,11 +109,11 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="upAkun" value="<?= $this->data['id_login'] ?>" >Update</button>
+			<button type="submit" class="btn btn-sm btn-primary" name="upAkun" value="<?= $this->data['id_login'] ?>">Update</button>
 		</div>
 	</form>
 
-<?php else: ?>
+<?php else : ?>
 	<div class="modal-content">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-red-400"><i class="bi bi-exclamation-square-fill"></i> Oops</pre>
@@ -125,4 +125,4 @@
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</div>
-	<?php endif; ?>
+<?php endif; ?>

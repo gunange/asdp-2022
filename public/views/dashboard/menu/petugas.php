@@ -1,4 +1,3 @@
-
 <ul>
 	<li class="header-menu">
 		<span>Home</span>
@@ -9,7 +8,7 @@
 			<span>Dashboard</span>
 		</a>
 	</li>
-	
+
 	<li class="header-menu">
 		<span>Pengolahan</span>
 	</li>
@@ -19,7 +18,7 @@
 			<span>BBM Kapal</span>
 		</a>
 	</li>
-	
+
 	<li>
 		<a href="<?= $this->gLink ?>ExampleCrud">
 			<i class="bi bi-grid"></i>
@@ -27,12 +26,12 @@
 		</a>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>AirTawar">
 			<i class="bi bi-grid"></i>
 			<span>Air Tawar</span>
 		</a>
 	</li>
-	
+
 	<li class="header-menu">
 		<span>Invoice</span>
 	</li>
@@ -64,7 +63,7 @@
 			<span>Air Tawar</span>
 		</a>
 	</li>
-	
+
 
 	<li class="header-menu">
 		<span>Pengaturan</span>
@@ -75,5 +74,5 @@
 			<span>Akun</span>
 		</a>
 	</li>
-	
-	</ul>
+
+</ul>

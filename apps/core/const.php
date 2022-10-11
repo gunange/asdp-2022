@@ -1,9 +1,9 @@
 <?php
-define('BASEURL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' 
-	? "https" 
-	: "http") 
-	. "://$_SERVER[HTTP_HOST]" . dirname($_SERVER['SCRIPT_NAME']) 
-	. (!str_ends_with(dirname($_SERVER['SCRIPT_NAME']), "/") ? "/" : "" )  );
+define('BASEURL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'
+	? "https"
+	: "http")
+	. "://$_SERVER[HTTP_HOST]" . dirname($_SERVER['SCRIPT_NAME'])
+	. (!str_ends_with(dirname($_SERVER['SCRIPT_NAME']), "/") ? "/" : ""));
 
 
 /*BASE Files & Assets*/

@@ -1,31 +1,33 @@
 <?php
 
-class ModelAdmin extends Controler{
+class ModelAdmin extends Controler
+{
 
-	private $modelUser ;
+	private $modelUser;
 	public $user;
-	
-	use MasterData, MasterJoin, ComponentModelDash ;
 
-	public function __construct(){
+	use MasterData, MasterJoin, ComponentModelDash;
+
+	public function __construct()
+	{
 		$this->modelUser = $this->model('ModelUser');
 		$this->modelUser->userAllow = [1];
-		if($this->modelUser->isUser()):
+		if ($this->modelUser->isUser()) :
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
 
 	public function UpAkunUser()
 	{
-		try{
+		try {
 			$set['tbl'] = "tbl_login";
-			$set['key']	= "id" ;
-			$set['val']	= $_POST['upAkun'] ;
+			$set['key']	= "id";
+			$set['val']	= $_POST['upAkun'];
 
 			$set['set'] = [
 				"username" 		=> $_POST['username'],
 			];
-			if(isset($_POST['password'])):
+			if (isset($_POST['password'])) :
 				$set['set']['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			endif;
 
@@ -33,8 +35,7 @@ class ModelAdmin extends Controler{
 
 			msg::$msg = "Akun berhasil diperbahrui ";
 			msg::success();
-
-		} catch(PDOException $e){
+		} catch (PDOException $e) {
 			msg::$msg = "Username yang anda gunakan sudah terdaftar, mohon gunankan username yang lain ";
 			msg::error();
 		}
@@ -49,7 +50,7 @@ class ModelAdmin extends Controler{
 	}
 	public function AddPetugas()
 	{
-		try{
+		try {
 			$set['set'] = [
 				"username" => $_POST['username'],
 				"password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
@@ -64,7 +65,7 @@ class ModelAdmin extends Controler{
 			$set['set'] = [
 				"nama" => $_POST['nama'],
 				"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
-				
+
 				"id_login" => $id_login,
 			];
 			$set['tbl'] 	= "tbl_user";
@@ -81,24 +82,23 @@ class ModelAdmin extends Controler{
 
 			msg::$msg = "Data berhasil ditambahkan";
 			msg::success();
-		}catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Username yang anda gunakan sudah terdaftar, mohon gunankan username yang lain ";
 			msg::error();
 		}
-		
 	}
-	
+
 	public function upPetugas()
 	{
-		$set['tbl']	= "tbl_user" ;
-		$set['key']	= "id" ;
-		$set['val']	= $_POST['id_user'] ;
-		
+		$set['tbl']	= "tbl_user";
+		$set['key']	= "id";
+		$set['val']	= $_POST['id_user'];
+
 		$set['set'] = [
 			"nama"             => $_POST['nama'],
 			"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
 		];
-		
+
 		database::update($set);
 
 		msg::$msg = "Data berhasil diperbahrui ";
@@ -107,16 +107,16 @@ class ModelAdmin extends Controler{
 
 	public function DelPetugas()
 	{
-		try{
+		try {
 
 			$set['tbl']		= "tbl_login";
 			$set['key']		= "id";
 			$set['val']		= $_POST['del'];
-		
+
 			database::delete($set);
 			msg::$msg = "Data berhasil dihapus ";
 			msg::success();
-		}catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
 			msg::error();
 		}
@@ -129,7 +129,7 @@ class ModelAdmin extends Controler{
 	}
 	public function AddKabid()
 	{
-		try{
+		try {
 			$set['set'] = [
 				"username" => $_POST['username'],
 				"password" => password_hash($_POST['password'], PASSWORD_DEFAULT),
@@ -144,7 +144,7 @@ class ModelAdmin extends Controler{
 			$set['set'] = [
 				"nama" => $_POST['nama'],
 				"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
-				
+
 				"id_login" => $id_login,
 			];
 			$set['tbl'] 	= "tbl_user";
@@ -161,23 +161,22 @@ class ModelAdmin extends Controler{
 
 			msg::$msg = "Data berhasil ditambahkan";
 			msg::success();
-		}catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Username yang anda gunakan sudah terdaftar, mohon gunankan username yang lain ";
 			msg::error();
 		}
-		
 	}
 	public function upKabid()
 	{
-		$set['tbl']	= "tbl_user" ;
-		$set['key']	= "id" ;
-		$set['val']	= $_POST['id_user'] ;
-		
+		$set['tbl']	= "tbl_user";
+		$set['key']	= "id";
+		$set['val']	= $_POST['id_user'];
+
 		$set['set'] = [
 			"nama"             => $_POST['nama'],
 			"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
 		];
-		
+
 		database::update($set);
 
 		msg::$msg = "Data berhasil diperbahrui ";
@@ -189,15 +188,14 @@ class ModelAdmin extends Controler{
 			$set['tbl']		= "tbl_login";
 			$set['key']		= "id";
 			$set['val']		= $_POST['del'];
-		
+
 			database::delete($set);
 			msg::$msg = "Data berhasil dihapus ";
 			msg::success();
-		}catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
 			msg::error();
 		}
-		
 	}
 	public function GetKapal()
 	{
@@ -224,17 +222,17 @@ class ModelAdmin extends Controler{
 
 	public function UpKapal()
 	{
-		$set['tbl']	= "tbl_kapal" ;
-		$set['key']	= "id" ;
-		$set['val']	= $_POST['up'] ;
-		
+		$set['tbl']	= "tbl_kapal";
+		$set['key']	= "id";
+		$set['val']	= $_POST['up'];
+
 		$set['set'] = [
 			"nama_kapal" => $_POST['nama_kapal'],
 			"perusahaan" => $_POST['perusahaan'],
 			"gt"         => $_POST['gt'],
 			"pajak"      => $_POST['pajak'],
 		];
-		
+
 		database::update($set);
 
 		msg::$msg = "Data berhasil diperbahrui ";
@@ -243,16 +241,15 @@ class ModelAdmin extends Controler{
 
 	public function DelKapal()
 	{
-		try{
+		try {
 			$set['tbl']		= "tbl_kapal";
 			$set['key']		= "id";
 			$set['val']		= $_POST['del'];
-		
+
 			database::delete($set);
 			msg::$msg = "Data berhasil dihapus ";
 			msg::success();
-		}
-		catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
 			msg::error();
 		}
@@ -279,14 +276,14 @@ class ModelAdmin extends Controler{
 
 	public function UpDermaga()
 	{
-		$set['tbl']	= "tbl_dermaga" ;
-		$set['key']	= "id" ;
-		$set['val']	= $_POST['up'] ;
-		
+		$set['tbl']	= "tbl_dermaga";
+		$set['key']	= "id";
+		$set['val']	= $_POST['up'];
+
 		$set['set'] = [
 			"dermaga" => $_POST['dermaga'],
 		];
-		
+
 		database::update($set);
 
 		msg::$msg = "Data berhasil diperbahrui ";
@@ -295,21 +292,20 @@ class ModelAdmin extends Controler{
 
 	public function DelDermaga()
 	{
-		try{
+		try {
 			$set['tbl']		= "tbl_dermaga";
 			$set['key']		= "id";
 			$set['val']		= $_POST['del'];
-		
+
 			database::delete($set);
 			msg::$msg = "Data berhasil dihapus ";
 			msg::success();
-		}
-		catch(PDOException){
+		} catch (PDOException) {
 			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
 			msg::error();
 		}
 	}
-	public function GetTangkiKapalById($id=null)
+	public function GetTangkiKapalById($id = null)
 	{
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_tanki';

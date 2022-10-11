@@ -1,19 +1,19 @@
 <?php
 
-class ModelPetugas extends Controler{
+class ModelPetugas extends Controler
+{
 
-	private $modelUser ;
+	private $modelUser;
 	public $user;
-	
-	use MasterData, MasterJoin, ComponentModelDash ;
 
-	public function __construct(){
+	use MasterData, MasterJoin, ComponentModelDash;
+
+	public function __construct()
+	{
 		$this->modelUser = $this->model('ModelUser');
 		$this->modelUser->userAllow = [3];
-		if($this->modelUser->isUser()):
+		if ($this->modelUser->isUser()) :
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
-
-
 }
