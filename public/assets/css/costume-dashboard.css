@@ -6,6 +6,12 @@
 	padding-left: 40px !important;
 }
 
+.primary-collor{
+	color: var(--primary-collor) !important; 
+}
+.primary-bg{
+	background-color : var(--primary-collor) !important;
+}
 .second-collor{
 	color: var(--second-collor) !important; 
 }
