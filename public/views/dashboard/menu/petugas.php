@@ -13,7 +13,7 @@
 		<span>Pengolahan</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>BbmKapal">
 			<i class="bi bi-grid"></i>
 			<span>BBM Kapal</span>
 		</a>
