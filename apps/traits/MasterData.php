@@ -8,5 +8,12 @@ trait MasterData {
 
 		return database::select($set);
 	}
+	public function sGetJenisTanki($data=""){
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_jenis_tanki';
+		$set['query']	= $data;
+
+		return database::select($set);
+	}
 	
 }

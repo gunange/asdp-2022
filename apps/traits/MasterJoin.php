@@ -147,5 +147,40 @@ trait MasterJoin {
 		return $set ;
 	}
 	
+	public function TankiKapalJoin(){
+		$set['set'] 	= '
+			jns_tanki.*, 
+			kapal.*, 
+			tanki.*
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+			  'type'   	=> 'left_join',
+			  'table' 	=> 'tbl_tanki',
+			  'key'   	=> 'tanki'
+			],
+
+		'join' => [
+
+				[
+					'table' => 'tbl_kapal',
+					'key'   => 'kapal',
+					'id'    => 'kapal.id',
+					'in'    => 'tanki.id_kapal'
+				],
+				[
+					'table' => 'tbl_jenis_tanki',
+					'key'   => 'jns_tanki',
+					'id'    => 'jns_tanki.id',
+					'in'    => 'tanki.id_jenis_tanki'
+				],
+				
+			]
+		];
+
+		return $set ;
+	}
 	
 }

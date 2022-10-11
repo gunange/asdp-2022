@@ -33,9 +33,17 @@ trait ComponentAdmin{
 	public function SetTangkiKapal($page=null, $key=null, $idKapal=null){
 		$this->setPage = $page ;
 		if(!is_null($key) ):
-			$this->data  =  $this->model->GetTangkiKapalById($idKapal);
+			$this->data  =  $this->model->GetTangkiKapalById($idKapal)[$key];
+			$this->key = $key ;
 		endif;
 		$this->idKapal = $idKapal ;
 		$this->viewDash('settings/tangki-kapal');
+	}
+	public function SetJenisTanki($page=null, $key=null){
+		$this->setPage = $page ;
+		if(!is_null($key) ):
+			$this->data  =  $this->model->sGetJenisTanki()[$key];
+		endif;
+		$this->viewDash('settings/jenis-tanki');
 	}
 }

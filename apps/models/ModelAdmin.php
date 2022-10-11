@@ -305,20 +305,66 @@ class ModelAdmin extends Controler
 			msg::error();
 		}
 	}
+<<<<<<< HEAD
 	public function GetTangkiKapalById($id = null)
+=======
+	public function AddJenisTanki()
 	{
-		$set['set'] 	= '*';
-		$set['tbl'] 	= 'tbl_tanki';
-		$set['query']	= "WHERE id_kapal = '{$id}'";
+		$set['set'] = [
+			"jenis_tanki" => $_POST['jenis_tanki'],
+		];
+		$set['tbl'] 	= "tbl_jenis_tanki";
+		database::insert($set);
 
-		return database::select($set);
+		msg::$msg = "Data berhasil ditambahkan";
+		msg::success();
+	}
+	public function UpJenisTanki()
+	{
+		$set['tbl']	= "tbl_jenis_tanki" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"jenis_tanki" => $_POST['jenis_tanki'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+
+	public function DelJenisTanki()
+	{
+		try{
+			$set['tbl']		= "tbl_jenis_tanki";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
+	public function GetTangkiKapalById($id=null)
+>>>>>>> f3cd505b4c41b4baf7ce894607c5949a44def245
+	{
+		$set 	= $this->TankiKapalJoin();
+		$set['query']	= "WHERE tanki.id_kapal = '{$id}'";
+
+		return database::join($set);
 	}
 
 	public function AddTangkiKapal()
 	{
 		$set['set'] = [
 			"id_kapal" => $_POST['id_kapal'],
-			"nama_tanki" => $_POST['nama_tanki'],
+			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
 			"panjang" => $_POST['panjang'],
 			"lebar" => $_POST['lebar'],
 			"tinggi" => $_POST['tinggi'],
@@ -329,4 +375,42 @@ class ModelAdmin extends Controler
 		msg::$msg = "Data berhasil ditambahkan";
 		msg::success();
 	}
+<<<<<<< HEAD
 }
+=======
+	public function UpTankiKapal()
+	{
+		$set['tbl']	= "tbl_tanki" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
+			"panjang" => $_POST['panjang'],
+			"lebar" => $_POST['lebar'],
+			"tinggi" => $_POST['tinggi'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+	public function DelTankiKapal()
+	{
+		try{
+			$set['tbl']		= "tbl_tanki";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
+}
+>>>>>>> f3cd505b4c41b4baf7ce894607c5949a44def245
