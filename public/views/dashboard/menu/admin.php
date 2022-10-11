@@ -39,17 +39,13 @@
 			<span>Dermaga</span>
 		</a>
 	</li>
-<<<<<<< HEAD
-
-=======
 	<li>
 		<a href="<?= $this->gLink ?>JenisTanki">
 			<i class="bi bi-grid"></i>
 			<span>Jenis Tanki</span>
 		</a>
 	</li>
-	
->>>>>>> f3cd505b4c41b4baf7ce894607c5949a44def245
+
 	<li class="header-menu">
 		<span>Pengaturan</span>
 	</li>
