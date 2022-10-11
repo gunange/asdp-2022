@@ -53,19 +53,22 @@ endif;
 						<thead>
 							<tr>
 								<th width="50px">#</th>
-								<th>Field Pertama</th>
-								<th>Field Kedua</th>
-								<th width="70px">Arsip</th>
+								<th>Nama Tangki</th>
+								<th>Panjang</th>
+								<th>Lebar</th>
+								<th>Tinggi</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($this->tangkiKapal as $k => $d ): ?>
+
+							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d ): ?>
 							<tr>
-								<td>1</td>
-								<td>Lorem, ipsum.</td>
-								<td>Lorem, ipsum.</td>
-								<td>Lorem, ipsum.</td>
+								<td><?= $k + 1 ?></td>
+								<td><?= $d['nama_tanki'] ?></td>
+								<td><?= $d['panjang'] ?> cm</td>
+								<td><?= $d['lebar'] ?> cm</td>
+								<td><?= $d['tinggi'] ?> cm</td>
 								<td class="text-center" width="120px">
 									<div class="btn-group" role="group">
 										<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" 

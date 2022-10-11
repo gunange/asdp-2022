@@ -40,7 +40,6 @@ class DashAdmin extends Controler {
 		$this->id = $key ;
 		if(!is_null($key) && is_array(@$this->model->GetKapal()[$this->id])):
 			$this->data = $this->model->GetKapal()[$this->id];
-			$this->tangkiKapal = $this->model->GetTangkiKapalById($this->data['id']);
 		else:
 			$this->notFound = true ;
 		endif;

@@ -320,6 +320,17 @@ class ModelAdmin extends Controler{
 
 	public function AddTangkiKapal()
 	{
-		print_r($_POST);
+		$set['set'] = [
+			"id_kapal" => $_POST['id_kapal'],
+			"nama_tanki" => $_POST['nama_tanki'],
+			"panjang" => $_POST['panjang'],
+			"lebar" => $_POST['lebar'],
+			"tinggi" => $_POST['tinggi'],
+		];
+		$set['tbl'] 	= "tbl_tanki";
+		database::insert($set);
+
+		msg::$msg = "Data berhasil ditambahkan";
+		msg::success();
 	}
 }
