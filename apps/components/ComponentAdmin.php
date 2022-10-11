@@ -30,4 +30,12 @@ trait ComponentAdmin{
 		endif;
 		$this->viewDash('settings/dermaga');
 	}
+	public function SetTangkiKapal($page=null, $key=null, $idKapal=null){
+		$this->setPage = $page ;
+		if(!is_null($key) ):
+			$this->data  =  $this->model->GetTangkiKapalById($idKapal);
+		endif;
+		$this->idKapal = $idKapal ;
+		$this->viewDash('settings/tangki-kapal');
+	}
 }

@@ -309,5 +309,17 @@ class ModelAdmin extends Controler{
 			msg::error();
 		}
 	}
+	public function GetTangkiKapalById($id=null)
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_tanki';
+		$set['query']	= "WHERE id_kapal = '{$id}'";
 
+		return database::select($set);
+	}
+
+	public function AddTangkiKapal()
+	{
+		print_r($_POST);
+	}
 }

@@ -5,6 +5,7 @@ class Controler{
 	private $dirViews = 'public/views/';
 	private $dirModel = 'apps/models/';
 	public $debugUrl = false ;
+	public $notFound = false;
 
 	public function view($view){
 		require_once $this->dirViews . $view .".php" ;
@@ -24,7 +25,7 @@ class Controler{
 			require_once $this->dirTemplates . 'dashboard/header.php';
 			require_once $this->dirTemplates . 'dashboard/sidebar.php';
 			require_once $this->dirTemplates . 'dashboard/navbar.php';
-			require_once (file_exists($this->dirViews . "dashboard/" . $this->dPage . $view .".php") 
+			require_once (!$this->notFound && file_exists($this->dirViews . "dashboard/" . $this->dPage . $view .".php" ) 
 				? $this->dirViews . "dashboard/" . $this->dPage . $view .".php" 
 				: $this->dirTemplates . 'dashboard/not-found.php');
 			require_once $this->dirTemplates . 'dashboard/footer.php';

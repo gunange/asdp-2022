@@ -1,17 +1,10 @@
 <?php 
-
 if (isset($_POST['add'])):
-	$this->model->AddKapal();
+	$this->model->AddTangkiKapal();
 endif;
 
-if (isset($_POST['up'])):
-	$this->model->UpKapal();
-endif;
 
-if (isset($_POST['del'])):
-	$this->model->DelKapal();
-endif;
- ?>
+?>
 
 <div class="row mt-4">
   <div class="col-12 col-md-12">
@@ -39,12 +32,12 @@ endif;
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> Settings Kapal
+						<i class="bi bi-box text-yellow-500 me-2"></i> Tangki Kapal <?= $this->data['nama_kapal'] ?>
 					</h6>
 					<div class="btn-toolbar mb-2 mb-md-0 btn-group">
 						<button class="btn btn-sm bg-purple text-white" 
 							title="Tambah data!" 
-							onclick="openModalShow('#modal', '<?= $this->gLink ?>SetKapal/add', ()=>{injectJsDashboardPrimary();} )">
+							onclick="openModalShow('#modal', '<?= $this->gLink ?>SetTangkiKapal/add/null/<?= $this->data['id'] ?>', ()=>{injectJsDashboardPrimary();} )">
 							<i class="bi bi-clipboard-plus"></i> Tambah
 						</button>
 						
@@ -60,34 +53,28 @@ endif;
 						<thead>
 							<tr>
 								<th width="50px">#</th>
-								<th>Kapal</th>
-								<th>Perusahaan</th>
-								<th>GT</th>
-								<th>Pajak</th>
+								<th>Field Pertama</th>
+								<th>Field Kedua</th>
+								<th width="70px">Arsip</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($this->model->GetKapal() as $k => $d) : ?>
+							<?php foreach ($this->tangkiKapal as $k => $d ): ?>
 							<tr>
-								<td><?= $k + 1 ?></td>
-								<td><?= $d['nama_kapal'] ?></td>
-								<td><?= $d['perusahaan'] ?></td>
-								<td><?= $d['gt'] ?></td>
-								<td><?= $d['pajak'] ?></td>
+								<td>1</td>
+								<td>Lorem, ipsum.</td>
+								<td>Lorem, ipsum.</td>
+								<td>Lorem, ipsum.</td>
 								<td class="text-center" width="120px">
 									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-sm bg-teal text-white" title="Tangki Kapal" 
-											onclick="window.location.href='<?= $this->gLink ?>TangkiKapal/<?= $k ?>'">
-											<i class="bi bi-clipboard2-x-fill"></i>
-										</button>
 										<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetKapal/up/<?= $k ?>', 
+											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>', 
 											()=>{injectJsDashboardPrimary();})">
 											<i class="bi bi-pencil-fill"></i>
 										</button>
 										<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetKapal/del/<?= $k ?>')">
+											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>')">
 											<i class="bi bi-trash-fill"></i>
 										</button>
 									</div>
@@ -101,6 +88,7 @@ endif;
 				</div><!-- table-responsive -->
 
 			</div><!-- card-body -->
+
 		</div>
 	</div>
 </div>

@@ -36,5 +36,16 @@ class DashAdmin extends Controler {
 	public function Dermaga(){
 		$this->viewDashboard ('dermaga');
 	}
+	public function TangkiKapal($key=null){
+		$this->id = $key ;
+		if(!is_null($key) && is_array(@$this->model->GetKapal()[$this->id])):
+			$this->data = $this->model->GetKapal()[$this->id];
+			$this->tangkiKapal = $this->model->GetTangkiKapalById($this->data['id']);
+		else:
+			$this->notFound = true ;
+		endif;
+		$this->viewDashboard ('tangki-kapal');
+		
+	}
 	
 }
