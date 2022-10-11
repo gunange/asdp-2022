@@ -67,7 +67,6 @@ endif;
 						</thead>
 						<tbody>
 
-<<<<<<< HEAD
 							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d) : ?>
 								<tr>
 									<td><?= $k + 1 ?></td>
@@ -88,7 +87,6 @@ endif;
 									</td>
 
 								</tr>
-=======
 							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d ): ?>
 							<tr>
 								<td><?= $k + 1 ?></td>
@@ -111,7 +109,6 @@ endif;
 								</td>
 								
 							</tr>
->>>>>>> f3cd505b4c41b4baf7ce894607c5949a44def245
 							<?php endforeach; ?>
 						</tbody>
 
