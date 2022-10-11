@@ -85,30 +85,7 @@ endif;
 											</button>
 										</div>
 									</td>
-
 								</tr>
-							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d ): ?>
-							<tr>
-								<td><?= $k + 1 ?></td>
-								<td><?= $d['jenis_tanki'] ?></td>
-								<td><?= $d['panjang'] ?> cm</td>
-								<td><?= $d['lebar'] ?> cm</td>
-								<td><?= $d['tinggi'] ?> cm</td>
-								<td class="text-center" width="120px">
-									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>/<?= $this->data['id'] ?>', 
-											()=>{injectJsDashboardPrimary();})">
-											<i class="bi bi-pencil-fill"></i>
-										</button>
-										<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>/<?= $this->data['id'] ?>')">
-											<i class="bi bi-trash-fill"></i>
-										</button>
-									</div>
-								</td>
-								
-							</tr>
 							<?php endforeach; ?>
 						</tbody>
 
