@@ -36,6 +36,10 @@ class DashPetugas extends Controler
 	{
 		$this->viewDashboard('invoiceairtawar');
 	}
+	public function InvoiceDataSandar()
+	{
+		$this->viewDashboard('invoicedatasandar');
+	}
 
 	public function BbmKapal()
 	{

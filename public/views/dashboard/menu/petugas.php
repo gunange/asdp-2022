@@ -36,7 +36,7 @@
 		<span>Invoice</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>InvoiceDataSandar">
 			<i class="bi bi-grid"></i>
 			<span>Data Sandar</span>
 		</a>

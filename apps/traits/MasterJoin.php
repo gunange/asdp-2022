@@ -227,4 +227,46 @@ trait MasterJoin
 
 		return $set;
 	}
+
+
+	public function DataSandarJoin()
+	{
+		$set['set'] 	= '
+			ts.id id,
+			tgl,
+			shift,
+			nama_kapal,
+			dermaga,
+			waktu_awal,
+			(waktu_akhir - waktu_awal) lama_sandar,
+			total_sandar,
+			status
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_sandar',
+				'key'   	=> 'ts'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_kapal',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'ts.id_kapal'
+				],
+				[
+					'table' => 'tbl_dermaga ',
+					'key'   => 'td',
+					'id'    => 'td.id',
+					'in'    => 'ts.id_dermaga'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }
