@@ -143,10 +143,13 @@
 
 
 .text-tangki h2 {
-	font-size: 1vw;
+	font-size-adjust: 0.58;
+
+	font-size:  1.5rem;
 }
 .text-tangki h2 span {
 
-	font-size: 10px;
+	font-size: 10px !important;
+	font-weight: normal;
 }
 

@@ -92,16 +92,54 @@
 
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
-                    	<div class="container-tangki">
-                    		<div class="isi-tangki"></div>
-                    		<div class="text-tangki text-center">
-                    			<h3>50%</h3>
-                    			<h2>3400773737 <span>litter</span></h2>
+                    <div class="col-md-6 mt-3 mb-4">
+                    	<section>
+                    		<div class="container-tangki mx-auto">
+                    			<div class="isi-tangki"></div>
+                    			<div class="text-tangki text-center">
+                    				<h3>50%</h3>
+                    				<h2>3407 <span> (litter)</span></h2>
+                    			</div>
                     		</div>
-                    	</div>
+                    		<div class="text-center">
+                    			<p class="mt-2 mb-1">Tangki Utama</p>
+                    			<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
+                    		</div>
+                    	</section>
+                    	
                     </div>
-                    <p>Tangki Utama</p>
+                    <div class="col-md-6 mt-3 mb-4">
+                    	<section>
+                    		<div class="container-tangki mx-auto">
+                    			<div class="isi-tangki"></div>
+                    			<div class="text-tangki text-center">
+                    				<h3>50%</h3>
+                    				<h2>3407 <span> (litter)</span></h2>
+                    			</div>
+                    		</div>
+                    		<div class="text-center">
+                    			<p class="mt-2 mb-1">Tangki Utama</p>
+                    			<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
+                    		</div>
+                    	</section>
+                    	
+                    </div>
+                    <div class="col-md-6 mt-3 mb-4">
+                    	<section>
+                    		<div class="container-tangki mx-auto">
+                    			<div class="isi-tangki"></div>
+                    			<div class="text-tangki text-center">
+                    				<h3>50%</h3>
+                    				<h2>3407 <span> (litter)</span></h2>
+                    			</div>
+                    		</div>
+                    		<div class="text-center">
+                    			<p class="mt-2 mb-1">Tangki Utama</p>
+                    			<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
+                    		</div>
+                    	</section>
+                    	
+                    </div>
                 </div>
             </div><!-- card-body -->
 
