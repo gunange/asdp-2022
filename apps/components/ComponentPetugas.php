@@ -9,4 +9,8 @@ trait ComponentPetugas{
 		endif;
 		$this->viewDash('settings/petugas');
 	}
+	public function SetOption()
+	{
+		echo  '<option>Fucek</option>';
+	}
 }
