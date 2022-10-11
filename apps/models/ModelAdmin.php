@@ -309,6 +309,49 @@ class ModelAdmin extends Controler{
 			msg::error();
 		}
 	}
+	public function AddJenisTanki()
+	{
+		$set['set'] = [
+			"jenis_tanki" => $_POST['jenis_tanki'],
+		];
+		$set['tbl'] 	= "tbl_jenis_tanki";
+		database::insert($set);
+
+		msg::$msg = "Data berhasil ditambahkan";
+		msg::success();
+	}
+	public function UpJenisTanki()
+	{
+		$set['tbl']	= "tbl_jenis_tanki" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"jenis_tanki" => $_POST['jenis_tanki'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+
+	public function DelJenisTanki()
+	{
+		try{
+			$set['tbl']		= "tbl_jenis_tanki";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
 	public function GetTangkiKapalById($id=null)
 	{
 		$set['set'] 	= '*';

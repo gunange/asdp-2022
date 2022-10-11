@@ -46,5 +46,8 @@ class DashAdmin extends Controler {
 		$this->viewDashboard ('tangki-kapal');
 		
 	}
+	public function JenisTanki(){
+		$this->viewDashboard ('jenis-tanki');
+	}
 	
 }
