@@ -95,8 +95,13 @@
                     <div class="col-md-6">
                     	<div class="container-tangki">
                     		<div class="isi-tangki"></div>
+                    		<div class="text-tangki text-center">
+                    			<h3>50%</h3>
+                    			<h2>3400773737 <span>litter</span></h2>
+                    		</div>
                     	</div>
                     </div>
+                    <p>Tangki Utama</p>
                 </div>
             </div><!-- card-body -->
 

@@ -129,3 +129,19 @@
 	height: 60%;
 	background-color: #13e700;
 }
+
+.text-tangki{
+	width: 100%;
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	transform: translateX(-50%);
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.text-tangki h2 span {
+
+	font-size: 10px;
+}
