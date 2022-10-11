@@ -22,6 +22,10 @@ function injectJsDashboardPrimary(){
 
 }
 
+$(".sel-all").select2({
+		placeholder: 'Silahkan Pilih',
+		width: '100%'
+	});
 
 $(window).on('load', function(e) { // makes sure the whole site is loaded
     $(".loader__figure").fadeOut(); // will first fade out the loading animation

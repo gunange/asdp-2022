@@ -22,45 +22,60 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-12 col-md-12">
+    <div class="col-6 col-md-6">
         <div class="card card-small shadow bx-shadow">
             <div class="card-header border-bottom bg-white">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
                     <h6 class="m-0">
                         <i class="bi bi-box text-yellow-500 me-2"></i> Input Air Tawar
                     </h6>
-                    <div class="btn-toolbar mb-2 mb-md-0 btn-group">
-                        <button class="btn btn-sm bg-purple text-white" title="Tambah data!" onclick="openModalShow('#modal', '<?= $this->gLink ?>SetKapal/add', ()=>{injectJsDashboardPrimary();} )">
-                            <i class="bi bi-clipboard-plus"></i> Tambah
-                        </button>
-
-                    </div>
+                    
                 </div>
             </div><!-- card-header -->
 
+
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="row">
+                    <div class="col-md-12 mb-3 border-dark">
+                       
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <select class="form-select form-select-sm sel-all" name="id_jenis_kelamin">
+                                <option value=""></option>
+                                <?php foreach ($this->model->sGetJenisKelamin() as $opsi) : ?>
+                                    <option value="<?= $opsi['id'] ?>"><?= $opsi['jenis_kelamin'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
 
-                    <!-- table -->
-                    <table id="DataTable" class="table">
-                        <thead>
-                            <tr>
-                                <th width="50px">#</th>
-                                <th>Kapal</th>
-                                <th>Perusahaan</th>
-                                <th>GT</th>
-                                <th>Pajak</th>
-                                <th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-
-                    </table><!-- table -->
-                </div><!-- table-responsive -->
-
+                        <div class="col-12 mb-3">
+                            <label class="form-label">Panjang</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control form-control-sm"  placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off">
+                                <div class="input-group-text input-group-sm">cm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div><!-- card-body -->
+
+            <div class="btn-toolbar mb-2 mb-md-0 btn-group">
+
+                 <button class="btn btn-sm bg-yellow text-white" 
+                            title="Tambah data!" 
+                            onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetCrud/Pdf', ()=>{injectJsDashboardPrimary();} )">
+                            <i class="bi bi-printer-fill"></i> Resset
+                        </button>
+                        <button class="btn btn-sm primary-bg text-white" 
+                            title="Tambah data!" 
+                            onclick="openModalShow('#modal', '<?= $this->gLink ?>SetCrud', ()=>{injectJsDashboardPrimary();} )">
+                            <i class="bi bi-clipboard-plus"></i> Simpan
+                        </button>
+                       
+                       
+                    </div>
         </div>
+
     </div>
+    
 </div>
