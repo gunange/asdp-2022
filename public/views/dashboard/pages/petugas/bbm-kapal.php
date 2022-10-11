@@ -97,7 +97,7 @@
 		</div><!-- card-header -->
 
 		<div class="card-body">
-			<div class="row">
+			<div class="row" id="outputGrafik">
 				<div class="col-md-6 mt-3 mb-4">
 					<section>
 						<div class="container-tangki mx-auto">
@@ -155,11 +155,8 @@
 
 </div>
 
-
 <script>
 	function getTangki(idKapal){
-		console.log(idKapal)
-
-		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetOption');
+		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/null/' + idKapal);
 	}
 </script>

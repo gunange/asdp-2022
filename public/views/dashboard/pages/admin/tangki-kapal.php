@@ -70,7 +70,7 @@ endif;
 							<?php foreach ($this->model->GetTangkiKapalById($this->data['id']) as $k => $d) : ?>
 								<tr>
 									<td><?= $k + 1 ?></td>
-									<td><?= $d['nama_tanki'] ?></td>
+									<td><?= $d['jenis_tanki'] ?></td>
 									<td><?= $d['panjang'] ?> cm</td>
 									<td><?= $d['lebar'] ?> cm</td>
 									<td><?= $d['tinggi'] ?> cm</td>
