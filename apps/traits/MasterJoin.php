@@ -1,8 +1,10 @@
 <?php
 
-trait MasterJoin {
+trait MasterJoin
+{
 
-	public function userJoin(){
+	public function userJoin()
+	{
 		$set['set'] 	= '
 			lvl.*, 
 			jk.*,
@@ -13,12 +15,12 @@ trait MasterJoin {
 
 			'induk' =>
 			[
-			  'type'   	=> 'left_join',
-			  'table' 	=> 'tbl_login',
-			  'key'   	=> 'lg'
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_login',
+				'key'   	=> 'lg'
 			],
 
-		'join' => [
+			'join' => [
 
 				[
 					'table' => 'tbl_user',
@@ -26,7 +28,7 @@ trait MasterJoin {
 					'id'    => 'user.id_login',
 					'in'    => 'lg.id'
 				],
-				
+
 				[
 					'table' => 'tbl_jenis_kelamin',
 					'key'   => 'jk',
@@ -39,14 +41,15 @@ trait MasterJoin {
 					'id'    => 'lvl.id',
 					'in'    => 'lg.id_level'
 				],
-			
+
 			]
 		];
 
-		return $set ;
+		return $set;
 	}
 
-	public function PetugasJoin(){
+	public function PetugasJoin()
+	{
 		$set['set'] 	= '
 			lvl.*, 
 			jk.*,
@@ -58,12 +61,12 @@ trait MasterJoin {
 
 			'induk' =>
 			[
-			  'type'   	=> 'left_join',
-			  'table' 	=> 'tbl_petugas',
-			  'key'   	=> 'petugas'
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_petugas',
+				'key'   	=> 'petugas'
 			],
 
-		'join' => [
+			'join' => [
 
 				[
 					'table' => 'tbl_user',
@@ -77,7 +80,7 @@ trait MasterJoin {
 					'id'    => 'lg.id',
 					'in'    => 'user.id_login'
 				],
-				
+
 				[
 					'table' => 'tbl_jenis_kelamin',
 					'key'   => 'jk',
@@ -90,13 +93,14 @@ trait MasterJoin {
 					'id'    => 'lvl.id',
 					'in'    => 'lg.id_level'
 				],
-			
+
 			]
 		];
 
-		return $set ;
+		return $set;
 	}
-	public function KabidJoin(){
+	public function KabidJoin()
+	{
 		$set['set'] 	= '
 			lvl.*, 
 			jk.*,
@@ -108,12 +112,12 @@ trait MasterJoin {
 
 			'induk' =>
 			[
-			  'type'   	=> 'left_join',
-			  'table' 	=> 'tbl_kabid',
-			  'key'   	=> 'kabid'
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_kabid',
+				'key'   	=> 'kabid'
 			],
 
-		'join' => [
+			'join' => [
 
 				[
 					'table' => 'tbl_user',
@@ -127,7 +131,7 @@ trait MasterJoin {
 					'id'    => 'lg.id',
 					'in'    => 'user.id_login'
 				],
-				
+
 				[
 					'table' => 'tbl_jenis_kelamin',
 					'key'   => 'jk',
@@ -140,14 +144,15 @@ trait MasterJoin {
 					'id'    => 'lvl.id',
 					'in'    => 'lg.id_level'
 				],
-			
+
 			]
 		];
 
-		return $set ;
+		return $set;
 	}
-	
-	public function TankiKapalJoin(){
+
+	public function TankiKapalJoin()
+	{
 		$set['set'] 	= '
 			jns_tanki.*, 
 			kapal.*, 
@@ -157,12 +162,12 @@ trait MasterJoin {
 
 			'induk' =>
 			[
-			  'type'   	=> 'left_join',
-			  'table' 	=> 'tbl_tanki',
-			  'key'   	=> 'tanki'
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_tanki',
+				'key'   	=> 'tanki'
 			],
 
-		'join' => [
+			'join' => [
 
 				[
 					'table' => 'tbl_kapal',
@@ -176,11 +181,50 @@ trait MasterJoin {
 					'id'    => 'jns_tanki.id',
 					'in'    => 'tanki.id_jenis_tanki'
 				],
-				
+
 			]
 		];
 
-		return $set ;
+		return $set;
 	}
-	
+	public function AirTawarJoin()
+	{
+		$set['set'] 	= '
+			tat.id id,
+			waktu,
+			tgl,
+			shift,
+			nama_kapal,
+			dermaga,
+			debit_air,
+			FORMAT(total_air_tawar, 0) total_air_tawar,
+			status
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_air_tawar',
+				'key'   	=> 'tat'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_kapal',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'tat.id_kapal'
+				],
+				[
+					'table' => 'tbl_dermaga ',
+					'key'   => 'td',
+					'id'    => 'td.id',
+					'in'    => 'tat.id_dermaga'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }

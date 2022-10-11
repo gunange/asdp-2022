@@ -42,7 +42,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>InvoiceAirTawar">
 			<i class="bi bi-grid"></i>
 			<span>Air Tawar</span>
 		</a>

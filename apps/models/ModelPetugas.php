@@ -55,4 +55,12 @@ class ModelPetugas extends Controler
 		msg::$msg = "Data berhasil ditambahkan";
 		msg::success();
 	}
+
+	public function GetAirTawar()
+	{
+		$set = $this->AirTawarJoin();
+		$set['query'] = "ORDER BY waktu DESC, tgl DESC";
+
+		return database::join($set);
+	}
 }
