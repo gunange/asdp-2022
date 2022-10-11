@@ -375,4 +375,38 @@ class ModelAdmin extends Controler{
 		msg::$msg = "Data berhasil ditambahkan";
 		msg::success();
 	}
+	public function UpTankiKapal()
+	{
+		$set['tbl']	= "tbl_tanki" ;
+		$set['key']	= "id" ;
+		$set['val']	= $_POST['up'] ;
+		
+		$set['set'] = [
+			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
+			"panjang" => $_POST['panjang'],
+			"lebar" => $_POST['lebar'],
+			"tinggi" => $_POST['tinggi'],
+		];
+		
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+	public function DelTankiKapal()
+	{
+		try{
+			$set['tbl']		= "tbl_tanki";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+		
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		}
+		catch(PDOException){
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
 }

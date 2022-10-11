@@ -68,21 +68,21 @@
 				<div class="col-12 mb-3">
 					<label class="form-label">Panjang</label>
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm"  placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off">
+						<input type="number" class="form-control form-control-sm"  placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off" value="<?= $this->data['panjang'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
 				<div class="col-12 mb-3">
 					<label class="form-label">Lebar</label>
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Lebar Tangki Kapal" name="lebar" required autocomplete="off">
+						<input type="number" class="form-control form-control-sm" placeholder="Lebar Tangki Kapal" name="lebar" required autocomplete="off" value="<?= $this->data['lebar'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
 				<div class="col-12 mb-3">
 					<label class="form-label">Tinggi</label>
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Tinggi Tangki Kapal" name="tinggi" required autocomplete="off">
+						<input type="number" class="form-control form-control-sm" placeholder="Tinggi Tangki Kapal" name="tinggi" required autocomplete="off" value="<?= $this->data['tinggi'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
@@ -102,12 +102,12 @@
 			<pre class="modal-title fs-6 text-red"><i class="bi bi-trash-fill"></i> Delete</pre>
 		</div>
 		<div class="modal-body">
-			<p class="fs-6">Apakah anda akan menghapus <span class="text-red-400"><?= $this->data['nama'] ?></span> ?</p>
+			<p class="fs-6">Apakah anda akan menghapus data Tangki <span class="text-red-400"><?= $this->data['jenis_tanki'] ?></span> ?</p>
 
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id_login'] ?>" >Hapus</button>
+			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id'] ?>" >Hapus</button>
 		</div>
 	</form>
 

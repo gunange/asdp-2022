@@ -3,6 +3,13 @@ if (isset($_POST['add'])):
 	$this->model->AddTangkiKapal();
 endif;
 
+if(isset($_POST['up'])):
+	$this->model->UpTankiKapal();
+endif;
+
+if (isset($_POST['del'])):
+	$this->model->DelTankiKapal();
+endif;
 
 ?>
 
