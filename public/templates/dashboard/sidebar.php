@@ -13,7 +13,7 @@
 			</div>
 			<div class="bio mx-auto px-3 pt-3 pb-2 lh-1 text-center">
 				<p class="fs-7 mb-1 text-yellow">Account Level</p>
-				<p class="text-yellow-200 mb-2">Admin</p>
+				<p class="text-yellow-200 mb-2"><?= $this->user->level ?></p>
 			</div>
 
 			<div class="sidebar-list">

@@ -76,7 +76,7 @@
                                                 class="input100"
                                                 type="text"
                                                 placeholder="Username"
-                                                autocomplete="username"
+                                                autocomplete="off"
                                                 oninvalid="this.setCustomValidity('Please enter valid username')"
                                                 oninput="setCustomValidity('')"
                                                 required="">
