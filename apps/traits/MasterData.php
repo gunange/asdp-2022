@@ -15,5 +15,12 @@ trait MasterData {
 
 		return database::select($set);
 	}
+	public function sGetKapal($data=""){
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_kapal';
+		$set['query']	= $data;
+
+		return database::select($set);
+	}
 	
 }
