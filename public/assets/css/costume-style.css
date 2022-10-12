@@ -33,3 +33,7 @@
 .swal-button.swal-button--danger{
   background-color: #d63384;
 }
+
+.swal-overlay--show-modal .swal-modal {
+  /*padding: 30px 0px !important;*/
+}

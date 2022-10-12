@@ -6,7 +6,7 @@ class ModelPetugas extends Controler
 	private $modelUser;
 	public $user;
 
-	use MasterData, MasterJoin, ComponentModelDash;
+	use MasterData, MasterJoin, ComponentModelDash, ApiResponse;
 
 	public function __construct()
 	{
@@ -95,11 +95,54 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+	public function GetOnlyTangkiKapalByIdTangki($id = null)
+	{
+		$set 	= $this->TankiKapalJoin();
+		$set['query']	= "WHERE tanki.id = '{$id}'";
+		$set['loop']	= "no_loop";
+
+		return database::join($set);
+	}
 	public function GetStoryTangkiByIdKapal($id=null)
 	{
 		$set 	= $this->StoryTankiJoin();
 		$set['query']	= "WHERE tt.id_kapal = '{$id}'";
 
 		return database::join($set);
+	}
+	public function GetDataKonfirmBbmKapal($idTangki=null, $tinggiMinyak=null)
+	{
+		$msg = new stdClass(); 
+
+		$msg->action = false;
+
+		if (!empty($idTangki) && !empty($tinggiMinyak)):
+			$msg->action = true;
+			$msg->dataTangki = (object)$this->GetOnlyTangkiKapalByIdTangki($idTangki);
+			$msg->liter = $this->HitungVolume($msg->dataTangki->panjang, $msg->dataTangki->lebar, $tinggiMinyak ) ;
+			$msg->tinggiMinyak = $tinggiMinyak ;
+			$msg->persentage = round(($tinggiMinyak * 100 ) / $msg->dataTangki->tinggi) ;
+			$msg->tanggal = date("Y-m-d");
+			$msg->waktu = date("h:i:s");
+		endif;
+
+		return $msg ;
+	}
+	public function AddBbmTangki()
+	{
+		$set['set'] = [
+			"id_user" => $this->user->id,
+			"id_tanki" => $_POST['id_tanki'],
+			"waktu" => $_POST['waktu'],
+			"tgl" => $_POST['tgl'],
+			"liter" => $_POST['liter'],
+			"tinggi_bbm" => $_POST['tinggi_bbm'],
+		];
+		$set['tbl'] 	= "tbl_history_tanki";
+		database::insert($set);
+
+		$this->response['response'] = "OK";
+		$this->response['msg'] = "Data BBM Tangki Berhasil Di Input";
+		$this->ResponseApi();
 	}
 }

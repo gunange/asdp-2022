@@ -12,4 +12,13 @@ trait ComponentModelDash{
 		$data = (strlen($data) > 2 ? $data  : 'Main' );
 		return $data ;
 	}
+
+	public function HitungVolume($panjang=0, $lebar=0, $tinggi=0)
+	{
+		$panjang = $panjang / 100 ;
+		$lebar = $lebar / 100 ;
+		$tinggi = $tinggi / 100 ;
+		$volume = $panjang * $lebar * $tinggi ;
+		return $volume * 1000 ;
+	}
 }

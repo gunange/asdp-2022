@@ -19,7 +19,7 @@
 
 <div class="row mt-3">
 	<div class="col-6 col-md-6">
-		<form class="card card-small shadow bx-shadow data-form" action="<?= $this->gLink ?>">
+		<div class="card card-small shadow bx-shadow">
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
@@ -36,7 +36,7 @@
 
 						<div class="col-md-12 mb-3">
 							<label class="form-label">Pilih Kapal</label>
-							<select class="form-select form-select-sm sel-all" name="id_kapal" onchange="getTangki(this.value)">
+							<select class="form-select form-select-sm sel-all" name="id_kapal" id="id_kapal" onchange="getTangki(this.value)">
 								<option value=""></option>
 								<?php foreach ($this->model->sGetKapal() as $opsi) : ?>
 									<option value="<?= $opsi['id'] ?>"><?= $opsi['nama_kapal'] ?></option>
@@ -45,7 +45,7 @@
 						</div>
 						<div class="col-md-12 mb-3">
 							<label class="form-label">Pilih Tangki</label>
-							<select class="form-select form-select-sm sel-all" name="id_jenis_tanki" id="id_jenis_tanki">
+							<select class="form-select form-select-sm sel-all" id="id_jenis_tanki">
 								<option value=""></option>
 							</select>
 						</div>
@@ -53,7 +53,7 @@
 						<div class="col-12 mb-3">
 							<label class="form-label">Tinggi Minyak</label>
 							<div class="input-group input-group-sm">
-								<input type="number" class="form-control form-control-sm"  placeholder="Tinggi Minyak Kapal" name="panjang" required autocomplete="off">
+								<input type="number" class="form-control form-control-sm"  placeholder="Tinggi Minyak Kapal" id="tinggiMinyak" required autocomplete="off">
 								<div class="input-group-text input-group-sm">cm</div>
 							</div>
 						</div>
@@ -70,12 +70,12 @@
 				</button>
 				<button class="btn btn-sm primary-bg text-white"
 					title="Tambah data!" 
-					onclick="openModalShow('#modal', '<?= $this->gLink ?>SetCrud', ()=>{injectJsDashboardPrimary();} )">
+					onclick="saveBbmTangki();">
 					<i class="bi bi-clipboard-plus"></i> Simpan
 				</button>
 
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div class="col-6 col-md-6">
@@ -104,8 +104,22 @@
 
 <script>
 	function getTangki(idKapal){
+		$('#id_jenis_tanki').val('').trigger('change');
 		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/' + idKapal);
 		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/' + idKapal);
 	}
-	setForm();
+
+	function saveBbmTangki(){
+		var idTangki = document.getElementById("id_jenis_tanki").value;
+		var tinggiMinyak = document.getElementById("tinggiMinyak").value;
+
+		openModalShow('#modal', `<?= $this->gLink ?>SetBbmKapal/confirmBbbmTangki/${idTangki}/${tinggiMinyak}` );
+	}
+	function ressetInputan() {
+		$('#id_jenis_tanki').val('').trigger('change');
+		$('#id_kapal').val('').trigger('change');
+		$('#tinggiMinyak').val('');
+
+	}
+
 </script>
