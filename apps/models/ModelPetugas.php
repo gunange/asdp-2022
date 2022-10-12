@@ -107,31 +107,56 @@ class ModelPetugas extends Controler
 	public function GetStoryTangkiByIdKapal($id = null)
 	{
 		$set['set'] 	= "
-			(
-		        SELECT
-		            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) waktu, liter, (
-		        SELECT
-		            tinggi_bbm waktu
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) tinggi_bbm, id_jenis_tanki, panjang, lebar, tinggi, nama_kapal, tjt.*
+			
+				    (
+				        SELECT
+				            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
+				        FROM
+				            tbl_history_tanki
+				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+				        WHERE
+				            id_jenis_tanki = tt.id_jenis_tanki
+				        ORDER BY
+				            tbl_history_tanki.id DESC
+				        LIMIT
+				            0, 1
+				    ) dates, (
+				        SELECT
+				            tgl
+				        FROM
+				            tbl_history_tanki
+				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+				        WHERE
+				            id_jenis_tanki = tt.id_jenis_tanki
+				        ORDER BY
+				            tbl_history_tanki.id DESC
+				        LIMIT
+				            0, 1
+				    ) tgl, (
+				        SELECT
+				            waktu
+				        FROM
+				            tbl_history_tanki
+				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+				        WHERE
+				            id_jenis_tanki = tt.id_jenis_tanki
+				        ORDER BY
+				            tbl_history_tanki.id DESC
+				        LIMIT
+				            0, 1
+				    ) waktu, liter, (
+				        SELECT
+				            tinggi_bbm waktu
+				        FROM
+				            tbl_history_tanki
+				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+				        WHERE
+				            id_jenis_tanki = tt.id_jenis_tanki
+				        ORDER BY
+				            tbl_history_tanki.id DESC
+				        LIMIT
+				            0, 1
+				    ) tinggi_bbm, id_jenis_tanki, panjang, lebar, tinggi, nama_kapal, jenis_tanki
 		";
 		$set['join'] = [
 
