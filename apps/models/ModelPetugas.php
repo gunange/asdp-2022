@@ -97,6 +97,15 @@ class ModelPetugas extends Controler
 	}
 	public function GetOnlyTangkiKapalByIdTangki($id = null)
 	{
+		$set 	= $this->TankiKapalJoin();
+		$set['query']	= "WHERE tanki.id = '{$id}'";
+		$set['loop']	= "no_loop";
+
+		return database::join($set);
+	}
+	
+	public function GetStoryTangkiByIdKapal($id = null)
+	{
 		$set['set'] 	= "
 			(
 		        SELECT
@@ -156,13 +165,6 @@ class ModelPetugas extends Controler
 		];
 
 		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
-
-		return database::join($set);
-	}
-	public function GetStoryTangkiByIdKapal($id=null)
-	{
-		$set 	= $this->StoryTankiJoin();
-		$set['query']	= "WHERE tt.id_kapal = '{$id}'";
 
 		return database::join($set);
 	}
