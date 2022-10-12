@@ -1,8 +1,3 @@
-
-<?php
-
-?>
-
 <div class="row mt-4">
 	<div class="col-12 col-md-12">
 		<!-- Page Header -->
@@ -24,7 +19,7 @@
 
 <div class="row mt-3">
 	<div class="col-6 col-md-6">
-		<div class="card card-small shadow bx-shadow">
+		<form class="card card-small shadow bx-shadow data-form" action="<?= $this->gLink ?>">
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
@@ -69,43 +64,41 @@
 			<div class="btn-toolbar mb-2 mb-md-0 btn-group">
 
 				<button class="btn btn-sm bg-yellow text-white" 
-				title="Tambah data!" 
-				onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetCrud/Pdf', ()=>{injectJsDashboardPrimary();} )">
-				<i class="bi bi-printer-fill"></i> Resset
-			</button>
-			<button class="btn btn-sm primary-bg text-white" 
-			title="Tambah data!" 
-			onclick="openModalShow('#modal', '<?= $this->gLink ?>SetCrud', ()=>{injectJsDashboardPrimary();} )">
-			<i class="bi bi-clipboard-plus"></i> Simpan
-		</button>
-
-
-	</div>
-</div>
-
-</div>
-
-<div class="col-6 col-md-6">
-	<div class="card card-small shadow bx-shadow">
-		<div class="card-header border-bottom bg-white">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
-				<h6 class="m-0">
-					<i class="bi bi-box text-yellow-500 me-2"></i> Data Grafik
-				</h6>
+					title="Tambah data!" 
+					onclick="">
+					<i class="bi bi-printer-fill"></i> Resset
+				</button>
+				<button class="btn btn-sm primary-bg text-white"
+					title="Tambah data!" 
+					onclick="openModalShow('#modal', '<?= $this->gLink ?>SetCrud', ()=>{injectJsDashboardPrimary();} )">
+					<i class="bi bi-clipboard-plus"></i> Simpan
+				</button>
 
 			</div>
-		</div><!-- card-header -->
-
-		<div class="card-body">
-			<div class="row" id="outputGrafik">
-				
-				<h5 class="text-center mt-3">Load data sedang diproses ..</h5>
-			</div>
-		</div><!-- card-body -->
-
+		</form>
 	</div>
 
-</div>
+	<div class="col-6 col-md-6">
+		<div class="card card-small shadow bx-shadow">
+			<div class="card-header border-bottom bg-white">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
+					<h6 class="m-0">
+						<i class="bi bi-box text-yellow-500 me-2"></i> Data Grafik
+					</h6>
+
+				</div>
+			</div><!-- card-header -->
+
+			<div class="card-body">
+				<div class="row" id="outputGrafik">
+					
+					<h5 class="text-center mt-3">Load data sedang diproses ..</h5>
+				</div>
+			</div><!-- card-body -->
+
+		</div>
+
+	</div>
 
 </div>
 
@@ -114,5 +107,5 @@
 		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/' + idKapal);
 		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/' + idKapal);
 	}
-
+	setForm();
 </script>

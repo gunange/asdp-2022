@@ -76,11 +76,11 @@ endif;
 									<td><?= $d['tinggi'] ?> cm</td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
-											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>', 
+											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>/<?= $this->data['id'] ?>', 
 											()=>{injectJsDashboardPrimary();})">
 												<i class="bi bi-pencil-fill"></i>
 											</button>
-											<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>')">
+											<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/del/<?= $k ?>/<?= $this->data['id'] ?>')">
 												<i class="bi bi-trash-fill"></i>
 											</button>
 										</div>

@@ -53,4 +53,8 @@ class DashPetugas extends Controler
 	{
 		$this->viewDashboard('bbm-kapal');
 	}
+	public function ConfirmPostBbmTangki()
+	{
+		
+	}
 }
