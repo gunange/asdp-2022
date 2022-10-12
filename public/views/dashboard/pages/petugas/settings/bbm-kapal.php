@@ -55,6 +55,8 @@
 	</form>
 
 <?php elseif ($this->setPage == "getGrafikKapal"): ?>
+	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->idKapal)  ;?>
+	<?php if (!empty($data)) : ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
 			<div class="container-tangki mx-auto">
@@ -75,9 +77,13 @@
 		</section>
 	</div>
 
+<?php else: ?>
+	<h5 class="text-center mt-3">Kapal yang anda pilih belum ada history nya</h5>
+<?php endif; ?>
 
 <?php elseif ($this->setPage == "getOption"): ?>
-	<?php foreach ($this->data as $k => $d): ?>
+	
+	<?php foreach ($this->model->GetTangkiKapalById($this->idKapal) as $k => $d): ?>
 		<option value="<?= $d['id'] ?>"><?= $d['jenis_tanki'] ?></option>
 	<?php endforeach; ?>
 <?php elseif ($this->setPage == "upAkun"): ?>

@@ -41,7 +41,7 @@
 
 						<div class="col-md-12 mb-3">
 							<label class="form-label">Pilih Kapal</label>
-							<select class="form-select form-select-sm sel-all" name="id_kapal" onchange="getTangki(this.value); getGrafikTangki(this.value)">
+							<select class="form-select form-select-sm sel-all" name="id_kapal" onchange="getTangki(this.value)">
 								<option value=""></option>
 								<?php foreach ($this->model->sGetKapal() as $opsi) : ?>
 									<option value="<?= $opsi['id'] ?>"><?= $opsi['nama_kapal'] ?></option>
@@ -111,9 +111,8 @@
 
 <script>
 	function getTangki(idKapal){
-		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/null/' + idKapal);
+		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/' + idKapal);
+		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/' + idKapal);
 	}
-	function getGrafikTangki(idKapal){
-		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/null/' + idKapal);
-	}
+
 </script>

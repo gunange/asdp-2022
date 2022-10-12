@@ -269,4 +269,45 @@ trait MasterJoin
 
 		return $set;
 	}
+	public function StoryTankiJoin()
+	{
+		$set['set'] 	= '
+			tjt.*,
+			tt.*,
+			tk.*,
+			tht.*
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_history_tanki',
+				'key'   	=> 'tht'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_tanki',
+					'key'   => 'tt',
+					'id'    => 'tt.id',
+					'in'    => 'tht.id_tanki'
+				],
+				[
+					'table' => 'tbl_kapal ',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'tt.id_kapal'
+				],
+				[
+					'table' => 'tbl_jenis_tanki ',
+					'key'   => 'tjt',
+					'id'    => 'tjt.id',
+					'in'    => 'tt.id_jenis_tanki'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }
