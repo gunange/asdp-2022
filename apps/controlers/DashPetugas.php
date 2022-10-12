@@ -25,7 +25,7 @@ class DashPetugas extends Controler
 
 	public function Main()
 	{
-		$this->viewDashboard('dashboard');
+		$this->viewDashboard('bbm-kapal');
 	}
 
 	public function AirTawar()

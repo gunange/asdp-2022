@@ -1,15 +1,5 @@
 <ul>
 	<li class="header-menu">
-		<span>Home</span>
-	</li>
-	<li>
-		<a href="<?= $this->gLink ?>Main">
-			<i class="bi bi-grid"></i>
-			<span>Dashboard</span>
-		</a>
-	</li>
-
-	<li class="header-menu">
 		<span>Users</span>
 	</li>
 	<li>
