@@ -90,11 +90,69 @@ class ModelPetugas extends Controler
 
 	public function GetTangkiKapalById($id = null)
 	{
-		$set 	= $this->TankiKapalJoin();
-		$set['query']	= "WHERE tanki.id_kapal = '{$id}'";
+		$set['set'] 	= "
+			(
+		        SELECT
+		            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
+		        FROM
+		            tbl_history_tanki
+		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+		        WHERE
+		            id_jenis_tanki = tt.id_jenis_tanki
+		        ORDER BY
+		            tbl_history_tanki.id DESC
+		        LIMIT
+		            0, 1
+		    ) waktu, liter, (
+		        SELECT
+		            tinggi_bbm waktu
+		        FROM
+		            tbl_history_tanki
+		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+		        WHERE
+		            id_jenis_tanki = tt.id_jenis_tanki
+		        ORDER BY
+		            tbl_history_tanki.id DESC
+		        LIMIT
+		            0, 1
+		    ) tinggi_bbm, id_jenis_tanki, panjang, lebar, tinggi, nama_kapal, tjt.*
+		";
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_history_tanki',
+				'key'   	=> 'tht'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_tanki',
+					'key'   => 'tt',
+					'id'    => 'tt.id',
+					'in'    => 'tht.id_tanki'
+				],
+				[
+					'table' => 'tbl_kapal ',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'tt.id_kapal'
+				],
+				[
+					'table' => 'tbl_jenis_tanki ',
+					'key'   => 'tjt',
+					'id'    => 'tjt.id',
+					'in'    => 'tt.id_jenis_tanki'
+				],
+
+			]
+		];
+
+		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
 
 		return database::join($set);
 	}
+
 	public function GetOnlyTangkiKapalByIdTangki($id = null)
 	{
 		$set 	= $this->TankiKapalJoin();
