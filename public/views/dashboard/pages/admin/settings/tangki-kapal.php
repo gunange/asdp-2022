@@ -1,4 +1,4 @@
-<?php if ($this->setPage == "add"): ?>
+<?php if ($this->setPage == "add") : ?>
 	<!-- UP -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -15,11 +15,11 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 				<div class="col-12 mb-3">
 					<label class="form-label">Panjang</label>
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm"  placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off">
+						<input type="number" class="form-control form-control-sm" placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
@@ -47,14 +47,14 @@
 			<button type="submit" class="btn btn-sm bg-purple text-white" name="add">Submit</button>
 		</div>
 	</form>
-<?php elseif ($this->setPage == "up"): ?>
+<?php elseif ($this->setPage == "up") : ?>
 	<!-- UP -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-purple"><i class="bi bi-vector-pen"></i> Update</pre>
 		</div>
 		<div class="modal-body">
-			<div class="row"> 
+			<div class="row">
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Jenis Tanki</label>
 					<select class="form-select form-select-sm sel-all" name="id_jenis_tanki">
@@ -64,11 +64,11 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 				<div class="col-12 mb-3">
 					<label class="form-label">Panjang</label>
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm"  placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off" value="<?= $this->data['panjang'] ?>">
+						<input type="number" class="form-control form-control-sm" placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off" value="<?= $this->data['panjang'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 		</div>
 	</form>
 
-<?php elseif ($this->setPage == "del"): ?>
+<?php elseif ($this->setPage == "del") : ?>
 	<!-- DEL -->
 	<form class="modal-content" method="POST">
 		<div class="modal-header">
@@ -107,12 +107,12 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id'] ?>" >Hapus</button>
+			<button type="submit" class="btn btn-sm btn-primary" name="del" value="<?= $this->data['id'] ?>">Hapus</button>
 		</div>
 	</form>
 
 
-<?php else: ?>
+<?php else : ?>
 	<div class="modal-content">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-red-400"><i class="bi bi-exclamation-square-fill"></i> Oops</pre>
@@ -124,4 +124,4 @@
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</div>
-	<?php endif; ?>
+<?php endif; ?>
