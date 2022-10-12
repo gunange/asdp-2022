@@ -2,11 +2,13 @@
 
 trait ComponentKabid{
 
-	public function SetPetugas($page=null, $key=null){
+	public function SetDashboard($page=null, $key=null, $id=null){
 		$this->setPage = $page ;
 		if(!is_null($key) ):
-			$this->data  =  $this->model->GetPetugas()[$key];
+			if ($page == "showTangkiKapal"):
+				$this->data  =  $this->model->GetTangkiKapalById($id);
+			endif;
 		endif;
-		$this->viewDash('settings/petugas');
+		$this->viewDash('settings/dashboard');
 	}
 }

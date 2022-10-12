@@ -14,6 +14,12 @@ class ModelKabid extends Controler{
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
+	public function GetTangkiKapalById($id = null)
+	{
+		$set 	= $this->TankiKapalJoin();
+		$set['query']	= "WHERE tanki.id_kapal = '{$id}'";
 
+		return database::join($set);
+	}
 
 }
