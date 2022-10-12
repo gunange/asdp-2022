@@ -52,26 +52,29 @@
 	</form>
 <?php elseif ($this->setPage == "getGrafikKapal"): ?>
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
+
 	<?php if (!empty($data)) : ?>
+	<?php foreach ($data as $k => $d ): ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
 			<div class="container-tangki mx-auto">
 				<div class="isi-tangki">
-					<div class="value-tengki" style="height: 80%;">
+					<div class="value-tengki" style="height: <?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%;">
 						<div class="transisi-tengki"></div>
 					</div>
 				</div>
 				<div class="text-tangki text-center">
-					<h3>80%</h3>
-					<h2>0 <span> (litter)</span></h2>
+					<h3><?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%</h3>
+					<h2><?= $d['liter'] ?> <span> (litter)</span></h2>
 				</div>
 			</div>
 			<div class="text-center">
-				<p class="mt-2 mb-1">Tangki Utama</p>
-				<p><i class="bi bi-clock-history"></i> 20 Agustus 2022 (20:00)</p>
+				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
+				<p><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
 			</div>
 		</section>
 	</div>
+	<?php endforeach; ?>
 
 <?php else: ?>
 	<h5 class="text-center mt-3">Kapal yang anda pilih belum ada history nya</h5>

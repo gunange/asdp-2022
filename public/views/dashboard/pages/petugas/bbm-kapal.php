@@ -65,7 +65,7 @@
 
 				<button class="btn btn-sm bg-yellow text-white" 
 					title="Tambah data!" 
-					onclick="">
+					onclick="ressetInputan()">
 					<i class="bi bi-printer-fill"></i> Resset
 				</button>
 				<button class="btn btn-sm primary-bg text-white"
@@ -119,6 +119,7 @@
 		$('#id_jenis_tanki').val('').trigger('change');
 		$('#id_kapal').val('').trigger('change');
 		$('#tinggiMinyak').val('');
+		document.getElementById('outputGrafik').innerHTML = '<h5 class="text-center mt-3">Load data sedang diproses ..</h5>';
 
 	}
 
