@@ -2,12 +2,10 @@
 
 trait ComponentPetugas{
 
-	public function SetBbmKapal($page=null, $key=null, $idKapal=null)
+	public function SetBbmKapal($page=null, $idKapal=null)
 	{
 		$this->setPage = $page ;
-		if(!is_null($key) ):
-			$this->data  =  $this->model->GetTangkiKapalById($idKapal);
-		endif;
+		$this->idKapal = $idKapal ;
 		$this->viewDash('settings/bbm-kapal');
 	}
 }

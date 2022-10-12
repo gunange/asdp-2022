@@ -95,4 +95,11 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+	public function GetStoryTangkiByIdKapal($id=null)
+	{
+		$set 	= $this->StoryTankiJoin();
+		$set['query']	= "WHERE tt.id_kapal = '{$id}'";
+
+		return database::join($set);
+	}
 }
