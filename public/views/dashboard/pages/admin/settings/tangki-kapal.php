@@ -102,8 +102,7 @@
 			<pre class="modal-title fs-6 text-red"><i class="bi bi-trash-fill"></i> Delete</pre>
 		</div>
 		<div class="modal-body">
-			<p class="fs-6">Apakah anda akan menghapus data Tangki <span class="text-red-400"><?= $this->data['jenis_tanki'] ?></span> ?</p>
-
+			<p class="fs-6">Apakah anda akan menghapus data Tangki <span class="text-red-400"><?= $this->data['nama_kapal'] ?></span> ?</p>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
