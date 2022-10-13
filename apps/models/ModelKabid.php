@@ -21,5 +21,16 @@ class ModelKabid extends Controler{
 
 		return database::join($set);
 	}
+	public function GetJsonTanggal()
+	{
+		// $countTgl = cal_days_in_month(CAL_GREGORIAN, 10, 2022) ;
+		$countTgl = date('d') ;
+		$ret = [];
+		for ($i=1; $i <= $countTgl; $i++):
+			$ret[] = "day " . $i;
+		endfor;
+
+		return json_encode($ret) ;
+	}
 
 }

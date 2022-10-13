@@ -108,9 +108,14 @@
 											()=>{injectJsDashboardPrimary();})">
 											<i class="bi bi-clipboard2-x-fill"></i>
 										</button>
-										<button type="button" class="btn btn-sm bg-red text-white" title="Hapus" 
-											onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetDashboard/')">
-											<i class="bi bi-trash-fill"></i>
+										<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" 
+											onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
+											()=>{
+													
+													setChart('<?= $d['nama_kapal'] ?>', [ 10, 30, 50, 60, 5, 61, 100, 45, ] ) ;
+												}
+											)">
+											<i class="bi bi-bar-chart-line-fill"></i>
 										</button>
 								</div>
 							</td>
@@ -127,3 +132,42 @@
 </div>
 </div>
 </div>
+
+
+
+
+<script type="text/javascript">
+	
+	function setChart(namaKapal="Nama Kapal", dataStatic=[] ){
+		data = {
+			labels: <?= $this->model->GetJsonTanggal() ?>,
+			datasets: [
+			{
+				label: namaKapal,
+				data: dataStatic,
+				backgroundColor: [
+					'rgb(75, 192, 192)',
+				],
+				borderColor: 'rgb(75, 192, 192)',
+				hoverOffset: 10,
+				fill: false,
+				tension: 0.1
+			},
+			]
+		};
+
+		new Chart(document.getElementById('dataMinyak'), {
+			type: 'line',
+			data: data,
+			options: {
+				maintainAspectRatio: false,
+				scales: {
+
+				}
+			},
+
+		});
+	}
+	
+	
+</script>

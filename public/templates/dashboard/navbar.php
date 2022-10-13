@@ -4,7 +4,7 @@
 		<div class="container-fluid">
 			<div class="text-white ps-3 d-flex align-items-center">
 				<!-- <i class="bi bi-geo-fill fs-2 me-2"></i> -->
-				<h6 class="mt-2 ms-2">Your Name Aplication</h6>
+				<h6 class="mt-2 ms-2">D-SSAT</h6>
 			</div>
 			<a href="#" class="me-4 ms-auto position-relative">
 				<i class="bi bi-bell fs-5 text-white"></i>

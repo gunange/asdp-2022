@@ -57,6 +57,7 @@
 	<?php foreach ($data as $k => $d ): ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
+			<h2><?= $d['liter'] ?> <span> (litter)</span></h2>
 			<div class="container-tangki mx-auto">
 				<div class="isi-tangki">
 					<div class="value-tengki" style="height: <?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%;">
@@ -64,8 +65,8 @@
 					</div>
 				</div>
 				<div class="text-tangki text-center">
-					<h3><?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%</h3>
-					<h2><?= $d['liter'] ?> <span> (litter)</span></h2>
+					<!-- <h3><?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%</h3>
+					<h2><?= $d['liter'] ?> <span> (litter)</span></h2> -->
 				</div>
 			</div>
 			<div class="text-center">
