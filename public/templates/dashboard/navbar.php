@@ -14,7 +14,7 @@
 			<div class="dropdown border-start ps-3">
 				<a class="navbar-brand fs-7 dropdown-toggle" href="#" role="button" id="navUser" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="<?= BaseAssets ?>/icon/user-man.png" class="rounded-circle overflow-hidden me-2" alt="" width="30px" height="30px">
-					<span class="col-lg-12 ">Unknow</span>
+					<span class="col-lg-12 "><?= $this->user->nama ?></span>
 				</a>
 
 				<ul class="dropdown-menu dropdown-menu-end shadow animated flipInX fs-7" aria-labelledby="navUser">
