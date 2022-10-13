@@ -38,7 +38,21 @@
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</div>
-
+<?php elseif($this->setPage == "showDataPemakaianMinyak") : ?>
+	<div class="modal-content">
+		<div class="modal-header">
+			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Pemakaian Per-hari Dalam Bulan ini</pre>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<section class="">
+						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php else: ?>
 	<div class="modal-content">
 		<div class="modal-header">

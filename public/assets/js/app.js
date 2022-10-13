@@ -176,3 +176,26 @@ function exportPdf(target = "#example", fileName = "sample") {
         }
     });
 }
+
+class App {
+
+    bulan({count = 12} = {}){
+      var  bulan = [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+        ];
+
+        return bulan.slice(0, count);
+    }
+    
+}
