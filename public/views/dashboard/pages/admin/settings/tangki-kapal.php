@@ -15,8 +15,17 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				<div class="col-12 mt-3">
-					<label class="form-label">Ukuran Tanki</label>
+
+				<div class="col-12 mb-3">
+					<label class="form-label">Tinggi Maksimal Tanki</label>
+					<div class="input-group input-group-sm">
+						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi Maksimal Tanki" name="tinggi_maksimum" required autocomplete="off">
+						<div class="input-group-text input-group-sm">cm</div>
+					</div>
+				</div>
+
+				<div class="col-12">
+					<label class="form-label">Ukuran Liter Tanki</label>
 				</div>
 				<div class="col-6 mb-3">
 					<!-- <label class="form-label">Tinggi</label> -->
@@ -62,8 +71,16 @@
 					</select>
 				</div>
 
-				<div class="col-12 mt-3">
-					<label class="form-label">Ukuran Tanki</label>
+				<div class="col-12 mb-3">
+					<label class="form-label">Tinggi Maksimal Tanki</label>
+					<div class="input-group input-group-sm">
+						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi Maksimal Tanki" name="tinggi_maksimum" required autocomplete="off" value="<?= $this->data['tinggi_maksimum'] ?>">
+						<div class="input-group-text input-group-sm">cm</div>
+					</div>
+				</div>
+
+				<div class="col-12">
+					<label class="form-label">Ukuran Liter Tanki</label>
 				</div>
 
 				<div class="col-6 mb-3">

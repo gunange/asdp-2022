@@ -362,6 +362,7 @@ class ModelAdmin extends Controler
 			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
 			"liter" => $_POST['liter'],
 			"tinggi" => $_POST['tinggi'],
+			"tinggi_maksimum" => $_POST['tinggi_maksimum'],
 		];
 		$set['tbl'] 	= "tbl_tanki";
 		database::insert($set);
@@ -379,6 +380,8 @@ class ModelAdmin extends Controler
 			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
 			"liter" => $_POST['liter'],
 			"tinggi" => $_POST['tinggi'],
+			"tinggi_maksimum" => $_POST['tinggi_maksimum'],
+
 		];
 
 		database::update($set);
