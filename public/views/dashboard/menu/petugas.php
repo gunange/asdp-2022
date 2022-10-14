@@ -28,7 +28,7 @@
 	<li>
 		<a href="<?= $this->gLink ?>InvoiceDataSandar">
 			<i class="bi bi-receipt-cutoff"></i>
-			<span>Data Sandar</span>
+			<span>Sandar</span>
 		</a>
 	</li>
 	<li>
@@ -44,7 +44,7 @@
 	<li>
 		<a href="<?= $this->gLink ?>DelayedDataSandar">
 			<i class="bi bi-file-earmark-excel-fill"></i>
-			<span>Data Sandar</span>
+			<span>Sandar</span>
 		</a>
 	</li>
 	<li>
@@ -60,7 +60,7 @@
 	</li>
 	<li>
 		<a href="#" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>AccountSetting/<?= $this->model->getLink() ?>')">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-person-bounding-box"></i>
 			<span>Akun</span>
 		</a>
 	</li>

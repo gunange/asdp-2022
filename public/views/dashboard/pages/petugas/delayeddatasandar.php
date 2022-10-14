@@ -10,11 +10,11 @@
         <div class="page-header mt-4 mb-5">
             <div class="card card-small shadow-sm bx-shadow">
                 <div class="card-body">
-                    <h5 class="text-secondary"> <i class="bi bi-file-earmark-excel-fill text-red-500 me-1"></i> Delayed Data Sandar</h5>
+                    <h5 class="text-secondary"> Data Delayed Sandar</h5>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Delayed</a></li>
-                            <li class="breadcrumb-item"><a href="#">Data Sandar</a></li>
+                            <li class="breadcrumb-item"> Delayed</li>
+                            <li class="breadcrumb-item"><a href="<?= $this->gLink ?>DelayedDataSandar"> Sandar</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -29,7 +29,7 @@
             <div class="card-header border-bottom bg-white">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
                     <h6 class="m-0">
-                        <i class="bi bi-file-earmark-excel-fill text-yellow-500 me-2"></i> Delayed Data Sandar
+                        <i class="bi bi-box text-yellow-500 me-2"></i> Data Delayed Sandar
                     </h6>
 
                 </div>

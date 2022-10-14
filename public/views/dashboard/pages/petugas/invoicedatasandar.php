@@ -10,11 +10,11 @@
         <div class="page-header mt-4 mb-5">
             <div class="card card-small shadow-sm bx-shadow">
                 <div class="card-body">
-                    <h5 class="text-secondary"> <i class="bi bi-receipt-cutoff text-blue-500 me-1"></i> Invoice Data Sandar</h5>
+                    <h5 class="text-secondary"> Invoice Sandar</h5>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Invoice</a></li>
-                            <li class="breadcrumb-item"><a href="#">Data Sandar</a></li>
+                            <li class="breadcrumb-item"> Invoice</li>
+                            <li class="breadcrumb-item"><a href="<?= $this->gLink ?>InvoiceDataSandar"> Sandar</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -29,7 +29,7 @@
             <div class="card-header border-bottom bg-white">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
                     <h6 class="m-0">
-                        <i class="bi bi-receipt-cutoff text-yellow-500 me-2"></i> Invoice Data Sandar
+                        <i class="bi bi-box text-yellow-500 me-2"></i> Data Invoice Sandar
                     </h6>
 
                 </div>

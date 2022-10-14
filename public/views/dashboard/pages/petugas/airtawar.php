@@ -13,11 +13,11 @@ endif;
         <div class="page-header mt-4 mb-5">
             <div class="card card-small shadow-sm bx-shadow">
                 <div class="card-body">
-                    <h5 class="text-secondary"> <i class="bi bi-droplet-half text-blue-500 me-1"></i> Air Tawar</h5>
+                    <h5 class="text-secondary"> Air Tawar</h5>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Pengolahan</a></li>
-                            <li class="breadcrumb-item"><a href="#">Air Tawar</a></li>
+                            <li class="breadcrumb-item">Pengolahan</li>
+                            <li class="breadcrumb-item"><a href="<?= $this->gLink ?>AirTawar">Air Tawar</a></li>
                         </ol>
                     </nav>
                 </div>
