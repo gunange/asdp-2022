@@ -35,6 +35,7 @@
                                 <i class="bi bi-bricks   me-2"></i>
                                 Sandar <?= $dermaga['dermaga'] ?>
                             </h6>
+                            <h6 class="mb-0" id="start<?= $k ?>"></h6>
 
                         </div>
                     </div><!-- card-header -->
@@ -57,10 +58,7 @@
                                 </div>
 
                                 <div class="col-12 mb-3">
-                                    <label class="form-label d-flex justify-content-between">
-                                            <p class="mb-0">Start</p>
-                                            <p class="mb-0" id="start<?= $k ?>"></p>
-                                    </label>
+                                    <label class="form-label">Start</label>
                                     <div class="input-group input-group-sm">
                                         <input name="debit_air" id="live<?= $k ?>" id="" type="text" class="form-control form-control-sm" placeholder="00:00:00" required autocomplete="off" readonly>
                                         <div class="input-group-text input-group-sm"><i class="bi bi-clock-history"></i></div>
@@ -120,7 +118,6 @@
 
 </div>
 
-
 <script>
     
 function setTime(id="", on=0){
@@ -142,12 +139,14 @@ function setTime(id="", on=0){
         
     
         if (on == 0){
+            
             document.getElementById('tombol-waktu' + id).innerHTML = 
-                    `<button class="btn btn-sm bg-red text-white" type="button" title="Stop" onclick="stopTime('${id}');">
+                    `<button class="btn btn-sm bg-red text-white" type="button" title="Stop" onclick="stopTime('${id}', '${date.getTime()}');">
                         <i class="bi bi-stop-fill"></i> Stop
                     </button>`;
             document.getElementById('start' + id).innerHTML = time ;
         }
+       
     
         setTimeout(()=>{
             setTime(id, 1)
@@ -161,15 +160,20 @@ function startTime(id=""){
     setTime(id);
 }
 
-function stopTime(id=""){
-    document.getElementById('dermaga' + id).classList.remove('active');
+function stopTime(id="", waktuLama,){
+    var nTime = Math.floor((new Date().getTime() - waktuLama) / 1000) ; 
+    var lamaWaktu = HitungRangeWaktu(nTime) ;
+    var call = HitungCall(nTime );
 
+    document.getElementById('dermaga' + id).classList.remove('active');
     document.getElementById('tombol-waktu' + id).innerHTML = 
                     `<button class="btn btn-sm bg-yellow text-white" type="button" title="Resset" onclick="ressetTime('${id}');">
                         <i class="bi bi-arrow-clockwise"></i> Resset
                     </button>`;
     document.getElementById('stop' + id).value = document.getElementById('live' + id).value;
     document.getElementById('live' + id).value = document.getElementById('start' + id).innerText;
+    
+    document.getElementById('start' + id).innerText = "Jumlah call : " + call + ` ( ${lamaWaktu} )` ;
 
 }
 
@@ -178,10 +182,59 @@ function ressetTime(id=""){
                     <button class="btn btn-sm bg-teal text-white" type="button" title="Start" onclick="startTime('${id}');">
                         <i class="bi bi-play-fill"></i> Start
                     </button>`;
-
+    
 
 }
 
 
+
+</script>
+
+<script>
+    function HitungRangeWaktu(n){
+        var h = 0 ;
+        var j = 0 ;
+        var m = 0;
+        var d = 0;
+
+        while (n >= 86400) {
+            h++ ;
+            n = n - 86400 ;
+
+        }
+
+        while (n >= 3600) {
+            j++ ;
+            n = n - 3600 ;
+
+        }
+
+        while (n >= 60) {
+            m++ ;
+            n = n - 60 ;
+
+        }
+
+        d = n;
+
+        j = (j < 10) ? "0" + j : j;
+        m = (m < 10) ? "0" + m : m;
+        d = (d < 10) ? "0" + d : d;
+
+        return j + ":" + m + ":" + d ;
+    }
+
+    function HitungCall(n){
+        n = Math.floor(n / 60 );
+        call = 1 ;
+
+        while (n > 50 ) {
+            call++ ;
+            n = Math.floor(n - 50) ;
+        }
+
+        return call ;
+
+    }
 
 </script>
