@@ -1,4 +1,3 @@
-
 <!-- row breadcumb -->
 <div class="row mt-5">
 	<div class="col-12">
@@ -72,7 +71,7 @@
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> Data Kapal Per-Bulan
+						<i class="bi bi-box text-yellow-500 me-2"></i> Data History Penggunaan Solar Kapal
 					</h6>
 
 				</div>
@@ -94,7 +93,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($this->model->sGetKapal() as $k => $d) : ?>
+							<?php foreach ($this->model->sGetKapal() as $k => $d) : ?>
 								<tr>
 									<td><?= $k + 1 ?></td>
 									<td><?= $d['nama_kapal'] ?></td>
@@ -103,46 +102,42 @@
 									<td><?= $d['pajak'] ?></td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
-											<button type="button" class="btn btn-sm bg-teal text-white" title="Detail Tangki" 
-											onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showTangkiKapal/null/<?= $d['id'] ?>', 
+											<button type="button" class="btn btn-sm bg-teal text-white" title="Detail Tangki" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showTangkiKapal/null/<?= $d['id'] ?>', 
 											()=>{injectJsDashboardPrimary();})">
-											<i class="bi bi-clipboard2-x-fill"></i>
-										</button>
-										<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" 
-											onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
+												<i class="bi bi-clipboard2-x-fill"></i>
+											</button>
+											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 													
 													setChart('<?= $d['nama_kapal'] ?>', [ 10, 30, 50, 60, 5, 61, 100, 45, ] ) ;
 												}
 											)">
-											<i class="bi bi-bar-chart-line-fill"></i>
-										</button>
-								</div>
-							</td>
+												<i class="bi bi-bar-chart-line-fill"></i>
+											</button>
+										</div>
+									</td>
 
-						</tr>
-					<?php endforeach; ?>
+								</tr>
+							<?php endforeach; ?>
 
-				</tbody>
+						</tbody>
 
-			</table><!-- table -->
-		</div><!-- table-responsive -->
+					</table><!-- table -->
+				</div><!-- table-responsive -->
 
-	</div><!-- card-body -->
-</div>
-</div>
+			</div><!-- card-body -->
+		</div>
+	</div>
 </div>
 
 
 
 
 <script type="text/javascript">
-	
-	function setChart(namaKapal="Nama Kapal", dataStatic=[] ){
+	function setChart(namaKapal = "Nama Kapal", dataStatic = []) {
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
-			datasets: [
-			{
+			datasets: [{
 				label: namaKapal,
 				data: dataStatic,
 				backgroundColor: [
@@ -152,8 +147,7 @@
 				hoverOffset: 10,
 				fill: false,
 				tension: 0.1
-			},
-			]
+			}, ]
 		};
 
 		new Chart(document.getElementById('dataMinyak'), {
@@ -168,6 +162,4 @@
 
 		});
 	}
-	
-	
 </script>
