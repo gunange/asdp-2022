@@ -10,7 +10,7 @@
 	</li>
 
 	<li>
-		<a href="<?= $this->gLink ?>ExampleCrud">
+		<a href="<?= $this->gLink ?>Sandar">
 			<i class="bi bi-grid"></i>
 			<span>Sandar</span>
 		</a>

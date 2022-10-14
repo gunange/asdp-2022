@@ -57,4 +57,8 @@ class DashPetugas extends Controler
 	{
 		$this->model->AddBbmTangki();
 	}
+	public function Sandar()
+	{
+		$this->viewDashboard('sandar');
+	}
 }
