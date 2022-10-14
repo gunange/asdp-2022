@@ -10,6 +10,13 @@
 	</div>
 </div><!-- row breadcumb -->
 
+<div class="row">
+	<div class="col-12">
+
+
+	</div>
+</div>
+
 <div class="row mt-3 dash-row small">
 	<div class="col-lg-3 col-sm-6 mt-3">
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-blue-400 text-white">
@@ -92,6 +99,8 @@
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
+
+
 						<tbody>
 							<?php foreach ($this->model->sGetKapal() as $k => $d) : ?>
 								<tr>
@@ -106,10 +115,33 @@
 											()=>{injectJsDashboardPrimary();})">
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
+											<?php
+											$dataTank[0] = 0;
+											$temp = 0;
+											$tgl = 0;
+											$ihis = -1;
+											foreach ($this->model->GetHistoryDayTank($d['id']) as $k => $datahist) :
+												if ($tgl < $datahist['tanggal']) {
+													$tgl =  $datahist['tanggal'];
+													$temp = $datahist['liter'];
+													$history[$datahist['tanggal']] = 0;
+													$ihis += 1;
+												}
+												if ($temp > $datahist['liter']) {
+													$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($temp - $datahist['liter']);
+													$dataTank[$ihis] = $history[$datahist['tanggal']];
+													$temp = $datahist['liter'];
+												} elseif ($temp < $datahist['liter']) {
+													$temp = $datahist['liter'];
+												}
+											endforeach;
+											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
+
+												
 													
-													setChart('<?= $d['nama_kapal'] ?>', [ 10, 30, 50, 60, 5, 61, 100, 45, ] ) ;
+													setChart('<?= $d['nama_kapal'] ?>', <?= json_encode($dataTank) ?> ) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
@@ -129,7 +161,6 @@
 		</div>
 	</div>
 </div>
-
 
 
 

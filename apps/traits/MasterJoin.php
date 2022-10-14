@@ -312,7 +312,53 @@ trait MasterJoin
 	}
 
 
-	
+	public function HistoryDayTank()
+	{
+		$set['set'] 	= '
+			MONTH(tgl) AS bulan, 
+			YEAR(tgl) AS tahun, 
+			 DAY(tgl) tanggal,
+			waktu, 
+			tgl, 
+			tht.liter AS liter, 
+			tinggi_bbm, 
+			tinggi_maksimum, 
+			tjt.id AS id_jenis_tanki, 
+			jenis_tanki, 
+			nama_kapal,
+			id_kapal
+		';
+		$set['join'] = [
 
-	
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_history_tanki',
+				'key'   	=> 'tht'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_tanki',
+					'key'   => 'tt',
+					'id'    => 'tt.id',
+					'in'    => 'tht.id_tanki'
+				],
+				[
+					'table' => 'tbl_jenis_tanki',
+					'key'   => 'tjt',
+					'id'    => 'tjt.id',
+					'in'    => 'tt.id_jenis_tanki'
+				],
+				[
+					'table' => 'tbl_kapal ',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'tt.id_kapal'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }
