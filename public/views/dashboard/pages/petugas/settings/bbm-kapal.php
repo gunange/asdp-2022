@@ -53,6 +53,7 @@
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
 
 	<?php if (!empty($data)) : ?>
+	<?php $litter = 0; ?>
 
 	<?php foreach ($data as $k => $d ): ?>
 		<?php 
@@ -70,14 +71,19 @@
 				<div class="text-tangki text-center"></div>
 			</div>
 			<div class="text-center">
-				<h5><?= $d['liter'] ?> <span> (litter)</span></h5>
+				<h5><?= tools::rupiah($d['liter']) ?> <span> (litter)</span></h5>
 				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
 				<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
 				<p class="mb-1">Maxiimal <?= $tinggiMax ?> (litter)</p>
 			</div>
 		</section>
 	</div>
+	<?php $litter += $d['liter'] ?>
 	<?php endforeach; ?>
+
+	<div class="border-top pt-2">
+		<h5>Saldo Litter = <?= tools::rupiah($litter) ?></h5>
+	</div>
 
 <?php else: ?>
 	<h5 class="text-center mt-3">Kapal yang anda pilih belum ada history nya</h5>

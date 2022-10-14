@@ -361,4 +361,112 @@ trait MasterJoin
 
 		return $set;
 	}
+	public function GetStoryTangkiByIdKapal($id = null)
+	{
+		$set['set'] 	= "
+		(
+        SELECT
+            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) dates, (
+        SELECT
+            tgl
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS tgl, (
+        SELECT
+            waktu
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS waktu,
+    (
+        SELECT
+            tbl_history_tanki.liter
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS liter,
+    (
+        SELECT
+            tinggi_bbm waktu
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS tinggi_bbm,
+    id_jenis_tanki,
+    tinggi,
+    tt.liter AS liter_tanki,
+    tinggi_maksimum,
+    nama_kapal,
+    jenis_tanki
+		";
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_history_tanki',
+				'key'   	=> 'tht'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_tanki',
+					'key'   => 'tt',
+					'id'    => 'tt.id',
+					'in'    => 'tht.id_tanki'
+				],
+				[
+					'table' => 'tbl_kapal ',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'tt.id_kapal'
+				],
+				[
+					'table' => 'tbl_jenis_tanki ',
+					'key'   => 'tjt',
+					'id'    => 'tjt.id',
+					'in'    => 'tt.id_jenis_tanki'
+				],
+
+			]
+		];
+
+		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
+
+		return database::join($set);
+	}
 }

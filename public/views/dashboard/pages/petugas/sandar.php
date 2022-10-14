@@ -49,7 +49,7 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Pilih Kapal</label>
-                                    <select name="id_kapal" id="namakapal<?= $k ?>" required class="form-select form-select-sm sel-all set-default<?= $k ?>">
+                                    <select name="id_kapal" id="id_kapal<?= $k ?>" required class="form-select form-select-sm sel-all set-default<?= $k ?>">
                                         <option value=""></option>
                                         <?php foreach ($this->model->GetKapal() as $opsi) : ?>
                                             <option value="<?= $opsi['id'] ?>"><?= $opsi['nama_kapal'] ?></option>
@@ -82,7 +82,7 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Status</label>
-                                    <select name="status" id="statusdebitair<?= $k ?>" required class="form-select form-select-sm sel-all set-default<?= $k ?>">
+                                    <select name="status" id="status_debit_air<?= $k ?>" required class="form-select form-select-sm sel-all set-default<?= $k ?>">
                                         <option value=""></option>
 
                                         <option value="Belum Bayar" class="text-danger">Belum Bayar</option>
@@ -182,6 +182,11 @@ function ressetTime(id=""){
                     <button class="btn btn-sm bg-teal text-white" type="button" title="Start" onclick="startTime('${id}');">
                         <i class="bi bi-play-fill"></i> Start
                     </button>`;
+    document.getElementById('live' + id ).value = "";
+    document.getElementById('stop' + id ).value = "";
+    document.getElementById('start' + id ).innerHTML = "";
+    $('#id_kapal' + id).val('').trigger('change');
+    $('#status_debit_air' + id).val('').trigger('change');
     
 
 }

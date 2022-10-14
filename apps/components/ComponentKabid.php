@@ -6,7 +6,7 @@ trait ComponentKabid{
 		$this->setPage = $page ;
 		if(!is_null($key) ):
 			if ($page == "showTangkiKapal"):
-				$this->data  =  $this->model->GetTangkiKapalById($id);
+				$this->data  =  $this->model->GetStoryTangkiByIdKapal($id);
 			endif;
 		endif;
 		$this->viewDash('settings/dashboard');
