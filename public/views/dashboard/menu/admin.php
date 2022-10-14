@@ -41,7 +41,7 @@
 	</li>
 	<li>
 		<a href="#" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>AccountSetting/<?= $this->model->getLink() ?>')">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-person-bounding-box"></i>
 			<span>Akun</span>
 		</a>
 	</li>

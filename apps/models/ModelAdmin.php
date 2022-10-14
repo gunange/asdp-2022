@@ -212,6 +212,7 @@ class ModelAdmin extends Controler
 			"perusahaan" => $_POST['perusahaan'],
 			"gt"         => $_POST['gt'],
 			"pajak"      => $_POST['pajak'],
+			"kamera"      => $_POST['kamera'],
 		];
 		$set['tbl'] 	= "tbl_kapal";
 		database::insert($set);
@@ -231,6 +232,8 @@ class ModelAdmin extends Controler
 			"perusahaan" => $_POST['perusahaan'],
 			"gt"         => $_POST['gt'],
 			"pajak"      => $_POST['pajak'],
+			"kamera"      => $_POST['kamera'],
+
 		];
 
 		database::update($set);

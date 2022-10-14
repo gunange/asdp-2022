@@ -61,6 +61,7 @@ endif;
 								<th>Perusahaan</th>
 								<th>GT</th>
 								<th>Pajak</th>
+								<th>Link Kamera</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
@@ -72,6 +73,7 @@ endif;
 									<td><?= $d['perusahaan'] ?></td>
 									<td><?= $d['gt'] ?></td>
 									<td><?= $d['pajak'] ?></td>
+									<td><?= ($d['kamera'] != null) ? '<a href="' . $d['kamera'] . '" target="blank">Lihat</a>' : '' ?></td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-sm bg-teal text-white" title="Tangki Kapal" onclick="window.location.href='<?= $this->gLink ?>TangkiKapal/<?= $k ?>'">
