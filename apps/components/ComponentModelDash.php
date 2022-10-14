@@ -13,12 +13,10 @@ trait ComponentModelDash{
 		return $data ;
 	}
 
-	public function HitungVolume($panjang=0, $lebar=0, $tinggi=0)
+	public function HitungVolume($liter=0, $tinggi=0, $tinggiBbm=0)
 	{
-		$panjang = $panjang / 100 ;
-		$lebar = $lebar / 100 ;
-		$tinggi = $tinggi / 100 ;
-		$volume = $panjang * $lebar * $tinggi ;
-		return $volume * 1000 ;
+		
+		$volume = ($liter / $tinggi ) * $tinggiBbm ;
+		return $volume ;
 	}
 }

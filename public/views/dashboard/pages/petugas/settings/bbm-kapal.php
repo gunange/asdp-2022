@@ -6,8 +6,7 @@
 		</div>
 		<div class="modal-body">
 			<?php if ($this->data->action): ?>
-				<?php if ($this->data->tinggiMinyak <= $this->data->dataTangki->tinggi ) : ?>
-					
+				<?php if ($this->data->liter <= $this->data->maxLiter ) : ?>
 					<div class="col-md-12 mt-3 mb-4">
 						<section>
 							<div class="container-tangki mx-auto">
@@ -17,14 +16,14 @@
 									</div>
 								</div>
 								<div class="text-tangki text-center">
-									<h3><?= $this->data->persentage ?>%</h3>
-									<h2><?= $this->data->liter ?> <span> (litter)</span></h2>
 								</div>
 							</div>
 							<div class="text-center">
-								<p class="mt-2 mb-0"><?= $this->data->dataTangki->nama_kapal ?></p>
-								<p class="mb-1"><?= $this->data->dataTangki->jenis_tanki ?></p>
-								<p><i class="bi bi-clock-history"></i> <?= tools::indoTime($this->data->tanggal) ?> (<?= $this->data->waktu ?>)</p>
+								<h6 class="mt-2 mb-0 fs-7"><?= $this->data->dataTangki->nama_kapal ?></h6>
+								<h6 class="mb-1 fs-7"><?= $this->data->dataTangki->jenis_tanki ?></h6>
+								<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($this->data->tanggal) ?> (<?= $this->data->waktu ?>)</p>
+								<p class="mb-0">Litter yang akan disimpan <?= $this->data->liter ?> (litter)</p>
+								<p class="mb-0">Max litter tangki <?= $this->data->maxLiter ?> (litter)</p>
 								
 							</div>
 						</section>
@@ -45,7 +44,7 @@
 
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<?php if ($this->data->action && $this->data->tinggiMinyak <= $this->data->dataTangki->tinggi ) : ?>
+			<?php if ($this->data->action && $this->data->liter <= $this->data->maxLiter ) : ?>
 				<button type="submit" class="btn btn-sm bg-purple text-white" data-bs-dismiss="modal" onclick="ressetInputan()">Submit</button>
 			<?php endif; ?>
 		</div>
@@ -54,24 +53,28 @@
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
 
 	<?php if (!empty($data)) : ?>
+
 	<?php foreach ($data as $k => $d ): ?>
+		<?php 
+			$tinggiMax = $this->model->HitungVolume($d['liter_tanki'], $d['tinggi'], $d['tinggi_maksimum']);
+
+		 ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
-			<h2><?= $d['liter'] ?> <span> (litter)</span></h2>
+			
 			<div class="container-tangki mx-auto">
 				<div class="isi-tangki">
-					<div class="value-tengki" style="height: <?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%;">
+					<div class="value-tengki" style="height: <?= round(($d['liter'] * 100 ) / $tinggiMax ) ?>%;">
 						<div class="transisi-tengki"></div>
 					</div>
 				</div>
-				<div class="text-tangki text-center">
-					<!-- <h3><?= round(($d['tinggi_bbm'] * 100) / $d['tinggi']) ?>%</h3>
-					<h2><?= $d['liter'] ?> <span> (litter)</span></h2> -->
-				</div>
+				<div class="text-tangki text-center"></div>
 			</div>
 			<div class="text-center">
+				<h5><?= $d['liter'] ?> <span> (litter)</span></h5>
 				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
-				<p><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
+				<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
+				<p class="mb-1">Maxiimal <?= $tinggiMax ?> (litter)</p>
 			</div>
 		</section>
 	</div>

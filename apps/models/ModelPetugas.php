@@ -144,7 +144,7 @@ class ModelPetugas extends Controler
 				            tbl_history_tanki.id DESC
 				        LIMIT
 				            0, 1
-				    ) waktu, liter, (
+				    ) waktu, tht.liter AS liter, (
 				        SELECT
 				            tinggi_bbm waktu
 				        FROM
@@ -156,7 +156,7 @@ class ModelPetugas extends Controler
 				            tbl_history_tanki.id DESC
 				        LIMIT
 				            0, 1
-				    ) tinggi_bbm, id_jenis_tanki, panjang, lebar, tinggi, nama_kapal, jenis_tanki
+				    ) tinggi_bbm, id_jenis_tanki, tinggi, tt.liter AS liter_tanki, tinggi_maksimum, nama_kapal, jenis_tanki
 		";
 		$set['join'] = [
 
@@ -202,9 +202,10 @@ class ModelPetugas extends Controler
 		if (!empty($idTangki) && !empty($tinggiMinyak)):
 			$msg->action = true;
 			$msg->dataTangki = (object)$this->GetOnlyTangkiKapalByIdTangki($idTangki);
-			$msg->liter = $this->HitungVolume($msg->dataTangki->panjang, $msg->dataTangki->lebar, $tinggiMinyak ) ;
+			$msg->liter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $tinggiMinyak ) ;
+			$msg->maxLiter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $msg->dataTangki->tinggi_maksimum ) ;
 			$msg->tinggiMinyak = $tinggiMinyak ;
-			$msg->persentage = round(($tinggiMinyak * 100 ) / $msg->dataTangki->tinggi) ;
+			$msg->persentage = round(($msg->liter * 100 ) / $msg->maxLiter ) ;
 			$msg->tanggal = date("Y-m-d");
 			$msg->waktu = date("h:i:s");
 		endif;
