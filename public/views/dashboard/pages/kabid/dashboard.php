@@ -116,7 +116,7 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTank[0] = 0;
+											$dataTank = (array) null;
 											$temp = 0;
 											$tgl = 0;
 											$ihis = -1;
@@ -139,8 +139,6 @@
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
-												
-													
 													setChart('<?= $d['nama_kapal'] ?>', <?= json_encode($dataTank) ?> ) ;
 												}
 											)">
