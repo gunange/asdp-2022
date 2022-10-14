@@ -121,7 +121,8 @@ body {
 .sidebar-header button.btn{
     position:  absolute;
     right: 6px;
-    bottom: -14px;
+    /*bottom: -14px;*/
+    top: 16px;
     font-size: 1.5rem;
     transition:  .5s;
 }
@@ -131,6 +132,10 @@ body {
 }
 .sidebar-header button.btn:hover i{
     color: var(--side-list-color-1);
+}
+.sidebar-header img.logo-sidebar{
+    width: 115px;
+    margin-top: 26px;
 }
 .sidebar-container .bio{
     width:  80%;
@@ -217,6 +222,7 @@ body {
 .togle #sidebar-wrapper{
     margin-left: -300px;
 }
+
 /*---------------------------*/
 #page-wrapper{
     width: 100%;

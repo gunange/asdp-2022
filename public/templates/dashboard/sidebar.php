@@ -3,8 +3,10 @@
 		<div class="sidebar-body">
 			<div class="sidebar-header">
 				<div class="d-flex align-items-center">
-					<i class="bi bi-app-indicator fs-2 text-white"></i>
-					<h5 class="fs-5 ms-3 text-white">Ganti dengan logo asdp</h5>
+					<img
+                        src="<?= BaseFiles ?>images/logo-asdp-white.png"
+                        class="rounded mx-auto d-block logo-sidebar"
+                        alt="ASDP-LOGO">
 				</div>
 				<button class="btn second-collor" data-bs-toggle="tooltip" onclick="toogleSidebar()" data-bs-placement="right" title="Close Sidebar">
 					<i class="bi bi-arrow-left-circle"></i>
