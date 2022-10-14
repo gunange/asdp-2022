@@ -59,9 +59,8 @@ endif;
 							<tr>
 								<th width="50px">#</th>
 								<th>Nama Tangki</th>
-								<th>Panjang</th>
-								<th>Lebar</th>
 								<th>Tinggi</th>
+								<th>Liter</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
@@ -71,9 +70,8 @@ endif;
 								<tr>
 									<td><?= $k + 1 ?></td>
 									<td><?= $d['jenis_tanki'] ?></td>
-									<td><?= $d['panjang'] ?> cm</td>
-									<td><?= $d['lebar'] ?> cm</td>
 									<td><?= $d['tinggi'] ?> cm</td>
+									<td><?= $d['liter'] ?> cm</td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetTangkiKapal/up/<?= $k ?>/<?= $this->data['id'] ?>', 

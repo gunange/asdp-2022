@@ -360,8 +360,7 @@ class ModelAdmin extends Controler
 		$set['set'] = [
 			"id_kapal" => $_POST['id_kapal'],
 			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
-			"panjang" => $_POST['panjang'],
-			"lebar" => $_POST['lebar'],
+			"liter" => $_POST['liter'],
 			"tinggi" => $_POST['tinggi'],
 		];
 		$set['tbl'] 	= "tbl_tanki";
@@ -378,8 +377,7 @@ class ModelAdmin extends Controler
 
 		$set['set'] = [
 			"id_jenis_tanki" => $_POST['id_jenis_tanki'],
-			"panjang" => $_POST['panjang'],
-			"lebar" => $_POST['lebar'],
+			"liter" => $_POST['liter'],
 			"tinggi" => $_POST['tinggi'],
 		];
 

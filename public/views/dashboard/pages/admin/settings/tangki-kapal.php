@@ -15,28 +15,25 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
+				<div class="col-12 mt-3">
+					<label class="form-label">Ukuran Tanki</label>
+				</div>
+				<div class="col-6 mb-3">
+					<!-- <label class="form-label">Tinggi</label> -->
+					<div class="input-group input-group-sm">
+						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off">
+						<div class="input-group-text input-group-sm">cm</div>
+					</div>
+				</div>
 
-				<div class="col-12 mb-3">
-					<label class="form-label">Panjang</label>
+				<div class="col-6 mb-3">
+					<!-- <label class="form-label">Liter</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off">
-						<div class="input-group-text input-group-sm">cm</div>
+						<input type="number" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off">
+						<div class="input-group-text input-group-sm">liter</div>
 					</div>
 				</div>
-				<div class="col-12 mb-3">
-					<label class="form-label">Lebar</label>
-					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Lebar Tangki Kapal" name="lebar" required autocomplete="off">
-						<div class="input-group-text input-group-sm">cm</div>
-					</div>
-				</div>
-				<div class="col-12 mb-3">
-					<label class="form-label">Tinggi</label>
-					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Tinggi Tangki Kapal" name="tinggi" required autocomplete="off">
-						<div class="input-group-text input-group-sm">cm</div>
-					</div>
-				</div>
+
 
 				<input type="hidden" value="<?= $this->idKapal ?>" name="id_kapal">
 
@@ -65,27 +62,26 @@
 					</select>
 				</div>
 
-				<div class="col-12 mb-3">
-					<label class="form-label">Panjang</label>
+				<div class="col-12 mt-3">
+					<label class="form-label">Ukuran Tanki</label>
+				</div>
+
+				<div class="col-6 mb-3">
+					<!-- <label class="form-label">Tinggi</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Panjang Tangki Kapal" name="panjang" required autocomplete="off" value="<?= $this->data['panjang'] ?>">
+						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off" value="<?= $this->data['tinggi'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
-				<div class="col-12 mb-3">
-					<label class="form-label">Lebar</label>
+
+				<div class="col-6 mb-3">
+					<!-- <label class="form-label">Liter</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Lebar Tangki Kapal" name="lebar" required autocomplete="off" value="<?= $this->data['lebar'] ?>">
-						<div class="input-group-text input-group-sm">cm</div>
+						<input type="number" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off" value="<?= $this->data['liter'] ?>">
+						<div class="input-group-text input-group-sm">liter</div>
 					</div>
 				</div>
-				<div class="col-12 mb-3">
-					<label class="form-label">Tinggi</label>
-					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Tinggi Tangki Kapal" name="tinggi" required autocomplete="off" value="<?= $this->data['tinggi'] ?>">
-						<div class="input-group-text input-group-sm">cm</div>
-					</div>
-				</div>
+
 
 			</div>
 		</div>
