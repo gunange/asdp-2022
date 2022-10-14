@@ -1,11 +1,10 @@
-
 <div id="sidebar-wrapper">
 	<div class="sidebar-container">
 		<div class="sidebar-body">
 			<div class="sidebar-header">
 				<div class="d-flex align-items-center">
 					<i class="bi bi-app-indicator fs-2 text-white"></i>
-					<h5 class="fs-5 ms-3 text-white">Dashboard</h5>
+					<h5 class="fs-5 ms-3 text-white">Ganti dengan logo asdp</h5>
 				</div>
 				<button class="btn second-collor" data-bs-toggle="tooltip" onclick="toogleSidebar()" data-bs-placement="right" title="Close Sidebar">
 					<i class="bi bi-arrow-left-circle"></i>
@@ -27,4 +26,4 @@
 		</div>
 	</div>
 </div><!-- sidebar-wrapper -->
-			<!-- page-content-wrapper -->
+<!-- page-content-wrapper -->

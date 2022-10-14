@@ -19,12 +19,11 @@ endif;
 		<div class="page-header mt-4 mb-5">
 			<div class="card card-small shadow-sm bx-shadow">
 				<div class="card-body">
-					<h5 class="text-secondary">Dashboard Settings</h5>
+					<h5 class="text-secondary">Kapal</h5>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Home</a></li>
-							<li class="breadcrumb-item"><a href="#">Library</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Data</li>
+							<li class="breadcrumb-item"> Management</li>
+							<li class="breadcrumb-item active" aria-current="page"><a href="<?= $this->gLink ?>Kapal">Kapal</a></li>
 						</ol>
 					</nav>
 				</div>
@@ -39,7 +38,7 @@ endif;
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> Settings Kapal
+						<i class="bi bi-box text-yellow-500 me-2"></i> Data Kapal
 					</h6>
 					<div class="btn-toolbar mb-2 mb-md-0 btn-group">
 						<button class="btn btn-sm bg-purple text-white" title="Tambah data!" onclick="openModalShow('#modal', '<?= $this->gLink ?>SetKapal/add', ()=>{injectJsDashboardPrimary();} )">

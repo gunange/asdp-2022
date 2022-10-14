@@ -19,12 +19,12 @@ endif;
 		<div class="page-header mt-4 mb-5">
 			<div class="card card-small shadow-sm bx-shadow">
 				<div class="card-body">
-					<h5 class="text-secondary">Dashboard Settings</h5>
+					<h5 class="text-secondary">Tanki Kapal</h5>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Home</a></li>
-							<li class="breadcrumb-item"><a href="#">Library</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Data</li>
+							<li class="breadcrumb-item"> Management</li>
+							<li class="breadcrumb-item"><a href="<?= $this->gLink ?>Kapal"> Kapal</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Tanki</li>
 						</ol>
 					</nav>
 				</div>
