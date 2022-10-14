@@ -61,10 +61,9 @@
 		 ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
-			
 			<div class="container-tangki mx-auto">
 				<div class="isi-tangki">
-					<div class="value-tengki" style="height: <?= round(($d['liter'] * 100 ) / $tinggiMax ) ?>%;">
+					<div class="value-tengki" style="height: <?= intval(($d['liter'] * 100 ) / $tinggiMax ) ?>%;">
 						<div class="transisi-tengki"></div>
 					</div>
 				</div>

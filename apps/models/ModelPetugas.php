@@ -205,7 +205,7 @@ class ModelPetugas extends Controler
 			$msg->liter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $tinggiMinyak ) ;
 			$msg->maxLiter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $msg->dataTangki->tinggi_maksimum ) ;
 			$msg->tinggiMinyak = $tinggiMinyak ;
-			$msg->persentage = round(($msg->liter * 100 ) / $msg->maxLiter ) ;
+			$msg->persentage = intval(($msg->liter * 100 ) / $msg->maxLiter ) ;
 			$msg->tanggal = date("Y-m-d");
 			$msg->waktu = date("h:i:s");
 		endif;
