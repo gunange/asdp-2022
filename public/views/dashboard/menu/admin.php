@@ -4,14 +4,14 @@
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>Petugas">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-people-fill"></i>
 			<span>Petugas</span>
 		</a>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>Kabid">
-			<i class="bi bi-grid"></i>
-			<span>Kabid</span>
+			<i class="bi bi-person-workspace"></i>
+			<span>Master Monitoring</span>
 		</a>
 	</li>
 	<li class="header-menu">
