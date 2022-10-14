@@ -103,60 +103,79 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
-	
+
 	public function GetStoryTangkiByIdKapal($id = null)
 	{
 		$set['set'] 	= "
-			
-				    (
-				        SELECT
-				            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
-				        FROM
-				            tbl_history_tanki
-				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-				        WHERE
-				            id_jenis_tanki = tt.id_jenis_tanki
-				        ORDER BY
-				            tbl_history_tanki.id DESC
-				        LIMIT
-				            0, 1
-				    ) dates, (
-				        SELECT
-				            tgl
-				        FROM
-				            tbl_history_tanki
-				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-				        WHERE
-				            id_jenis_tanki = tt.id_jenis_tanki
-				        ORDER BY
-				            tbl_history_tanki.id DESC
-				        LIMIT
-				            0, 1
-				    ) tgl, (
-				        SELECT
-				            waktu
-				        FROM
-				            tbl_history_tanki
-				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-				        WHERE
-				            id_jenis_tanki = tt.id_jenis_tanki
-				        ORDER BY
-				            tbl_history_tanki.id DESC
-				        LIMIT
-				            0, 1
-				    ) waktu, tht.liter AS liter, (
-				        SELECT
-				            tinggi_bbm waktu
-				        FROM
-				            tbl_history_tanki
-				            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-				        WHERE
-				            id_jenis_tanki = tt.id_jenis_tanki
-				        ORDER BY
-				            tbl_history_tanki.id DESC
-				        LIMIT
-				            0, 1
-				    ) tinggi_bbm, id_jenis_tanki, tinggi, tt.liter AS liter_tanki, tinggi_maksimum, nama_kapal, jenis_tanki
+		(
+        SELECT
+            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) dates, (
+        SELECT
+            tgl
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS tgl, (
+        SELECT
+            waktu
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS waktu,
+    (
+        SELECT
+            tbl_history_tanki.liter
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS liter,
+    (
+        SELECT
+            tinggi_bbm waktu
+        FROM
+            tbl_history_tanki
+            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+        WHERE
+            id_jenis_tanki = tt.id_jenis_tanki
+        ORDER BY
+            tbl_history_tanki.id DESC
+        LIMIT
+            0, 1
+    ) AS tinggi_bbm,
+    id_jenis_tanki,
+    tinggi,
+    tt.liter AS liter_tanki,
+    tinggi_maksimum,
+    nama_kapal,
+    jenis_tanki
 		";
 		$set['join'] = [
 
@@ -193,24 +212,24 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
-	public function GetDataKonfirmBbmKapal($idTangki=null, $tinggiMinyak=null)
+	public function GetDataKonfirmBbmKapal($idTangki = null, $tinggiMinyak = null)
 	{
-		$msg = new stdClass(); 
+		$msg = new stdClass();
 
 		$msg->action = false;
 
-		if (!empty($idTangki) && !empty($tinggiMinyak)):
+		if (!empty($idTangki) && !empty($tinggiMinyak)) :
 			$msg->action = true;
 			$msg->dataTangki = (object)$this->GetOnlyTangkiKapalByIdTangki($idTangki);
-			$msg->liter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $tinggiMinyak ) ;
-			$msg->maxLiter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $msg->dataTangki->tinggi_maksimum ) ;
-			$msg->tinggiMinyak = $tinggiMinyak ;
-			$msg->persentage = intval(($msg->liter * 100 ) / $msg->maxLiter ) ;
+			$msg->liter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $tinggiMinyak);
+			$msg->maxLiter = $this->HitungVolume($msg->dataTangki->liter, $msg->dataTangki->tinggi, $msg->dataTangki->tinggi_maksimum);
+			$msg->tinggiMinyak = $tinggiMinyak;
+			$msg->persentage = intval(($msg->liter * 100) / $msg->maxLiter);
 			$msg->tanggal = date("Y-m-d");
 			$msg->waktu = date("h:i:s");
 		endif;
 
-		return $msg ;
+		return $msg;
 	}
 	public function AddBbmTangki()
 	{
