@@ -72,6 +72,8 @@ class ModelPetugas extends Controler
 		return database::join($set);
 	}
 
+
+
 	public function GetDataSandar()
 	{
 		$set = $this->DataSandarJoin();
@@ -104,7 +106,7 @@ class ModelPetugas extends Controler
 		return database::join($set);
 	}
 
-	
+
 	public function GetDataKonfirmBbmKapal($idTangki = null, $tinggiMinyak = null)
 	{
 		$msg = new stdClass();
@@ -140,5 +142,21 @@ class ModelPetugas extends Controler
 		$this->response['response'] = "OK";
 		$this->response['msg'] = "Data BBM Tangki Berhasil Di Input";
 		$this->ResponseApi();
+	}
+
+	public function PayAirTawar()
+	{
+		$set['tbl']	= "tbl_air_tawar";
+		$set['key']	= "id";
+		$set['val']	= $_POST['pay'];
+
+		$set['set'] = [
+			"status" => "Lunas",
+		];
+
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
 	}
 }
