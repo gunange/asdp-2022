@@ -102,11 +102,37 @@
 
 </div>
 
+<div class="row mt-5">
+	<div class="col-6 col-md-6">
+		<div class="card card-small shadow bx-shadow">
+			<div class="card-header border-bottom bg-white">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
+					<h6 class="m-0">
+						<i class="bi bi-webcam-fill text-teal-500 me-2"></i> CCTV Kapal
+					</h6>
+				</div>
+			</div><!-- card-header -->
+
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-12 mb-3 border-dark" id="outCctv">
+
+					</div>
+				</div>
+			</div><!-- card-body -->
+		</div>
+	</div>
+
+</div>
+
 <script>
 	function getTangki(idKapal){
 		$('#id_jenis_tanki').val('').trigger('change');
 		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/' + idKapal);
 		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/' + idKapal);
+		replaceHtml('#outCctv', '<?= $this->gLink ?>SetBbmKapal/getCctvKapal/' + idKapal);
+
 	}
 
 	function saveBbmTangki(){

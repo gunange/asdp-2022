@@ -94,6 +94,15 @@
 	<?php foreach ($this->model->GetTangkiKapalById($this->id) as $k => $d): ?>
 		<option value="<?= $d['id'] ?>"><?= $d['jenis_tanki'] ?></option>
 	<?php endforeach; ?>
+<?php elseif ($this->setPage == "getCctvKapal"): ?>
+	<video width="100%" height="240" autoplay controls>
+    <source src="%StreamURL%" type="video/mp4">
+    <object width="320" height="240" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf">
+        <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf" /> 
+        <param name="flashvars" value='config={"clip": {"url": "%StreamURL%", "autoPlay":true, "autoBuffering":true}}' /> 
+        <p><a href="%StreamURL%">view with external app</a></p> 
+    </object>
+</video>
 <?php elseif ($this->setPage == "upAkun"): ?>
 	<!-- UPDATE AKUN -->
 	<form class="modal-content" method="POST">
