@@ -24,5 +24,17 @@ class DashKabid extends Controler {
 	public function Main(){
 		$this->viewDashboard ('dashboard');
 	}
+	public function BbmKapalListTahun(){
+		$this->viewDashboard ('bbm-kapal-tahun');
+	}
+	public function BbmKapalListBulan($tahun=""){
+		$this->tahun = $tahun ;
+		$this->viewDashboard ('bbm-kapal-bulan');
+	}
+	public function BbmKapalListHari($tahun="", $bulan=""){
+		$this->tahun = $tahun ;
+		$this->bulan = $bulan ;
+		$this->viewDashboard ('bbm-kapal-hari');
+	}
 	
 }

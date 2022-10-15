@@ -11,6 +11,15 @@
 	</li>
 	
 	<li class="header-menu">
+		<span>History</span>
+	</li>
+	<li>
+		<a href="<?= $this->gLink ?>BbmKapalListTahun">
+			<i class="bi bi-grid"></i>
+			<span>BBM Kapal</span>
+		</a>
+	</li>
+	<li class="header-menu">
 		<span>Invoice</span>
 	</li>
 	<li>
