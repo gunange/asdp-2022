@@ -23,10 +23,14 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
-	public function GetJsonTanggal()
+	public function GetJsonTanggal($bulan=null, $tahun=null)
 	{
-		// $countTgl = cal_days_in_month(CAL_GREGORIAN, 10, 2022) ;
-		$countTgl = date('d');
+		if (!is_null($tahun) && !is_null($bulan)):
+			
+			$countTgl = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+		else:
+			$countTgl = date('d');
+		endif;
 		$ret = [];
 		for ($i = 1; $i <= $countTgl; $i++) :
 			$ret[] = "day " . $i;
@@ -36,20 +40,27 @@ class ModelKabid extends Controler
 	}
 
 
-	// public function GetHistoryDayTank()
-	// {
-	// 	$set 	= $this->HistoryDayTank();
-	// 	// $set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id='{$id_jenis_tanki}' ORDER BY DATE( tgl) ASC, waktu ASC";
-	// 	$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
-
-	// 	return database::join($set);
-	// }
-
 	public function GetHistoryDayTank($id_kapal)
 	{
 		$set 	= $this->HistoryDayTank();
 		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
 
 		return database::join($set);
+	}
+	public function GetHistoryByTahunAndByIdKapal($id_kapal, $tahun, $bulan)
+	{
+		$set 	= $this->HistoryDayTank();
+		$set['query']	= "WHERE MONTH(tgl)='{$bulan}' AND YEAR(tgl)='{$tahun}' AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
+
+		return database::join($set);
+	}
+	public function GetKapalById($id)
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_kapal';
+		$set['query']	= "WHERE id = '{$id}'";
+		$set['loop'] 	= "no_loop" ;
+
+		return database::select($set);
 	}
 }

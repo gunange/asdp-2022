@@ -116,30 +116,12 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTank = (array) null;
-											$temp = 0;
-											$tgl = 0;
-											$ihis = -1;
-											foreach ($this->model->GetHistoryDayTank($d['id']) as $k => $datahist) :
-												if ($tgl < $datahist['tanggal']) {
-													$tgl =  $datahist['tanggal'];
-													$temp = $datahist['liter'];
-													$history[$datahist['tanggal']] = 0;
-													$ihis += 1;
-												}
-												if ($temp > $datahist['liter']) {
-													$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($temp - $datahist['liter']);
-													$dataTank[$ihis] = $history[$datahist['tanggal']];
-													$temp = $datahist['liter'];
-												} elseif ($temp < $datahist['liter']) {
-													$temp = $datahist['liter'];
-												}
-											endforeach;
+											$dataTank = $this->model->GetDataGrafik($this->model->GetHistoryDayTank($d['id'])) ;
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
-													setChart('<?= $d['nama_kapal'] ?>', <?= json_encode($dataTank) ?> ) ;
+													setChart('<?= $d['nama_kapal'] ?>', <?= $dataTank ?> ) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>

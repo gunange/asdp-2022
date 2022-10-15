@@ -24,17 +24,29 @@ class DashKabid extends Controler {
 	public function Main(){
 		$this->viewDashboard ('dashboard');
 	}
-	public function BbmKapalListTahun(){
-		$this->viewDashboard ('bbm-kapal-tahun');
+	public function BbmKapalHistory(){
+		$this->viewDashboard ('bbm-kapal-history');
 	}
-	public function BbmKapalListBulan($tahun=""){
-		$this->tahun = $tahun ;
-		$this->viewDashboard ('bbm-kapal-bulan');
-	}
-	public function BbmKapalListHari($tahun="", $bulan=""){
+	public function BbmKapalPerhari($id=null, $tahun=null, $bulan=null){
+		$this->id = $id ;
 		$this->tahun = $tahun ;
 		$this->bulan = $bulan ;
-		$this->viewDashboard ('bbm-kapal-hari');
+
+		if (!is_null($id) && !is_null($tahun) &&  !is_null($bulan) ):
+			$this->dataKapal = $this->model->GetKapalById($id);
+
+			$this->data = $this->model->GetHistoryByTahunAndByIdKapal($id, $tahun, $bulan);
+			$this->dataGrafik = $this->model->GetDataGrafik($this->data);
+
+
+
+			if (!is_array($this->dataKapal)):
+				$this->notFound = true ;
+			endif;
+		else:
+			$this->notFound = true ;
+		endif ;
+		$this->viewDashboard ('bbm-kapal-per-hari');
 	}
 	
 }

@@ -14,7 +14,7 @@
 		<span>History</span>
 	</li>
 	<li>
-		<a href="<?= $this->gLink ?>BbmKapalListTahun">
+		<a href="<?= $this->gLink ?>BbmKapalHistory">
 			<i class="bi bi-grid"></i>
 			<span>BBM Kapal</span>
 		</a>

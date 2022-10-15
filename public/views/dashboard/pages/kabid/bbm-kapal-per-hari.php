@@ -1,5 +1,3 @@
-
-
 <div class="row mt-4">
   <div class="col-12 col-md-12">
     <!-- Page Header -->
@@ -10,7 +8,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Home</a></li>
-              <li class="breadcrumb-item"><a href="<?= $this->gLink ?>/BbmKapalListBulan/<?= $this->tahun ?>">List Data Per-Bulan</a></li>
+              <li class="breadcrumb-item"><a href="<?= $this->gLink ?>/BbmKapalHistory/<?= $this->tahun ?>">List Data Per-Bulan</a></li>
               <li class="breadcrumb-item active" aria-current="page">Data</li>
             </ol>
           </nav>
@@ -26,47 +24,56 @@
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> BBM Kapal List Hari
+						<i class="bi bi-box text-yellow-500 me-2"></i> History BBM Kapal 
 					</h6>
 					
 				</div>
 			</div><!-- card-header -->
 
 			<div class="card-body">
-				<div class="table-responsive">
-
-					<!-- table -->
-					<table id="DataTable" class="table table-hover">
-						<thead>
-							<tr>
-								<th width="50px">#</th>
-								<th>Tahun</th>
-								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
-							</tr>
-						</thead>
-						<tbody>
-							
-							<tr>
-								<td>1</td>
-								<td>01, Oktober 2022</td>
-								<td class="text-center" width="120px">
-									<div class="btn-group" role="group">
-										
-										<button type="button" class="btn btn-sm primary-bg text-white" title="Goo .." 
-											onclick="window.location.href='<?= $this->gLink ?>/BbmKapalListBulan/2022'">
-											<i class="bi bi-capslock-fill"></i>
-										</button>
-									</div>
-								</td>
-								
-							</tr>
-							
-						</tbody>
-
-					</table><!-- table -->
+				<div class="col-12 col-md-12">
+					<section class="">
+						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
+					</section>
+				</div>
 				</div><!-- table-responsive -->
 
 			</div><!-- card-body -->
 		</div>
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+	function setChart(namaKapal = "Nama Kapal", dataStatic = []) {
+		data = {
+			labels: <?= $this->model->GetJsonTanggal($this->bulan, $this->tahun) ?>,
+			datasets: [{
+				label: namaKapal,
+				data: dataStatic,
+				backgroundColor: [
+					'rgb(75, 192, 192)',
+				],
+				borderColor: 'rgb(75, 192, 192)',
+				hoverOffset: 10,
+				fill: false,
+				tension: 0.1
+			}, ]
+		};
+
+		new Chart(document.getElementById('dataMinyak'), {
+			type: 'line',
+			data: data,
+			options: {
+				maintainAspectRatio: false,
+				scales: {
+
+				}
+			},
+
+		});
+	}
+
+	setChart('<?= $this->dataKapal['nama_kapal'] ?>', <?= $this->dataGrafik ?>)
+</script>

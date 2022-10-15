@@ -26,7 +26,7 @@
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> BBM Kapal List Tahun
+						<i class="bi bi-stopwatch text-yellow-500 me-2"></i> History BBM Kapal
 					</h6>
 					
 				</div>
@@ -40,26 +40,34 @@
 						<thead>
 							<tr>
 								<th width="50px">#</th>
-								<th>Tahun</th>
+								<th>Kapal</th>
+								<th>Perusahaan</th>
+								<th>GT</th>
+								<th>Pajak</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
 						<tbody>
-							
+							<?php foreach ($this->model->sGetKapal() as $k => $d) : ?>
 							<tr>
-								<td>1</td>
-								<td>2022</td>
-								<td class="text-center" width="120px">
-									<div class="btn-group" role="group">
-										
-										<button type="button" class="btn btn-sm primary-bg text-white" title="Goo .." 
-											onclick="window.location.href='<?= $this->gLink ?>/BbmKapalListBulan/2022'">
-											<i class="bi bi-capslock-fill"></i>
-										</button>
-									</div>
-								</td>
-								
-							</tr>
+									<td><?= $k + 1 ?></td>
+									<td><?= $d['nama_kapal'] ?></td>
+									<td><?= $d['perusahaan'] ?></td>
+									<td><?= $d['gt'] ?></td>
+									<td><?= $d['pajak'] ?></td>
+									<td class="text-center" width="120px">
+										<div class="btn-group" role="group">
+											<button type="button" class="btn btn-sm primary-bg text-white" title="Detail Tangki" onclick="
+											openModalShow('#modal', 
+												'<?= $this->gLink ?>SetBbmKapalHistory/formFilter/<?= $k ?>/<?= $d['id'] ?>', 
+													()=>{injectJsDashboardPrimary();})">
+												<i class="bi bi-capslock-fill"></i>
+											</button>
+										</div>
+									</td>
+
+								</tr>
+								<?php endforeach; ?>
 							
 						</tbody>
 
@@ -70,3 +78,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function getElementFormFilterBBmKapalHistory(link="", elTahun="", elBulan){
+
+		tahun  = document.querySelector(elTahun).value ;
+		bulan  = document.querySelector(elBulan).value ;
+
+		if (tahun !== "" && bulan !== "")
+		window.location.href = link + "/" + tahun + "/" + bulan ;
+	}
+</script>

@@ -19,4 +19,42 @@ trait ComponentModelDash{
 		$volume = ($liter / $tinggi ) * $tinggiBbm ;
 		return $volume ;
 	}
+	public function GetTahunRange($tahun=0000)
+	{
+		$tahunNow = date('Y');
+
+		$data = [];
+		while ($tahunNow >= $tahun) :
+			$data[] = $tahunNow ;
+			$tahunNow-- ;
+		endwhile;
+
+		return $data ;
+	}
+
+	public function GetDataGrafik($dataHistory)
+	{
+		$dataTank = (array) null;
+		$temp = 0;
+		$tgl = 0;
+		$ihis = -1;
+		foreach ($dataHistory as $k => $datahist) :
+			if ($tgl < $datahist['tanggal']) {
+				$tgl =  $datahist['tanggal'];
+				$temp = $datahist['liter'];
+				$history[$datahist['tanggal']] = 0;
+				$ihis += 1;
+			}
+			if ($temp > $datahist['liter']) {
+				$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($temp - $datahist['liter']);
+				$dataTank[$ihis] = $history[$datahist['tanggal']];
+				$dataTank[$ihis] = $history[$datahist['tanggal']];
+				$temp = $datahist['liter'];
+			} elseif ($temp < $datahist['liter']) {
+				$temp = $datahist['liter'];
+			}
+		endforeach;
+
+		return json_encode($dataTank) ;
+	}
 }

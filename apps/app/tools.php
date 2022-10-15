@@ -134,6 +134,26 @@ class tools
 		return $ex[0] ." " . $bulan[$ex[1]] . " " . $ex[2];
 
 	}
+	public static function OptBulan()
+	{
+		$bulan = [
+			1 =>
+			'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+		];
+		return $bulan;
+
+	}
 	public static function umur($data)
 	{
 		$tanggal_lahir 	= new DateTime(date_format(date_create($data),"Y-m-d"));
