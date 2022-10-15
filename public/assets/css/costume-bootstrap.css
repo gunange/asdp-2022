@@ -95,3 +95,13 @@ a.img-obj-cover img,
 span.select2-container {
     z-index:10050 !important;
 }
+
+
+/*----------- table ------------*/
+
+.table-hover tbody tr:hover td, 
+.table-hover tbody tr:hover th {
+
+	transition:  .3s;
+  background-color: #fefffe ;
+}
