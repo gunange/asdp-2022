@@ -19,6 +19,12 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Regu</label>
+					<input class="form-control form-control-sm" type="number" placeholder="Regu" name="regu" required autocomplete="off">
+				</div>
+
+
 				<section class="py-3">
 					<div class="bg-purple text-white py-2 px-3">
 						<i>Account</i>

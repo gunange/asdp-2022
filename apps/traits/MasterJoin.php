@@ -200,7 +200,8 @@ trait MasterJoin
 			debit_air,
 			FORMAT(total_air_tawar, 0) total_air_tawar,
 			status,
-			tu.nama nama_admin
+			tu.nama nama_admin,
+			tu.regu regu
 		';
 		$set['join'] = [
 

@@ -66,6 +66,7 @@ endif;
 								<th>Nama</th>
 								<th>Username</th>
 								<th>Jenis Kelamin</th>
+								<th>Regu</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
@@ -76,6 +77,7 @@ endif;
 									<td><?= $d['nama'] ?></td>
 									<td><?= $d['username'] ?></td>
 									<td><?= $d['jenis_kelamin'] ?></td>
+									<td><?= $d['regu'] ?></td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-sm bg-teal text-white" title="Update Akun" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetPetugas/upAkun/<?= $k ?>')">
