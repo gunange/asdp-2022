@@ -43,12 +43,14 @@
 		<a href="<?= $this->gLink ?>ExampleCrud">
 			<i class="bi bi-grid"></i>
 			<span>Data Sandar</span>
+			<span class="badge badge-pill badge-dark">10</span>
 		</a>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>ExampleCrud">
 			<i class="bi bi-grid"></i>
 			<span>Air Tawar</span>
+			<span class="badge badge-pill badge-dark">10</span>
 		</a>
 	</li>
 	

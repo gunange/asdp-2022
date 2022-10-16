@@ -45,12 +45,14 @@
 		<a href="<?= $this->gLink ?>DelayedDataSandar">
 			<i class="bi bi-file-earmark-excel-fill"></i>
 			<span>Sandar</span>
+			<span class="badge badge-pill badge-dark">10</span>
 		</a>
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>DelayedAirTawar">
 			<i class="bi bi-file-earmark-excel-fill"></i>
 			<span>Air Tawar</span>
+			<span class="badge badge-pill badge-dark"><?= count($this->model->GetDelayAirTawar()) ?></span>
 		</a>
 	</li>
 
