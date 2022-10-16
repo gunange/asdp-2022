@@ -192,13 +192,15 @@ trait MasterJoin
 		$set['set'] 	= '
 			tat.id id,
 			waktu,
+			IF(DAYNAME(tgl) = "Monday", "Senin", IF(DAYNAME(tgl) = "Tuesday", "Selasa", IF(DAYNAME(tgl) = "Wednesday", "Rabu", IF(DAYNAME(tgl) = "Thursday", "Kamis", IF(DAYNAME(tgl) = "Friday", "Jumat", IF(DAYNAME(tgl) = "Saturday", "Sabtu", IF(DAYNAME(tgl) = "Sunday", "Minggu", "Nothing"))))))) hari,
 			tgl,
 			shift,
 			nama_kapal,
 			dermaga,
 			debit_air,
 			FORMAT(total_air_tawar, 0) total_air_tawar,
-			status
+			status,
+			tu.nama nama_admin
 		';
 		$set['join'] = [
 
@@ -220,6 +222,12 @@ trait MasterJoin
 					'key'   => 'td',
 					'id'    => 'td.id',
 					'in'    => 'tat.id_dermaga'
+				],
+				[
+					'table' => 'tbl_user ',
+					'key'   => 'tu',
+					'id'    => 'tu.id',
+					'in'    => 'tat.id_user'
 				],
 
 			]
@@ -317,7 +325,7 @@ trait MasterJoin
 		$set['set'] 	= '
 			MONTH(tgl) AS bulan, 
 			YEAR(tgl) AS tahun, 
-			 DAY(tgl) tanggal,
+			DAY(tgl) tanggal,
 			waktu, 
 			tgl, 
 			tht.liter AS liter, 

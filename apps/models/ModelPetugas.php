@@ -179,7 +179,7 @@ class ModelPetugas extends Controler
 	public function GetAirTawarById($id)
 	{
 		$set = $this->AirTawarJoin();
-		$set['query'] = "WHERE id='{$id}'";
+		$set['query'] = "WHERE tat.id='{$id}'";
 
 		return database::join($set);
 	}

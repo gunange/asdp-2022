@@ -3,9 +3,7 @@
 <body>
 	<?php
 
-	// foreach ($this->model->GetAirTawarById() as $k => $dermaga) :
-	// 	$dataPdf = $dermaga;
-	// endforeach;
+
 
 	$dataPdf = [
 		[
