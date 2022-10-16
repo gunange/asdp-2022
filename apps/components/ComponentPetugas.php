@@ -29,6 +29,8 @@ trait ComponentPetugas
 
 		if ($page == "postForm") :
 			$this->model->AddAirTawar();
+		elseif($page == "postDelayAirTawar"):
+			$this->model->PayAirTawar();
 		else :
 			$this->id = $id;
 			$this->viewDash('settings/air-tawar');

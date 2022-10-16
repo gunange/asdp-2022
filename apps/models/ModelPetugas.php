@@ -173,7 +173,7 @@ class ModelPetugas extends Controler
 	{
 		$set['tbl']	= "tbl_air_tawar";
 		$set['key']	= "id";
-		$set['val']	= $_POST['pay'];
+		$set['val']	= $_POST['id_air_tawar'];
 
 		$set['set'] = [
 			"status" => "Lunas",
@@ -181,8 +181,16 @@ class ModelPetugas extends Controler
 
 		database::update($set);
 
-		msg::$msg = "Data berhasil diperbahrui ";
-		msg::success();
+		$idAirTawar = $_POST['id_air_tawar'];
+		$this->response["response"] = "OK";
+		$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
+		$this->response['modal'] = [
+			"#modal-center-lg-static",
+			BasePetugas . "SetAirTawar/Bayar/" . $idAirTawar
+		];
+
+
+		$this->ResponseApi();
 	}
 
 	public function GetAirTawarById($id)
