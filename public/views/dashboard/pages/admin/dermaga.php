@@ -58,6 +58,7 @@ endif;
 							<tr>
 								<th width="50px">#</th>
 								<th>Dermaga</th>
+								<th>Tarif</th>
 								<th class="text-center text-white"><i class="bi bi-gear-fill"></i></th>
 							</tr>
 						</thead>
@@ -66,6 +67,7 @@ endif;
 								<tr>
 									<td><?= $k + 1 ?></td>
 									<td><?= $d['dermaga'] ?></td>
+									<td>Rp. <?= $d['tarif'] ?></td>
 									<td class="text-center" width="120px">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-sm bg-purple text-white" title="Update Data" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetDermaga/up/<?= $k ?>', 

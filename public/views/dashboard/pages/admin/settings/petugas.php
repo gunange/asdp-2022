@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Regu</label>
-					<input class="form-control form-control-sm" type="number" placeholder="Regu" name="regu" required autocomplete="off">
+					<input class="form-control form-control-sm" min="0" type="number" placeholder="Regu" name="regu" required autocomplete="off">
 				</div>
 
 
@@ -65,6 +65,11 @@
 							<option value="<?= $opsi['id'] ?>"><?= $opsi['jenis_kelamin'] ?></option>
 						<?php endforeach; ?>
 					</select>
+				</div>
+
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Regu</label>
+					<input class="form-control form-control-sm" min="0" type="number" placeholder="Regu" name="regu" required autocomplete="off" value="<?= $this->data['regu'] ?>">
 				</div>
 				<input type="hidden" value="<?= $this->data['id_user'] ?>" name="id_user">
 			</div>

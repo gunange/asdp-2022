@@ -47,7 +47,7 @@
 			doc.text(20, 55, "Operator").setFont(undefined, 'normal');
 			doc.text(40, 55, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
 			doc.text(20, 60, "Regu").setFont(undefined, 'normal');
-			doc.text(40, 60, ": " + dataPDF['regu']).setFont(undefined, 'normal');
+			doc.text(40, 60, ": " + dataPDF['regu'] + "/Shift " + dataPDF['shift']).setFont(undefined, 'normal');
 
 
 			doc.text(20, 75, dataPDF['nama_kapal']).setFont(undefined, 'bold');
@@ -114,7 +114,7 @@
 			doc.text(20, 55, "Operator").setFont(undefined, 'normal');
 			doc.text(40, 55, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
 			doc.text(20, 60, "Regu").setFont(undefined, 'normal');
-			doc.text(40, 60, ": " + dataPDF['regu']).setFont(undefined, 'normal');
+			doc.text(40, 60, ": " + dataPDF['regu'] + "/Shift " + dataPDF['shift']).setFont(undefined, 'normal');
 
 
 			doc.text(20, 75, dataPDF['nama_kapal']).setFont(undefined, 'bold');

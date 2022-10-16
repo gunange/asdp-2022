@@ -65,6 +65,7 @@ class ModelAdmin extends Controler
 			$set['set'] = [
 				"nama" => $_POST['nama'],
 				"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
+				"regu" => $_POST['regu'],
 
 				"id_login" => $id_login,
 			];
@@ -97,6 +98,8 @@ class ModelAdmin extends Controler
 		$set['set'] = [
 			"nama"             => $_POST['nama'],
 			"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
+			"regu" 			   => $_POST['regu'],
+
 		];
 
 		database::update($set);
@@ -269,6 +272,7 @@ class ModelAdmin extends Controler
 	{
 		$set['set'] = [
 			"dermaga" => $_POST['dermaga'],
+			"tarif" => $_POST['tarif'],
 		];
 		$set['tbl'] 	= "tbl_dermaga";
 		database::insert($set);
@@ -285,6 +289,8 @@ class ModelAdmin extends Controler
 
 		$set['set'] = [
 			"dermaga" => $_POST['dermaga'],
+			"tarif" => $_POST['tarif'],
+
 		];
 
 		database::update($set);
