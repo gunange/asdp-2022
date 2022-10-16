@@ -16,6 +16,17 @@ class ModelPetugas extends Controler
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
+	private function GetDataUser()
+	{
+		
+		
+		$set 			= $this->PetugasJoin();
+
+		$set['query']	= "WHERE lg.token = '{$_SESSION[$this->tokenName]}' ";
+		$set['loop'] 	= 'no_loop' ;		
+
+		return database::join($set);
+	}
 
 	public function GetDermaga()
 	{
