@@ -67,9 +67,6 @@
                                     <td><?= $d['lama_sandar'] ?></td>
                                     <td><?= $d['total_sandar'] ?></td>
                                     <td><?= $d['status'] ?></td>
-
-
-
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
