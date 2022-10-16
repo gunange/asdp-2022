@@ -50,6 +50,8 @@ class ModelPetugas extends Controler
 			"status"      		=> $_POST['status'],
 		];
 		$set['tbl'] 	= "tbl_air_tawar";
+
+		$idAirTawar  	= database::getNextId($set);
 		database::insert($set);
 
 		$this->response["response"] = "OK";
@@ -60,7 +62,7 @@ class ModelPetugas extends Controler
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
 				"#modal-center-lg",
-				BasePetugas . "SetAirTawar/Pengolahan"
+				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
 			];
 		endif;
 

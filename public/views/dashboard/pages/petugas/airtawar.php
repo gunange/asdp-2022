@@ -64,7 +64,7 @@
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-text input-group-sm">Rp.</div>
 
-                                        <input name="total_air_tawar" id="totaltarifair<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm" placeholder="0" required autocomplete="off">
+                                        <input name="total_air_tawar" id="totaltarifair<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm" placeholder="0" required autocomplete="off" readonly>
                                     </div>
                                 </div>
 
