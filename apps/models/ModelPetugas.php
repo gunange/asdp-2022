@@ -16,13 +16,13 @@ class ModelPetugas extends Controler
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
-	
+
 	private function GetDataUser()
 	{
 		$set 			= $this->PetugasJoin();
 
 		$set['query']	= "WHERE lg.token = '{$_SESSION[$this->tokenName]}' ";
-		$set['loop'] 	= 'no_loop' ;		
+		$set['loop'] 	= 'no_loop';
 
 		return database::join($set);
 	}
@@ -51,7 +51,6 @@ class ModelPetugas extends Controler
 			"id_user" 			=> $this->user->id,
 			"id_kapal" 			=> $_POST['id_kapal'],
 			"id_dermaga" 		=> $_POST['id_dermaga'],
-			"regu"				=> '0',
 			"shift"				=> '0',
 			"tgl"				=> date("Y-m-d"),
 			"waktu"				=> date("h:i:s"),
