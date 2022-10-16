@@ -16,10 +16,7 @@ class ModelPetugas extends Controler
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
-	public function SetShift()
-	{
-		
-	}
+	
 	private function GetDataUser()
 	{
 		$set 			= $this->PetugasJoin();
