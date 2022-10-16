@@ -38,9 +38,7 @@ trait ComponentPetugas
 	{
 		$this->id = $id;
 		$this->setPage = $page;
-		if ($page == "Lunas") :
-			$this->data = $this->model->GetAirTawar()[$id];
-		endif;
+
 		$this->viewDash('pdf/air-tawar');
 	}
 }
