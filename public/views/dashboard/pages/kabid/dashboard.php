@@ -26,7 +26,7 @@
 				</div>
 				<div class="item-2 ps-3 py-4 row">
 					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					<p class="text-hidden">Pendapatan Air</p>
 				</div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 				</div>
 				<div class="item-2 ps-3 py-4">
 					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">Pelayanan Kapal</p>
+					<p class="text-hidden">Pendapatan Sandar</p>
 				</div>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 				</div>
 				<div class="item-2 ps-3 py-4">
 					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">User Pelayanan</p>
+					<p class="text-hidden">Delayed Sandar</p>
 				</div>
 			</div>
 		</div>
@@ -65,7 +65,7 @@
 				</div>
 				<div class="item-2 ps-3 py-4">
 					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">Data Kapal</p>
+					<p class="text-hidden">Delayed Air Tawar</p>
 				</div>
 			</div>
 		</div>
