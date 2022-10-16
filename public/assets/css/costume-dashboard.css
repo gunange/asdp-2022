@@ -23,6 +23,7 @@
 
 .dash-row .card{
 	border-radius: 8px;
+	transition:  .3s;
 }
 .dash-row .col-lg-3{
 	min-width: 269px !important;
@@ -36,6 +37,9 @@
 	font-size: 5rem;
 	margin-bottom: 0;
 
+}
+.dash-row .item-2{
+	width: 95%;
 }
 .dash-row .item-2 h1{
 	font-size: 4.5rem;
@@ -51,10 +55,21 @@
 	font-size: 3rem;
 }
 .dash-row.small .item-2 h1{
-	font-size: 2.5rem;
+	font-size: 1.8rem;
+	margin-bottom: 9px;
 }
 .dash-row.small .item-2 p{
 	font-size:  .8rem;
+	transition: .3s;
+}
+
+.text-hidden{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.dash-row .col-lg-3 .card-small:hover .text-hidden {
+	white-space: normal;
 }
 /*-------------------------------------------------------------*/
 .datepicker-dropdown{

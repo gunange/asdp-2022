@@ -24,9 +24,9 @@
 				<div class="item-1">
 					<i class="bi bi-calendar2-event-fill"></i>
 				</div>
-				<div class="item-2 ps-3 py-4">
-					<h1>0</h1>
-					<p class="">Lorem.</p>
+				<div class="item-2 ps-3 py-4 row">
+					<h1 class="text-hidden">0</h1>
+					<p class="text-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 				</div>
 			</div>
 		</div>
@@ -38,8 +38,8 @@
 					<i class="bi bi-hourglass-split"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1>0</h1>
-					<p class="">Pelayanan Kapal</p>
+					<h1 class="text-hidden">0</h1>
+					<p class="text-hidden">Pelayanan Kapal</p>
 				</div>
 			</div>
 		</div>
@@ -51,8 +51,8 @@
 					<i class="bi bi-people-fill"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1>0</h1>
-					<p class="">User Pelayanan</p>
+					<h1 class="text-hidden">0</h1>
+					<p class="text-hidden">User Pelayanan</p>
 				</div>
 			</div>
 		</div>
@@ -64,8 +64,8 @@
 					<i class="bi bi-file-earmark-text-fill"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1>0</h1>
-					<p class="">Data Kapal</p>
+					<h1 class="text-hidden">0</h1>
+					<p class="text-hidden">Data Kapal</p>
 				</div>
 			</div>
 		</div>
