@@ -77,4 +77,18 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
+	public function GetAirTawar()
+	{
+		$set = $this->AirTawarJoin();
+		$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu DESC, tgl DESC";
+
+		return database::join($set);
+	}
+	public function GetDataSandar()
+	{
+		$set = $this->DataSandarJoin();
+		$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu_awal DESC, tgl DESC";
+
+		return database::join($set);
+	}
 }
