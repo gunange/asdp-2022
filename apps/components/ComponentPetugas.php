@@ -41,4 +41,13 @@ trait ComponentPetugas
 
 		$this->viewDash('pdf/air-tawar');
 	}
+	public function PostShit()
+	{
+		$_SESSION['shiftPetugas'] = $_POST['post_shift'];
+		$this->model->response['response'] = "OK";
+		$this->model->response['msg'] = "Sukses anda telah memilih shift, Tekan OK Untuk menyimpan";
+		$this->model->response['href'] = BasePetugas . "Main" ;
+
+		$this->model->ResponseApi();
+	}
 }

@@ -62,6 +62,7 @@ class ModelUser{
 	public function logOut()
 	{
 		$_SESSION[$this->tokenName] = false;
+		$_SESSION['shiftPetugas'] = NULL;
 	    tools::redirect(BASEURL);
 	    exit();
 	}

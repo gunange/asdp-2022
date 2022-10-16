@@ -16,10 +16,12 @@ class ModelPetugas extends Controler
 			$this->setUser($this->modelUser->dataUser);
 		endif;
 	}
-	private function GetDataUser()
+	public function SetShift()
 	{
 		
-		
+	}
+	private function GetDataUser()
+	{
 		$set 			= $this->PetugasJoin();
 
 		$set['query']	= "WHERE lg.token = '{$_SESSION[$this->tokenName]}' ";

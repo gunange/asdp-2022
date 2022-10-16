@@ -103,31 +103,26 @@
         <p><a href="%StreamURL%">view with external app</a></p> 
     </object>
 </video>
-<?php elseif ($this->setPage == "upAkun"): ?>
-	<!-- UPDATE AKUN -->
-	<form class="modal-content" method="POST">
+<?php elseif ($this->setPage == "OpsiShift"): ?>
+	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>PostShit">
 		<div class="modal-header">
-			<pre class="modal-title fs-6 text-cyan"><i class="bi bi-person-bounding-box"></i> Akun</pre>
+			<pre class="modal-title fs-6 text-cyan"><i class="bi bi-person-bounding-box"></i> Pilih</pre>
 		</div>
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-md-12 mb-3">
-					<label>Username</label>
-					<input type="text" class="form-control form-control-sm" name="username" placeholder="Username Anda" value="<?= $this->data['username'] ?>" autocomplete="off">
+					<label class="form-label">Pilih Shift</label>
+					<select class="form-select form-select-sm sel-all" name="post_shift">
+						<option value="1">Shift Satu</option>
+						<option value="2">Shift Dua</option>
+					</select>
 				</div>
-				<div class="col-md-12 mb-3">
-					<div class="form-check form-switch">
-						<input class="form-check-input cursor-pointer" type="checkbox" id="enable_password" onclick="enablePassword(this,'password');">
-						<label class="form-check-label cursor-pointer" for="enable_password">Ganti Password?</label>
-					</div>
-					<input type="password" class="form-control form-control-sm" id="password" placeholder="Password" name="password" required disabled autocomplete="off">
-				</div>
+				
 			</div>
 
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<button type="submit" class="btn btn-sm btn-primary" name="upAkun" value="<?= $this->data['id_login'] ?>" >Update</button>
+			<button type="submit" class="btn btn-sm btn-primary" >OK</button>
 		</div>
 	</form>
 
