@@ -103,7 +103,7 @@
 </div>
 
 <div class="row mt-5">
-	<div class="col-6 col-md-6">
+	<div class="col-6 col-md-12">
 		<div class="card card-small shadow bx-shadow">
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
@@ -117,7 +117,21 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md-12 mb-3 border-dark" id="outCctv">
-
+						
+						<object 
+						 classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"  
+						 codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" 
+						 id="vlc" 
+						 name="vlc" 
+						 class="vlcPlayer" 
+						 events="True"> 
+						  <param name="Src" value="rtsp://admin:IT@5dt23@10.33.4.12:554/cam/realmonitor?channel=1&subtype=0" /> 
+						  <param name="ShowDisplay" value="True" /> 
+						  <param name="AutoLoop" value="True" /> 
+						  <param name="AutoPlay" value="True" /> 
+						 
+						  <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="640" height="480" target="rtsp://admin:IT@5dt23@10.33.4.12:554/cam/realmonitor?channel=1&subtype=0"></embed> 
+						</object>
 					</div>
 				</div>
 			</div><!-- card-body -->
@@ -125,6 +139,8 @@
 	</div>
 
 </div>
+
+
 
 <script>
 	function getTangki(idKapal){

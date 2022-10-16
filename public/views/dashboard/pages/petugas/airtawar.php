@@ -1,12 +1,3 @@
-<?php
-
-if (isset($_POST['add'])) :
-    $this->model->AddAirTawar();
-endif;
-
-
-?>
-
 <div class="row mt-4">
     <div class="col-12 col-md-12">
         <!-- Page Header -->
@@ -31,7 +22,7 @@ endif;
 
         <div class="col-6 col-md-6">
             <div class="card card-small shadow bx-shadow">
-                <form class="" method="POST">
+                <form class="data-form" method="POST" action="<?= $this->gLink ?>SetAirTawar/postForm">
 
                     <div class="card-header border-bottom bg-white">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
@@ -94,13 +85,12 @@ endif;
 
                     <div class="btn-toolbar mb-2 mb-md-0 btn-group">
 
-                        <button class="btn btn-sm bg-yellow text-white" title="Reset" onclick="resetdebitair('<?= $dermaga['id'] ?>')">
+                        <button class="btn btn-sm bg-yellow text-white" title="Reset" type="button" onclick="resetdebitair('<?= $dermaga['id'] ?>')">
                             <i class="bi bi-printer-fill"></i> Reset
                         </button>
-                        <button class="btn btn-sm primary-bg text-white" title="Simpan" name="add">
+                        <button class="btn btn-sm primary-bg text-white" title="Simpan" name="add" type="submit">
                             <i class="bi bi-clipboard-plus"></i> Simpan
                         </button>
-
 
                     </div>
                 </form>
@@ -112,3 +102,7 @@ endif;
     <?php endforeach; ?>
 
 </div>
+
+<script>
+    setForm();
+</script>

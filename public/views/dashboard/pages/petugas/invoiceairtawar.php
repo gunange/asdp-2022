@@ -1,9 +1,3 @@
-<?php
-
-
-
-?>
-
 <div class="row mt-4">
     <div class="col-12 col-md-12">
         <!-- Page Header -->
@@ -63,7 +57,13 @@
                                     <td><?= $d['dermaga'] ?></td>
                                     <td><?= $d['debit_air'] ?> Liter</td>
                                     <td>Rp. <?= $d['total_air_tawar'] ?></td>
-                                    <td><?= $d['status'] ?></td>
+                                    <td>
+                                        <button class="btn btn-sm bg-purple text-white" 
+                                            title="Lunas !" 
+                                            onclick="openModalShow('#modal', '<?= $this->gLink ?>SetAirTawar/Lunas/<?= $k ?>', ()=>{injectJsDashboardPrimary();} )">
+                                            <i class="bi bi-check-lg"></i> <?= $d['status'] ?>
+                                        </button>
+                                    </td>
 
 
                                 </tr>

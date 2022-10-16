@@ -52,8 +52,19 @@ class ModelPetugas extends Controler
 		$set['tbl'] 	= "tbl_air_tawar";
 		database::insert($set);
 
-		msg::$msg = "Data berhasil ditambahkan";
-		msg::success();
+		$this->response["response"] = "OK";
+		$this->response["msg"] = "Data berhasil ditambahkan, kini data tersebut masuk dalam menu delayed";
+
+
+		if ($_POST['status'] == "Lunas"):
+			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
+			$this->response['modal'] = [
+					"#modal-center-lg",
+					BasePetugas . "SetAirTawar/Pengolahan"];
+		endif;
+
+
+		$this->ResponseApi();
 	}
 
 	public function GetAirTawar()

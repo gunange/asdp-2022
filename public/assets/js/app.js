@@ -25,16 +25,32 @@ function setForm() {
                 try {
                     const obj = JSON.parse(text);
                     if (obj.response == 'OK') {
-                        (obj.href) ?
+                        if (obj.href){
                             swal("Good job!", obj.msg, "success", {
                                 buttons: 'OK',
                             }).then((isTrue) => {
                                 if (isTrue) {
                                     window.location.href = obj.href;
                                 }
-                            }) : swal("Good job!", obj.msg, "success", {
+                            });
+
+                        } else if (obj.modal){
+
+
+                           swal("Good job!", obj.msg, "success", {
+                                buttons: 'OK',
+                            }).then((isTrue) => {
+                                if (isTrue) {
+                                    openModalShow(`${obj.modal[0]}`, `${obj.modal[1]}`, ()=>{injectJsDashboardPrimary();} )
+                                }
+                            });
+
+                        }
+                         else{
+                            swal("Good job!", obj.msg, "success", {
                                 buttons: false,
                             });
+                        } 
 
                     } else {
                         swal(
