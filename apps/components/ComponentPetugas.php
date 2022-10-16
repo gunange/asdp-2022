@@ -25,23 +25,22 @@ trait ComponentPetugas
 	public function SetAirTawar($page = null, $id = null)
 	{
 		$this->setPage = $page;
-		$this->id = $id ;
-		
-		if ($page == "postForm"):
+		$this->id = $id;
+
+		if ($page == "postForm") :
 			$this->model->AddAirTawar();
-		else:
-			$this->id = $id ;
+		else :
+			$this->id = $id;
 			$this->viewDash('settings/air-tawar');
 		endif;
 	}
-	public function PdfAirTawar($page=null, $id=null)
+	public function PdfAirTawar($page = null, $id = null)
 	{
-		$this->id = $id ;
-		$this->setPage = $page ;
-		if ($page == "Lunas"):
-			$this->data = $this->model->GetAirTawar()[$id] ;
+		$this->id = $id;
+		$this->setPage = $page;
+		if ($page == "Lunas") :
+			$this->data = $this->model->GetAirTawar()[$id];
 		endif;
 		$this->viewDash('pdf/air-tawar');
-
 	}
 }

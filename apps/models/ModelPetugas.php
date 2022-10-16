@@ -56,11 +56,12 @@ class ModelPetugas extends Controler
 		$this->response["msg"] = "Data berhasil ditambahkan, kini data tersebut masuk dalam menu delayed";
 
 
-		if ($_POST['status'] == "Lunas"):
+		if ($_POST['status'] == "Lunas") :
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
-					"#modal-center-lg",
-					BasePetugas . "SetAirTawar/Pengolahan"];
+				"#modal-center-lg",
+				BasePetugas . "SetAirTawar/Pengolahan"
+			];
 		endif;
 
 
@@ -74,6 +75,8 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+
+
 
 	public function GetDelayAirTawar()
 	{
@@ -169,5 +172,13 @@ class ModelPetugas extends Controler
 
 		msg::$msg = "Data berhasil diperbahrui ";
 		msg::success();
+	}
+
+	public function GetAirTawarById($id)
+	{
+		$set = $this->AirTawarJoin();
+		$set['query'] = "WHERE id='{$id}'";
+
+		return database::join($set);
 	}
 }
