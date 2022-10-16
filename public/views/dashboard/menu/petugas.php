@@ -45,7 +45,7 @@
 		<a href="<?= $this->gLink ?>DelayedDataSandar">
 			<i class="bi bi-file-earmark-excel-fill"></i>
 			<span>Sandar</span>
-			<span class="badge badge-pill badge-dark">10</span>
+			<span class="badge badge-pill badge-dark"><?= count($this->model->GetDelayDataSandar()) ?></span>
 		</a>
 	</li>
 	<li>

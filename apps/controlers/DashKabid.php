@@ -48,5 +48,11 @@ class DashKabid extends Controler {
 		endif ;
 		$this->viewDashboard ('bbm-kapal-per-hari');
 	}
+	public function DelayedAirTawar(){
+		$this->viewDashboard ('delayed-air-tawar');
+	}
+	public function DelayedSandarKapal(){
+		$this->viewDashboard ('delayed-sandar');
+	}
 	
 }
