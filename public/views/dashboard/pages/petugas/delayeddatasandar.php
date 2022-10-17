@@ -69,7 +69,7 @@
                                     <td><?= $d['total_sandar'] ?></td>
                                     <td><?= $d['status'] ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-sm bg-warning text-white" title="Tangki Kapal" onclick="window.location.href=''">
+                                        <button type="button" class="btn btn-sm bg-warning text-white" title="Tangki Kapal" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>SetDelaySandar/pay/<?= $k ?>')">
                                             <i class="bi bi-cash"></i>
                                             Bayar
                                         </button>

@@ -38,7 +38,7 @@
 			doc.text(36, 35, "Cabang Ternate");
 			doc.setFontSize(12);
 
-			doc.text(40, 40, "AIR TAWAR").setFont(undefined, 'bold');
+			doc.text(35, 40, "JASA SANDAR").setFont(undefined, 'bold');
 
 
 			doc.setFontSize(10);
@@ -122,7 +122,7 @@
 			doc.text(36, 35, "Cabang Ternate");
 			doc.setFontSize(12);
 
-			doc.text(40, 40, "AIR TAWAR").setFont(undefined, 'bold');
+			doc.text(35, 40, "JASA SANDAR").setFont(undefined, 'bold');
 
 
 			doc.setFontSize(10);

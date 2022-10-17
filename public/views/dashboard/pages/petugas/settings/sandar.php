@@ -24,8 +24,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-sm bg-purple text-white" onclick="window.location.href='<?= $this->gLink ?>DelayedAirTawar'"><i class="bi bi-arrow-clockwise"></i> Reload</button>
-            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" onclick="window.location.href='<?= $this->gLink ?>DelayedDataSandar'">Tutup</button>
         </div>
     </div>
 <?php elseif ($this->setPage == "Lunas") : ?>

@@ -55,6 +55,7 @@
                                 <input type="hidden" name="gt" id="gt<?= $k ?>">
                                 <input type="hidden" name="id_kapal" id="id_kapal<?= $k ?>">
                                 <input type="hidden" id="tarif_dermaga<?= $k ?>" value="<?= $dermaga['tarif'] ?>">
+                                <input type="hidden" id="key_sandar<?= $k ?>" name="key_sandar" value="<?= $k ?>">
                                 <input type="hidden" id="akumulasi_menit<?= $k ?>" value="" name="akumulasi_menit">
                                 <input type="hidden" id="total_call<?= $k ?>" value="" name="total_call">
 

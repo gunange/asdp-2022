@@ -22,6 +22,14 @@ trait ComponentPetugas
 		endif;
 		$this->viewDash('settings/delayedairtawar');
 	}
+	public function SetDelaySandar($page = null, $key = null)
+	{
+		$this->setPage = $page;
+		if (!is_null($key)) :
+			$this->data  =  $this->model->GetDelayDataSandar()[$key];
+		endif;
+		$this->viewDash('settings/delayedsandar');
+	}
 	public function SetAirTawar($page = null, $id = null, $key= null)
 	{
 		$this->setPage = $page;
@@ -52,8 +60,8 @@ trait ComponentPetugas
 
 		if ($page == "postForm") :
 			$this->model->AddSandar();
-		elseif ($page == "postDelayAirTawar") :
-			$this->model->PayAirTawar();
+		elseif ($page == "postDelaySandar") :
+			$this->model->PaySandar();
 		else :
 			$this->id = $id;
 			$this->viewDash('settings/sandar');

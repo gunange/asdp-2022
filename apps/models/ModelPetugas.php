@@ -197,6 +197,29 @@ class ModelPetugas extends Controler
 
 		$this->ResponseApi();
 	}
+	public function PaySandar()
+	{
+		$set['tbl']	= "tbl_sandar";
+		$set['key']	= "id";
+		$set['val']	= $_POST['id_sandar'];
+
+		$set['set'] = [
+			"status" => "Lunas",
+		];
+
+		database::update($set);
+
+		$idSandar = $_POST['id_sandar'];
+		$this->response["response"] = "OK";
+		$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
+		$this->response['modal'] = [
+			"#modal-center-lg-static",
+			BasePetugas . "SetSandar/Bayar/" . $idSandar
+		];
+
+
+		$this->ResponseApi();
+	}
 
 	public function GetAirTawarById($id)
 	{
@@ -232,6 +255,7 @@ class ModelPetugas extends Controler
 		$set['tbl'] 	= "tbl_sandar";
 
 		$idSandar  	= database::getNextId($set);
+		$keySandar = $_POST['key_sandar'] ;
 		database::insert($set);
 
 		$this->response["response"] = "OK";
@@ -245,6 +269,10 @@ class ModelPetugas extends Controler
 				BasePetugas . "SetSandar/Pengolahan/" . $idSandar
 			];
 		endif;
+
+		$this->response["function"] = [
+				'ressetTime("' . $keySandar . '")',
+			];
 
 
 		$this->ResponseApi();
