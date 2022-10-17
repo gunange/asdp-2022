@@ -23,12 +23,12 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
-	public function GetJsonTanggal($bulan=null, $tahun=null)
+	public function GetJsonTanggal($bulan = null, $tahun = null)
 	{
-		if (!is_null($tahun) && !is_null($bulan)):
-			
+		if (!is_null($tahun) && !is_null($bulan)) :
+
 			$countTgl = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
-		else:
+		else :
 			$countTgl = date('d');
 		endif;
 		$ret = [];
@@ -59,7 +59,7 @@ class ModelKabid extends Controler
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_kapal';
 		$set['query']	= "WHERE id = '{$id}'";
-		$set['loop'] 	= "no_loop" ;
+		$set['loop'] 	= "no_loop";
 
 		return database::select($set);
 	}

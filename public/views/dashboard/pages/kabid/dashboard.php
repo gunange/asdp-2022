@@ -25,7 +25,7 @@
 					<i class="bi bi-calendar2-event-fill"></i>
 				</div>
 				<div class="item-2 ps-3 py-4 row">
-					<h1 class="text-hidden">0</h1>
+					<h1 class="text-hidden">Rp. <?= $this->model->GetPendapatanAir()['pendapatan_air_tawar']; ?></h1>
 					<p class="text-hidden">Pendapatan Air</p>
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 					<i class="bi bi-hourglass-split"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden">0</h1>
+					<h1 class="text-hidden">Rp. <?= $this->model->GetPendatapanSandar()['pendapatan_sandar']; ?></h1>
 					<p class="text-hidden">Pendapatan Sandar</p>
 				</div>
 			</div>
@@ -51,8 +51,8 @@
 					<i class="bi bi-people-fill"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">Delayed Sandar</p>
+					<h1 class="text-hidden"><?= $this->model->GetDelayedAirTawar()['delay']; ?></h1>
+					<p class="text-hidden">Delayed Air Tawar</p>
 				</div>
 			</div>
 		</div>
@@ -64,8 +64,8 @@
 					<i class="bi bi-file-earmark-text-fill"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden">0</h1>
-					<p class="text-hidden">Delayed Air Tawar</p>
+					<h1 class="text-hidden"><?= $this->model->GetDelayedSandar()['delay']; ?></h1>
+					<p class="text-hidden">Delayed Sandar</p>
 				</div>
 			</div>
 		</div>
@@ -116,7 +116,7 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTank = $this->model->GetDataGrafik($this->model->GetHistoryDayTank($d['id'])) ;
+											$dataTank = $this->model->GetDataGrafik($this->model->GetHistoryDayTank($d['id']));
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
