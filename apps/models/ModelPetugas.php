@@ -70,8 +70,8 @@ class ModelPetugas extends Controler
 		if ($_POST['status'] == "Lunas") :
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
-				"#modal-center-lg",
-				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
+				"#modal-center-lg-static",
+				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar . "/" . $_POST['id_dermaga']
 			];
 		endif;
 
