@@ -94,7 +94,7 @@
 				<div class="col-6 mb-3">
 					<!-- <label class="form-label">Liter</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off" value="<?= $this->data['liter'] ?>">
+						<input type="text" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off" value="<?= $this->data['liter'] ?>">
 						<div class="input-group-text input-group-sm">liter</div>
 					</div>
 				</div>
