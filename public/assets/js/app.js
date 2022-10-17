@@ -25,6 +25,7 @@ function setForm() {
                 try {
                     const obj = JSON.parse(text);
                     if (obj.response == 'OK') {
+
                         if (obj.href){
                             swal("Good job!", obj.msg, "success", {
                                 buttons: 'OK',
@@ -50,7 +51,13 @@ function setForm() {
                             swal("Good job!", obj.msg, "success", {
                                 buttons: false,
                             });
-                        } 
+                        }
+
+                        if (obj.function){
+                            obj.function.forEach((fun)=>{
+                                eval(fun)
+                            });
+                        }
 
                     } else {
                         swal(
