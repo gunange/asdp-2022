@@ -373,78 +373,80 @@ trait MasterJoin
 
 		return $set;
 	}
-	public function GetStoryTangkiByIdKapal($id = null)
+	public function JoinStoryTangki($id)
 	{
 		$set['set'] 	= "
 		(
-		        SELECT
-		            CAST(CONCAT(tgl, ' ', waktu) AS datetime)
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) dates, (
-		        SELECT
-		            tgl
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) AS tgl, (
-		        SELECT
-		            waktu
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) AS waktu,
-		    (
-		        SELECT
-		            tbl_history_tanki.liter
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) AS liter,
-		    (
-		        SELECT
-		            tinggi_bbm waktu
-		        FROM
-		            tbl_history_tanki
-		            JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
-		        WHERE
-		            id_jenis_tanki = tt.id_jenis_tanki
-		        ORDER BY
-		            tbl_history_tanki.id DESC
-		        LIMIT
-		            0, 1
-		    ) AS tinggi_bbm,
-		    id_jenis_tanki,
-		    tinggi,
-		    tt.liter AS liter_tanki,
-		    tinggi_maksimum,
-		    nama_kapal,
-		    jenis_tanki
+            SELECT
+                CAST(CONCAT(tgl, ' ', waktu) AS datetime)
+            FROM
+                tbl_history_tanki
+                JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+            WHERE
+                id_jenis_tanki = tt.id_jenis_tanki
+            ORDER BY
+                tbl_history_tanki.id DESC
+            LIMIT
+                0, 1
+        ) dates, (
+            SELECT
+                tgl
+            FROM
+                tbl_history_tanki
+                JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+            WHERE
+                id_jenis_tanki = tt.id_jenis_tanki
+            ORDER BY
+                tbl_history_tanki.id DESC
+            LIMIT
+                0, 1
+        ) AS tgl, (
+            SELECT
+                waktu
+            FROM
+                tbl_history_tanki
+                JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+            WHERE
+                id_jenis_tanki = tt.id_jenis_tanki
+            ORDER BY
+                tbl_history_tanki.id DESC
+            LIMIT
+                0, 1
+        ) AS waktu,
+        (
+            SELECT
+                tbl_history_tanki.liter
+            FROM
+                tbl_history_tanki
+                JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+                  JOIN tbl_kapal ON tbl_tanki.id_kapal = tbl_kapal.id
+            WHERE
+                id_jenis_tanki=tt.id_jenis_tanki AND tbl_kapal.id= '{$id}'
+            ORDER BY
+                tbl_history_tanki.id DESC
+            LIMIT
+                0, 1
+        ) AS liter,
+        (
+            SELECT
+                tinggi_bbm waktu
+            FROM
+                tbl_history_tanki
+                JOIN tbl_tanki ON tbl_tanki.id = tbl_history_tanki.id_tanki
+                  JOIN tbl_kapal ON tbl_tanki.id_kapal = tbl_kapal.id
+            WHERE
+                id_jenis_tanki=tt.id_jenis_tanki AND tbl_kapal.id= '{$id}'
+            ORDER BY
+                tbl_history_tanki.id DESC
+            LIMIT
+                0, 1
+        ) AS tinggi_bbm,
+        id_jenis_tanki,
+        tinggi,
+        tt.liter AS liter_tanki,
+        tinggi_maksimum,
+        nama_kapal,
+        jenis_tanki
 		";
 		$set['join'] = [
 
@@ -477,9 +479,7 @@ trait MasterJoin
 			]
 		];
 
-		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
-
-		return database::join($set);
+		return $set ;
 	}
 
 

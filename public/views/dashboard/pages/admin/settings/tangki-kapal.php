@@ -30,7 +30,7 @@
 				<div class="col-6 mb-3">
 					<!-- <label class="form-label">Tinggi</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off">
+						<input type="text" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 				<div class="col-6 mb-3">
 					<!-- <label class="form-label">Liter</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off">
+						<input type="text" class="form-control form-control-sm" placeholder="Liter" name="liter" required autocomplete="off">
 						<div class="input-group-text input-group-sm">liter</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 				<div class="col-12 mb-3">
 					<label class="form-label">Tinggi Maksimal Tanki</label>
 					<div class="input-group input-group-sm">
-						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi Maksimal Tanki" name="tinggi_maksimum" required autocomplete="off" value="<?= $this->data['tinggi_maksimum'] ?>">
+						<input type="text" min="1" class="form-control form-control-sm" placeholder="Tinggi Maksimal Tanki" name="tinggi_maksimum" required autocomplete="off" value="<?= $this->data['tinggi_maksimum'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 				<div class="col-6 mb-3">
 					<!-- <label class="form-label">Tinggi</label> -->
 					<div class="input-group input-group-sm">
-						<input type="number" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off" value="<?= $this->data['tinggi'] ?>">
+						<input type="text" min="1" class="form-control form-control-sm" placeholder="Tinggi" name="tinggi" required autocomplete="off" value="<?= $this->data['tinggi'] ?>">
 						<div class="input-group-text input-group-sm">cm</div>
 					</div>
 				</div>

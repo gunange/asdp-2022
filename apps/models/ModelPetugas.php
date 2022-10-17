@@ -277,4 +277,33 @@ class ModelPetugas extends Controler
 
 		$this->ResponseApi();
 	}
+
+
+	public function HistoryTangkiKapalDay($id)
+	{
+		$set 			 = $this->HistoryDayTank();
+
+		$set['query']	= "WHERE id_kapal='{$id}' AND id_jenis_tanki=1 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+
+
+		return database::join($set);
+	}
+	public function GetStoryTangkiByIdKapal($id)
+	{
+		$set 			 = $this->JoinStoryTangki($id);
+
+		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
+
+
+		return database::join($set);
+	}
+	public function Testing($id)
+	{
+		$set 			 = $this->JoinStoryTangki();
+
+		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
+
+
+		return database::join($set ,false);
+	}
 }

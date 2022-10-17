@@ -102,30 +102,6 @@
 
 </div>
 
-<div class="row mt-5">
-	<div class="col-6 col-md-12">
-		<div class="card card-small shadow bx-shadow">
-			<div class="card-header border-bottom bg-white">
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
-					<h6 class="m-0">
-						<i class="bi bi-webcam-fill text-teal-500 me-2"></i> CCTV Kapal
-					</h6>
-				</div>
-			</div><!-- card-header -->
-
-
-			<!-- <div class="card-body">
-				<div class="row">
-					<div class="col-md-12">
-						<video id="video" src="rtsp://admin:IT@5dp23@10.33.4.20:80/cam/realmonitor?channel=1&subtype=0" autoplay="autoplay" width="100%" height="350px"></video>
-					</div>
-				</div>
-			</div> -->
-			<!-- card-body -->
-		</div>
-	</div>
-
-</div>
 
 
 
@@ -153,3 +129,4 @@
 	}
 
 </script>
+

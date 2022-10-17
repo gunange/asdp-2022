@@ -52,13 +52,27 @@
 <?php elseif ($this->setPage == "getGrafikKapal"): ?>
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
 
+	<?php 
+	$pemakaian = 0 ;
+
+
+	$dataPemakaian =  $this->model->GetDataGrafik($this->model->HistoryTangkiKapalDay($this->id) ) ;
+
+	if (!is_null ($dataPemakaian )):
+		$pemakaian = round(json_decode($dataPemakaian)[0], 1 );
+	endif;
+
+	 ?>
+
 	<?php if (!empty($data)) : ?>
 	<?php $litter = 0; ?>
 
 	<?php foreach ($data as $k => $d ): ?>
+
 		<?php 
 			$tinggiMax = $this->model->HitungVolume($d['liter_tanki'], $d['tinggi'], $d['tinggi_maksimum']);
 
+			
 		 ?>
 	<div class="col-md-6 mt-3 mb-4">
 		<section>
@@ -71,10 +85,10 @@
 				<div class="text-tangki text-center"></div>
 			</div>
 			<div class="text-center">
-				<h5><?= tools::rupiah($d['liter']) ?> <span> (litter)</span></h5>
+				<h5><?= round($d['liter'], 1) ?> <span> (litter)</span></h5>
 				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
 				<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
-				<p class="mb-1">Maxiimal <?= $tinggiMax ?> (litter)</p>
+				<p class="mb-1">Maxiimal <?= round($tinggiMax, 1) ?> (litter)</p>
 			</div>
 		</section>
 	</div>
@@ -82,7 +96,8 @@
 	<?php endforeach; ?>
 
 	<div class="border-top pt-2">
-		<h5>Saldo Litter = <?= tools::rupiah($litter) ?></h5>
+		<h6>Pemakaian = <?= $pemakaian ?> -liter</h6>
+		<h5>Saldo = <?= round($litter,1) ?> -liter</h5>
 	</div>
 
 <?php else: ?>

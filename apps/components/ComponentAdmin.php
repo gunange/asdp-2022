@@ -39,7 +39,7 @@ trait ComponentAdmin
 	{
 		$this->setPage = $page;
 		if (!is_null($key)) :
-			$this->data  =  $this->model->GetTangkiKapalById($idKapal)[$key];
+			$this->data  =  @$this->model->GetTangkiKapalById($idKapal)[$key];
 			$this->key = $key;
 		endif;
 		$this->idKapal = $idKapal;
