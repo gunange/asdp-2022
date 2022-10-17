@@ -52,7 +52,7 @@
                             <?php foreach ($this->model->GetDelayDataSandar() as $k => $d) : ?>
                                 <tr>
                                     <td><?= $k + 1 ?></td>
-                                    <td><?= $d['waktu'] ?></td>
+                                    <td><?= $d['waktu_awal'] ?> - <?= $d['waktu_akhir'] ?></td>
                                     <td><?= $d['tgl'] ?></td>
                                     <td><?= $d['shift'] ?></td>
                                     <td><?= $d['nama_kapal'] ?></td>
