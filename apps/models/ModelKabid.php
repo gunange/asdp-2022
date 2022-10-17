@@ -91,4 +91,13 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
+	public function GetStoryTangkiByIdKapal($id)
+	{
+		$set 			 = $this->JoinStoryTangki($id);
+
+		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
+
+
+		return database::join($set);
+	}
 }
