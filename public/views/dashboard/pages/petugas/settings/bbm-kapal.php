@@ -59,7 +59,7 @@
 	$dataPemakaian =  $this->model->GetDataGrafik($this->model->HistoryTangkiKapalDay($this->id) ) ;
 
 	if (!is_null ($dataPemakaian )):
-		$pemakaian = round(json_decode($dataPemakaian)[0], 1 );
+		$pemakaian = round(@json_decode($dataPemakaian)[0], 1 );
 	endif;
 
 	 ?>
