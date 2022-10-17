@@ -22,10 +22,10 @@
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-blue-400 text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
-					<i class="bi bi-calendar2-event-fill"></i>
+					<i class="bi bi-currency-exchange"></i>
 				</div>
 				<div class="item-2 ps-3 py-4 row">
-					<h1 class="text-hidden">Rp. <?= $this->model->GetPendapatanAir()['pendapatan_air_tawar']; ?></h1>
+					<h1 class="text-hidden">Rp. <?= tools::rupiah($this->model->GetPendapatanAir()['pendapatan_air_tawar']); ?></h1>
 					<p class="text-hidden">Pendapatan Air</p>
 				</div>
 			</div>
@@ -35,10 +35,10 @@
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-green-400 text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
-					<i class="bi bi-hourglass-split"></i>
+					<i class="bi bi-currency-exchange"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden">Rp. <?= $this->model->GetPendatapanSandar()['pendapatan_sandar']; ?></h1>
+					<h1 class="text-hidden">Rp. <?= tools::rupiah($this->model->GetPendatapanSandar()['pendapatan_sandar']); ?></h1>
 					<p class="text-hidden">Pendapatan Sandar</p>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-purple text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
-					<i class="bi bi-people-fill"></i>
+					<i class="bi bi-droplet-half"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
 					<h1 class="text-hidden"><?= $this->model->GetDelayedAirTawar()['delay']; ?></h1>
@@ -61,7 +61,7 @@
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-yellow-600 text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
-					<i class="bi bi-file-earmark-text-fill"></i>
+					<i class="bi bi-life-preserver"></i>
 				</div>
 				<div class="item-2 ps-3 py-4">
 					<h1 class="text-hidden"><?= $this->model->GetDelayedSandar()['delay']; ?></h1>

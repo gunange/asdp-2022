@@ -22,10 +22,11 @@ trait ComponentPetugas
 		endif;
 		$this->viewDash('settings/delayedairtawar');
 	}
-	public function SetAirTawar($page = null, $id = null)
+	public function SetAirTawar($page = null, $id = null, $key= null)
 	{
 		$this->setPage = $page;
 		$this->id = $id;
+		$this->key = $key;
 
 		if ($page == "postForm") :
 			$this->model->AddAirTawar();

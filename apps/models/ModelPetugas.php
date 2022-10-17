@@ -61,6 +61,7 @@ class ModelPetugas extends Controler
 		$set['tbl'] 	= "tbl_air_tawar";
 
 		$idAirTawar  	= database::getNextId($set);
+		$idDermaga 		= $_POST['id_dermaga'];
 		database::insert($set);
 
 		$this->response["response"] = "OK";
@@ -71,7 +72,11 @@ class ModelPetugas extends Controler
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
 				"#modal-center-lg-static",
-				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
+				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar . "/" . $idDermaga
+			];
+		else :
+			$this->response["function"] = [
+				'resetdebitair("' . $idDermaga . '")',
 			];
 		endif;
 

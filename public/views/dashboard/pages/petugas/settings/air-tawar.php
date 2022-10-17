@@ -10,7 +10,7 @@
 
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal" onclick="resetdebitair('<?= $this->key ?>')">Tutup</button>
 		</div>
 	</div>
 <?php elseif ($this->setPage == "Bayar") : ?>
