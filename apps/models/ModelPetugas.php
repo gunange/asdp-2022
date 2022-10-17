@@ -283,7 +283,7 @@ class ModelPetugas extends Controler
 	{
 		$set 			 = $this->HistoryDayTank();
 
-		$set['query']	= "WHERE id_kapal='{$id}' AND id_jenis_tanki=1 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+		$set['query']	= "WHERE id_kapal='{$id}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki=1 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
 
 
 		return database::join($set);
