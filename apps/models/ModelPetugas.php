@@ -200,4 +200,38 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+
+	public function AddSandar()
+	{
+		$set['set'] = [
+			"id_user" 			=> $this->user->id,
+			"id_kapal" 			=> $_POST['id_kapal'],
+			"id_dermaga" 		=> $_POST['id_dermaga'],
+			"shift"				=> $_SESSION['shiftPetugas'],
+			"tgl"				=> date("Y-m-d"),
+			"waktu"				=> date("h:i:s"),
+			"debit_air"			=> $_POST['debit_air'],
+			"total_air_tawar"	=> $_POST['total_air_tawar'],
+			"status"      		=> $_POST['status'],
+		];
+		$set['tbl'] 	= "tbl_air_tawar";
+
+		$idAirTawar  	= database::getNextId($set);
+		database::insert($set);
+
+		$this->response["response"] = "OK";
+		$this->response["msg"] = "Data berhasil ditambahkan, kini data tersebut masuk dalam menu delayed";
+
+
+		if ($_POST['status'] == "Lunas") :
+			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
+			$this->response['modal'] = [
+				"#modal-center-lg",
+				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
+			];
+		endif;
+
+
+		$this->ResponseApi();
+	}
 }

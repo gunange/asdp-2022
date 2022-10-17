@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <div class="row mt-4">
     <div class="col-12 col-md-12">
         <!-- Page Header -->
@@ -27,7 +22,7 @@
 
         <div class="col-6 col-md-6" id="dermaga<?= $k ?>">
             <div class="card card-small shadow bx-shadow">
-                <form class="" method="POST">
+                <form class="" method="POST" action="<?= $this->gLink ?>SetSandar/postForm">
 
                     <div class="card-header border-bottom bg-white">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
@@ -60,14 +55,14 @@
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Start</label>
                                     <div class="input-group input-group-sm">
-                                        <input name="debit_air" id="live<?= $k ?>" id="" type="text" class="form-control form-control-sm" placeholder="00:00:00" required autocomplete="off" readonly>
+                                        <input name="waktu_awal" id="live<?= $k ?>" id="" type="text" class="form-control form-control-sm" placeholder="00:00:00" required autocomplete="off" readonly>
                                         <div class="input-group-text input-group-sm"><i class="bi bi-clock-history"></i></div>
                                     </div>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Stop</label>
                                     <div class="input-group input-group-sm">
-                                        <input name="debit_air" id="stop<?= $k ?>" type="text" class="form-control form-control-sm" placeholder="00:00:00" required autocomplete="off" readonly>
+                                        <input name="waktu_akhir" id="stop<?= $k ?>" type="text" class="form-control form-control-sm" placeholder="00:00:00" required autocomplete="off" readonly>
                                         <div class="input-group-text input-group-sm"><i class="bi bi-clock-history"></i></div>
                                     </div>
                                 </div>
@@ -76,7 +71,7 @@
                                     <label class="form-label">Tarif</label>
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-text input-group-sm">Rp.</div>
-                                        <input name="total_air_tawar" id="totaltarifair<?= $k ?>" type="text" class="form-control form-control-sm" placeholder="0" required autocomplete="off" readonly>
+                                        <input name="total_sandar" id="total_sandar<?= $k ?>" type="text" class="form-control form-control-sm" placeholder="0" required autocomplete="off" readonly>
                                     </div>
                                 </div>
 
@@ -101,7 +96,7 @@
                                 <i class="bi bi-play-fill"></i> Start
                             </button>
                         </div>
-                        
+
                         <button class="btn btn-sm primary-bg text-white" title="Simpan" name="add">
                             <i class="bi bi-clipboard-plus"></i> Simpan
                         </button>
@@ -119,104 +114,108 @@
 </div>
 
 <script>
-    
-function setTime(id="", on=0){
-    
-    if (document.getElementById('dermaga' + id).classList.contains('active')){
-    
-        var date = new Date();
-        var h = date.getHours(); 
-        var m = date.getMinutes();
-        var s = date.getSeconds(); 
-    
-        h = (h < 10) ? "0" + h : h;
-        m = (m < 10) ? "0" + m : m;
-        s = (s < 10) ? "0" + s : s;
-        
-        var time = h + ":" + m + ":" + s ;
-        
-        document.getElementById('live' + id).value = time ;
-        
-    
-        if (on == 0){
-            
-            document.getElementById('tombol-waktu' + id).innerHTML = 
+    function setTime(id = "", on = 0) {
+
+        if (document.getElementById('dermaga' + id).classList.contains('active')) {
+
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s;
+
+            document.getElementById('live' + id).value = time;
+
+
+            if (on == 0) {
+
+                document.getElementById('tombol-waktu' + id).innerHTML =
                     `<button class="btn btn-sm bg-red text-white" type="button" title="Stop" onclick="stopTime('${id}', '${date.getTime()}');">
                         <i class="bi bi-stop-fill"></i> Stop
                     </button>`;
-            document.getElementById('start' + id).innerHTML = time ;
+                document.getElementById('start' + id).innerHTML = time;
+            }
+
+
+            setTimeout(() => {
+                setTime(id, 1)
+            }, 1000)
         }
-       
-    
-        setTimeout(()=>{
-            setTime(id, 1)
-        }, 1000)
+
     }
-    
-}
 
-function startTime(id=""){
-    document.getElementById('dermaga' + id).classList.add('active');
-    setTime(id);
-}
+    function startTime(id = "") {
+        document.getElementById('dermaga' + id).classList.add('active');
+        setTime(id);
 
-function stopTime(id="", waktuLama,){
-    var nTime = Math.floor((new Date().getTime() - waktuLama) / 1000) ; 
-    var lamaWaktu = HitungRangeWaktu(nTime) ;
-    var call = HitungCall(nTime );
+    }
 
-    document.getElementById('dermaga' + id).classList.remove('active');
-    document.getElementById('tombol-waktu' + id).innerHTML = 
-                    `<button class="btn btn-sm bg-yellow text-white" type="button" title="Resset" onclick="ressetTime('${id}');">
+    function stopTime(id = "", waktuLama, ) {
+        var nTime = Math.floor((new Date().getTime() - waktuLama) / 1000);
+        var lamaWaktu = HitungRangeWaktu(nTime);
+        var call = HitungCall(nTime);
+
+        HitungTarifSandar()
+
+        document.getElementById('dermaga' + id).classList.remove('active');
+        document.getElementById('tombol-waktu' + id).innerHTML =
+            `<button class="btn btn-sm bg-yellow text-white" type="button" title="Resset" onclick="ressetTime('${id}');">
                         <i class="bi bi-arrow-clockwise"></i> Resset
                     </button>`;
-    document.getElementById('stop' + id).value = document.getElementById('live' + id).value;
-    document.getElementById('live' + id).value = document.getElementById('start' + id).innerText;
-    
-    document.getElementById('start' + id).innerText = "Jumlah call : " + call + ` ( ${lamaWaktu} )` ;
+        document.getElementById('stop' + id).value = document.getElementById('live' + id).value;
+        document.getElementById('live' + id).value = document.getElementById('start' + id).innerText;
 
-}
+        document.getElementById('start' + id).innerText = "Jumlah call : " + call + ` ( ${lamaWaktu} )`;
 
-function ressetTime(id=""){
-    document.getElementById('tombol-waktu' + id).innerHTML = `
+    }
+
+    function ressetTime(id = "") {
+        document.getElementById('tombol-waktu' + id).innerHTML = `
                     <button class="btn btn-sm bg-teal text-white" type="button" title="Start" onclick="startTime('${id}');">
                         <i class="bi bi-play-fill"></i> Start
                     </button>`;
-    document.getElementById('live' + id ).value = "";
-    document.getElementById('stop' + id ).value = "";
-    document.getElementById('start' + id ).innerHTML = "";
-    $('#id_kapal' + id).val('').trigger('change');
-    $('#status_debit_air' + id).val('').trigger('change');
-    
-
-}
+        document.getElementById('live' + id).value = "";
+        document.getElementById('stop' + id).value = "";
+        document.getElementById('start' + id).innerHTML = "";
+        $('#id_kapal' + id).val('').trigger('change');
+        $('#status_debit_air' + id).val('').trigger('change');
 
 
-
+    }
 </script>
 
 <script>
-    function HitungRangeWaktu(n){
-        var h = 0 ;
-        var j = 0 ;
+    function HitungTarifSandar() {
+        console.log(call);
+
+    }
+
+    function HitungRangeWaktu(n) {
+        var h = 0;
+        var j = 0;
         var m = 0;
         var d = 0;
 
         while (n >= 86400) {
-            h++ ;
-            n = n - 86400 ;
+            h++;
+            n = n - 86400;
 
         }
 
         while (n >= 3600) {
-            j++ ;
-            n = n - 3600 ;
+            j++;
+            n = n - 3600;
 
         }
 
         while (n >= 60) {
-            m++ ;
-            n = n - 60 ;
+            m++;
+            n = n - 60;
 
         }
 
@@ -226,20 +225,19 @@ function ressetTime(id=""){
         m = (m < 10) ? "0" + m : m;
         d = (d < 10) ? "0" + d : d;
 
-        return j + ":" + m + ":" + d ;
+        return j + ":" + m + ":" + d;
     }
 
-    function HitungCall(n){
-        n = Math.floor(n / 60 );
-        call = 1 ;
+    function HitungCall(n) {
+        n = Math.floor(n / 60);
+        call = 1;
 
-        while (n > 50 ) {
-            call++ ;
-            n = Math.floor(n - 50) ;
+        while (n > 50) {
+            call++;
+            n = Math.floor(n - 50);
         }
 
-        return call ;
+        return call;
 
     }
-
 </script>

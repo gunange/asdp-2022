@@ -30,7 +30,7 @@
 
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Link Kamera</label>
-					<input class="form-control form-control-sm" type="text" placeholder="http://...." name="kamera" required autocomplete="off">
+					<input class="form-control form-control-sm" type="text" placeholder="http://...." name="kamera" autocomplete="off">
 				</div>
 
 			</div>
@@ -71,7 +71,7 @@
 
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Link Kamera</label>
-					<input class="form-control form-control-sm" type="text" placeholder="http://...." name="kamera" required autocomplete="off" value="<?= $this->data['kamera'] ?>">
+					<input class="form-control form-control-sm" type="text" placeholder="http://...." name="kamera" autocomplete="off" value="<?= $this->data['kamera'] ?>">
 				</div>
 
 

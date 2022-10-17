@@ -43,6 +43,28 @@ trait ComponentPetugas
 
 		$this->viewDash('pdf/air-tawar');
 	}
+
+	public function SetSandar($page = null, $id = null)
+	{
+		$this->setPage = $page;
+		$this->id = $id;
+
+		if ($page == "postForm") :
+			$this->model->AddSandar();
+		elseif ($page == "postDelayAirTawar") :
+			$this->model->PayAirTawar();
+		else :
+			$this->id = $id;
+			$this->viewDash('settings/air-tawar');
+		endif;
+	}
+	public function PdfSandar($page = null, $id = null)
+	{
+		$this->id = $id;
+		$this->setPage = $page;
+
+		$this->viewDash('pdf/air-tawar');
+	}
 	public function PostShit()
 	{
 		$_SESSION['shiftPetugas'] = $_POST['post_shift'];
