@@ -33,35 +33,35 @@
 			let img = new Image();
 			img.src = "<?= BaseFiles ?>images/logo-asdp.png";
 
-			doc.addImage(img, 'jpeg', 23, 5, 50, 20);
-			doc.text(23, 30, "PT. ASDP Indonesia Ferry (Persero)");
-			doc.text(36, 35, "Cabang Ternate");
-			doc.setFontSize(12);
+			doc.addImage(img, 'jpeg', 20, 5, 30, 10);
+			doc.text(5, 25, "PT. ASDP Indonesia Ferry (Persero)");
+			doc.text(21, 30, "Cabang Ternate");
+			doc.setFontSize(9);
 
-			doc.text(40, 40, "AIR TAWAR").setFont(undefined, 'bold');
-
-
-			doc.setFontSize(10);
-			doc.text(20, 50, "Tanggal").setFont(undefined, 'normal');
-			doc.text(40, 50, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu']).setFont(undefined, 'bold');
-			doc.text(20, 55, "Operator").setFont(undefined, 'normal');
-			doc.text(40, 55, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
-			doc.text(20, 60, "Regu").setFont(undefined, 'normal');
-			doc.text(40, 60, ": " + dataPDF['regu'] + "/Shift " + dataPDF['shift']).setFont(undefined, 'normal');
+			doc.text(25, 35, "AIR TAWAR").setFont(undefined, 'bold');
 
 
-			doc.text(20, 75, dataPDF['nama_kapal']).setFont(undefined, 'bold');
-			doc.text(20, 80, "Dermaga").setFont(undefined, 'normal');
-			doc.text(60, 80, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
-			doc.text(20, 85, "Debit Air").setFont(undefined, 'normal');
-			doc.text(60, 85, ": " + dataPDF['debit_air']).setFont(undefined, 'bold');
-			doc.text(20, 90, "Tarif").setFont(undefined, 'normal');
-			doc.text(60, 90, ": Rp. 50,/Liter").setFont(undefined, 'bold');
+			doc.setFontSize(8);
+			doc.text(5, 45, "Tanggal").setFont(undefined, 'normal');
+			doc.text(25, 45, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu']).setFont(undefined, 'bold');
+			doc.text(5, 50, "Operator").setFont(undefined, 'normal');
+			doc.text(25, 50, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
+			doc.text(5, 55, "Regu").setFont(undefined, 'normal');
+			doc.text(25, 55, ": " + dataPDF['regu'] + "/Shift " + dataPDF['shift']).setFont(undefined, 'normal');
 
 
-			doc.text(20, 100, "Tagihan Air Tawar").setFont(undefined, 'bold');
-			doc.text(60, 100, ": Rp. " + dataPDF['total_air_tawar']).setFont(undefined, 'bold');
-			doc.text(20, 95, "______________________________________").setFont(undefined, 'bold');
+			doc.text(5, 70, dataPDF['nama_kapal']).setFont(undefined, 'bold');
+			doc.text(5, 75, "Dermaga").setFont(undefined, 'normal');
+			doc.text(55, 75, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
+			doc.text(5, 80, "Debit Air").setFont(undefined, 'normal');
+			doc.text(55, 80, ": " + dataPDF['debit_air']).setFont(undefined, 'bold');
+			doc.text(5, 85, "Tarif").setFont(undefined, 'normal');
+			doc.text(55, 85, ": Rp. 50,/Liter").setFont(undefined, 'bold');
+
+
+			doc.text(5, 95, "Tagihan Air Tawar").setFont(undefined, 'bold');
+			doc.text(55, 95, ": Rp. " + dataPDF['total_air_tawar']).setFont(undefined, 'bold');
+			doc.text(5, 100, "_______________________________________________").setFont(undefined, 'bold');
 
 
 
