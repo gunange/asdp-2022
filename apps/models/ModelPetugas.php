@@ -51,7 +51,7 @@ class ModelPetugas extends Controler
 			"id_user" 			=> $this->user->id,
 			"id_kapal" 			=> $_POST['id_kapal'],
 			"id_dermaga" 		=> $_POST['id_dermaga'],
-			"shift"				=> '0',
+			"shift"				=> $_SESSION['shiftPetugas'],
 			"tgl"				=> date("Y-m-d"),
 			"waktu"				=> date("h:i:s"),
 			"debit_air"			=> $_POST['debit_air'],

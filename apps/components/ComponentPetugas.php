@@ -29,7 +29,7 @@ trait ComponentPetugas
 
 		if ($page == "postForm") :
 			$this->model->AddAirTawar();
-		elseif($page == "postDelayAirTawar"):
+		elseif ($page == "postDelayAirTawar") :
 			$this->model->PayAirTawar();
 		else :
 			$this->id = $id;
@@ -48,7 +48,7 @@ trait ComponentPetugas
 		$_SESSION['shiftPetugas'] = $_POST['post_shift'];
 		$this->model->response['response'] = "OK";
 		$this->model->response['msg'] = "Sukses anda telah memilih shift, Tekan OK Untuk menyimpan";
-		$this->model->response['href'] = BasePetugas . "Main" ;
+		$this->model->response['href'] = BasePetugas . "Main";
 
 		$this->model->ResponseApi();
 	}
