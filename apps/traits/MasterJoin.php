@@ -248,6 +248,7 @@ trait MasterJoin
 			nama_kapal,
 			dermaga,
 			waktu_awal,
+			waktu_akhir,
 			(waktu_akhir - waktu_awal) lama_sandar,
 			total_sandar,
 			status

@@ -55,6 +55,8 @@
                                 <input type="hidden" name="gt" id="gt<?= $k ?>">
                                 <input type="hidden" name="id_kapal" id="id_kapal<?= $k ?>">
                                 <input type="hidden" id="tarif_dermaga<?= $k ?>" value="<?= $dermaga['tarif'] ?>">
+                                <input type="hidden" id="akumulasi_menit<?= $k ?>" value="" name="akumulasi_menit">
+                                <input type="hidden" id="total_call<?= $k ?>" value="" name="total_call">
 
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Start</label>
@@ -184,6 +186,8 @@
         document.getElementById('live' + id).value = document.getElementById('start' + id).innerText;
 
         document.getElementById('start' + id).innerText = "Jumlah call : " + call + ` ( ${lamaWaktu} )`;
+        document.getElementById('akumulasi_menit' + id).value = lamaWaktu ;
+        document.getElementById('total_call' + id).value = call ;
 
     }
 
@@ -196,6 +200,7 @@
         document.getElementById('stop' + id).value = "";
         document.getElementById('id_kapal' + id).value = "";
         document.getElementById('total_sandar' + id).value = "" ;
+        document.getElementById('akumulasi_menit' + id).value = "" ;
         document.getElementById('start' + id).innerHTML = "";
         $('#data_id_gt' + id).val('').trigger('change');
         $('#status_debit_air' + id).val('').trigger('change');
@@ -259,4 +264,8 @@
         return call;
 
     }
+</script>
+
+<script>
+    setForm()
 </script>

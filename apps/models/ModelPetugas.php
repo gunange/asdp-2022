@@ -207,16 +207,18 @@ class ModelPetugas extends Controler
 			"id_user" 			=> $this->user->id,
 			"id_kapal" 			=> $_POST['id_kapal'],
 			"id_dermaga" 		=> $_POST['id_dermaga'],
-			"shift"				=> $_SESSION['shiftPetugas'],
-			"tgl"				=> date("Y-m-d"),
-			"waktu"				=> date("h:i:s"),
-			"debit_air"			=> $_POST['debit_air'],
-			"total_air_tawar"	=> $_POST['total_air_tawar'],
-			"status"      		=> $_POST['status'],
+			"tgl" 				=> date("Y-m-d"),
+			"waktu_awal" 		=> $_POST['waktu_awal'],
+			"waktu_akhir" 		=> $_POST['waktu_akhir'],
+			"akumulasi_menit" 	=> $_POST['akumulasi_menit'],
+			"total_call" 		=> $_POST['total_call'],
+			"total_sandar" 		=> $_POST['total_sandar'],
+			"shift" 			=> $_SESSION['shiftPetugas'],
+			"status" 			=> $_POST['status'],
 		];
-		$set['tbl'] 	= "tbl_air_tawar";
+		$set['tbl'] 	= "tbl_sandar";
 
-		$idAirTawar  	= database::getNextId($set);
+		$idSandar  	= database::getNextId($set);
 		database::insert($set);
 
 		$this->response["response"] = "OK";
@@ -227,7 +229,7 @@ class ModelPetugas extends Controler
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
 				"#modal-center-lg",
-				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
+				BasePetugas . "SetSandar/Pengolahan/" . $idSandar
 			];
 		endif;
 

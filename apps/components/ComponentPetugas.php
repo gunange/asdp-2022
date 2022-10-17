@@ -55,7 +55,7 @@ trait ComponentPetugas
 			$this->model->PayAirTawar();
 		else :
 			$this->id = $id;
-			$this->viewDash('settings/air-tawar');
+			$this->viewDash('settings/sandar');
 		endif;
 	}
 	public function PdfSandar($page = null, $id = null)
@@ -63,7 +63,7 @@ trait ComponentPetugas
 		$this->id = $id;
 		$this->setPage = $page;
 
-		$this->viewDash('pdf/air-tawar');
+		$this->viewDash('pdf/sandar');
 	}
 	public function PostShit()
 	{
