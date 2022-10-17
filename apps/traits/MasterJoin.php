@@ -251,6 +251,7 @@ trait MasterJoin
 			waktu_akhir,
 			(waktu_akhir - waktu_awal) lama_sandar,
 			total_sandar,
+			akumulasi_menit,
 			status
 		';
 		$set['join'] = [

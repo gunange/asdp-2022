@@ -43,6 +43,7 @@
                             <tr>
                                 <th width="50px">#</th>
                                 <th>Waktu</th>
+                                <th>Akumulasi</th>
                                 <th>Tanggal</th>
                                 <th>Shift</th>
                                 <th>Nama Kapal</th>
@@ -58,7 +59,8 @@
                             <?php foreach ($this->model->GetDataSandar() as $k => $d) : ?>
                                 <tr>
                                     <td><?= $k + 1 ?></td>
-                                    <td><?= $d['waktu'] ?></td>
+                                    <td><?= $d['waktu_awal'] . ' - ' . $d['waktu_akhir'] ?></td>
+                                    <td><?= $d['akumulasi_menit'] ?></td>
                                     <td><?= $d['tgl'] ?></td>
                                     <td><?= $d['shift'] ?></td>
                                     <td><?= $d['nama_kapal'] ?></td>
