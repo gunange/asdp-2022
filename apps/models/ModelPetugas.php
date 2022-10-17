@@ -70,7 +70,7 @@ class ModelPetugas extends Controler
 		if ($_POST['status'] == "Lunas") :
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
-				"#modal-center-lg",
+				"#modal-center-lg-static",
 				BasePetugas . "SetAirTawar/Pengolahan/" . $idAirTawar
 			];
 		endif;
@@ -197,6 +197,14 @@ class ModelPetugas extends Controler
 	{
 		$set = $this->AirTawarJoin();
 		$set['query'] = "WHERE tat.id='{$id}'";
+
+		return database::join($set);
+	}
+
+	public function GetSandarById($id)
+	{
+		$set = $this->SandarJoin();
+		$set['query'] = "WHERE ts.id='{$id}'";
 
 		return database::join($set);
 	}

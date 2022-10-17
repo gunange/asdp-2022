@@ -7,7 +7,7 @@
 	<body>
 		<?php
 
-		foreach ($this->model->GetAirTawarById($this->id) as $k => $dermaga) :
+		foreach ($this->model->GetSandarById($this->id) as $k => $dermaga) :
 			$dataPdf = $dermaga;
 		endforeach;
 
@@ -43,7 +43,7 @@
 
 			doc.setFontSize(10);
 			doc.text(20, 50, "Tanggal").setFont(undefined, 'normal');
-			doc.text(40, 50, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu']).setFont(undefined, 'bold');
+			doc.text(40, 50, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu_awal']).setFont(undefined, 'bold');
 			doc.text(20, 55, "Operator").setFont(undefined, 'normal');
 			doc.text(40, 55, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
 			doc.text(20, 60, "Regu").setFont(undefined, 'normal');
@@ -52,16 +52,33 @@
 
 			doc.text(20, 75, dataPDF['nama_kapal']).setFont(undefined, 'bold');
 			doc.text(20, 80, "Dermaga").setFont(undefined, 'normal');
-			doc.text(60, 80, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
-			doc.text(20, 85, "Debit Air").setFont(undefined, 'normal');
-			doc.text(60, 85, ": " + dataPDF['debit_air']).setFont(undefined, 'bold');
-			doc.text(20, 90, "Tarif").setFont(undefined, 'normal');
-			doc.text(60, 90, ": Rp. 50,/Liter").setFont(undefined, 'bold');
+			doc.text(40, 80, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
+			doc.text(20, 85, "Start").setFont(undefined, 'normal');
+			doc.text(40, 85, ": " + dataPDF['waktu_awal']).setFont(undefined, 'bold');
+
+			doc.text(70, 85, "Menit").setFont(undefined, 'normal');
+			doc.text(80, 85, ": " + dataPDF['akumulasi_menit']).setFont(undefined, 'normal');
+
+			doc.text(20, 90, "Stop").setFont(undefined, 'normal');
+			doc.text(40, 90, ": " + dataPDF['waktu_akhir']).setFont(undefined, 'bold');
+
+			doc.text(70, 90, "Call").setFont(undefined, 'total_call');
+			doc.text(80, 90, ": " + dataPDF['total_call']).setFont(undefined, 'normal');
+
+			doc.text(20, 95, "____________________________________________").setFont(undefined, 'bold');
 
 
-			doc.text(20, 100, "Tagihan Air Tawar").setFont(undefined, 'bold');
-			doc.text(60, 100, ": Rp. " + dataPDF['total_air_tawar']).setFont(undefined, 'bold');
-			doc.text(20, 95, "______________________________________").setFont(undefined, 'bold');
+			doc.text(20, 105, "DPP").setFont(undefined, 'normal');
+			doc.text(70, 105, ": Rp. " + dataPDF['dpp']).setFont(undefined, 'bold');
+			doc.text(20, 110, "PPN(10%)").setFont(undefined, 'normal');
+			doc.text(70, 110, ": Rp. 0,-").setFont(undefined, 'bold');
+			doc.text(20, 115, "PPH23(2%)").setFont(undefined, 'normal');
+			doc.text(70, 115, ": Rp. " + dataPDF['pph']).setFont(undefined, 'bold');
+			doc.text(20, 120, "____________________________________________").setFont(undefined, 'bold');
+
+			doc.text(20, 130, "Tagihan Sandar").setFont(undefined, 'bold');
+			doc.text(70, 130, ": Rp. " + dataPDF['total_sandar']).setFont(undefined, 'bold');
+			doc.text(20, 135, "____________________________________________").setFont(undefined, 'bold');
 
 
 
@@ -74,7 +91,7 @@
 
 	<body>
 		<?php
-		foreach ($this->model->GetAirTawarById($this->id) as $k => $dermaga) :
+		foreach ($this->model->GetSandarById($this->id) as $k => $dermaga) :
 			$dataPdf = $dermaga;
 		endforeach;
 
@@ -110,7 +127,7 @@
 
 			doc.setFontSize(10);
 			doc.text(20, 50, "Tanggal").setFont(undefined, 'normal');
-			doc.text(40, 50, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu']).setFont(undefined, 'bold');
+			doc.text(40, 50, ": " + dataPDF['hari'] + " , " + dataPDF['tgl'] + " , " + dataPDF['waktu_awal']).setFont(undefined, 'bold');
 			doc.text(20, 55, "Operator").setFont(undefined, 'normal');
 			doc.text(40, 55, ": " + dataPDF['nama_admin']).setFont(undefined, 'bold');
 			doc.text(20, 60, "Regu").setFont(undefined, 'normal');
@@ -119,16 +136,33 @@
 
 			doc.text(20, 75, dataPDF['nama_kapal']).setFont(undefined, 'bold');
 			doc.text(20, 80, "Dermaga").setFont(undefined, 'normal');
-			doc.text(60, 80, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
-			doc.text(20, 85, "Debit Air").setFont(undefined, 'normal');
-			doc.text(60, 85, ": " + dataPDF['debit_air']).setFont(undefined, 'bold');
-			doc.text(20, 90, "Tarif").setFont(undefined, 'normal');
-			doc.text(60, 90, ": Rp. 50,/Liter").setFont(undefined, 'bold');
+			doc.text(40, 80, ": " + dataPDF['dermaga']).setFont(undefined, 'bold');
+			doc.text(20, 85, "Start").setFont(undefined, 'normal');
+			doc.text(40, 85, ": " + dataPDF['waktu_awal']).setFont(undefined, 'bold');
+
+			doc.text(70, 85, "Menit").setFont(undefined, 'normal');
+			doc.text(80, 85, ": " + dataPDF['akumulasi_menit']).setFont(undefined, 'normal');
+
+			doc.text(20, 90, "Stop").setFont(undefined, 'normal');
+			doc.text(40, 90, ": " + dataPDF['waktu_akhir']).setFont(undefined, 'bold');
+
+			doc.text(70, 90, "Call").setFont(undefined, 'total_call');
+			doc.text(80, 90, ": " + dataPDF['total_call']).setFont(undefined, 'normal');
+
+			doc.text(20, 95, "____________________________________________").setFont(undefined, 'bold');
 
 
-			doc.text(20, 100, "Tagihan Air Tawar").setFont(undefined, 'bold');
-			doc.text(60, 100, ": Rp. " + dataPDF['total_air_tawar']).setFont(undefined, 'bold');
-			doc.text(20, 95, "______________________________________").setFont(undefined, 'bold');
+			doc.text(20, 105, "DPP").setFont(undefined, 'normal');
+			doc.text(70, 105, ": Rp. " + dataPDF['dpp']).setFont(undefined, 'bold');
+			doc.text(20, 110, "PPN(10%)").setFont(undefined, 'normal');
+			doc.text(70, 110, ": Rp. 0,-").setFont(undefined, 'bold');
+			doc.text(20, 115, "PPH23(2%)").setFont(undefined, 'normal');
+			doc.text(70, 115, ": Rp. " + dataPDF['pph']).setFont(undefined, 'bold');
+			doc.text(20, 120, "____________________________________________").setFont(undefined, 'bold');
+
+			doc.text(20, 130, "Tagihan Sandar").setFont(undefined, 'bold');
+			doc.text(70, 130, ": Rp. " + dataPDF['total_sandar']).setFont(undefined, 'bold');
+			doc.text(20, 135, "____________________________________________").setFont(undefined, 'bold');
 
 
 

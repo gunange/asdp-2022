@@ -480,4 +480,60 @@ trait MasterJoin
 
 		return database::join($set);
 	}
+
+
+	public function SandarJoin()
+	{
+		$set['set'] 	= '
+			ts.id id,
+			waktu_awal,
+			waktu_akhir,
+			IF(DAYNAME(tgl) = "Monday", "Senin", IF(DAYNAME(tgl) = "Tuesday", "Selasa", IF(DAYNAME(tgl) = "Wednesday", "Rabu", IF(DAYNAME(tgl) = "Thursday", "Kamis", IF(DAYNAME(tgl) = "Friday", "Jumat", IF(DAYNAME(tgl) = "Saturday", "Sabtu", IF(DAYNAME(tgl) = "Sunday", "Minggu", "Nothing"))))))) hari,
+			tgl,
+			shift,
+			nama_kapal,
+			dermaga,
+			akumulasi_menit,
+			FORMAT(total_sandar, 0) total_sandar,
+			status,
+			total_call,
+			FORMAT((total_sandar * 2 / 100),0) pph,
+			FORMAT(total_sandar - (total_sandar * 2 / 100),0) dpp,
+			tu.nama nama_admin,
+			tu.regu regu,
+			shift
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_sandar',
+				'key'   	=> 'ts'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_kapal',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'ts.id_kapal'
+				],
+				[
+					'table' => 'tbl_dermaga ',
+					'key'   => 'td',
+					'id'    => 'td.id',
+					'in'    => 'ts.id_dermaga'
+				],
+				[
+					'table' => 'tbl_user ',
+					'key'   => 'tu',
+					'id'    => 'tu.id',
+					'in'    => 'ts.id_user'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }
