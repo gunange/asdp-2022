@@ -22,7 +22,7 @@ class DashPetugas extends Controler
 		$this->model = $this->model('ModelPetugas');
 		$this->user = $this->model->user;
 
-		if (!isset($_SESSION['shiftPetugas']) && is_null($_SESSION['shiftPetugas']) ):
+		if (!isset($_SESSION['shiftPetugas']) && is_null(@$_SESSION['shiftPetugas']) ):
 			if(!isset($_POST['post_shift'])):
 				$this->viewDash('settings/constructor');
 			endif;
