@@ -116,6 +116,20 @@
 
 			<div class="card-body">
 				<div class="row">
+					<div id="mtvPlayer"> 
+    <embed 
+        type="application/x-mplayer2" 
+        pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" 
+        name="mediaplayer1" 
+        ShowStatusBar="true" 
+        EnableContextMenu="false" 
+        autostart="true" 
+        loop="false" 
+        src="rtsp://admin:IT@5dp23@10.33.4.20:80/cam/realmonitor?channel=1&subtype=0" 
+        width="352px"
+        height="288px"
+    /> 
+</div> 
 					<div class="col-md-12 mb-3 border-dark" id="outCctv">
 						
 						<object 
@@ -125,12 +139,12 @@
 						 name="vlc" 
 						 class="vlcPlayer" 
 						 events="True"> 
-						  <param name="Src" value="rtsp://admin:IT@5dt23@10.33.4.12:554/cam/realmonitor?channel=1&subtype=0" /> 
+						  <param name="Src" value="rtsp://admin:IT@5dp23@10.33.4.20:80/cam/realmonitor?channel=1&subtype=0" /> 
 						  <param name="ShowDisplay" value="True" /> 
 						  <param name="AutoLoop" value="True" /> 
 						  <param name="AutoPlay" value="True" /> 
 						 
-						  <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="640" height="480" target="rtsp://admin:IT@5dt23@10.33.4.12:554/cam/realmonitor?channel=1&subtype=0"></embed> 
+						  <embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="640" height="480" target="rtsp://admin:IT@5dp23@10.33.4.20:80/cam/realmonitor?channel=1&subtype=0"></embed> 
 						</object>
 					</div>
 				</div>
@@ -166,4 +180,6 @@
 	}
 
 </script>
+
+
 
