@@ -1,5 +1,5 @@
 # asdp-ternate v.1 (2022)
 
-** Team Developer **
+**Team Developer**
 
-<sub> M. Rifaldi Nurdin Amd.Kom, Rafli Junaidi Kasim, ST  </sub>
+> <sub> M. Rifaldi Nurdin Amd.Kom, Rafli Junaidi Kasim, ST  </sub>
