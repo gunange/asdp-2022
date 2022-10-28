@@ -11,8 +11,8 @@ class database {
 	private static
 	$host="localhost", 
 	$user="root", 
-	$pass="dot", 
-	$db="project_2022_asdp_ternate" ;
+	$pass="", 
+	$db="asdp_ternate" ;
 
 	private static function con()
 	{
