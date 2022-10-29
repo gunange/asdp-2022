@@ -111,7 +111,7 @@
                                                 LOGIN</button>
                                         </div>
                                         <div class="text-center p-t-12 ">
-                                            <span class="txt1">CCICPoldaMalut ver 0.1</span>
+                                            <span class="txt1">D-SSAT Cab. Ternate  v1.0</span>
                                         </div>
                                     </form>
 
