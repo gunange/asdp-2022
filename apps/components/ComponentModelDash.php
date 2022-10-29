@@ -72,4 +72,32 @@ trait ComponentModelDash{
 
 		return json_encode($newDataTank) ;
 	}
+
+	public function upProfil(){
+	
+	try{
+			$set['tbl'] = "tbl_user";
+			$set['key']	= "id" ;
+			$set['val']	= $this->user->id ;
+
+			$set['set'] = [
+				"nama"             => $_POST['nama'],
+				"id_jenis_kelamin" => $_POST['id_jenis_kelamin'],
+			];
+
+			database::update($set);
+
+			$this->response["response"] = "OK";
+			$this->response["href"]     = $_POST['url'];
+			$this->response["msg"]      = "Anda berhasil memperbahrui profil anda !, Tekan OK untuk memperbahrui halaman";
+
+		} catch(PDOException $e){
+			$this->response['debug'] = $e;
+			$this->response["msg"] = "Hubungi Developer, ada kesalahan sistem";
+		}
+
+		$this->ResponseApi();
+
+	}
+
 }

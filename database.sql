@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 28, 2022 at 08:03 AM
+-- Generation Time: Oct 29, 2022 at 02:38 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.1.0
 
@@ -111,9 +111,10 @@ CREATE TABLE `tbl_jenis_tanki` (
 --
 
 INSERT INTO `tbl_jenis_tanki` (`id`, `jenis_tanki`) VALUES
-(1, 'Tanki Harian'),
-(2, 'Tanki Induk Kiri'),
-(3, 'Tanki Induk Kanan');
+(1, 'Tanki Harian Kanan'),
+(2, 'Tanki Harian Kiri'),
+(3, 'Tanki Induk Kanan'),
+(4, 'Tanki Induk Kiri');
 
 -- --------------------------------------------------------
 
@@ -207,8 +208,7 @@ CREATE TABLE `tbl_login` (
 INSERT INTO `tbl_login` (`id`, `id_level`, `username`, `password`, `token`) VALUES
 (1, 1, 'admin', '$2y$10$jBIgUkAzaeWJ1d/05MXLG.Dy6sBwvnYrUujKCMii1yvPaP6TiTFnq', '$2y$10$bHJ/54aEDZDhZobkA6ZZaujU.M/2cckYHlwMTCk0p04q744VjI4Ei'),
 (2, 3, 'petugas_test', '$2y$10$kHkbdIZMohk.XXPIHcEaDOuuduBFaTkOxyDvzHn5hX8zNlW11A9Pq', '$2y$10$ba2AnOiECdSmeZu0eULJsuzmhIt90RwOdK9TvMEvSazrO1hojZUfa'),
-(3, 2, 'master_monitor', '$2y$10$UVN6xIYrkZXLRv7a0IO7Neb8PiwSYNHdjcNj/ZORP1izBQBrX.a/q', '$2y$10$S9rnBcPPsEess98lef6BmegAmUs4tgkVzn19HGpWd7boIZ2IZIal.'),
-(7, 3, 'ipank', '$2y$10$nhGeI0iZw.JsvUGHx3Q0U.3/PhDYNPbCWjtABVwCqtWzZwj1sS/Au', '$2y$10$t.pL5kHovNfIVy/Hbe7gN.kDgRmvgs0Jl88snpQ9ksb7fBxBHQ5fu');
+(3, 2, 'master_monitor', '$2y$10$UVN6xIYrkZXLRv7a0IO7Neb8PiwSYNHdjcNj/ZORP1izBQBrX.a/q', '$2y$10$S9rnBcPPsEess98lef6BmegAmUs4tgkVzn19HGpWd7boIZ2IZIal.');
 
 -- --------------------------------------------------------
 
@@ -226,8 +226,7 @@ CREATE TABLE `tbl_petugas` (
 --
 
 INSERT INTO `tbl_petugas` (`id`, `id_user`) VALUES
-(1, 2),
-(3, 5);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -265,21 +264,6 @@ CREATE TABLE `tbl_tanki` (
   `tinggi_maksimum` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tbl_tanki`
---
-
-INSERT INTO `tbl_tanki` (`id`, `id_kapal`, `id_jenis_tanki`, `tinggi`, `liter`, `tinggi_maksimum`) VALUES
-(27, 1, 1, 1, 100, 300),
-(28, 1, 2, 1, 150, 400),
-(29, 1, 3, 1, 150, 400),
-(30, 2, 1, 1.4, 0.6, 30),
-(32, 2, 2, 1.4, 0.6, 30),
-(33, 2, 3, 1.4, 0.6, 30),
-(34, 3, 1, 1.4, 0.6, 30),
-(35, 3, 3, 1.4, 0.6, 30),
-(36, 3, 2, 1.4, 0.6, 30);
-
 -- --------------------------------------------------------
 
 --
@@ -301,8 +285,7 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`id`, `id_login`, `id_jenis_kelamin`, `nama`, `regu`) VALUES
 (1, 1, 1, 'Administrator', '0'),
 (2, 2, 1, 'M. Ikbal', '1'),
-(3, 3, 1, 'Pimpinan ASDP', '0'),
-(5, 7, 1, 'Rivaldi', '1');
+(3, 3, 1, 'Pimpinan ASDP', '0');
 
 --
 -- Indexes for dumped tables
@@ -431,7 +414,7 @@ ALTER TABLE `tbl_jenis_kelamin`
 -- AUTO_INCREMENT for table `tbl_jenis_tanki`
 --
 ALTER TABLE `tbl_jenis_tanki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_kabid`
@@ -443,7 +426,7 @@ ALTER TABLE `tbl_kabid`
 -- AUTO_INCREMENT for table `tbl_kapal`
 --
 ALTER TABLE `tbl_kapal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_level`
@@ -455,13 +438,13 @@ ALTER TABLE `tbl_level`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_petugas`
 --
 ALTER TABLE `tbl_petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_sandar`
@@ -473,13 +456,13 @@ ALTER TABLE `tbl_sandar`
 -- AUTO_INCREMENT for table `tbl_tanki`
 --
 ALTER TABLE `tbl_tanki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

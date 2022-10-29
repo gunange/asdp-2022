@@ -6,7 +6,7 @@ class ModelKabid extends Controler
 	private $modelUser;
 	public $user;
 
-	use MasterData, MasterJoin, ComponentModelDash;
+	use MasterData, MasterJoin, ComponentModelDash, ApiResponse;
 
 	public function __construct()
 	{

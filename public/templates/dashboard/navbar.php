@@ -13,13 +13,13 @@
 
 			<div class="dropdown border-start ps-3">
 				<a class="navbar-brand fs-7 dropdown-toggle" href="#" role="button" id="navUser" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="<?= BaseAssets ?>/icon/user-man.png" class="rounded-circle overflow-hidden me-2" alt="" width="30px" height="30px">
+					<img src="<?= BaseAssets ?>/icon/<?= ($this->user->id_jenis_kelamin == 1 ) ? 'user-man.png' : 'user-woman.png' ?>" class="rounded-circle overflow-hidden me-2" alt="" width="30px" height="30px">
 					<span class="col-lg-12 "><?= $this->user->nama ?></span>
 				</a>
 
 				<ul class="dropdown-menu dropdown-menu-end shadow animated flipInX fs-7" aria-labelledby="navUser">
 					<i class="bi bi-triangle-fill text-white art"></i>
-					<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#MyAkun"><i class="bi bi-person-circle me-3"></i> My Account</a></li>
+					<li><a class="dropdown-item" href="#!" onclick="openModalShow('#modal-center', '<?= $this->gLink ?>AccountAndProfilSet/<?= $this->model->getLink() ?>', ()=>{injectJsDashboardPrimary()})"><i class="bi bi-person-circle me-3"></i> My Profil</a></li>
 					<li><a class="dropdown-item" href="<?= BASEURL ?>"><i class="bi bi-house-fill me-3"></i> Home</a></li>
 					<li class="border-top"></li>
 					<li><a class="dropdown-item text-red" href="<?= $this->gLink ?>LogOut"><i class="bi bi-power me-3"></i>Logout</a></li>
