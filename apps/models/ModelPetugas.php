@@ -151,7 +151,7 @@ class ModelPetugas extends Controler
 			$msg->tinggiMinyak = $tinggiMinyak;
 			$msg->persentage = intval(($msg->liter * 100) / $msg->maxLiter);
 			$msg->tanggal = date("Y-m-d");
-			$msg->waktu = date("h:i:s");
+			$msg->waktu = date("H:i:s");
 		endif;
 
 		return $msg;
@@ -279,11 +279,21 @@ class ModelPetugas extends Controler
 	}
 
 
-	public function HistoryTangkiKapalDay($id)
+	public function HistoryTangkiKananKapalDay($id)
 	{
 		$set 			 = $this->HistoryDayTank();
 
 		$set['query']	= "WHERE id_kapal='{$id}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki=1 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+
+
+		return database::join($set);
+	}
+
+	public function HistoryTangkiKiriKapalDay($id)
+	{
+		$set 			 = $this->HistoryDayTank();
+
+		$set['query']	= "WHERE id_kapal='{$id}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki=2 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
 
 
 		return database::join($set);

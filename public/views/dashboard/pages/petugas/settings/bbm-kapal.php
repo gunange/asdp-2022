@@ -53,13 +53,19 @@
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
 
 	<?php 
-	$pemakaian = 0 ;
+	$pemakaianKanan = 0 ;
+	$pemakaianKiri = 0 ;
 
 
-	$dataPemakaian =  $this->model->GetDataGrafik($this->model->HistoryTangkiKapalDay($this->id) ) ;
+	$dataPemakaianKanan =  $this->model->GetDataGrafik($this->model->HistoryTangkiKananKapalDay($this->id) ) ;
+	$dataPemakaianKiri =  $this->model->GetDataGrafik($this->model->HistoryTangkiKiriKapalDay($this->id) ) ;
 
-	if (!is_null ($dataPemakaian )):
-		$pemakaian = round(@json_decode($dataPemakaian)[0], 1 );
+	if (!is_null ($dataPemakaianKanan )):
+		$pemakaianKanan = round(@json_decode($dataPemakaianKanan)[0], 1 );
+	endif;
+
+	if (!is_null ($dataPemakaianKiri )):
+		$pemakaianKiri = round(@json_decode($dataPemakaianKiri)[0], 1 );
 	endif;
 
 	 ?>
@@ -85,18 +91,23 @@
 				<div class="text-tangki text-center"></div>
 			</div>
 			<div class="text-center">
-				<h5><?= round($d['liter'], 1) ?> <span> (litter)</span></h5>
+				<h5 class="mb-0"><?= round($d['liter'], 1) ?> <span> (litter)</span></h5>
+				<h6><?= round($d['tinggi_bbm'], 1) ?> <span> (cm)</span></h6>
 				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
 				<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
-				<p class="mb-1">Maxiimal <?= round($tinggiMax, 1) ?> (litter)</p>
+				<p class="mb-0">Maximal <?= round($tinggiMax, 1) ?> (litter)</p>
+				<p class="mb-1">Maximal <?= round($d['tinggi_maksimum'], 1) ?> (cm)</p>
 			</div>
+			
 		</section>
 	</div>
 	<?php $litter += $d['liter'] ?>
 	<?php endforeach; ?>
 
 	<div class="border-top pt-2">
-		<h6>Pemakaian = <?= $pemakaian ?> -liter</h6>
+		<h6>Pemakaian Harian Kanan = <?= $pemakaianKanan ?> -liter</h6>
+		<h6>Pemakaian Harian Kiri = <?= $pemakaianKiri ?> -liter</h6>
+		<h6>Total Pemakaian Harian = <?= $pemakaianKanan + $pemakaianKiri ?> -liter</h6>
 		<h5>Saldo = <?= round($litter,1) ?> -liter</h5>
 	</div>
 

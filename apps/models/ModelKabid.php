@@ -33,7 +33,7 @@ class ModelKabid extends Controler
 		endif;
 		$ret = [];
 		for ($i = 1; $i <= $countTgl; $i++) :
-			$ret[] = "day " . $i;
+			$ret[] = "tgl " . $i;
 		endfor;
 
 		return json_encode($ret);

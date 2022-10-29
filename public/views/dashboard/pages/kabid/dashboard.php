@@ -118,7 +118,7 @@
 											<?php
 											$dataTank = $this->model->GetDataGrafik($this->model->GetHistoryDayTank($d['id']));
 											?>
-											<button type="button" class="btn btn-sm primary-bg text-white" title="Hapus" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
+											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
 													setChart('<?= $d['nama_kapal'] ?>', <?= $dataTank ?> ) ;
