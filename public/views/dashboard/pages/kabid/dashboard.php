@@ -120,8 +120,9 @@
 											$dataTankKiri = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTankKiri($d['id']));
 
 											// proses mendapatkan dataTankTotal
-											$datakiri = json_decode($dataTankKiri);
-											foreach (json_decode($dataTankKanan) as $index => $datakanan) {
+											$dataTankTotal = [];
+											$datakiri = json_decode($dataTankKiri, true);
+											foreach (json_decode($dataTankKanan, true) as $index => $datakanan) {
 												$dataTankTotal[$index] = $datakanan + $datakiri[$index];
 											}
 											$dataTankTotal = json_encode($dataTankTotal);
@@ -130,7 +131,7 @@
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
-													setChart('<?= $d['nama_kapal'] ?>', <?= $dataTankKanan ?> ) ;
+													setChart( <?= $dataTankKanan ?>,  <?= $dataTankKiri ?>,  <?= $dataTankTotal ?>) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
@@ -159,12 +160,13 @@
 
 
 <script type="text/javascript">
-	function setChart(namaKapal = "Nama Kapal", dataStatic = []) {
+	function setChart(tangkiKanan = [], tangkiKiri = [],  total = [], ) {
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
-			datasets: [{
-				label: namaKapal,
-				data: dataStatic,
+			datasets: [
+			{
+				label: "Tangki Kanan",
+				data: tangkiKanan,
 				backgroundColor: [
 					'rgb(75, 192, 192)',
 				],
@@ -172,7 +174,31 @@
 				hoverOffset: 10,
 				fill: false,
 				tension: 0.1
-			}, ]
+			}, 
+			{
+				label: "Tangki Kiri",
+				data: tangkiKiri,
+				backgroundColor: [
+					'rgb(78,103,255)',
+				],
+				borderColor: 'rgb(78,103,255)',
+				hoverOffset: 10,
+				fill: false,
+				tension: 0.1
+			}, 
+			{
+				label: "Total",
+				data: total,
+				backgroundColor: [
+					'rgb(252,23,45)',
+				],
+				borderColor: 'rgb(252,23,45)',
+				hoverOffset: 10,
+				fill: false,
+				tension: 0.1
+			}, 
+			
+			]
 		};
 
 		new Chart(document.getElementById('dataMinyak'), {
