@@ -75,6 +75,7 @@ trait ComponentModelDash
 
 		return json_encode($newDataTank);
 	}
+	
 
 	public function upProfil()
 	{
