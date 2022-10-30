@@ -25,6 +25,7 @@
 							<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
 							<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
 							<p class="mb-1">Maxiimal <?= $tinggiMax ?> (litter)</p>
+							<p class="mb-1">Maxiimal <?= round($d['tinggi_maksimum'], 1) ?> (cm)</p>
 						</div>
 					</section>
 				</div>
