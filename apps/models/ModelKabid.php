@@ -100,4 +100,44 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
+	public function GetDataGrafikForMonitor($dataHistory)
+	{
+		$dataTank = (array) null;
+		$temp = 0;
+		$tgl = 0;
+		$ihis = -1;
+		foreach ($dataHistory as $k => $datahist) :
+			if ($tgl < $datahist['tanggal']) {
+				$tgl =  $datahist['tanggal'];
+				$temp = $datahist['liter'];
+				$history[$datahist['tanggal']] = 0;
+				$ihis += 1;
+			}
+			if ($temp > $datahist['liter']) {
+				$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($temp - $datahist['liter']);
+				$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
+				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+				$temp = $datahist['liter'];
+			} elseif ($temp < $datahist['liter']) {
+				$temp = $datahist['liter'];
+			}
+		endforeach;
+
+		$nDay = date('d');
+
+		$newDataTank = [];
+		
+		foreach ($dataTank as $k => $d ):
+			for ($tgl = 1; $tgl <= $nDay; $tgl++):
+				if ($d['tanggal'] == $tgl):
+					$newDataTank[] = $d['data'];
+				else:
+					$newDataTank[] = 0;
+				endif;
+			endfor;
+		endforeach;
+
+
+		return json_encode($newDataTank) ;
+	}
 }

@@ -60,7 +60,6 @@
 	$dataPemakaianKanan =  $this->model->GetDataGrafik($this->model->HistoryTangkiKananKapalDay($this->id));
 	$dataPemakaianKiri =  $this->model->GetDataGrafik($this->model->HistoryTangkiKiriKapalDay($this->id));
 
-	echo $dataPemakaianKanan[0];
 	if (!is_null($dataPemakaianKanan)) :
 		$pemakaianKanan = round(@json_decode($dataPemakaianKanan)[0], 1);
 	endif;
