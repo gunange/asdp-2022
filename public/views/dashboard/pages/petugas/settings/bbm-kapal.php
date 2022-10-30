@@ -1,12 +1,12 @@
-<?php if ($this->setPage == "confirmBbbmTangki"): ?>
+<?php if ($this->setPage == "confirmBbbmTangki") : ?>
 	<!-- UP -->
 	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>PostFormTangkiBbmKapal">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-purple"><i class="bi bi-fuel-pump-diesel-fill"></i> Konfirmasi</pre>
 		</div>
 		<div class="modal-body">
-			<?php if ($this->data->action): ?>
-				<?php if ($this->data->liter <= $this->data->maxLiter ) : ?>
+			<?php if ($this->data->action) : ?>
+				<?php if ($this->data->liter <= $this->data->maxLiter) : ?>
 					<div class="col-md-12 mt-3 mb-4">
 						<section>
 							<div class="container-tangki mx-auto">
@@ -24,7 +24,7 @@
 								<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($this->data->tanggal) ?> (<?= $this->data->waktu ?>)</p>
 								<p class="mb-0">Litter yang akan disimpan <?= $this->data->liter ?> (litter)</p>
 								<p class="mb-0">Max litter tangki <?= $this->data->maxLiter ?> (litter)</p>
-								
+
 							</div>
 						</section>
 					</div>
@@ -33,103 +33,104 @@
 					<input type="hidden" name="tgl" value="<?= $this->data->tanggal ?>">
 					<input type="hidden" name="liter" value="<?= $this->data->liter ?>">
 					<input type="hidden" name="tinggi_bbm" value="<?= $this->data->tinggiMinyak ?>">
-				<?php else: ?>
+				<?php else : ?>
 					<h6 class="text-pink-400 text-center">Data tinggi minyak melebihi <?= $this->data->dataTangki->jenis_tanki ?> pada kapal <?= $this->data->dataTangki->nama_kapal ?> tinggi minyak tangki adalah <?= $this->data->dataTangki->tinggi ?>cm</h6>
 				<?php endif; ?>
-			
-			<?php else: ?>
+
+			<?php else : ?>
 				<h6 class="text-pink-400 text-center">Anda harus mengisi form lebih dulu</h6>
 			<?php endif; ?>
 		</div>
 
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
-			<?php if ($this->data->action && $this->data->liter <= $this->data->maxLiter ) : ?>
+			<?php if ($this->data->action && $this->data->liter <= $this->data->maxLiter) : ?>
 				<button type="submit" class="btn btn-sm bg-purple text-white" data-bs-dismiss="modal" onclick="ressetInputan()">Submit</button>
 			<?php endif; ?>
 		</div>
 	</form>
-<?php elseif ($this->setPage == "getGrafikKapal"): ?>
-	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id)  ;?>
+<?php elseif ($this->setPage == "getGrafikKapal") : ?>
+	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id); ?>
 
-	<?php 
-	$pemakaianKanan = 0 ;
-	$pemakaianKiri = 0 ;
+	<?php
+	$pemakaianKanan = 0;
+	$pemakaianKiri = 0;
 
 
-	$dataPemakaianKanan =  $this->model->GetDataGrafik($this->model->HistoryTangkiKananKapalDay($this->id) ) ;
-	$dataPemakaianKiri =  $this->model->GetDataGrafik($this->model->HistoryTangkiKiriKapalDay($this->id) ) ;
+	$dataPemakaianKanan =  $this->model->GetDataGrafik($this->model->HistoryTangkiKananKapalDay($this->id));
+	$dataPemakaianKiri =  $this->model->GetDataGrafik($this->model->HistoryTangkiKiriKapalDay($this->id));
 
-	if (!is_null ($dataPemakaianKanan )):
-		$pemakaianKanan = round(@json_decode($dataPemakaianKanan)[0], 1 );
+	echo $dataPemakaianKanan[0];
+	if (!is_null($dataPemakaianKanan)) :
+		$pemakaianKanan = round(@json_decode($dataPemakaianKanan)[0], 1);
 	endif;
 
-	if (!is_null ($dataPemakaianKiri )):
-		$pemakaianKiri = round(@json_decode($dataPemakaianKiri)[0], 1 );
+	if (!is_null($dataPemakaianKiri)) :
+		$pemakaianKiri = round(@json_decode($dataPemakaianKiri)[0], 1);
 	endif;
 
-	 ?>
+	?>
 
 	<?php if (!empty($data)) : ?>
-	<?php $litter = 0; ?>
+		<?php $litter = 0; ?>
 
-	<?php foreach ($data as $k => $d ): ?>
+		<?php foreach ($data as $k => $d) : ?>
 
-		<?php 
+			<?php
 			$tinggiMax = $this->model->HitungVolume($d['liter_tanki'], $d['tinggi'], $d['tinggi_maksimum']);
 
-			
-		 ?>
-	<div class="col-md-6 mt-3 mb-4">
-		<section>
-			<div class="container-tangki mx-auto">
-				<div class="isi-tangki">
-					<div class="value-tengki" style="height: <?= intval(($d['liter'] * 100 ) / $tinggiMax ) ?>%;">
-						<div class="transisi-tengki"></div>
+
+			?>
+			<div class="col-md-6 mt-3 mb-4">
+				<section>
+					<div class="container-tangki mx-auto">
+						<div class="isi-tangki">
+							<div class="value-tengki" style="height: <?= intval(($d['liter'] * 100) / $tinggiMax) ?>%;">
+								<div class="transisi-tengki"></div>
+							</div>
+						</div>
+						<div class="text-tangki text-center"></div>
 					</div>
-				</div>
-				<div class="text-tangki text-center"></div>
+					<div class="text-center">
+						<h5 class="mb-0"><?= round($d['liter'], 1) ?> <span> (litter)</span></h5>
+						<h6><?= round($d['tinggi_bbm'], 1) ?> <span> (cm)</span></h6>
+						<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
+						<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
+						<p class="mb-0">Maximal <?= round($tinggiMax, 1) ?> (litter)</p>
+						<p class="mb-1">Maximal <?= round($d['tinggi_maksimum'], 1) ?> (cm)</p>
+					</div>
+
+				</section>
 			</div>
-			<div class="text-center">
-				<h5 class="mb-0"><?= round($d['liter'], 1) ?> <span> (litter)</span></h5>
-				<h6><?= round($d['tinggi_bbm'], 1) ?> <span> (cm)</span></h6>
-				<p class="mt-2 mb-1"><?= $d['jenis_tanki'] ?></p>
-				<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($d['tgl']) ?> (<?= $d['waktu'] ?>)</p>
-				<p class="mb-0">Maximal <?= round($tinggiMax, 1) ?> (litter)</p>
-				<p class="mb-1">Maximal <?= round($d['tinggi_maksimum'], 1) ?> (cm)</p>
-			</div>
-			
-		</section>
-	</div>
-	<?php $litter += $d['liter'] ?>
-	<?php endforeach; ?>
+			<?php $litter += $d['liter'] ?>
+		<?php endforeach; ?>
 
-	<div class="border-top pt-2">
-		<h6>Pemakaian Harian Kanan = <?= $pemakaianKanan ?> -liter</h6>
-		<h6>Pemakaian Harian Kiri = <?= $pemakaianKiri ?> -liter</h6>
-		<h6>Total Pemakaian Harian = <?= $pemakaianKanan + $pemakaianKiri ?> -liter</h6>
-		<h5>Saldo = <?= round($litter,1) ?> -liter</h5>
-	</div>
+		<div class="border-top pt-2">
+			<h6>Pemakaian Harian Kanan = <?= $pemakaianKanan ?> -liter</h6>
+			<h6>Pemakaian Harian Kiri = <?= $pemakaianKiri ?> -liter</h6>
+			<h6>Total Pemakaian Harian = <?= $pemakaianKanan + $pemakaianKiri ?> -liter</h6>
+			<h5>Saldo = <?= round($litter, 1) ?> -liter</h5>
+		</div>
 
-<?php else: ?>
-	<h5 class="text-center mt-3">Kapal yang anda pilih belum ada history nya</h5>
-<?php endif; ?>
+	<?php else : ?>
+		<h5 class="text-center mt-3">Kapal yang anda pilih belum ada history nya</h5>
+	<?php endif; ?>
 
-<?php elseif ($this->setPage == "getOption"): ?>
-	
-	<?php foreach ($this->model->GetTangkiKapalById($this->id) as $k => $d): ?>
+<?php elseif ($this->setPage == "getOption") : ?>
+
+	<?php foreach ($this->model->GetTangkiKapalById($this->id) as $k => $d) : ?>
 		<option value="<?= $d['id'] ?>"><?= $d['jenis_tanki'] ?></option>
 	<?php endforeach; ?>
-<?php elseif ($this->setPage == "getCctvKapal"): ?>
+<?php elseif ($this->setPage == "getCctvKapal") : ?>
 	<video width="100%" height="240" autoplay controls>
-    <source src="%StreamURL%" type="video/mp4">
-    <object width="320" height="240" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf">
-        <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf" /> 
-        <param name="flashvars" value='config={"clip": {"url": "%StreamURL%", "autoPlay":true, "autoBuffering":true}}' /> 
-        <p><a href="%StreamURL%">view with external app</a></p> 
-    </object>
-</video>
-<?php elseif ($this->setPage == "OpsiShift"): ?>
+		<source src="%StreamURL%" type="video/mp4">
+		<object width="320" height="240" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf">
+			<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.5.swf" />
+			<param name="flashvars" value='config={"clip": {"url": "%StreamURL%", "autoPlay":true, "autoBuffering":true}}' />
+			<p><a href="%StreamURL%">view with external app</a></p>
+		</object>
+	</video>
+<?php elseif ($this->setPage == "OpsiShift") : ?>
 	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>PostShit">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-cyan"><i class="bi bi-person-bounding-box"></i> Pilih</pre>
@@ -143,16 +144,16 @@
 						<option value="2">Shift Dua</option>
 					</select>
 				</div>
-				
+
 			</div>
 
 		</div>
 		<div class="modal-footer">
-			<button type="submit" class="btn btn-sm btn-primary" >OK</button>
+			<button type="submit" class="btn btn-sm btn-primary">OK</button>
 		</div>
 	</form>
 
-<?php else: ?>
+<?php else : ?>
 	<div class="modal-content">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-red-400"><i class="bi bi-exclamation-square-fill"></i> Oops</pre>
@@ -164,4 +165,4 @@
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</div>
-	<?php endif; ?>
+<?php endif; ?>

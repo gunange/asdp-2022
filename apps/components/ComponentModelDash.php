@@ -1,35 +1,38 @@
 <?php
 
-trait ComponentModelDash{
-	protected function setUser($data){
+trait ComponentModelDash
+{
+	protected function setUser($data)
+	{
 		$data = json_encode($data, JSON_NUMERIC_CHECK);
 		$this->user = json_decode($data);
 	}
-	
-	public function getLink(){
+
+	public function getLink()
+	{
 		$data =  explode('/', $_GET['url']);
-		$data = end($data) ;
-		$data = (strlen($data) > 2 ? $data  : 'Main' );
-		return $data ;
+		$data = end($data);
+		$data = (strlen($data) > 2 ? $data  : 'Main');
+		return $data;
 	}
 
-	public function HitungVolume($liter=0, $tinggi=0, $tinggiBbm=0)
+	public function HitungVolume($liter = 0, $tinggi = 0, $tinggiBbm = 0)
 	{
-		
-		$volume = ($liter / $tinggi ) * $tinggiBbm ;
-		return $volume ;
+
+		$volume = ($liter / $tinggi) * $tinggiBbm;
+		return $volume;
 	}
-	public function GetTahunRange($tahun=0000)
+	public function GetTahunRange($tahun = 0000)
 	{
 		$tahunNow = date('Y');
 
 		$data = [];
 		while ($tahunNow >= $tahun) :
-			$data[] = $tahunNow ;
-			$tahunNow-- ;
+			$data[] = $tahunNow;
+			$tahunNow--;
 		endwhile;
 
-		return $data ;
+		return $data;
 	}
 
 	public function GetDataGrafik($dataHistory)
@@ -58,27 +61,28 @@ trait ComponentModelDash{
 		$nDay = date('d');
 
 		$newDataTank = [];
-		
-		foreach ($dataTank as $k => $d ):
-			for ($tgl = 1; $tgl <= $nDay; $tgl++):
-				if ($d['tanggal'] == $tgl):
+
+		foreach ($dataTank as $k => $d) :
+			for ($tgl = 1; $tgl <= $nDay; $tgl++) :
+				if ($d['tanggal'] == $tgl) :
 					$newDataTank[] = $d['data'];
-				else:
+				else :
 					$newDataTank[] = 0;
 				endif;
 			endfor;
 		endforeach;
 
 
-		return json_encode($newDataTank) ;
+		return json_encode($newDataTank);
 	}
 
-	public function upProfil(){
-	
-	try{
+	public function upProfil()
+	{
+
+		try {
 			$set['tbl'] = "tbl_user";
-			$set['key']	= "id" ;
-			$set['val']	= $this->user->id ;
+			$set['key']	= "id";
+			$set['val']	= $this->user->id;
 
 			$set['set'] = [
 				"nama"             => $_POST['nama'],
@@ -90,14 +94,11 @@ trait ComponentModelDash{
 			$this->response["response"] = "OK";
 			$this->response["href"]     = $_POST['url'];
 			$this->response["msg"]      = "Anda berhasil memperbahrui profil anda !, Tekan OK untuk memperbahrui halaman";
-
-		} catch(PDOException $e){
+		} catch (PDOException $e) {
 			$this->response['debug'] = $e;
 			$this->response["msg"] = "Hubungi Developer, ada kesalahan sistem";
 		}
 
 		$this->ResponseApi();
-
 	}
-
 }
