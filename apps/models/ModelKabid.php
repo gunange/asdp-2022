@@ -126,18 +126,18 @@ class ModelKabid extends Controler
 		$nDay = date('d');
 
 		$newDataTank = [];
-		
-		foreach ($dataTank as $k => $d ):
-			for ($tgl = 1; $tgl <= $nDay; $tgl++):
-				if ($d['tanggal'] == $tgl):
+
+		foreach ($dataTank as $k => $d) :
+			for ($tgl = 1; $tgl <= $nDay; $tgl++) :
+				if ($d['tanggal'] == $tgl) :
 					$newDataTank[] = $d['data'];
-				else:
+				else :
 					$newDataTank[] = 0;
 				endif;
 			endfor;
 		endforeach;
 
 
-		return json_encode($newDataTank) ;
+		return json_encode($newDataTank);
 	}
 }
