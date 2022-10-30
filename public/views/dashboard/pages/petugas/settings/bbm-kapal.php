@@ -22,9 +22,9 @@
 								<h6 class="mt-2 mb-0 fs-7"><?= $this->data->dataTangki->nama_kapal ?></h6>
 								<h6 class="mb-1 fs-7"><?= $this->data->dataTangki->jenis_tanki ?></h6>
 								<p class="mb-0"><i class="bi bi-clock-history"></i> <?= tools::indoTime($this->data->tanggal) ?> (<?= $this->data->waktu ?>)</p>
-								<p class="mb-0">Litter yang akan disimpan <?= $this->data->liter ?> (litter)</p>
-								<p class="mb-0">Max litter tangki <?= $this->data->maxLiter ?> (litter)</p>
-
+								<p class="mb-0">Litter yang akan disimpan <?= round($this->data->liter, 1) ?> (litter) - <?= round($this->data->tinggiMinyak, 1) ?> cm</p>
+								<p class="mb-0">Max tangki <?= round($this->data->maxLiter, 1) ?> (litter)</p>
+								<p class="mb-0">Max tangki <?= round($this->data->dataTangki->tinggi_maksimum, 1) ?> (cm)</p>
 							</div>
 						</section>
 					</div>
