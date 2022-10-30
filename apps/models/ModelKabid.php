@@ -40,10 +40,17 @@ class ModelKabid extends Controler
 	}
 
 
-	public function GetHistoryDayTank($id_kapal)
+	public function GetHistoryDayTankKanan($id_kapal)
 	{
 		$set 	= $this->HistoryDayTank();
 		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
+
+		return database::join($set);
+	}
+	public function GetHistoryDayTankKiri($id_kapal)
+	{
+		$set 	= $this->HistoryDayTank();
+		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=2 ORDER BY DATE( tgl) ASC, waktu ASC";
 
 		return database::join($set);
 	}

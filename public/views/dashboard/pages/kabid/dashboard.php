@@ -116,12 +116,21 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTank = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTank($d['id']));
+											$dataTankKanan = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTankKanan($d['id']));
+											$dataTankKiri = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTankKiri($d['id']));
+
+											// proses mendapatkan dataTankTotal
+											$datakiri = json_decode($dataTankKiri);
+											foreach (json_decode($dataTankKanan) as $index => $datakanan) {
+												$dataTankTotal[$index] = $datakanan + $datakiri[$index];
+											}
+											$dataTankTotal = json_encode($dataTankTotal);
+
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
-													setChart('<?= $d['nama_kapal'] ?>', <?= $dataTank ?> ) ;
+													setChart('<?= $d['nama_kapal'] ?>', <?= $dataTankKanan ?> ) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
@@ -130,6 +139,11 @@
 									</td>
 
 								</tr>
+								<?php
+
+
+
+								?>
 							<?php endforeach; ?>
 
 						</tbody>
