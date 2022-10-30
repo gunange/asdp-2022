@@ -116,7 +116,7 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTank = $this->model->GetDataGrafik($this->model->GetHistoryDayTank($d['id']));
+											$dataTank = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTank($d['id']));
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{

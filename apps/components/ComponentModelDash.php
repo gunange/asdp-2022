@@ -47,30 +47,14 @@ trait ComponentModelDash{
 			}
 			if ($temp > $datahist['liter']) {
 				$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($temp - $datahist['liter']);
-				$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
-				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+				$dataTank[$ihis] = $history[$datahist['tanggal']];
 				$temp = $datahist['liter'];
 			} elseif ($temp < $datahist['liter']) {
 				$temp = $datahist['liter'];
 			}
 		endforeach;
 
-		$nDay = date('d');
-
-		$newDataTank = [];
-		
-		foreach ($dataTank as $k => $d ):
-			for ($tgl = 1; $tgl <= $nDay; $tgl++):
-				if ($d['tanggal'] == $tgl):
-					$newDataTank[] = $d['data'];
-				else:
-					$newDataTank[] = 0;
-				endif;
-			endfor;
-		endforeach;
-
-
-		return json_encode($newDataTank) ;
+		return json_encode($dataTank) ;
 	}
 
 	public function upProfil(){
