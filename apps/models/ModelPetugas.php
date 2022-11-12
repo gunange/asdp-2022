@@ -266,7 +266,8 @@ class ModelPetugas extends Controler
 			$this->response["msg"] = "Data anda berhasil ditambahkan, tekan ok untuk melihat data spesifik dan anda bisa melakukan print !";
 			$this->response['modal'] = [
 				"#modal-center-lg",
-				BasePetugas . "SetSandar/Pengolahan/" . $idSandar
+				BasePetugas . "SetSandar/Pengolahan/" . $idSandar,
+				false
 			];
 		endif;
 

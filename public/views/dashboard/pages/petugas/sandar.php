@@ -104,7 +104,7 @@
                             </button>
                         </div>
 
-                        <button class="btn btn-sm primary-bg text-white" title="Simpan" name="add">
+                        <button class="btn btn-sm primary-bg text-white" title="Simpan" name="add" disabled id="tombol-simpan<?= $k ?>">
                             <i class="bi bi-clipboard-plus"></i> Simpan
                         </button>
 
@@ -178,6 +178,8 @@
 
         HitungTarifSandar(call, id)
 
+        document.getElementById('tombol-simpan' + id).disabled = false ;
+
         document.getElementById('dermaga' + id).classList.remove('active');
         document.getElementById('tombol-waktu' + id).innerHTML =
             `<button class="btn btn-sm bg-yellow text-white" type="button" title="Resset" onclick="ressetTime('${id}');">
@@ -197,12 +199,14 @@
                     <button class="btn btn-sm bg-teal text-white" type="button" title="Start" onclick="startTime('${id}');">
                         <i class="bi bi-play-fill"></i> Start
                     </button>`;
+        document.getElementById('tombol-simpan' + id).disabled = true ;
         document.getElementById('live' + id).value = "";
         document.getElementById('stop' + id).value = "";
         document.getElementById('id_kapal' + id).value = "";
         document.getElementById('total_sandar' + id).value = "" ;
         document.getElementById('akumulasi_menit' + id).value = "" ;
         document.getElementById('start' + id).innerHTML = "";
+
         $('#data_id_gt' + id).val('').trigger('change');
         $('#status_debit_air' + id).val('').trigger('change');
 

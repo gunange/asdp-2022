@@ -51,8 +51,9 @@ function setForm(targetModal = "#modal") {
                            swal("Good job!", obj.msg, "success", {
                                 buttons: 'OK',
                             }).then((isTrue) => {
+                                
                                 if (isTrue) {
-                                    openModalShow(`${obj.modal[0]}`, `${obj.modal[1]}`, ()=>{injectJsDashboardPrimary();} )
+                                    openModalShow(`${obj.modal[0]}`, `${obj.modal[1]}`, ()=>{injectJsDashboardPrimary();}, `${obj.modal[2]}` )
                                 }
                             });
 
@@ -95,7 +96,7 @@ function setForm(targetModal = "#modal") {
 }
 
 
-function openModalShow(target = "#modal-center-lg", model, components = () => { }) {
+function openModalShow(target = "#modal-center-lg", model, components = () => { }, isSetForm=true) {
     modal = new bootstrap.Modal(document.querySelector(target), {
         keyboard: false
     });
@@ -105,7 +106,10 @@ function openModalShow(target = "#modal-center-lg", model, components = () => { 
         if (this.readyState == 4 && this.status == 200) {
             document.querySelector(target + " #modal-target-output").innerHTML = this.responseText;
             modal.show();
-            setForm(modal);
+            if (isSetForm == true){
+                console.log("Run SetForm")
+                setForm(modal);
+            }
             components();
         }
     };
@@ -114,12 +118,15 @@ function openModalShow(target = "#modal-center-lg", model, components = () => { 
     xhttp.send();
 }
 
-function replaceModalShow(target = "#modal-center-lg", model, components = () => { }) {
+function replaceModalShow(target = "#modal-center-lg", model, components = () => { }, isSetForm=true) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.querySelector(target + " #modal-target-output").innerHTML = this.responseText;
-            setForm(target);
+
+            if (isSetForm == true){
+                setForm();
+            }
             components();
         }
     };
