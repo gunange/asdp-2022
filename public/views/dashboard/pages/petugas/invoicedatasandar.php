@@ -68,7 +68,11 @@
                                     <td><?= $d['waktu_awal'] ?></td>
                                     <td><?= $d['lama_sandar'] ?></td>
                                     <td>Rp. <?= tools::rupiah($d['total_sandar']) ?></td>
-                                    <td><?= $d['status'] ?></td>
+                                    <td>
+                                        <button class="btn btn-sm bg-purple text-white" title="Lunas !" onclick="openModalShow('#modal-center-lg', '<?= $this->gLink ?>SetSandar/Lunas/<?= $d['id'] ?>', ()=>{injectJsDashboardPrimary();} )">
+                                            <i class="bi bi-check-lg"></i> <?= $d['status'] ?>
+                                        </button>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

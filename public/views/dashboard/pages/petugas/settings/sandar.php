@@ -36,7 +36,7 @@
         <div class="modal-body p-0">
 
 
-            <iframe width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>PdfSandar`/Lunas/<?= $this->id ?>"></iframe>
+            <iframe width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>PdfSandar/Lunas/<?= $this->id ?>"></iframe>
 
         </div>
         <div class="modal-footer">
