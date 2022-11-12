@@ -63,11 +63,7 @@
                                     <td><?= $d['dermaga'] ?></td>
                                     <td><?= $d['debit_air'] ?> Liter</td>
                                     <td>Rp. <?= $d['total_air_tawar'] ?></td>
-                                    <td>
-                                        <button class="btn btn-sm bg-purple text-white" title="Lunas !" onclick="openModalShow('#modal-center-lg', '<?= $this->gLink ?>SetAirTawar/Lunas/<?= $d['id'] ?>', ()=>{injectJsDashboardPrimary();} )">
-                                            <i class="bi bi-check-lg"></i> <?= $d['status'] ?>
-                                        </button>
-                                    </td>
+                                    <td><?= $d['status'] ?></td>
 
 
                                 </tr>
