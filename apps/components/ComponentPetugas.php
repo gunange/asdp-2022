@@ -114,4 +114,35 @@ trait ComponentPetugas
 
 		$this->viewDash('pdf/sandar');
 	}
+	public function SetInvoiceAirTawar($page = null, $id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	{
+		$this->setPage = $page;
+		$this->isData = false ;
+		if ($page == "postPdf"):
+			
+			$this->model->response['response'] = "noSwall" ;
+			$this->model->response['tutupModal'] = true ;
+			$this->model->response['function'] = [
+				"openModalShow('#modal-center-xl', '". BasePetugas ."SetInvoiceAirTawar/pdf/". $_POST['id_kapal'] ."/". $_POST['id_dermaga'] ."/". $_POST['tanggal_awal'] ."/". $_POST['tanggal_akhir'] . "/ ' )"
+			];
+			$this->model->ResponseApi();
+		else:
+			if ($page == "pdf"):
+				$this->isData = true ;
+				$this->id_kapal = $id_kapal;
+				$this->id_dermaga = $id_dermaga;
+				$this->tanggal_awal = $tanggal_awal;
+				$this->tanggal_akhir = $tanggal_akhir;
+			endif;
+			$this->viewDash('settings/invoice-air-tawar');
+		endif;
+	}
+	public function PdfInvoiceAirTawar($page=null, $id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	{
+		$this->setPage = $page;
+
+		$this->data = $this->model->GetDocDelayAirTawar($id_kapal, $id_dermaga, $tanggal_awal, $tanggal_akhir) ;
+
+		$this->viewDash('pdf/air-tawar');
+	}
 }

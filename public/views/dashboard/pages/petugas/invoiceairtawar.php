@@ -25,7 +25,13 @@
                     <h6 class="m-0">
                         <i class="bi bi-box text-yellow-500 me-2"></i> Data Invoice Air Tawar
                     </h6>
-
+                    <div class="btn-toolbar mb-2 mb-md-0 btn-group">
+                        <button class="btn btn-sm bg-teal text-white" 
+                            title="Tambah data!" 
+                            onclick="openModalShow('#modal', '<?= $this->gLink ?>SetInvoiceAirTawar/filter-print', ()=>{injectJsDashboardPrimary();} )">
+                            <i class="bi bi-printer-fill"></i> Print Doc.
+                        </button>
+                    </div>
                 </div>
             </div><!-- card-header -->
             <div class="card-body">

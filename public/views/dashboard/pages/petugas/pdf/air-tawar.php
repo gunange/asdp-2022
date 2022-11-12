@@ -70,7 +70,73 @@
 			document.getElementById('output').src = doc.output('datauristring');
 		</script>
 	</body>
+<?php elseif ($this->setPage == "Recap") : ?>
+	<?php 
+	$dataPdf = [];
+	foreach($this->data as $k => $d ):
 
+
+		$dataPdf[$k] = [
+			$k + 1 ,
+			$d['waktu'] ,
+			tools::indoTime($d['tgl']),
+			$d['nama_admin'],
+			$d['regu'],
+			"Shiift " .$d['shift'],
+			$d['nama_kapal'],
+			$d['dermaga'],
+			tools::rupiah($d['debit_air']),
+			"Rp. " . $d['total_air_tawar'],
+
+		];
+	endforeach;
+
+	?>
+	<iframe id="output" width="100%" height="100%" frameborder="0"></iframe>
+	<script>
+		var doc = new jsPDF({
+			orientation: 'l',
+			unit: 'mm',
+			format: [210, 330]
+		});
+		doc.setFontSize(12);
+		doc.autoTable({
+
+			margin: {
+				top: 30
+			},
+
+			head: [
+				[{
+						content: 'No',
+						styles: {
+							cellWidth: 15
+						}
+					},
+					'Waktu',
+					'Tanggal',
+					'Petugas',
+					'Regu',
+					'Shift',
+					'Kapal',
+					'Dermaga',
+					'Debit Air',
+					'Harga',
+				]
+			],
+			body: <?= json_encode($dataPdf) ?>,
+			theme: 'grid',
+			headStyles: {
+				fillColor: [124, 95, 240]
+			},
+
+		});
+		doc.setFontSize(10);
+		doc.text(220, doc.lastAutoTable.finalY + 15, "Ternate, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
+		doc.text(220, doc.lastAutoTable.finalY + 33, "<?= $this->model->user->nama ?>", null, null, 'center');
+
+		document.getElementById('output').src = doc.output('datauristring');
+	</script>
 <?php elseif ($this->setPage == "Lunas") : ?>
 
 

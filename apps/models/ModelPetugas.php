@@ -317,6 +317,16 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+	public function GetDocDelayAirTawar($id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	{
+		$set = $this->AirTawarJoin();
+		$set['query'] = "WHERE UPPER(status)='LUNAS' AND tat.id_kapal = '{$id_kapal}' AND tat.id_dermaga = '{$id_dermaga}' AND ( tat.tgl BETWEEN '{$tanggal_awal}' AND '{$tanggal_akhir}' ) ORDER BY waktu DESC, tgl DESC";
+		if($tanggal_akhir == null):
+			$set['query'] = "WHERE UPPER(status)='LUNAS' AND tat.id_kapal = '{$id_kapal}' AND ( tat.tgl BETWEEN '{$id_dermaga}' AND '{$tanggal_awal}' ) ORDER BY waktu DESC, tgl DESC";
+		endif;
+
+		return database::join($set);
+	}
 	public function Testing($id)
 	{
 		$set 			 = $this->JoinStoryTangki($id);
