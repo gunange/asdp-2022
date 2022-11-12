@@ -160,44 +160,43 @@
 
 
 <script type="text/javascript">
-	function setChart(tangkiKanan = [], tangkiKiri = [],  total = [], ) {
+	function setChart(tangkiKanan = [], tangkiKiri = [], total = [], ) {
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
-			datasets: [
-			{
-				label: "Tangki Kanan",
-				data: tangkiKanan,
-				backgroundColor: [
-					'rgb(75, 192, 192)',
-				],
-				borderColor: 'rgb(75, 192, 192)',
-				hoverOffset: 10,
-				fill: false,
-				tension: 0.1
-			}, 
-			{
-				label: "Tangki Kiri",
-				data: tangkiKiri,
-				backgroundColor: [
-					'rgb(78,103,255)',
-				],
-				borderColor: 'rgb(78,103,255)',
-				hoverOffset: 10,
-				fill: false,
-				tension: 0.1
-			}, 
-			{
-				label: "Total",
-				data: total,
-				backgroundColor: [
-					'rgb(252,23,45)',
-				],
-				borderColor: 'rgb(252,23,45)',
-				hoverOffset: 10,
-				fill: false,
-				tension: 0.1
-			}, 
-			
+			datasets: [{
+					label: "Tangki Kanan",
+					data: tangkiKanan,
+					backgroundColor: [
+						'rgb(75, 192, 192)',
+					],
+					borderColor: 'rgb(75, 192, 192)',
+					hoverOffset: 10,
+					fill: false,
+					tension: 0.1
+				},
+				{
+					label: "Tangki Kiri",
+					data: tangkiKiri,
+					backgroundColor: [
+						'rgb(78,103,255)',
+					],
+					borderColor: 'rgb(78,103,255)',
+					hoverOffset: 10,
+					fill: false,
+					tension: 0.1
+				},
+				{
+					label: "Total",
+					data: total,
+					backgroundColor: [
+						'rgb(252,23,45)',
+					],
+					borderColor: 'rgb(252,23,45)',
+					hoverOffset: 10,
+					fill: false,
+					tension: 0.1
+				},
+
 			]
 		};
 

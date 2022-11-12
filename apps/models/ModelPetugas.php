@@ -255,7 +255,7 @@ class ModelPetugas extends Controler
 		$set['tbl'] 	= "tbl_sandar";
 
 		$idSandar  	= database::getNextId($set);
-		$keySandar = $_POST['key_sandar'] ;
+		$keySandar = $_POST['key_sandar'];
 		database::insert($set);
 
 		$this->response["response"] = "OK";
@@ -271,8 +271,8 @@ class ModelPetugas extends Controler
 		endif;
 
 		$this->response["function"] = [
-				'ressetTime("' . $keySandar . '")',
-			];
+			'ressetTime("' . $keySandar . '")',
+		];
 
 
 		$this->ResponseApi();
@@ -309,11 +309,11 @@ class ModelPetugas extends Controler
 	}
 	public function Testing($id)
 	{
-		$set 			 = $this->JoinStoryTangki();
+		$set 			 = $this->JoinStoryTangki($id);
 
 		$set['query']	= "WHERE tk.id = '{$id}' GROUP BY id_jenis_tanki ORDER BY tht.id DESC ";
 
 
-		return database::join($set ,false);
+		return database::join($set, false);
 	}
 }

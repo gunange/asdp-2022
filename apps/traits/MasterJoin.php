@@ -479,7 +479,7 @@ trait MasterJoin
 			]
 		];
 
-		return $set ;
+		return $set;
 	}
 
 
