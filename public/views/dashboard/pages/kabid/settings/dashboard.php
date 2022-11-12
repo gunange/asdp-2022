@@ -49,7 +49,7 @@
 <?php elseif ($this->setPage == "showDataPemakaianMinyak") : ?>
 	<div class="modal-content">
 		<div class="modal-header">
-			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Pemakaian Per-hari Dalam Bulan ini</pre>
+			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Saldo Per-hari Dalam Bulan ini</pre>
 		</div>
 		<div class="modal-body">
 			<div class="row">

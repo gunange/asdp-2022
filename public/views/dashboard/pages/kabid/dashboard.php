@@ -116,22 +116,36 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataTankKanan = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTankKanan($d['id']));
-											$dataTankKiri = $this->model->GetDataGrafikForMonitor($this->model->GetHistoryDayTankKiri($d['id']));
+											$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKanan($d['id']));
+											$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKiri($d['id']));
+											$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKanan($d['id']));
+											$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKiri($d['id']));
 
-											// proses mendapatkan dataTankTotal
-											$dataTankTotal = [];
-											$datakiri = json_decode($dataTankKiri, true);
-											foreach (json_decode($dataTankKanan, true) as $index => $datakanan) {
-												$dataTankTotal[$index] = $datakanan + $datakiri[$index];
+											$dataSaldo = json_encode([]);
+
+											$tempArrayTank = 0;
+											foreach ($dataCekArrayTank as $k => $val) {
+												if (count(json_decode($val)) !== 0) {
+													if ($tempArrayTank !== 0) {
+														$dataSaldo = json_decode($dataSaldo);
+														foreach (json_decode($dataCekArrayTank[$k], true) as $index => $datakanan) {
+															$dataSaldo[$index] = $datakanan + $tempArrayTank[$index];
+														}
+														$tempArrayTank = $dataSaldo;
+														$dataSaldo = json_encode($dataSaldo);
+													} else {
+														$tempArrayTank = json_decode($dataCekArrayTank[$k]);
+														$dataSaldo = json_encode($tempArrayTank);
+													}
+												}
 											}
-											$dataTankTotal = json_encode($dataTankTotal);
+
 
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
 											()=>{
 
-													setChart( <?= $dataTankKanan ?>,  <?= $dataTankKiri ?>,  <?= $dataTankTotal ?>) ;
+													setChart( <?= $dataSaldo ?>) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
@@ -160,38 +174,16 @@
 
 
 <script type="text/javascript">
-	function setChart(tangkiKanan = [], tangkiKiri = [], total = [], ) {
+	function setChart(total = [], ) {
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
 			datasets: [{
-					label: "Tangki Kanan",
-					data: tangkiKanan,
-					backgroundColor: [
-						'rgb(75, 192, 192)',
-					],
-					borderColor: 'rgb(75, 192, 192)',
-					hoverOffset: 10,
-					fill: false,
-					tension: 0.1
-				},
-				{
-					label: "Tangki Kiri",
-					data: tangkiKiri,
-					backgroundColor: [
-						'rgb(78,103,255)',
-					],
-					borderColor: 'rgb(78,103,255)',
-					hoverOffset: 10,
-					fill: false,
-					tension: 0.1
-				},
-				{
-					label: "Total",
+					label: "Total Saldo Harian",
 					data: total,
 					backgroundColor: [
-						'rgb(252,23,45)',
+						'rgb(55, 146, 55)',
 					],
-					borderColor: 'rgb(252,23,45)',
+					borderColor: 'rgb(55, 146, 55)',
 					hoverOffset: 10,
 					fill: false,
 					tension: 0.1

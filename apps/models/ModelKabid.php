@@ -54,6 +54,20 @@ class ModelKabid extends Controler
 
 		return database::join($set);
 	}
+	public function GetHistoryIndukTankKanan($id_kapal)
+	{
+		$set 	= $this->HistoryDayTank();
+		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=3 ORDER BY DATE( tgl) ASC, waktu ASC";
+
+		return database::join($set);
+	}
+	public function GetHistoryIndukTankKiri($id_kapal)
+	{
+		$set 	= $this->HistoryDayTank();
+		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=4 ORDER BY DATE( tgl) ASC, waktu ASC";
+
+		return database::join($set);
+	}
 	public function GetHistoryByTahunAndByIdKapal($id_kapal, $tahun, $bulan)
 	{
 		$set 	= $this->HistoryDayTank();
@@ -126,6 +140,53 @@ class ModelKabid extends Controler
 				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
 				$temp = $datahist['liter'];
 			} elseif ($temp < $datahist['liter']) {
+				$temp = $datahist['liter'];
+			}
+		endforeach;
+
+		$nDay = date('d');
+
+		$newDataTank = [];
+
+		foreach ($dataTank as $k => $d) :
+			for ($tgl = 1; $tgl <= $nDay; $tgl++) :
+				if ($d['tanggal'] == $tgl) :
+					$newDataTank[] = $d['data'];
+				else :
+					$newDataTank[] = 0;
+				endif;
+			endfor;
+		endforeach;
+
+
+		return json_encode($newDataTank);
+	}
+
+
+	public function GetDataGrafikSaldoTotalDays($dataHistory)
+	{
+		$dataTank = (array) null;
+		$temp = 0;
+		$tgl = 0;
+		$ihis = -1;
+		foreach ($dataHistory as $k => $datahist) :
+			if ($tgl < $datahist['tanggal']) {
+				$tgl =  $datahist['tanggal'];
+				$temp = $datahist['liter'];
+				$history[$datahist['tanggal']] = $datahist['liter'];
+				$ihis += 1;
+
+
+				$dataTank[$ihis]['data'] = $datahist['liter'];
+				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+			}
+			if ($temp < $datahist['liter']) {
+				$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
+
+				$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
+				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+				$temp = $datahist['liter'];
+			} elseif ($temp > $datahist['liter']) {
 				$temp = $datahist['liter'];
 			}
 		endforeach;
