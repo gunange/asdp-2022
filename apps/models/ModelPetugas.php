@@ -307,6 +307,16 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+	public function GetDocDelaySandar($id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	{
+		$set = $this->DataSandarJoin();
+		$set['query'] = "WHERE UPPER(status)='LUNAS' AND ts.id_kapal = '{$id_kapal}' AND ts.id_dermaga = '{$id_dermaga}' AND ( ts.tgl BETWEEN '{$tanggal_awal}' AND '{$tanggal_akhir}' ) ORDER BY waktu_awal DESC, tgl DESC";
+		if($tanggal_akhir == null):
+			$set['query'] = "WHERE UPPER(status)='LUNAS' AND ts.id_kapal = '{$id_kapal}' AND ( ts.tgl BETWEEN '{$id_dermaga}' AND '{$tanggal_awal}' ) ORDER BY waktu_awal DESC, tgl DESC";
+		endif;
+
+		return database::join($set);
+	}
 	public function Testing($id)
 	{
 		$set 			 = $this->JoinStoryTangki($id);
@@ -316,4 +326,5 @@ class ModelPetugas extends Controler
 
 		return database::join($set, false);
 	}
+
 }

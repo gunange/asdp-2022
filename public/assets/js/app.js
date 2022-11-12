@@ -1,4 +1,4 @@
-function setForm() {
+function setForm(targetModal = "#modal") {
     let eFrom = document.querySelectorAll('.data-form');
     eFrom.forEach((e) => {
         e.addEventListener('submit', (event) => {
@@ -24,7 +24,17 @@ function setForm() {
             }).then((text) => {
                 try {
                     const obj = JSON.parse(text);
-                    if (obj.response == 'OK') {
+                    if(obj.tutupModal){
+                        targetModal.hide();
+                    }
+                    if(obj.response == "noSwall"){
+                        if (obj.function){
+                            obj.function.forEach((fun)=>{
+                                eval(fun)
+                            });
+                        }
+                    }
+                    else if (obj.response == 'OK') {
 
                         if (obj.href){
                             swal("Good job!", obj.msg, "success", {
@@ -95,7 +105,7 @@ function openModalShow(target = "#modal-center-lg", model, components = () => { 
         if (this.readyState == 4 && this.status == 200) {
             document.querySelector(target + " #modal-target-output").innerHTML = this.responseText;
             modal.show();
-            setForm();
+            setForm(modal);
             components();
         }
     };
@@ -109,7 +119,7 @@ function replaceModalShow(target = "#modal-center-lg", model, components = () =>
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.querySelector(target + " #modal-target-output").innerHTML = this.responseText;
-            setForm();
+            setForm(target);
             components();
         }
     };
