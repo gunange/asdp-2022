@@ -128,7 +128,7 @@ function replaceModalShow(target = "#modal-center-lg", model, components = () =>
     xhttp.send();
 }
 
-function replaceHtml(target = "", model, components = () => { }) {
+function replaceHtml(target = "#modal-center-lg", model, components = () => { }) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
