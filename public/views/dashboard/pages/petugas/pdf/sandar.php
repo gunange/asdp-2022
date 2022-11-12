@@ -87,6 +87,73 @@
 		</script>
 	</body>
 
+<?php elseif ($this->setPage == "Recap") : ?>
+	<?php 
+	$dataPdf = [];
+	foreach($this->data as $k => $d ):
+
+
+		$dataPdf[$k] = [
+			$k + 1 ,
+			$d['waktu_awal'] . ' - ' . $d['waktu_akhir'],
+			$d['akumulasi_menit'],
+			tools::indoTime($d['tgl']),
+			$d['nama'],
+			"Shiift " .$d['shift'],
+			$d['nama_kapal'],
+			$d['dermaga'],
+			$d['total_call'],
+			"Rp. " . tools::rupiah($d['total_sandar']),
+
+		];
+	endforeach;
+
+	?>
+	<iframe id="output" width="100%" height="100%" frameborder="0"></iframe>
+	<script>
+		var doc = new jsPDF({
+			orientation: 'l',
+			unit: 'mm',
+			format: [210, 330]
+		});
+		doc.setFontSize(12);
+		doc.autoTable({
+
+			margin: {
+				top: 30
+			},
+
+			head: [
+				[{
+						content: 'No',
+						styles: {
+							cellWidth: 15
+						}
+					},
+					'Waktu',
+					'Akumulasi',
+					'Tanggal',
+					'Petugas',
+					'Shift',
+					'Kapal',
+					'Dermaga',
+					'Call',
+					'Harga',
+				]
+			],
+			body: <?= json_encode($dataPdf) ?>,
+			theme: 'grid',
+			headStyles: {
+				fillColor: [124, 95, 240]
+			},
+
+		});
+		doc.setFontSize(10);
+		doc.text(220, doc.lastAutoTable.finalY + 15, "Ternate, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
+		doc.text(220, doc.lastAutoTable.finalY + 33, "<?= $this->model->user->nama ?>", null, null, 'center');
+
+		document.getElementById('output').src = doc.output('datauristring');
+	</script>
 <?php elseif ($this->setPage == "Lunas") : ?>
 
 

@@ -1,9 +1,3 @@
-<?php
-
-
-
-?>
-
 <div class="row mt-4">
     <div class="col-12 col-md-12">
         <!-- Page Header -->
@@ -31,7 +25,13 @@
                     <h6 class="m-0">
                         <i class="bi bi-box text-yellow-500 me-2"></i> Data Invoice Sandar
                     </h6>
-
+                    <div class="btn-toolbar mb-2 mb-md-0 btn-group">
+                        <button class="btn btn-sm bg-teal text-white" 
+                            title="Tambah data!" 
+                            onclick="openModalShow('#modal', '<?= $this->gLink ?>SetInvoiceSandar/filter-print', ()=>{injectJsDashboardPrimary();} )">
+                            <i class="bi bi-printer-fill"></i> Print Doc.
+                        </button>
+                    </div>
                 </div>
             </div><!-- card-header -->
             <div class="card-body">
@@ -67,7 +67,7 @@
                                     <td><?= $d['dermaga'] ?></td>
                                     <td><?= $d['waktu_awal'] ?></td>
                                     <td><?= $d['lama_sandar'] ?></td>
-                                    <td><?= $d['total_sandar'] ?></td>
+                                    <td>Rp. <?= tools::rupiah($d['total_sandar']) ?></td>
                                     <td><?= $d['status'] ?></td>
                                 </tr>
                             <?php endforeach; ?>

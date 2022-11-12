@@ -242,6 +242,7 @@ trait MasterJoin
 	public function DataSandarJoin()
 	{
 		$set['set'] 	= '
+			user.*,
 			ts.id id,
 			tgl,
 			shift,
@@ -252,7 +253,9 @@ trait MasterJoin
 			(waktu_akhir - waktu_awal) lama_sandar,
 			total_sandar,
 			akumulasi_menit,
-			status
+			status,
+			total_call
+
 		';
 		$set['join'] = [
 
@@ -274,6 +277,12 @@ trait MasterJoin
 					'key'   => 'td',
 					'id'    => 'td.id',
 					'in'    => 'ts.id_dermaga'
+				],
+				[
+					'table' => 'tbl_user ',
+					'key'   => 'user',
+					'id'    => 'user.id',
+					'in'    => 'ts.id_user'
 				],
 
 			]
