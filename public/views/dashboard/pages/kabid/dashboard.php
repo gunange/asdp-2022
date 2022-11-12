@@ -143,13 +143,17 @@
 
 
 											?>
-											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/null/', 
+											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/', 
 											()=>{
 
 													setChart( <?= $dataSaldo ?>) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
+											</button>
+											<button type="button" class="btn btn-sm bg-purple text-white" title="Grafik Filter" onclick="openModalShow('#modal', '<?= $this->gLink ?>SetDashboard/form-filter/null/<?= $d['id'] ?>', 
+											()=>{injectJsDashboardPrimary();})">
+												<i class="bi bi-calendar3"></i>
 											</button>
 										</div>
 									</td>

@@ -134,7 +134,7 @@ class tools
 		return $ex[0] ." " . $bulan[$ex[1]] . " " . $ex[2];
 
 	}
-	public static function OptBulan()
+	public static function OptBulan($key=null)
 	{
 		$bulan = [
 			1 =>
@@ -151,7 +151,8 @@ class tools
 			'November',
 			'Desember'
 		];
-		return $bulan;
+
+		return (is_null($key) ? $bulan :$bulan[$key]  );
 
 	}
 	public static function umur($data)

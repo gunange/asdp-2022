@@ -61,6 +61,49 @@
 			</div>
 		</div>
 	</div>
+<?php elseif ($this->setPage == "showDataPemakaianMinyakByFilter") : ?>
+	<div class="modal-content">
+		<div class="modal-header">
+			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Saldo Per-hari Pada <?= $this->bulan ?> <?= $this->tahun ?></pre>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<section class="">
+						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php elseif ($this->setPage == "form-filter") : ?>
+	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>SetBbmKapalHistoryByFilter/<?= $this->id ?>">
+		<div class="modal-header">
+			<pre class="modal-title fs-7 text-purple"><i class="bi bi-calendar3"></i> Set Data</pre>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Tahun</label>
+					<input class="form-control form-control-sm" type="number" placeholder="Tahun" name="tahun" required autocomplete="off" value="<?= date('Y') ?>">
+				</div>
+				<div class="col-md-12 mb-3">
+					<label class="form-label">Bulan</label>
+					<select name="bulan" class="form-select form-select-sm sel-all" required>
+						<option value=""></option>
+						<?php foreach (tools::OptBulan() as $kOpsi => $opsi) : ?>
+							<option value="<?= $kOpsi ?>"><?= $opsi ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+			<button type="submit" class="btn btn-sm btn-primary">Get Grafik</button>
+		</div>
+	</form>
 <?php else : ?>
 	<div class="modal-content">
 		<div class="modal-header">
