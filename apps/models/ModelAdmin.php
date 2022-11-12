@@ -318,6 +318,7 @@ class ModelAdmin extends Controler
 	{
 		$set['set'] = [
 			"jenis_dokumen" => $_POST['jenis_dokumen'],
+			"warna" => $_POST['warna'],
 		];
 		$set['tbl'] 	= "tbl_jenis_dokumen";
 		database::insert($set);
@@ -333,6 +334,7 @@ class ModelAdmin extends Controler
 
 		$set['set'] = [
 			"jenis_dokumen" => $_POST['jenis_dokumen'],
+			"warna" => $_POST['warna'],
 		];
 
 		database::update($set);

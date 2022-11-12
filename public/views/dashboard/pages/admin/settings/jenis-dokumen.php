@@ -9,7 +9,12 @@
 
                 <div class="col-md-12 mb-3">
                     <label class="form-label">Jenis Dokumen</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Nama Jenis Tangki" name="jenis_dokumen" required autocomplete="off">
+                    <input class="form-control form-control-sm" type="text" placeholder="Jenis Dokumen" name="jenis_dokumen" required autocomplete="off">
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Pilih Warnah</label>
+                    <input class="form-control form-control-sm" type="color" placeholder="Warnah Dokumen" name="warna" required autocomplete="off" value="#23fca9">
                 </div>
 
             </div>
@@ -28,8 +33,12 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <label class="form-label">Jenis Tankgi</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Nama Jenis Tangki" name="jenis_dokumen" required autocomplete="off" value="<?= $this->data['jenis_dokumen'] ?>">
+                    <label class="form-label">Jenis Dokumen</label>
+                    <input class="form-control form-control-sm" type="text" placeholder="Jenis Dokumen" name="jenis_dokumen" required autocomplete="off" value="<?= $this->data['jenis_dokumen'] ?>">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Pilih Warnah</label>
+                    <input class="form-control form-control-sm" type="color" placeholder="Warnah Dokumen" name="warna" required autocomplete="off" value="<?= $this->data['warna'] ?>">
                 </div>
             </div>
         </div>
