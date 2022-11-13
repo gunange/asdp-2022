@@ -76,4 +76,13 @@ trait MasterData
 
 		return database::select($set);
 	}
+	public function sGetDokumen($data = "", $loop="loop")
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_dokumen';
+		$set['query']	= $data;
+		$set['loop'] 	= $loop;
+
+		return database::select($set);
+	}
 }

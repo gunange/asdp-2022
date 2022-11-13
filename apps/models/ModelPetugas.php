@@ -382,22 +382,40 @@ class ModelPetugas extends Controler
 	public function AddDokumen()
 	{
 		$id_kapal = $_POST['id_kapal'];
+		$id_jenis_dokumen = $_POST['id_jenis_dokumen'];
 
-		$set['set'] = [
-			"id_kapal" => $id_kapal,
-			"id_jenis_dokumen" => $_POST['id_jenis_dokumen'],
-			"id_user" => $this->user->id,
-			"tgl_berlaku" => $_POST['tgl_berlaku'],
-		];
+		$dataJenisDokumen = $this->sGetDokumen("WHERE id_kapal = '{$id_kapal}' AND id_jenis_dokumen = '{$id_jenis_dokumen}' ", "no_loop");
+
 		$set['tbl'] 	= "tbl_dokumen";
-		database::insert($set);
+		if (is_array($dataJenisDokumen)):
+
+			$set['key']	= "id" ;
+			$set['val']	= $dataJenisDokumen['id'] ;
+			
+			$set['set'] = [
+				"id_user" => $this->user->id,
+				"tgl_berlaku" => $_POST['tgl_berlaku'],
+			];
+			
+			database::update($set);
+		else:
+			$set['set'] = [
+				"id_kapal" => $id_kapal,
+				"id_jenis_dokumen" => $id_jenis_dokumen,
+				"id_user" => $this->user->id,
+				"tgl_berlaku" => $_POST['tgl_berlaku'],
+			];
+			database::insert($set);
+		endif;
+		
 
 
 		$this->response['response'] = "OK";
 		$this->response['msg'] = "Data berhasil diperbahrui";
-
+		$this->response['tutupModal'] = true ;
 		$this->response['function'] = [
-			'getTangki({$id_kapal})'
+			'getTangki('.$id_kapal.')',
+			'document.getElementById("tgl_berlaku").value = ""',
 		];
 
 		$this->ResponseApi();

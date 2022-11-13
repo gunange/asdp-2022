@@ -30,7 +30,7 @@
 		<div class="modal-footer">
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 			<?php if ($this->data->action ) : ?>
-				<button type="submit" class="btn btn-sm bg-purple text-white" data-bs-dismiss="modal" onclick="ressetInputan()">Submit</button>
+				<button type="submit" class="btn btn-sm bg-purple text-white">Submit</button>
 			<?php endif; ?>
 		</div>
 	</form>

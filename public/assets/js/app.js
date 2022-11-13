@@ -107,7 +107,6 @@ function openModalShow(target = "#modal-center-lg", model, components = () => { 
             document.querySelector(target + " #modal-target-output").innerHTML = this.responseText;
             modal.show();
             if (isSetForm == true){
-                console.log("Run SetForm")
                 setForm(modal);
             }
             components();
