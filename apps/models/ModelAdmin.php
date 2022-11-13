@@ -314,6 +314,49 @@ class ModelAdmin extends Controler
 			msg::error();
 		}
 	}
+	public function AddJenisDokumen()
+	{
+		$set['set'] = [
+			"jenis_dokumen" => $_POST['jenis_dokumen'],
+		];
+		$set['tbl'] 	= "tbl_jenis_dokumen";
+		database::insert($set);
+
+		msg::$msg = "Data berhasil ditambahkan";
+		msg::success();
+	}
+	public function UpJenisDokumen()
+	{
+		$set['tbl']	= "tbl_jenis_dokumen";
+		$set['key']	= "id";
+		$set['val']	= $_POST['up'];
+
+		$set['set'] = [
+			"jenis_dokumen" => $_POST['jenis_dokumen'],
+		];
+
+		database::update($set);
+
+		msg::$msg = "Data berhasil diperbahrui ";
+		msg::success();
+	}
+	public function DelJenisDokumen()
+	{
+		try {
+			$set['tbl']		= "tbl_jenis_dokumen";
+			$set['key']		= "id";
+			$set['val']		= $_POST['del'];
+
+			database::delete($set);
+			msg::$msg = "Data berhasil dihapus ";
+			msg::success();
+		} catch (PDOException) {
+			msg::$msg = "Anda tidak dapat menghapus data ini karena data telah terhubung dengan data yang lain ";
+			msg::error();
+		}
+	}
+
+
 	public function AddJenisTanki()
 	{
 		$set['set'] = [

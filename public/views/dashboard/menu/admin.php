@@ -36,6 +36,13 @@
 		</a>
 	</li>
 
+	<li>
+		<a href="<?= $this->gLink ?>JenisDokumen">
+			<i class="bi bi-grid"></i>
+			<span>Jenis Dokumen</span>
+		</a>
+	</li>
+
 	<li class="header-menu">
 		<span>Pengaturan</span>
 	</li>

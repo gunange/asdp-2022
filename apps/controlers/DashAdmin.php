@@ -58,4 +58,9 @@ class DashAdmin extends Controler
 	{
 		$this->viewDashboard('jenis-tanki');
 	}
+
+	public function JenisDokumen()
+	{
+		$this->viewDashboard('jenis-dokumen');
+	}
 }

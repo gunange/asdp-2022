@@ -53,4 +53,13 @@ trait ComponentAdmin
 		endif;
 		$this->viewDash('settings/jenis-tanki');
 	}
+
+	public function SetJenisDokumen($page = null, $key = null)
+	{
+		$this->setPage = $page;
+		if (!is_null($key)) :
+			$this->data  =  $this->model->sGetJenisDokumen()[$key];
+		endif;
+		$this->viewDash('settings/jenis-dokumen');
+	}
 }

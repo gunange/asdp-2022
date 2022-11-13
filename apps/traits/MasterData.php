@@ -65,4 +65,13 @@ trait MasterData
 
 		return database::select($set);
 	}
+
+	public function sGetJenisDokumen($data = "")
+	{
+		$set['set'] 	= '*';
+		$set['tbl'] 	= 'tbl_jenis_dokumen';
+		$set['query']	= $data;
+
+		return database::select($set);
+	}
 }
