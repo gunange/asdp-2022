@@ -145,4 +145,17 @@ trait ComponentPetugas
 
 		$this->viewDash('pdf/air-tawar');
 	}
+	public function SetDokumen($page = null, $idKapal = null, $idJenisDokumen = null, $expire=null)
+	{
+		$this->setPage = $page;
+		$this->idKapal = $idKapal;
+		$this->idJenisDokumen = $idJenisDokumen;
+		$this->expire = $expire;
+		if ($page == "confirmDokumen") :
+			$this->data = $this->model->GetDataKonfirmDokumen($idKapal, $idJenisDokumen, $expire );
+		elseif($page == "getDataDokumen"):
+			$this->data = $this->model->GetDokumenByIdKapal($idKapal) ;
+		endif;
+		$this->viewDash('settings/dokumen');
+	}
 }

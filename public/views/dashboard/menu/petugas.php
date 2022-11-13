@@ -17,8 +17,14 @@
 	</li>
 	<li>
 		<a href="<?= $this->gLink ?>AirTawar">
-			<i class="bi bi-grid"></i>
+			<i class="bi bi-droplet-half"></i>
 			<span>Air Tawar</span>
+		</a>
+	</li>
+	<li>
+		<a href="<?= $this->gLink ?>Dokumen">
+			<i class="bi bi-file-text"></i>
+			<span>Dokumen</span>
 		</a>
 	</li>
 

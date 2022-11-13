@@ -183,4 +183,12 @@ class tools
 	public static function remove_char($char=[], $data="", $replace=''){
 		return str_replace( $char, $replace, $data);
 	}
+	public static function GetSelisiHari($tglSkarang, $tglSelisi)
+	{
+		$tglSkarang = strtotime($tglSkarang);
+		$tglSelisi = strtotime($tglSelisi);
+		$jarak =  $tglSelisi - $tglSkarang ;
+		return $jarak / 60 / 60 / 24; ;
+		
+	}
 }

@@ -350,6 +350,61 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+	public function GetDataKonfirmDokumen($idKapal = null, $jenisDokumen = null, $expire = null)
+	{
+		$msg = new stdClass();
+
+		$msg->action = false;
+		$msg->idKapal = $idKapal ;
+		$msg->jenisDokumen = $jenisDokumen ;
+		$msg->expire = $expire ;
+		if (!empty($idKapal) && !empty($jenisDokumen) && !empty($expire)) :
+			$msg->dataKapal = $this->sGetKapal("WHERE id = '{$idKapal}' ", "no_loop");
+			$msg->dataJenisDokumen = $this->sGetJenisDokumen("WHERE id = '{$jenisDokumen}' ", "no_loop");
+			$msg->expire = $expire ;
+
+			if (is_array($msg->dataKapal) && is_array($msg->dataJenisDokumen)):
+				$msg->action = true;
+				$msg->dataKapal = (object)$msg->dataKapal ;
+				$msg->dataJenisDokumen = (object)$msg->dataJenisDokumen ;
+				$msg->selisiWaktu = tools::GetSelisiHari(date('Y-m-d'), $expire);
+			endif;
+		endif;
+
+		return $msg;
+	}
+
+	public function AddDokumen()
+	{
+		$id_kapal = $_POST['id_kapal'] ;
+
+		$set['set'] = [
+			"id_kapal" => $id_kapal,
+			"id_jenis_dokumen" => $_POST['id_jenis_dokumen'],
+			"id_user" => $this->user->id,
+			"tgl_berlaku" => $_POST['tgl_berlaku'],
+		];
+		$set['tbl'] 	= "tbl_dokumen";
+		database::insert($set);
+
+
+		$this->response['response'] = "OK";
+		$this->response['msg'] = "Data berhasil diperbahrui";
+
+		$this->response['function'] = [
+			'getTangki({$id_kapal})'
+		];
+
+		$this->ResponseApi();
+	}
+	public function GetDokumenByIdKapal($id=null)
+	{
+		$set 						= $this->DokumenJoinBy();
+		$set['query']				= "WHERE td.id_kapal = '{$id}'" ;
+		return database::join($set);
+		
+	}
+	
 	public function Testing($id)
 	{
 		$set 			 = $this->JoinStoryTangki($id);

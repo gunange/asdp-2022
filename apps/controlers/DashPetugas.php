@@ -68,4 +68,12 @@ class DashPetugas extends Controler
 	{
 		$this->viewDashboard('sandar');
 	}
+	public function Dokumen()
+	{
+		$this->viewDashboard('dokumen');
+	}
+	public function PostFormDokumen()
+	{
+		$this->model->AddDokumen();
+	}
 }

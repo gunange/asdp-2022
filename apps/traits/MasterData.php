@@ -2,7 +2,7 @@
 
 trait MasterData
 {
-	public function sGetJenisKelamin($data = "")
+	public function sGetJenisKelamin($data = "", $loop="loop")
 	{
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_jenis_kelamin';
@@ -10,7 +10,7 @@ trait MasterData
 
 		return database::select($set);
 	}
-	public function sGetJenisTanki($data = "")
+	public function sGetJenisTanki($data = "", $loop="loop")
 	{
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_jenis_tanki';
@@ -18,11 +18,12 @@ trait MasterData
 
 		return database::select($set);
 	}
-	public function sGetKapal($data = "")
+	public function sGetKapal($data = "", $loop="loop")
 	{
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_kapal';
 		$set['query']	= $data;
+		$set['loop'] 	= $loop;
 
 		return database::select($set);
 	}
@@ -66,11 +67,12 @@ trait MasterData
 		return database::select($set);
 	}
 
-	public function sGetJenisDokumen($data = "")
+	public function sGetJenisDokumen($data = "", $loop="loop")
 	{
 		$set['set'] 	= '*';
 		$set['tbl'] 	= 'tbl_jenis_dokumen';
 		$set['query']	= $data;
+		$set['loop'] 	= $loop;
 
 		return database::select($set);
 	}
