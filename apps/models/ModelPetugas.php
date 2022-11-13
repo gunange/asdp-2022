@@ -298,6 +298,28 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
+
+	public function HistoryTangkiKananKapalInduk($id)
+	{
+		$set 			 = $this->HistoryDayTank();
+
+		$set['query']	= "WHERE id_kapal='{$id}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki=3 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+
+
+		return database::join($set);
+	}
+
+	public function HistoryTangkiKiriKapalInduk($id)
+	{
+		$set 			 = $this->HistoryDayTank();
+
+		$set['query']	= "WHERE id_kapal='{$id}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki=4 AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+
+
+		return database::join($set);
+	}
+
+
 	public function GetStoryTangkiByIdKapal($id)
 	{
 		$set 			 = $this->JoinStoryTangki($id);
@@ -307,21 +329,21 @@ class ModelPetugas extends Controler
 
 		return database::join($set);
 	}
-	public function GetDocDelaySandar($id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	public function GetDocDelaySandar($id_kapal = null, $id_dermaga = null, $tanggal_awal = null, $tanggal_akhir = null)
 	{
 		$set = $this->DataSandarJoin();
 		$set['query'] = "WHERE UPPER(status)='LUNAS' AND ts.id_kapal = '{$id_kapal}' AND ts.id_dermaga = '{$id_dermaga}' AND ( ts.tgl BETWEEN '{$tanggal_awal}' AND '{$tanggal_akhir}' ) ORDER BY waktu_awal DESC, tgl DESC";
-		if($tanggal_akhir == null):
+		if ($tanggal_akhir == null) :
 			$set['query'] = "WHERE UPPER(status)='LUNAS' AND ts.id_kapal = '{$id_kapal}' AND ( ts.tgl BETWEEN '{$id_dermaga}' AND '{$tanggal_awal}' ) ORDER BY waktu_awal DESC, tgl DESC";
 		endif;
 
 		return database::join($set);
 	}
-	public function GetDocDelayAirTawar($id_kapal=null, $id_dermaga= null, $tanggal_awal = null, $tanggal_akhir = null)
+	public function GetDocDelayAirTawar($id_kapal = null, $id_dermaga = null, $tanggal_awal = null, $tanggal_akhir = null)
 	{
 		$set = $this->AirTawarJoin();
 		$set['query'] = "WHERE UPPER(status)='LUNAS' AND tat.id_kapal = '{$id_kapal}' AND tat.id_dermaga = '{$id_dermaga}' AND ( tat.tgl BETWEEN '{$tanggal_awal}' AND '{$tanggal_akhir}' ) ORDER BY waktu DESC, tgl DESC";
-		if($tanggal_akhir == null):
+		if ($tanggal_akhir == null) :
 			$set['query'] = "WHERE UPPER(status)='LUNAS' AND tat.id_kapal = '{$id_kapal}' AND ( tat.tgl BETWEEN '{$id_dermaga}' AND '{$tanggal_awal}' ) ORDER BY waktu DESC, tgl DESC";
 		endif;
 
@@ -336,5 +358,4 @@ class ModelPetugas extends Controler
 
 		return database::join($set, false);
 	}
-
 }

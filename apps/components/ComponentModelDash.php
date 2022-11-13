@@ -35,7 +35,7 @@ trait ComponentModelDash
 		return $data;
 	}
 
-	public function GetDataGrafik($dataHistory)
+	public function GetDataPemakaian($dataHistory)
 	{
 		$dataTank = (array) null;
 		$temp = 0;
@@ -60,6 +60,33 @@ trait ComponentModelDash
 		return json_encode($dataTank);
 	}
 
+	public function GetDataSaldo($dataHistory)
+	{
+
+		$dataTank = (array) null;
+		$temp = 0;
+		$tgl = 0;
+		$ihis = -1;
+		foreach ($dataHistory as $k => $datahist) :
+			if ($tgl < $datahist['tanggal']) {
+				$tgl =  $datahist['tanggal'];
+				$temp = $datahist['liter'];
+				$history[$datahist['tanggal']] = $datahist['liter'];
+				$ihis += 1;
+				$dataTank[$ihis] = $datahist['liter'];
+			}
+			if ($temp < $datahist['liter']) {
+				$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
+				$dataTank[$ihis] = $history[$datahist['tanggal']];
+				$temp = $datahist['liter'];
+			} elseif ($temp > $datahist['liter']) {
+				$temp = $datahist['liter'];
+			}
+		endforeach;
+
+
+		return json_encode($dataTank);
+	}
 
 	public function upProfil()
 	{

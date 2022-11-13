@@ -53,19 +53,33 @@
 	<?php $data = $this->model->GetStoryTangkiByIdKapal($this->id); ?>
 
 	<?php
-	$pemakaianKanan = 0;
-	$pemakaianKiri = 0;
+	$saldoKanan = 0;
+	$saldoKiri = 0;
 
+	$dataSaldoHarianKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalDay($this->id));
+	$dataSaldoHarianKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalDay($this->id));
+	$dataSaldoIndukKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalInduk($this->id));
+	$dataSaldoIndukKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalInduk($this->id));
 
-	$dataPemakaianKanan =  $this->model->GetDataGrafik($this->model->HistoryTangkiKananKapalDay($this->id));
-	$dataPemakaianKiri =  $this->model->GetDataGrafik($this->model->HistoryTangkiKiriKapalDay($this->id));
+	print_r($dataSaldoHarianKanan);
+	echo "<br>";
+	print_r($dataSaldoIndukKanan);
 
-	if (!is_null($dataPemakaianKanan)) :
-		$pemakaianKanan = round(@json_decode($dataPemakaianKanan)[0], 1);
+	if (!is_null($dataSaldoHarianKanan)) :
+		$saldoKanan = round(@json_decode($dataSaldoHarianKanan)[0], 1);
 	endif;
 
-	if (!is_null($dataPemakaianKiri)) :
-		$pemakaianKiri = round(@json_decode($dataPemakaianKiri)[0], 1);
+
+	if (!is_null($dataSaldoHarianKiri)) :
+		$saldoKiri = round(@json_decode($dataSaldoHarianKiri)[0], 1);
+	endif;
+
+	if (!is_null($dataSaldoIndukKanan)) :
+		$saldoIndukKanan = round(@json_decode($dataSaldoIndukKanan)[0], 1);
+	endif;
+
+	if (!is_null($dataSaldoIndukKiri)) :
+		$saldoIndukKiri = round(@json_decode($dataSaldoIndukKiri)[0], 1);
 	endif;
 
 	?>
@@ -105,10 +119,10 @@
 		<?php endforeach; ?>
 
 		<div class="border-top pt-2">
-			<h6>Pemakaian Harian Kanan = <?= $pemakaianKanan ?> -liter</h6>
-			<h6>Pemakaian Harian Kiri = <?= $pemakaianKiri ?> -liter</h6>
-			<h6>Total Pemakaian Harian = <?= $pemakaianKanan + $pemakaianKiri ?> -liter</h6>
-			<h5>Saldo = <?= round($litter, 1) ?> -liter</h5>
+			<h5>Saldo Terbaru = <?= round($litter, 1) ?> -liter</h5>
+
+
+			<h4>Total Saldo Harian = <?= $saldoKanan + $saldoKiri + $saldoIndukKanan + $saldoIndukKiri ?> -liter</h4>
 		</div>
 
 	<?php else : ?>

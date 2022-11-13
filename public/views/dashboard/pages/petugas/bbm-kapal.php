@@ -53,7 +53,7 @@
 						<div class="col-12 mb-3">
 							<label class="form-label">Tinggi Minyak</label>
 							<div class="input-group input-group-sm">
-								<input type="number" class="form-control form-control-sm"  placeholder="Tinggi Minyak Kapal" id="tinggiMinyak" required autocomplete="off">
+								<input type="number" class="form-control form-control-sm" placeholder="Tinggi Minyak Kapal" id="tinggiMinyak" required autocomplete="off">
 								<div class="input-group-text input-group-sm">cm</div>
 							</div>
 						</div>
@@ -63,14 +63,10 @@
 
 			<div class="btn-toolbar mb-2 mb-md-0 btn-group">
 
-				<button class="btn btn-sm bg-yellow text-white" 
-					title="Tambah data!" 
-					onclick="ressetInputan()">
+				<button class="btn btn-sm bg-yellow text-white" title="Tambah data!" onclick="ressetInputan()">
 					<i class="bi bi-printer-fill"></i> Resset
 				</button>
-				<button class="btn btn-sm primary-bg text-white"
-					title="Tambah data!" 
-					onclick="saveBbmTangki();">
+				<button class="btn btn-sm primary-bg text-white" title="Tambah data!" onclick="saveBbmTangki();">
 					<i class="bi bi-clipboard-plus"></i> Simpan
 				</button>
 
@@ -91,7 +87,7 @@
 
 			<div class="card-body">
 				<div class="row" id="outputGrafik">
-					
+
 					<h5 class="text-center mt-3">Load data sedang diproses ..</h5>
 				</div>
 			</div><!-- card-body -->
@@ -106,7 +102,7 @@
 
 
 <script>
-	function getTangki(idKapal){
+	function getTangki(idKapal) {
 		$('#id_jenis_tanki').val('').trigger('change');
 		replaceHtml('#id_jenis_tanki', '<?= $this->gLink ?>SetBbmKapal/getOption/' + idKapal);
 		replaceHtml('#outputGrafik', '<?= $this->gLink ?>SetBbmKapal/getGrafikKapal/' + idKapal);
@@ -114,12 +110,13 @@
 
 	}
 
-	function saveBbmTangki(){
+	function saveBbmTangki() {
 		var idTangki = document.getElementById("id_jenis_tanki").value;
 		var tinggiMinyak = document.getElementById("tinggiMinyak").value;
 
-		openModalShow('#modal', `<?= $this->gLink ?>SetBbmKapal/confirmBbbmTangki/${idTangki}/${tinggiMinyak}` );
+		openModalShow('#modal', `<?= $this->gLink ?>SetBbmKapal/confirmBbbmTangki/${idTangki}/${tinggiMinyak}`);
 	}
+
 	function ressetInputan() {
 		$('#id_jenis_tanki').val('').trigger('change');
 		$('#id_kapal').val('').trigger('change');
@@ -127,6 +124,4 @@
 		document.getElementById('outputGrafik').innerHTML = '<h5 class="text-center mt-3">Load data sedang diproses ..</h5>';
 
 	}
-
 </script>
-
