@@ -35,14 +35,19 @@
 		</div>
 	</form>
 <?php elseif ($this->setPage == "getDataDokumen") : ?>
+	
 	<?php if (count($this->data) > 0 ): ?>
+
 	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 doc-show">
 		<?php foreach ($this->data as $k => $d) : ?>
+			<?php 
+				$expire = tools::GetSelisiHari(date('Y-m-d'), $d['tgl_berlaku']) ;
+			 ?>
 			<div class="col-md-6 mb-4 text-center cursor-pointer">
 				<h1><i class="bi bi-filetype-doc" style="color: <?= $d['warna'] ?> !important"></i></h1>
 				<h6 class="fs-7"><?= $d['jenis_dokumen'] ?></h6>
-				<p class="mb-0">Sisa 40 hari lagi</p>
-				<p>Expired : 20 Oktober 2021</p>
+				<p class="mb-0">Sisa <?= $expire ?> hari lagi</p>
+				<p>Expired : <?= tools::indoTime($d['tgl_berlaku']) ?></p>
 			</div>
 		<?php endforeach; ?>
 	</div>
