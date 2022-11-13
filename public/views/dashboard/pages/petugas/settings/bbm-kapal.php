@@ -61,9 +61,7 @@
 	$dataSaldoIndukKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalInduk($this->id));
 	$dataSaldoIndukKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalInduk($this->id));
 
-	print_r($dataSaldoHarianKanan);
-	echo "<br>";
-	print_r($dataSaldoIndukKanan);
+
 
 	if (!is_null($dataSaldoHarianKanan)) :
 		$saldoKanan = round(@json_decode($dataSaldoHarianKanan)[0], 1);

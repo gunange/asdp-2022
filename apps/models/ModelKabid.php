@@ -40,34 +40,53 @@ class ModelKabid extends Controler
 	}
 
 
-	public function GetHistoryDayTankKanan($id_kapal)
+	public function GetHistoryDayTankKanan($id_kapal, $month = null, $year = null)
 	{
-		$set 	= $this->HistoryDayTank();
-		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' AND tjt.id=1 ORDER BY DATE( tgl) ASC, waktu ASC";
+		}
 
 		return database::join($set);
 	}
-	public function GetHistoryDayTankKiri($id_kapal)
+	public function GetHistoryDayTankKiri($id_kapal, $month = null, $year = null)
 	{
-		$set 	= $this->HistoryDayTank();
-		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=2 ORDER BY DATE( tgl) ASC, waktu ASC";
-
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=2 ORDER BY DATE( tgl) ASC, waktu ASC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' AND tjt.id=2 ORDER BY DATE( tgl) ASC, waktu ASC";
+		}
 		return database::join($set);
 	}
-	public function GetHistoryIndukTankKanan($id_kapal)
+	public function GetHistoryIndukTankKanan($id_kapal, $month = null, $year = null)
 	{
-		$set 	= $this->HistoryDayTank();
-		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=3 ORDER BY DATE( tgl) ASC, waktu ASC";
-
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=3 ORDER BY DATE( tgl) ASC, waktu ASC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' AND tjt.id=3 ORDER BY DATE( tgl) ASC, waktu ASC";
+		}
 		return database::join($set);
 	}
-	public function GetHistoryIndukTankKiri($id_kapal)
+	public function GetHistoryIndukTankKiri($id_kapal, $month = null, $year = null)
 	{
-		$set 	= $this->HistoryDayTank();
-		$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=4 ORDER BY DATE( tgl) ASC, waktu ASC";
-
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id=4 ORDER BY DATE( tgl) ASC, waktu ASC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' AND tjt.id=4 ORDER BY DATE( tgl) ASC, waktu ASC";
+		}
 		return database::join($set);
 	}
+
+
 	public function GetHistoryByTahunAndByIdKapal($id_kapal, $tahun, $bulan)
 	{
 		$set 	= $this->HistoryDayTank();
