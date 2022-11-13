@@ -121,6 +121,7 @@
 											$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKanan($d['id']));
 											$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKiri($d['id']));
 
+											// proses mendapatkan dataTankTotal
 											$dataSaldo = json_encode([]);
 
 											$tempArrayTank = 0;

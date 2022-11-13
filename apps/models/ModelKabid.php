@@ -176,7 +176,6 @@ class ModelKabid extends Controler
 				$history[$datahist['tanggal']] = $datahist['liter'];
 				$ihis += 1;
 
-
 				$dataTank[$ihis]['data'] = $datahist['liter'];
 				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
 			}
@@ -194,16 +193,18 @@ class ModelKabid extends Controler
 		$nDay = date('d');
 
 		$newDataTank = [];
-
-		foreach ($dataTank as $k => $d) :
-			for ($tgl = 1; $tgl <= $nDay; $tgl++) :
-				if ($d['tanggal'] == $tgl) :
-					$newDataTank[] = $d['data'];
+		for ($tgl = 0; $tgl < $nDay; $tgl++) :
+			foreach ($dataTank as $k => $d) :
+				if (($d['tanggal'] - 1) == $tgl) :
+					$newDataTank[$tgl] = $d['data'];
+					break;
 				else :
-					$newDataTank[] = 0;
+					$newDataTank[$tgl] = 0;
 				endif;
-			endfor;
-		endforeach;
+			endforeach;
+		endfor;
+
+		// tools::console($newDataTank);
 
 
 		return json_encode($newDataTank);
