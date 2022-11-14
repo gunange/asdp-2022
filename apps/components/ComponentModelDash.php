@@ -113,4 +113,25 @@ trait ComponentModelDash
 
 		$this->ResponseApi();
 	}
+	public function GetDataDokumenExpire()
+	{
+		$set 						= $this->DokumenJoinNotif();
+		$set['query']				= "";
+		$data =  database::join($set);
+
+		$dataExpire = [] ;
+		
+		foreach($data as $k => $d):
+			$expire = null ;
+			$expire = tools::GetSelisiHari(date('Y-m-d'), $d['tgl_berlaku']);
+			if ($expire <= 30):
+				$dataExpire[$k] = $d ;
+				$dataExpire[$k]['expire'] = $expire ;
+			endif;
+
+		endforeach;
+
+
+		return $dataExpire ;
+	}
 }

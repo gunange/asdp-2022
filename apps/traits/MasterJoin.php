@@ -588,4 +588,45 @@ trait MasterJoin
 
 		return $set;
 	}
+	public function DokumenJoinNotif()
+	{
+		$set['set'] 	= '
+			tu.*,
+			tk.*,
+			tjd.*,
+			td.*
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'join',
+				'table' 	=> 'tbl_jenis_dokumen',
+				'key'   	=> 'tjd'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_dokumen',
+					'key'   => 'td',
+					'id'    => 'td.id_jenis_dokumen',
+					'in'    => 'tjd.id'
+				],
+				[
+					'table' => 'tbl_kapal ',
+					'key'   => 'tk',
+					'id'    => 'tk.id',
+					'in'    => 'td.id_kapal'
+				],
+				[
+					'table' => 'tbl_user ',
+					'key'   => 'tu',
+					'id'    => 'tu.id',
+					'in'    => 'td.id_user'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }
