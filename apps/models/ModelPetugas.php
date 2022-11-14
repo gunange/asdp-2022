@@ -87,7 +87,10 @@ class ModelPetugas extends Controler
 	public function GetAirTawar()
 	{
 		$set = $this->AirTawarJoin();
-		$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu DESC, tgl DESC";
+
+		$set['query'] = "WHERE UPPER(status)='LUNAS' AND tgl=(
+						SELECT tgl FROM tbl_air_tawar ORDER BY tgl DESC LIMIT 0,1
+						) ORDER BY waktu DESC, tgl DESC";
 
 		return database::join($set);
 	}
@@ -107,7 +110,9 @@ class ModelPetugas extends Controler
 	public function GetDataSandar()
 	{
 		$set = $this->DataSandarJoin();
-		$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu_awal DESC, tgl DESC";
+		$set['query'] = "WHERE UPPER(status)='LUNAS' AND tgl=(
+						SELECT tgl FROM tbl_sandar ORDER BY tgl DESC LIMIT 0,1
+						) ORDER BY waktu_awal DESC, tgl DESC";
 
 		return database::join($set);
 	}
@@ -355,18 +360,18 @@ class ModelPetugas extends Controler
 		$msg = new stdClass();
 
 		$msg->action = false;
-		$msg->idKapal = $idKapal ;
-		$msg->jenisDokumen = $jenisDokumen ;
-		$msg->expire = $expire ;
+		$msg->idKapal = $idKapal;
+		$msg->jenisDokumen = $jenisDokumen;
+		$msg->expire = $expire;
 		if (!empty($idKapal) && !empty($jenisDokumen) && !empty($expire)) :
 			$msg->dataKapal = $this->sGetKapal("WHERE id = '{$idKapal}' ", "no_loop");
 			$msg->dataJenisDokumen = $this->sGetJenisDokumen("WHERE id = '{$jenisDokumen}' ", "no_loop");
-			$msg->expire = $expire ;
+			$msg->expire = $expire;
 
-			if (is_array($msg->dataKapal) && is_array($msg->dataJenisDokumen)):
+			if (is_array($msg->dataKapal) && is_array($msg->dataJenisDokumen)) :
 				$msg->action = true;
-				$msg->dataKapal = (object)$msg->dataKapal ;
-				$msg->dataJenisDokumen = (object)$msg->dataJenisDokumen ;
+				$msg->dataKapal = (object)$msg->dataKapal;
+				$msg->dataJenisDokumen = (object)$msg->dataJenisDokumen;
 				$msg->selisiWaktu = tools::GetSelisiHari(date('Y-m-d'), $expire);
 			endif;
 		endif;
@@ -376,7 +381,7 @@ class ModelPetugas extends Controler
 
 	public function AddDokumen()
 	{
-		$id_kapal = $_POST['id_kapal'] ;
+		$id_kapal = $_POST['id_kapal'];
 
 		$set['set'] = [
 			"id_kapal" => $id_kapal,
@@ -397,14 +402,13 @@ class ModelPetugas extends Controler
 
 		$this->ResponseApi();
 	}
-	public function GetDokumenByIdKapal($id=null)
+	public function GetDokumenByIdKapal($id = null)
 	{
 		$set 						= $this->DokumenJoinBy();
-		$set['query']				= "WHERE td.id_kapal = '{$id}'" ;
+		$set['query']				= "WHERE td.id_kapal = '{$id}'";
 		return database::join($set);
-		
 	}
-	
+
 	public function Testing($id)
 	{
 		$set 			 = $this->JoinStoryTangki($id);
