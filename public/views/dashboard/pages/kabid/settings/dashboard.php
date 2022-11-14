@@ -1,4 +1,32 @@
 <?php if ($this->setPage == "showTangkiKapal") : ?>
+
+	<?php 
+$saldoKanan = 0;
+	$saldoKiri = 0;
+	$dataSaldoHarianKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalDay($this->id));
+	$dataSaldoHarianKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalDay($this->id));
+	$dataSaldoIndukKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalInduk($this->id));
+	$dataSaldoIndukKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalInduk($this->id));
+
+
+
+	if (!is_null($dataSaldoHarianKanan)) :
+		$saldoKanan = round(@json_decode($dataSaldoHarianKanan)[0], 1);
+	endif;
+
+
+	if (!is_null($dataSaldoHarianKiri)) :
+		$saldoKiri = round(@json_decode($dataSaldoHarianKiri)[0], 1);
+	endif;
+
+	if (!is_null($dataSaldoIndukKanan)) :
+		$saldoIndukKanan = round(@json_decode($dataSaldoIndukKanan)[0], 1);
+	endif;
+
+	if (!is_null($dataSaldoIndukKiri)) :
+		$saldoIndukKiri = round(@json_decode($dataSaldoIndukKiri)[0], 1);
+	endif;
+ ?>
 	<!-- UP -->
 	<div class="modal-content">
 		<div class="modal-header">
@@ -40,8 +68,9 @@
 			<?php endif; ?>
 		</div>
 		<div class="modal-footer">
+
 			<?php if (!empty($this->data)) : ?>
-				<button type="button" class="btn btn-sm bg-teal text-white"><?= tools::rupiah($litter) ?> -litter</button>
+				<button type="button" class="btn btn-sm bg-teal text-white">Saldo : <?= round($litter, 1) ?> -litter</button>
 			<?php endif; ?>
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>

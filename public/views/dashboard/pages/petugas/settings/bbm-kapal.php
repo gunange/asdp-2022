@@ -117,10 +117,9 @@
 		<?php endforeach; ?>
 
 		<div class="border-top pt-2">
-			<h5>Saldo Terbaru = <?= round($litter, 1) ?> -liter</h5>
+			<h5>Total Saldo Hari ini = <?= round($litter, 1) ?> -liter</h5>
 
 
-			<h4>Total Saldo Harian = <?= $saldoKanan + $saldoKiri + $saldoIndukKanan + $saldoIndukKiri ?> -liter</h4>
 		</div>
 
 	<?php else : ?>

@@ -35,10 +35,10 @@ trait ComponentKabid
 	public function SetBbmKapalHistoryByFilter($id = null)
 	{
 
-		$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']));
+		$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']));
+		$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']));
+		$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']));
+		$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']));
 
 		// proses mendapatkan dataTankTotal
 		$dataSaldo = [];

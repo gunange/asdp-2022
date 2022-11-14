@@ -153,6 +153,8 @@ trait ComponentPetugas
 		$this->expire = $expire;
 		if ($page == "confirmDokumen") :
 			$this->data = $this->model->GetDataKonfirmDokumen($idKapal, $idJenisDokumen, $expire );
+		elseif($page == "getNotif"):
+			$this->data = [];
 		elseif($page == "getDataDokumen"):
 			$this->data = $this->model->GetDokumenByIdKapal($idKapal) ;
 		endif;

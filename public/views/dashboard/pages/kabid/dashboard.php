@@ -116,10 +116,10 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKanan($d['id']));
-											$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryDayTankKiri($d['id']));
-											$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKanan($d['id']));
-											$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalDays($this->model->GetHistoryIndukTankKiri($d['id']));
+											$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($d['id']));
+											$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKiri($d['id']));
+											$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKanan($d['id']));
+											$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKiri($d['id']));
 
 											// proses mendapatkan dataTankTotal
 											$dataSaldo = json_encode([]);
@@ -183,7 +183,7 @@
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
 			datasets: [{
-					label: "Total Saldo Harian",
+					label: "Total Saldo Hari Ini",
 					data: total,
 					backgroundColor: [
 						'rgb(55, 146, 55)',

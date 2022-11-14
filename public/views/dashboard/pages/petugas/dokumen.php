@@ -102,7 +102,6 @@
 
 
 
-
 <script>
 	function getTangki(idKapal) {
 		$('#id_jenis_dokumen').val('').trigger('change');
@@ -128,5 +127,9 @@
 				</div>`;
 
 	}
+
+
+
+
 </script>
 

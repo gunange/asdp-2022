@@ -100,6 +100,44 @@
 
 
 
+<div class="toast-container position-fixed bottom-0 end-0 p-3" id="notif-toast">
+	<div id="liveToast" class="toast animated fadeInUps " role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" >
+		<div class="toast-header">
+			<i class="bi bi-lightning-charge-fill bg-pink text-white rounded-pill" style="padding: .15rem .30rem"></i>
+			<strong class="ms-1 me-auto">Bootstrap</strong>
+			<small>11 mins ago</small>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+		<div class="toast-body">
+			Hello, world! This is a toast message.
+		</div>
+	</div>
+	<div id="liveToast" class="toast animated fadeInUps" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" >
+		<div class="toast-header">
+			<i class="bi bi-lightning-charge-fill bg-pink text-white rounded-pill" style="padding: .15rem .30rem"></i>
+			<strong class="ms-1 me-auto">Bootstrap</strong>
+			<small>11 mins ago</small>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+		<div class="toast-body">
+			Hello, world! This is a toast message.
+		</div>
+	</div>
+	<div id="liveToast" class="toast animated fadeInUps" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" >
+		<div class="toast-header">
+			<i class="bi bi-lightning-charge-fill bg-pink text-white rounded-pill" style="padding: .15rem .30rem"></i>
+			<strong class="ms-1 me-auto">Bootstrap</strong>
+			<small>11 mins ago</small>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+		<div class="toast-body">
+			Hello, world! This is a toast message.
+		</div>
+	</div>
+	
+</div>
+
+
 
 <script>
 	function getTangki(idKapal) {
@@ -124,4 +162,14 @@
 		document.getElementById('outputGrafik').innerHTML = '<h5 class="text-center mt-3">Load data sedang diproses ..</h5>';
 
 	}
+
+
+       function setNotif() {
+       		var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+	        var toastList = toastElList.map(function(toastEl) {
+	        
+	          return new bootstrap.Toast(toastEl) 
+	        });
+	       toastList.forEach(toast => toast.show());
+       }
 </script>

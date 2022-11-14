@@ -34,6 +34,18 @@
 			<?php endif; ?>
 		</div>
 	</form>
+<?php elseif ($this->setPage == "getNotif") : ?>
+	<div id="liveToast" class="toast animated fadeInUp" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" >
+		<div class="toast-header">
+			<i class="bi bi-lightning-charge-fill bg-pink text-white rounded-pill" style="padding: .15rem .30rem"></i>
+			<strong class="ms-1 me-auto">Bootstrap New</strong>
+			<small>11 mins ago</small>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+		<div class="toast-body">
+			Hello, world! This is a toast message.
+		</div>
+	</div>
 <?php elseif ($this->setPage == "getDataDokumen") : ?>
 	
 	<?php if (count($this->data) > 0 ): ?>

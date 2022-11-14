@@ -6,7 +6,7 @@
 				<!-- <i class="bi bi-geo-fill fs-2 me-2"></i> -->
 				<h6 class="mt-2 ms-2">D-SSAT</h6>
 			</div>
-			<a href="#" class="me-4 ms-auto position-relative">
+			<a href="#!" class="me-4 ms-auto position-relative" onclick="setNotif()">
 				<i class="bi bi-bell fs-5 text-white"></i>
 				<span class="position-absolute top-1 translate-middle p-1 bg-white rounded-circle"></span>
 			</a>
