@@ -54,7 +54,7 @@
 						</div>
 
 						<div class="col-12 mb-3">
-							<label class="form-label">Tanggal Berakhir</label>
+							<label class="form-label">Masa Berlaku</label>
 							<div class="input-group input-group-sm">
 								<input type="date" class="form-control form-control-sm" placeholder="Tanggal Berakhir Dokumen" id="tgl_berlaku" required autocomplete="off">
 								<div class="input-group-text input-group-sm"><i class="bi bi-calendar3"></i></div>

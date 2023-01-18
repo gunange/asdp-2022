@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 29, 2022 at 02:38 PM
+-- Generation Time: Nov 14, 2022 at 11:48 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.1.0
 
@@ -40,6 +40,15 @@ CREATE TABLE `tbl_air_tawar` (
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_air_tawar`
+--
+
+INSERT INTO `tbl_air_tawar` (`id`, `id_user`, `id_kapal`, `id_dermaga`, `shift`, `tgl`, `waktu`, `debit_air`, `total_air_tawar`, `status`) VALUES
+(1, 2, 2, 2, 1, '2022-11-14', '08:45:53', 3, 0, 'Lunas'),
+(2, 2, 4, 2, 1, '2022-11-14', '08:46:11', 40000, 2000000, 'Lunas'),
+(3, 2, 5, 2, 1, '2022-11-14', '08:47:13', 4000, 200000, 'Lunas');
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +72,29 @@ INSERT INTO `tbl_dermaga` (`id`, `dermaga`, `tarif`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_dokumen`
+--
+
+CREATE TABLE `tbl_dokumen` (
+  `id` int(11) NOT NULL,
+  `id_kapal` int(11) NOT NULL,
+  `id_jenis_dokumen` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `tgl_berlaku` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_dokumen`
+--
+
+INSERT INTO `tbl_dokumen` (`id`, `id_kapal`, `id_jenis_dokumen`, `id_user`, `tgl_berlaku`) VALUES
+(2, 1, 3, 2, '2023-01-20'),
+(3, 2, 2, 2, '2022-11-18'),
+(4, 1, 2, 2, '2022-12-28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_history_tanki`
 --
 
@@ -75,6 +107,72 @@ CREATE TABLE `tbl_history_tanki` (
   `liter` float NOT NULL,
   `tinggi_bbm` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_history_tanki`
+--
+
+INSERT INTO `tbl_history_tanki` (`id`, `id_tanki`, `id_user`, `waktu`, `tgl`, `liter`, `tinggi_bbm`) VALUES
+(1, 4, 2, '19:16:05', '2022-10-30', 45, 30),
+(2, 3, 2, '19:17:03', '2022-10-30', 45, 30),
+(3, 2, 2, '19:17:13', '2022-10-30', 45, 30),
+(4, 1, 2, '19:17:28', '2022-10-30', 45, 30),
+(5, 1, 2, '19:17:52', '2022-10-30', 37.5, 25),
+(6, 1, 2, '19:19:31', '2022-10-30', 30, 20),
+(7, 2, 2, '19:19:46', '2022-10-30', 37.5, 25),
+(8, 1, 2, '20:05:24', '2022-10-30', 33, 22),
+(9, 1, 2, '20:05:58', '2022-10-30', 22.5, 15),
+(10, 2, 2, '20:07:39', '2022-10-30', 42, 28),
+(11, 2, 2, '20:08:11', '2022-10-30', 37.5, 25),
+(12, 3, 2, '00:18:25', '2022-11-13', 45, 30),
+(13, 4, 2, '00:18:40', '2022-11-13', 45, 30),
+(14, 2, 2, '00:18:58', '2022-11-13', 37.5, 25),
+(15, 1, 2, '00:19:18', '2022-11-13', 37.5, 25),
+(16, 2, 2, '00:21:28', '2022-11-13', 30, 20),
+(17, 1, 2, '00:21:42', '2022-11-13', 30, 20),
+(18, 1, 2, '00:22:54', '2022-11-13', 22.5, 15),
+(19, 2, 2, '00:23:05', '2022-11-13', 22.5, 15),
+(20, 1, 2, '00:51:47', '2022-11-13', 37.5, 25),
+(21, 1, 2, '00:52:02', '2022-11-13', 15, 10),
+(22, 1, 2, '00:52:12', '2022-11-13', 45, 30),
+(23, 2, 2, '02:19:39', '2022-11-13', 15, 10),
+(24, 2, 2, '02:21:00', '2022-11-13', 30, 20),
+(25, 2, 2, '02:21:10', '2022-11-13', 45, 30),
+(26, 4, 2, '03:36:32', '2022-11-14', 43.5, 29),
+(27, 3, 2, '03:36:45', '2022-11-14', 43.5, 29),
+(28, 2, 2, '03:36:55', '2022-11-14', 43.5, 29),
+(29, 1, 2, '03:37:05', '2022-11-14', 43.5, 29),
+(30, 1, 2, '04:38:40', '2022-11-14', 15, 10),
+(31, 2, 2, '04:38:54', '2022-11-14', 15, 10),
+(32, 1, 2, '04:39:15', '2022-11-14', 45, 30),
+(33, 2, 2, '04:39:27', '2022-11-14', 45, 30),
+(34, 1, 2, '17:23:50', '2022-11-14', 30, 20),
+(35, 1, 2, '17:24:00', '2022-11-14', 45, 30),
+(36, 2, 2, '17:24:15', '2022-11-14', 15, 10),
+(37, 2, 2, '17:24:28', '2022-11-14', 37.5, 25),
+(38, 3, 2, '17:29:09', '2022-11-14', 45, 30),
+(39, 4, 2, '17:29:20', '2022-11-14', 45, 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jenis_dokumen`
+--
+
+CREATE TABLE `tbl_jenis_dokumen` (
+  `id` int(11) NOT NULL,
+  `jenis_dokumen` varchar(50) NOT NULL,
+  `warna` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_jenis_dokumen`
+--
+
+INSERT INTO `tbl_jenis_dokumen` (`id`, `jenis_dokumen`, `warna`) VALUES
+(2, 'Dokumen sop', '#ff286c'),
+(3, 'Dokumen Anugerah', '#b2f92a'),
+(6, 'ASDP Track', '#5b85fc');
 
 -- --------------------------------------------------------
 
@@ -264,6 +362,16 @@ CREATE TABLE `tbl_tanki` (
   `tinggi_maksimum` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_tanki`
+--
+
+INSERT INTO `tbl_tanki` (`id`, `id_kapal`, `id_jenis_tanki`, `tinggi`, `liter`, `tinggi_maksimum`) VALUES
+(1, 1, 1, 1, 1.5, 30),
+(2, 1, 2, 1, 1.5, 30),
+(3, 1, 3, 1, 1.5, 30),
+(4, 1, 4, 1, 1.5, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -284,7 +392,7 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `id_login`, `id_jenis_kelamin`, `nama`, `regu`) VALUES
 (1, 1, 1, 'Administrator', '0'),
-(2, 2, 1, 'M. Ikbal', '1'),
+(2, 2, 1, 'Petugas 1', '1'),
 (3, 3, 1, 'Pimpinan ASDP', '0');
 
 --
@@ -306,12 +414,27 @@ ALTER TABLE `tbl_dermaga`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_dokumen`
+--
+ALTER TABLE `tbl_dokumen`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_jenis_dokumen` (`id_jenis_dokumen`),
+  ADD KEY `id_kapal` (`id_kapal`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `tbl_history_tanki`
 --
 ALTER TABLE `tbl_history_tanki`
   ADD PRIMARY KEY (`id`),
   ADD KEY `tbl_history_tanki_ibfk_2` (`id_user`),
   ADD KEY `tbl_history_tanki_ibfk_1` (`id_tanki`);
+
+--
+-- Indexes for table `tbl_jenis_dokumen`
+--
+ALTER TABLE `tbl_jenis_dokumen`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_jenis_kelamin`
@@ -390,19 +513,31 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_air_tawar`
 --
 ALTER TABLE `tbl_air_tawar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_dermaga`
 --
 ALTER TABLE `tbl_dermaga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_dokumen`
+--
+ALTER TABLE `tbl_dokumen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_history_tanki`
 --
 ALTER TABLE `tbl_history_tanki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `tbl_jenis_dokumen`
+--
+ALTER TABLE `tbl_jenis_dokumen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_kelamin`
@@ -426,7 +561,7 @@ ALTER TABLE `tbl_kabid`
 -- AUTO_INCREMENT for table `tbl_kapal`
 --
 ALTER TABLE `tbl_kapal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tbl_level`
@@ -438,13 +573,13 @@ ALTER TABLE `tbl_level`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_petugas`
 --
 ALTER TABLE `tbl_petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_sandar`
@@ -456,13 +591,13 @@ ALTER TABLE `tbl_sandar`
 -- AUTO_INCREMENT for table `tbl_tanki`
 --
 ALTER TABLE `tbl_tanki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -474,6 +609,14 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_air_tawar`
   ADD CONSTRAINT `tbl_air_tawar_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tbl_user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_air_tawar_ibfk_2` FOREIGN KEY (`id_kapal`) REFERENCES `tbl_kapal` (`id`);
+
+--
+-- Constraints for table `tbl_dokumen`
+--
+ALTER TABLE `tbl_dokumen`
+  ADD CONSTRAINT `tbl_dokumen_ibfk_1` FOREIGN KEY (`id_jenis_dokumen`) REFERENCES `tbl_jenis_dokumen` (`id`),
+  ADD CONSTRAINT `tbl_dokumen_ibfk_2` FOREIGN KEY (`id_kapal`) REFERENCES `tbl_kapal` (`id`),
+  ADD CONSTRAINT `tbl_dokumen_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `tbl_user` (`id`);
 
 --
 -- Constraints for table `tbl_history_tanki`

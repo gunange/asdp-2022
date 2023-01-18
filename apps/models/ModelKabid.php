@@ -120,14 +120,18 @@ public function GetDelayDataSandar()
 public function GetAirTawar()
 {
 	$set = $this->AirTawarJoin();
-	$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu DESC, tgl DESC";
+	$set['query'] = "WHERE UPPER(status)='LUNAS' AND tgl=(
+						SELECT tgl FROM tbl_air_tawar ORDER BY tgl DESC LIMIT 0,1
+						) ORDER BY waktu DESC, tgl DESC";
 
 	return database::join($set);
 }
 public function GetDataSandar()
 {
 	$set = $this->DataSandarJoin();
-	$set['query'] = "WHERE UPPER(status)='LUNAS' ORDER BY waktu_awal DESC, tgl DESC";
+	$set['query'] = "WHERE UPPER(status)='LUNAS' AND tgl=(
+						SELECT tgl FROM tbl_sandar ORDER BY tgl DESC LIMIT 0,1
+						) ORDER BY waktu_awal DESC, tgl DESC";
 
 	return database::join($set);
 }

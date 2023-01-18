@@ -6,14 +6,14 @@
 					<img
                         src="<?= BaseFiles ?>images/logo-asdp-white.png"
                         class="rounded mx-auto d-block logo-sidebar"
-                        alt="ASDP-LOGO">
+                        alt="ASDP-LOGO" style="width:100%;">
 				</div>
 				<button class="btn second-collor" data-bs-toggle="tooltip" onclick="toogleSidebar()" data-bs-placement="right" title="Close Sidebar">
 					<i class="bi bi-arrow-left-circle"></i>
 				</button>
 			</div>
 			<div class="bio mx-auto px-3 pt-3 pb-2 lh-1 text-center">
-				<p class="fs-7 mb-1 text-yellow">ASDP Cabang Ternate</p>
+				<p class="fs-7 mb-1 text-yellow">PT. Jembatan Nusantara</p>
 				<p class="text-yellow-200 mb-2"><?= $this->user->level ?></p>
 			</div>
 

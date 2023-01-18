@@ -48,7 +48,7 @@
                                 <th>Nama Kapal</th>
                                 <th>Dermaga</th>
                                 <th>Waktu Sandar</th>
-                                <th>Lama Sandar</th>
+                                <th>Call</th>
                                 <th>Tagihan Sandar</th>
 
                             </tr>
@@ -63,7 +63,7 @@
                                     <td><?= $d['nama_kapal'] ?></td>
                                     <td><?= $d['dermaga'] ?></td>
                                     <td><?= $d['waktu_awal'] ?></td>
-                                    <td><?= $d['lama_sandar'] ?></td>
+                                    <td><?= $d['total_call'] ?></td>
                                     <td><?= $d['total_sandar'] ?></td>
                                 </tr>
                             <?php endforeach; ?>
