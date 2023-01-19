@@ -25,6 +25,7 @@ class ModelUser{
 		if (is_array($dataSQl) && password_verify($password, $dataSQl['password']) ):
 			
 			$_SESSION[$this->tokenName] = $dataSQl['token'] ;
+			$_SESSION['showNotif'] = 1 ;
 			$this->response['href'] 	= $this->setUserControler($dataSQl['id_level']); 
 
 			$this->response['response'] = "OK";
@@ -63,6 +64,7 @@ class ModelUser{
 	{
 		$_SESSION[$this->tokenName] = false;
 		$_SESSION['shiftPetugas'] = NULL;
+		$_SESSION['showNotif'] = NULL;
 	    tools::redirect(BASEURL);
 	    exit();
 	}

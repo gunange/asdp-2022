@@ -23,5 +23,9 @@ trait ComponentDash{
 	public function upProfil(){
 		$this->model->upProfil();
 	}
+	public function GetNotif()
+	{
+		$this->viewTemplate('dashboard-components/notif');
+	}
 
 }
