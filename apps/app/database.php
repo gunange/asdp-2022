@@ -10,10 +10,17 @@
 class database
 {
 	private static
+<<<<<<< HEAD
 		$host = "localhost",
 		$user = "root",
 		$pass = "",
 		$db = "project_2022_asdp_ternate_1_1";
+=======
+	$host="localhost", 
+	$user="root", 
+	$pass="dot", 
+	$db="project_2023_asdp_v1" ;
+>>>>>>> 684efb3 (Ganti db)
 
 	private static function con()
 	{
