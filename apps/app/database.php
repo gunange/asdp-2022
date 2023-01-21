@@ -10,10 +10,10 @@
 class database
 {
 	private static
-		$host = "localhost",
-		$user = "root",
-		$pass = "",
-		$db = "project_2022_asdp_ternate_1_1";
+		$host="localhost", 
+		$user="root", 
+		$pass="dot", 
+		$db="project_2023_asdp_v1" ;
 
 	private static function con()
 	{

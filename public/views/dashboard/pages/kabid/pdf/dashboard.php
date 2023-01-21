@@ -3,7 +3,25 @@
 <script type="text/javascript" src="<?= BaseAssets ?>plugin/jsPDF/jspdf.autotable.js"></script>
 
 <?php if ($this->page == "byFilter") : ?>
+	<?= $this->id ?>
+	<?= $this->bulan ?>
+	<?= $this->tahun ?>
 
+<?php 
+$data = $this->model->GetHistoryDayTankAll($this->id, $this->bulan, $this->tahun) ;
+$forTable = [];
+foreach ($data as $k => $d ):
+	$forTable[$k] = [
+		$k + 1,
+		$d['waktu'],
+		tools::indoTime($d['tgl']),
+		$d['liter'],
+		$d['jenis_tanki'],
+		$d['nama'],
+	];
+endforeach;
+
+	 ?>
 	<body>
 		<iframe id="output" width="100%" height="100%" frameborder="0"></iframe>
 
@@ -41,16 +59,12 @@
 						},
 						'Waktu',
 						'Tanggal',
+						'Liter',
+						'Jenis Tangki',
 						'Petugas',
-						'Regu',
-						'Shift',
-						'Kapal',
-						'Dermaga',
-						'Debit Air',
-						'Harga',
 					]
 				],
-				body: [],
+				body: <?= json_encode($forTable) ?>,
 				theme: 'grid',
 				headStyles: {
 					fillColor: [124, 95, 240]
