@@ -113,6 +113,19 @@
 			</div>
 		</div>
 	</div>
+<?php elseif ($this->setPage == "showDataPemakaianMinyakByFilterToPdf") : ?>
+	<div class="modal-content">
+		<div class="modal-header">
+			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Saldo Per-hari Pada <?= $this->bulan ?> <?= $this->tahun ?></pre>
+		</div>
+		<div class="modal-body p-0">
+			<div class="row p-0">
+				<div class="col-12 col-md-12 p-0">
+					<iframe width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>ViewDashbpard/byFilter/<?= $this->id ?>"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php elseif ($this->setPage == "form-filter") : ?>
 	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>SetBbmKapalHistoryByFilter/<?= $this->id ?>">
 		<div class="modal-header">
@@ -142,7 +155,7 @@
 		</div>
 	</form>
 <?php elseif ($this->setPage == "form-filter-pdf") : ?>
-	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>SetBbmKapalHistoryByFilter/<?= $this->id ?>">
+	<form class="modal-content data-form" method="POST" action="<?= $this->gLink ?>SetBbmKapalHistoryByFilter/<?= $this->id ?>/pdf">
 		<div class="modal-header">
 			<pre class="modal-title fs-7 text-pink"><i class="bi bi-filetype-pdf"></i> Set Data</pre>
 		</div>
