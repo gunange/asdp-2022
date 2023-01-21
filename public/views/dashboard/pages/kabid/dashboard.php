@@ -155,6 +155,10 @@
 											()=>{injectJsDashboardPrimary();})">
 												<i class="bi bi-calendar3"></i>
 											</button>
+											<button type="button" class="btn btn-sm bg-pink text-white" title="PDF Filter" onclick="openModalShow('#modal', '<?= $this->gLink ?>SetDashboard/form-filter-pdf/null/<?= $d['id'] ?>', 
+											()=>{injectJsDashboardPrimary();})">
+												<i class="bi bi-filetype-pdf"></i>
+											</button>
 										</div>
 									</td>
 
