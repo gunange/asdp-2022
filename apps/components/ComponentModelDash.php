@@ -119,19 +119,19 @@ trait ComponentModelDash
 		$set['query']				= "";
 		$data =  database::join($set);
 
-		$dataExpire = [] ;
-		
-		foreach($data as $k => $d):
-			$expire = null ;
+		$dataExpire = [];
+
+		foreach ($data as $k => $d) :
+			$expire = null;
 			$expire = tools::GetSelisiHari(date('Y-m-d'), $d['tgl_berlaku']);
-			if ($expire <= 30):
-				$dataExpire[$k] = $d ;
-				$dataExpire[$k]['expire'] = $expire ;
+			if ($expire <= 30) :
+				$dataExpire[$k] = $d;
+				$dataExpire[$k]['expire'] = $expire;
 			endif;
 
 		endforeach;
 
 
-		return $dataExpire ;
+		return $dataExpire;
 	}
 }

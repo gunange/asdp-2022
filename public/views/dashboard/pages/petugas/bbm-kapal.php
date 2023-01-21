@@ -123,6 +123,4 @@
 		document.getElementById('outputGrafik').innerHTML = '<h5 class="text-center mt-3">Load data sedang diproses ..</h5>';
 
 	}
-
-
 </script>

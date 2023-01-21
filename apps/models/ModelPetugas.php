@@ -387,18 +387,18 @@ class ModelPetugas extends Controler
 		$dataJenisDokumen = $this->sGetDokumen("WHERE id_kapal = '{$id_kapal}' AND id_jenis_dokumen = '{$id_jenis_dokumen}' ", "no_loop");
 
 		$set['tbl'] 	= "tbl_dokumen";
-		if (is_array($dataJenisDokumen)):
+		if (is_array($dataJenisDokumen)) :
 
-			$set['key']	= "id" ;
-			$set['val']	= $dataJenisDokumen['id'] ;
-			
+			$set['key']	= "id";
+			$set['val']	= $dataJenisDokumen['id'];
+
 			$set['set'] = [
 				"id_user" => $this->user->id,
 				"tgl_berlaku" => $_POST['tgl_berlaku'],
 			];
-			
+
 			database::update($set);
-		else:
+		else :
 			$set['set'] = [
 				"id_kapal" => $id_kapal,
 				"id_jenis_dokumen" => $id_jenis_dokumen,
@@ -407,14 +407,14 @@ class ModelPetugas extends Controler
 			];
 			database::insert($set);
 		endif;
-		
+
 
 
 		$this->response['response'] = "OK";
 		$this->response['msg'] = "Data berhasil diperbahrui";
-		$this->response['tutupModal'] = true ;
+		$this->response['tutupModal'] = true;
 		$this->response['function'] = [
-			'getTangki('.$id_kapal.')',
+			'getTangki(' . $id_kapal . ')',
 			'document.getElementById("tgl_berlaku").value = ""',
 		];
 
