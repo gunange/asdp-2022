@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<?= BaseAssets ?>plugin/jsPDF/jspdf.autotable.js"></script>
 
 <?php if ($this->page == "byFilter") : ?>
-<!-- 	<?= $this->id ?>
+	<!-- 	<?= $this->id ?>
 	<?= $this->bulan ?>
 	<?= $this->tahun ?> -->
 
@@ -39,12 +39,14 @@
 	foreach (json_decode($dataSaldo, true) as $k => $d) :
 		$forTable[$k] = [
 			$k + 1,
-			tools::indoTime($this->tahun. "-". $this->bulan . "-". $k + 1),
-			$d
+			tools::indoTime($this->tahun . "-" . $this->bulan . "-" . $k + 1),
+			$d,
+			'Litter',
 		];
 	endforeach;
 
 	?>
+
 	<body>
 		<iframe id="output" width="100%" height="100%" frameborder="0"></iframe>
 
@@ -80,6 +82,7 @@
 						},
 						'Tanggal',
 						'Saldo',
+						'Satuan',
 					]
 				],
 				body: <?= json_encode($forTable) ?>,
