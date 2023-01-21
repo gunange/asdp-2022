@@ -35,7 +35,7 @@ trait ComponentKabid
 		$this->tahun = $tahun;
 		$this->viewDash('settings/dashboard');
 	}
-	public function SetBbmKapalHistoryByFilter($id = null)
+	public function SetBbmKapalHistoryByFilter($id = null, $page = null)
 	{
 
 		$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']));
@@ -70,9 +70,22 @@ trait ComponentKabid
 		$this->model->response['response'] = "noSwall";
 		$this->model->response['tutupModal'] = true;
 
-		$this->model->response['function'] = [
-			"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ") ; } )"
-		];
+		if($page == "pdf"):
+
+			$this->model->response['function'] = [
+				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilterToPdf/" . $this->bulan . "/" . $this->tahun . " ' )"
+			];
+
+
+		else:
+			$this->model->response['function'] = [
+				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ") ; } )"
+			];
+		endif;
 		$this->model->ResponseApi();
+	}
+	public function ViewPdfFiilter()
+	{
+		
 	}
 }
