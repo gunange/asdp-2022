@@ -21,6 +21,9 @@ trait ComponentKabid
 			if ($page == "formFilter") :
 				$this->id = $id;
 				$this->data = $this->model->sGetKapal()[$key];
+			elseif ($page == "formFilterPdf") :
+				$this->id = $id;
+				$this->data = $this->model->sGetKapal()[$key];
 			endif;
 		endif;
 		$this->viewDash('settings/bbm-kapal-history');
