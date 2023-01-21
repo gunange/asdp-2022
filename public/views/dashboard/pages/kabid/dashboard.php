@@ -187,7 +187,7 @@
 		data = {
 			labels: <?= $this->model->GetJsonTanggal() ?>,
 			datasets: [{
-					label: "Total Saldo Hari Ini",
+					label: "Saldo Harian",
 					data: total,
 					backgroundColor: [
 						'rgb(55, 146, 55)',
