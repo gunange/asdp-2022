@@ -347,6 +347,7 @@ trait MasterJoin
 			tjt.id AS id_jenis_tanki, 
 			jenis_tanki, 
 			nama_kapal,
+			nama,
 			id_kapal
 		';
 		$set['join'] = [
@@ -375,6 +376,12 @@ trait MasterJoin
 					'key'   => 'tk',
 					'id'    => 'tk.id',
 					'in'    => 'tt.id_kapal'
+				],
+				[
+					'table' => 'tbl_user ',
+					'key'   => 'user',
+					'id'    => 'user.id',
+					'in'    => 'tht.id_user'
 				],
 
 			]

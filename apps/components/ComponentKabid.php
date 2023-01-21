@@ -47,7 +47,7 @@ trait ComponentKabid
 
 		if($page == "pdf"):
 			$this->model->response['function'] = [
-				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilterToPdf/" . $this->bulan . "/" . $this->tahun . "/" . $id . " ' )"
+				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilterToPdf/" . $_POST['bulan'] . "/" . $this->tahun . "/" . $id . " ' )"
 			];
 		else:
 			$this->model->response['function'] = [
@@ -56,10 +56,12 @@ trait ComponentKabid
 		endif;
 		$this->model->ResponseApi();
 	}
-	public function ViewDashbpard($page=null, $id=null)
+	public function ViewDashbpard($page=null, $id=null, $bulan=null, $tahun=null)
 	{
 		$this->page = $page ;
 		$this->id = $id ;
+		$this->bulan = $bulan ;
+		$this->tahun = $tahun ;
 		$this->viewDash('pdf/dashboard');
 	}
 }

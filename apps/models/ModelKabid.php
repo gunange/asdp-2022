@@ -349,4 +349,16 @@ class ModelKabid extends Controler
 
 		return $dataSaldo ;
 	}
+	public function GetHistoryDayTankAll($id_kapal, $month = null, $year = null)
+	{
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' ORDER BY DATE( tgl) ASC, waktu DESC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' ORDER BY DATE( tgl) ASC, waktu DESC";
+		}
+
+		return database::join($set);
+	}
 }
