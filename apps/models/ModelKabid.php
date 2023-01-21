@@ -233,6 +233,53 @@ class ModelKabid extends Controler
 
 		return json_encode($newDataTank);
 	}
+	public function GetDataGrafikSaldoTotalByTahunBulan($dataHistory, $length=0)
+	{
+		$dataTank = (array) null;
+		$temp = 0;
+		$tgl = 0;
+		$ihis = -1;
+		foreach ($dataHistory as $k => $datahist) :
+			if ($tgl < $datahist['tanggal']) {
+				$tgl =  $datahist['tanggal'];
+				$temp = $datahist['liter'];
+				$history[$datahist['tanggal']] = $datahist['liter'];
+				$ihis += 1;
+
+				$dataTank[$ihis]['data'] = $datahist['liter'];
+				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+			}
+
+			// if ($temp < $datahist['liter']) {
+			// 	$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
+
+			// 	$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
+			// 	$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+			// 	$temp = $datahist['liter'];
+			// } elseif ($temp > $datahist['liter']) {
+			// 	$temp = $datahist['liter'];
+			// }
+		endforeach;
+
+		$nDay = $length;
+
+		$newDataTank = [];
+		for ($tgl = 0; $tgl < $nDay; $tgl++) :
+			foreach ($dataTank as $k => $d) :
+				if (($d['tanggal'] - 1) == $tgl) :
+					$newDataTank[$tgl] = $d['data'];
+					break;
+				else :
+					$newDataTank[$tgl] = 0;
+				endif;
+			endforeach;
+		endfor;
+
+			// tools::console($newDataTank);
+
+
+		return json_encode($newDataTank);
+	}
 
 	public function GetDataGrafikSaldoTotalDays($dataHistory)
 	{
