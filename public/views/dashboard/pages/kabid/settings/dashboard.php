@@ -1,7 +1,7 @@
 <?php if ($this->setPage == "showTangkiKapal") : ?>
 
-	<?php 
-$saldoKanan = 0;
+	<?php
+	$saldoKanan = 0;
 	$saldoKiri = 0;
 	$dataSaldoHarianKanan =  $this->model->GetDataSaldo($this->model->HistoryTangkiKananKapalDay($this->id));
 	$dataSaldoHarianKiri =  $this->model->GetDataSaldo($this->model->HistoryTangkiKiriKapalDay($this->id));
@@ -26,7 +26,7 @@ $saldoKanan = 0;
 	if (!is_null($dataSaldoIndukKiri)) :
 		$saldoIndukKiri = round(@json_decode($dataSaldoIndukKiri)[0], 1);
 	endif;
- ?>
+	?>
 	<!-- UP -->
 	<div class="modal-content">
 		<div class="modal-header">
@@ -125,7 +125,7 @@ $saldoKanan = 0;
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="modal-footer">
