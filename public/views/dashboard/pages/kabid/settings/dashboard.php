@@ -36,7 +36,15 @@
 			<?php if (!empty($this->data)) : ?>
 				<?php $litter = 0; ?>
 				<div class="row pt-5">
-					<?php foreach ($this->data as $k => $d) : ?>
+					<?php
+					$tempDate = date('0000-00-00');
+					foreach ($this->data as $k => $d) :
+						$maxDate = $maxDate = $d['tgl'];
+
+						if ($tempDate < $d['tgl']) {
+							$maxDate = $d['tgl'];
+						}
+					?>
 						<?php $tinggiMax = $this->model->HitungVolume($d['liter_tanki'], $d['tinggi'], $d['tinggi_maksimum']); ?>
 						<div class="col-md-4 cols-sm-4 mt-3 mb-4">
 							<section>
@@ -70,7 +78,7 @@
 		<div class="modal-footer">
 
 			<?php if (!empty($this->data)) : ?>
-				<button type="button" class="btn btn-sm bg-teal text-white">Saldo : <?= round($litter, 1) ?> -litter</button>
+				<button type="button" class="btn btn-sm bg-teal text-white">Saldo : <?= round($litter, 1) ?> -litter / tgl: <?= tools::indoTime($maxDate) ?></button>
 			<?php endif; ?>
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
@@ -84,7 +92,7 @@
 			<div class="row">
 				<div class="col-12 col-md-12">
 					<section class="">
-						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
+						<canvas id="dataMinyak" width="1089" height="353" style="height: 553px; display: block; box-sizing: border-box; width: 1089px;"></canvas>
 					</section>
 				</div>
 			</div>
@@ -99,7 +107,7 @@
 			<div class="row">
 				<div class="col-12 col-md-12">
 					<section class="">
-						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
+						<canvas id="dataMinyak" width="1089" height="353" style="height: 553px; display: block; box-sizing: border-box; width: 1089px;"></canvas>
 					</section>
 				</div>
 			</div>
@@ -153,7 +161,7 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="modal-footer">

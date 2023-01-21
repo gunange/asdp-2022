@@ -85,7 +85,16 @@
 	<?php if (!empty($data)) : ?>
 		<?php $litter = 0; ?>
 
-		<?php foreach ($data as $k => $d) : ?>
+		<?php
+
+		$tempDate = date('0000-00-00');
+		foreach ($data as $k => $d) :
+			$maxDate = $maxDate = $d['tgl'];
+
+			if ($tempDate < $d['tgl']) {
+				$maxDate = $d['tgl'];
+			}
+		?>
 
 			<?php
 			$tinggiMax = $this->model->HitungVolume($d['liter_tanki'], $d['tinggi'], $d['tinggi_maksimum']);
@@ -117,7 +126,7 @@
 		<?php endforeach; ?>
 
 		<div class="border-top pt-2">
-			<h5>Total Saldo Hari ini = <?= round($litter, 1) ?> -liter</h5>
+			<h5>Total Saldo = <?= round($litter, 1) ?> -liter (tgl: <?= tools::indoTime($maxDate) ?>)</h5>
 
 
 		</div>
