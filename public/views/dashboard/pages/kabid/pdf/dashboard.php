@@ -3,11 +3,12 @@
 <script type="text/javascript" src="<?= BaseAssets ?>plugin/jsPDF/jspdf.autotable.js"></script>
 
 <?php if ($this->page == "byFilter") : ?>
-	<?= $this->id ?>
+<!-- 	<?= $this->id ?>
 	<?= $this->bulan ?>
-	<?= $this->tahun ?>
+	<?= $this->tahun ?> -->
 
 	<?php
+
 	$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($this->id));
 	$dataCekArrayTank[$this->id] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKiri($this->id));
 	$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKanan($this->id));
@@ -44,8 +45,6 @@
 	endforeach;
 
 	?>
-	?>
-
 	<body>
 		<iframe id="output" width="100%" height="100%" frameborder="0"></iframe>
 
