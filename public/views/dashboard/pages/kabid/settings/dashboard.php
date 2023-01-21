@@ -110,10 +110,10 @@ $saldoKanan = 0;
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-purple"><i class="bi bi-bar-chart-line-fill"></i> Data Saldo Per-hari Pada <?= $this->bulan ?> <?= $this->tahun ?></pre>
 		</div>
-		<div class="modal-body">
-			<div class="row">
-				<div class="col-12 col-md-12">
-					<iframe width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>PdfAirTawar/Lunas/<?= $this->id ?>"></iframe>
+		<div class="modal-body p-0">
+			<div class="row p-0">
+				<div class="col-12 col-md-12 p-0">
+					<iframe width="100%" height="600px" frameborder="0" src="<?= $this->gLink ?>ViewDashbpard/byFilter/<?= $this->id ?>"></iframe>
 				</div>
 			</div>
 		</div>
