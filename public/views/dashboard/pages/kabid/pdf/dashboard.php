@@ -40,13 +40,18 @@
 
 
 	$forTable = [];
+	$nilaiAkhir = 0 ;
 	foreach (json_decode($dataSaldo, true) as $k => $d) :
+		
 		$forTable[$k] = [
 			$k + 1,
 			tools::indoTime($this->tahun . "-" . $this->bulan . "-" . $k + 1),
-			$d,
+			($d != 0 ? intval($d) : $nilaiAkhir ),
 			'Litter',
 		];
+		if ($d != 0 ):
+			$nilaiAkhir = intval($d);
+		endif;
 	endforeach;
 
 	?>

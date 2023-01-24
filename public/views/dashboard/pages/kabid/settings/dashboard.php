@@ -91,8 +91,8 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-12 col-md-12">
-					<section class="">
-						<canvas id="dataMinyak" width="1089" height="353" style="height: 553px; display: block; box-sizing: border-box; width: 1089px;"></canvas>
+					<section class="" style="height: 453px">
+						<canvas id="dataMinyak" width="1089px" height="353px"></canvas>
 					</section>
 				</div>
 			</div>
@@ -106,8 +106,8 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="col-12 col-md-12">
-					<section class="">
-						<canvas id="dataMinyak" width="1089" height="353" style="height: 553px; display: block; box-sizing: border-box; width: 1089px;"></canvas>
+					<section class="" style="height: 453px">
+						<canvas id="dataMinyak" width="1089px" height="353px"></canvas>
 					</section>
 				</div>
 			</div>
