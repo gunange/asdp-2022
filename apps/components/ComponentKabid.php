@@ -51,7 +51,7 @@ trait ComponentKabid
 			];
 		else:
 			$this->model->response['function'] = [
-				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ") ; } )"
+				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ", ". $_POST['bulan'] .", " . $this->tahun . ") ; } )"
 			];
 		endif;
 		$this->model->ResponseApi();

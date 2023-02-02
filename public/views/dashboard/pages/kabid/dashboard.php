@@ -123,7 +123,7 @@
 
 											// proses mendapatkan dataTankTotal
 											$dataSaldo = json_encode([]);
-
+											$nilaiAkhir = 0 ;
 											$tempArrayTank = 0;
 											foreach ($dataCekArrayTank as $k => $val) {
 												if (count(json_decode($val)) !== 0) {
@@ -141,12 +141,20 @@
 												}
 											}
 
+											$newDataSaldo = json_decode($dataSaldo, true );
+											foreach ( $newDataSaldo as $kk => $dd ):
+												$newDataSaldo[$kk] = ($dd != 0 ? intval($dd) : $nilaiAkhir ) ;
+												if ($dd != 0 ):
+													$nilaiAkhir = intval($dd);
+												endif;
+											endforeach;
 
+											$newDataSaldo = json_encode($newDataSaldo);
 											?>
 											<button type="button" class="btn btn-sm primary-bg text-white" title="Grafik" onclick="openModalShow('#modal-center-xl', '<?= $this->gLink ?>SetDashboard/showDataPemakaianMinyak/', 
 											()=>{
 
-													setChart( <?= $dataSaldo ?>) ;
+													setChart( <?= $newDataSaldo ?>) ;
 												}
 											)">
 												<i class="bi bi-bar-chart-line-fill"></i>
@@ -183,9 +191,36 @@
 
 
 <script type="text/javascript">
-	function setChart(total = [], ) {
+	function getLabelTgl(bulan=null, tahun = null){
+		var countTgl = getJumlahHari(bulan, tahun) ;
+		var ret = [] ;
+
+		for (tgl = 1; tgl <= countTgl; tgl++){
+			ret.push(`tgl ${tgl}`)
+		}
+		return ret ;
+	}
+	function getJumlahHari(bulan=null, tahun=null){
+		
+		if (bulan !== null && tahun !== null){
+			today = new Date(`${tahun}-${bulan}-01`);
+
+			var currentMonth = today.getMonth();
+			var currentYear = today.getFullYear();
+			var lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
+
+			tglTerakhir = lastDayOfMonth.getDate();
+		} else {
+			var today = new Date();
+			tglTerakhir = today.getDate();
+		}
+		
+		return tglTerakhir ;
+	}
+	function setChart(total = [], bulan=null, tahun=null ) {
+		
 		data = {
-			labels: <?= $this->model->GetJsonTanggal() ?>,
+			labels: getLabelTgl(bulan, tahun) ,
 			datasets: [{
 					label: "Saldo Harian",
 					data: total,
@@ -206,6 +241,8 @@
 			data: data,
 			options: {
 				maintainAspectRatio: false,
+				height: 353,
+				responsive: true,
 				scales: {
 
 				}

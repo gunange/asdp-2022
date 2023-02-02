@@ -28,16 +28,16 @@ class ModelKabid extends Controler
 		if (!is_null($tahun) && !is_null($bulan)) :
 
 			$countTgl = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
-	else :
-		$countTgl = date('d');
-	endif;
-	$ret = [];
-	for ($i = 1; $i <= $countTgl; $i++) :
-		$ret[] = "tgl " . $i;
-	endfor;
+		else :
+			$countTgl = date('d');
+		endif;
+		$ret = [];
+		for ($i = 1; $i <= $countTgl; $i++) :
+			$ret[] = "tgl " . $i;
+		endfor;
 
-	return json_encode($ret);
-}
+		return json_encode($ret);
+	}
 
 
 	public function GetHistoryDayTankKanan($id_kapal, $month = null, $year = null)
@@ -250,15 +250,6 @@ class ModelKabid extends Controler
 				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
 			}
 
-			// if ($temp < $datahist['liter']) {
-			// 	$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
-
-			// 	$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
-			// 	$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
-			// 	$temp = $datahist['liter'];
-			// } elseif ($temp > $datahist['liter']) {
-			// 	$temp = $datahist['liter'];
-			// }
 		endforeach;
 
 		$nDay = $length;
@@ -370,10 +361,11 @@ class ModelKabid extends Controler
 	}
 	public function GetBbmKapalByFilter($id)
 	{
-		$dataCekArrayTank[0] = $this->GetDataGrafikSaldoTotalTerbaryDay($this->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[1] = $this->GetDataGrafikSaldoTotalTerbaryDay($this->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[2] = $this->GetDataGrafikSaldoTotalTerbaryDay($this->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']));
-		$dataCekArrayTank[3] = $this->GetDataGrafikSaldoTotalTerbaryDay($this->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']));
+		$countTgl = cal_days_in_month(CAL_GREGORIAN,$_POST['bulan'], $_POST['tahun']) ;
+		$dataCekArrayTank[0] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
+		$dataCekArrayTank[1] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
+		$dataCekArrayTank[2] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
+		$dataCekArrayTank[3] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
 
 		// proses mendapatkan dataTankTotal
 		$dataSaldo = [];
@@ -394,18 +386,16 @@ class ModelKabid extends Controler
 			}
 		}
 
+		$nilaiAkhir = 0 ;
+		foreach ($dataSaldo as $k => $d) :
+			
+			$dataSaldo[$k] = ($d != 0 ? intval($d) : $nilaiAkhir );
+			if ($d != 0 ):
+				$nilaiAkhir = intval($d);
+			endif;
+		endforeach;
+
 		return $dataSaldo ;
 	}
-	public function GetHistoryDayTankAll($id_kapal, $month = null, $year = null)
-	{
-		if ($month == null && $year == null) {
-			$set 	= $this->HistoryDayTank();
-			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' ORDER BY DATE( tgl) ASC, waktu DESC";
-		} else {
-			$set 	= $this->HistoryDayTank();
-			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' ORDER BY DATE( tgl) ASC, waktu DESC";
-		}
-
-		return database::join($set);
-	}
+	
 }
