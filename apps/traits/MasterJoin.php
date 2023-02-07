@@ -636,4 +636,42 @@ trait MasterJoin
 
 		return $set;
 	}
+
+
+
+	public function KapalJoinTanki()
+	{
+		$set['set'] 	= '
+			tt.id_kapal, 
+			nama_kapal, 
+			tt.id_jenis_tanki id_jenis_tanki, 
+			tjt.jenis_tanki
+		';
+		$set['join'] = [
+
+			'induk' =>
+			[
+				'type'   	=> 'left_join',
+				'table' 	=> 'tbl_kapal ',
+				'key'   	=> 'tk'
+			], 'join' => [
+
+				[
+					'table' => 'tbl_tanki ',
+					'key'   => 'tt',
+					'id'    => 'tk.id',
+					'in'    => 'tt.id_kapal'
+				],
+				[
+					'table' => 'tbl_jenis_tanki ',
+					'key'   => 'tjt',
+					'id'    => 'tjt.id',
+					'in'    => 'tt.id_jenis_tanki'
+				],
+
+			]
+		];
+
+		return $set;
+	}
 }

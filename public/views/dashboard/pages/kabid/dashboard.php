@@ -116,14 +116,22 @@
 												<i class="bi bi-clipboard2-x-fill"></i>
 											</button>
 											<?php
-											$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($d['id']));
-											$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKiri($d['id']));
-											$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKanan($d['id']));
-											$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKiri($d['id']));
+
+											$dataCekArrayTank = [];
+											$dataJenisTanki = $this->model->GetJenisTankiByKapal($d['id']);
+											foreach ($dataJenisTanki as $key => $djt) {
+												$dataCekArrayTank[$key] =  $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->HistoryDayTangkiKapalDinamic($d['id'], $djt['id_jenis_tanki']));
+											}
+
+
+											// $dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKanan($d['id']));
+											// $dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryDayTankKiri($d['id']));
+											// $dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKanan($d['id']));
+											// $dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalTerbaryDay($this->model->GetHistoryIndukTankKiri($d['id']));
 
 											// proses mendapatkan dataTankTotal
 											$dataSaldo = json_encode([]);
-											$nilaiAkhir = 0 ;
+											$nilaiAkhir = 0;
 											$tempArrayTank = 0;
 											foreach ($dataCekArrayTank as $k => $val) {
 												if (count(json_decode($val)) !== 0) {
@@ -141,10 +149,10 @@
 												}
 											}
 
-											$newDataSaldo = json_decode($dataSaldo, true );
-											foreach ( $newDataSaldo as $kk => $dd ):
-												$newDataSaldo[$kk] = ($dd != 0 ? intval($dd) : $nilaiAkhir ) ;
-												if ($dd != 0 ):
+											$newDataSaldo = json_decode($dataSaldo, true);
+											foreach ($newDataSaldo as $kk => $dd) :
+												$newDataSaldo[$kk] = ($dd != 0 ? intval($dd) : $nilaiAkhir);
+												if ($dd != 0) :
 													$nilaiAkhir = intval($dd);
 												endif;
 											endforeach;
@@ -191,18 +199,19 @@
 
 
 <script type="text/javascript">
-	function getLabelTgl(bulan=null, tahun = null){
-		var countTgl = getJumlahHari(bulan, tahun) ;
-		var ret = [] ;
+	function getLabelTgl(bulan = null, tahun = null) {
+		var countTgl = getJumlahHari(bulan, tahun);
+		var ret = [];
 
-		for (tgl = 1; tgl <= countTgl; tgl++){
+		for (tgl = 1; tgl <= countTgl; tgl++) {
 			ret.push(`tgl ${tgl}`)
 		}
-		return ret ;
+		return ret;
 	}
-	function getJumlahHari(bulan=null, tahun=null){
-		
-		if (bulan !== null && tahun !== null){
+
+	function getJumlahHari(bulan = null, tahun = null) {
+
+		if (bulan !== null && tahun !== null) {
 			today = new Date(`${tahun}-${bulan}-01`);
 
 			var currentMonth = today.getMonth();
@@ -214,13 +223,14 @@
 			var today = new Date();
 			tglTerakhir = today.getDate();
 		}
-		
-		return tglTerakhir ;
+
+		return tglTerakhir;
 	}
-	function setChart(total = [], bulan=null, tahun=null ) {
-		
+
+	function setChart(total = [], bulan = null, tahun = null) {
+
 		data = {
-			labels: getLabelTgl(bulan, tahun) ,
+			labels: getLabelTgl(bulan, tahun),
 			datasets: [{
 					label: "Saldo Harian",
 					data: total,

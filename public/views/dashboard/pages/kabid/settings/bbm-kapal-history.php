@@ -1,4 +1,4 @@
-<?php if ($this->setPage == "formFilter"): ?>
+<?php if ($this->setPage == "formFilter") : ?>
 	<!-- UP -->
 	<div class="modal-content">
 		<div class="modal-header">
@@ -15,7 +15,7 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Pilih Bulan</label>
 					<select class="form-select form-select-sm sel-all" id="id_bulan">
@@ -25,8 +25,8 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -34,7 +34,7 @@
 			<button type="button" class="btn btn-sm bg-purple text-white" onclick="getElementFormFilterBBmKapalHistory('<?= $this->gLink ?>BbmKapalPerhari/<?= $this->id ?>', '#id_tahun', '#id_bulan') ">Cari</button>
 		</div>
 	</div>
-<?php elseif ($this->setPage == "formFilterPdf"): ?>
+<?php elseif ($this->setPage == "formFilterPdf") : ?>
 	<!-- UP -->
 	<div class="modal-content">
 		<div class="modal-header">
@@ -51,7 +51,7 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
+
 				<div class="col-md-12 mb-3">
 					<label class="form-label">Pilih Bulan</label>
 					<select class="form-select form-select-sm sel-all" id="id_bulan">
@@ -61,8 +61,8 @@
 						<?php endforeach; ?>
 					</select>
 				</div>
-				
-				
+
+
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -71,7 +71,7 @@
 		</div>
 	</div>
 
-<?php else: ?>
+<?php else : ?>
 	<div class="modal-content">
 		<div class="modal-header">
 			<pre class="modal-title fs-6 text-red-400"><i class="bi bi-exclamation-square-fill"></i> Oops</pre>
@@ -83,4 +83,4 @@
 			<button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
 		</div>
 	</div>
-	<?php endif; ?>
+<?php endif; ?>

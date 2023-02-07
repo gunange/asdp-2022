@@ -40,6 +40,20 @@ class ModelKabid extends Controler
 	}
 
 
+	public function HistoryDayTangkiKapalDinamic($id_kapal, $id_jenis_tanki, $month = null, $year = null)
+	{
+		if ($month == null && $year == null) {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)=MONTH(SYSDATE()) AND YEAR(tgl)=YEAR(SYSDATE()) AND tk.id='{$id_kapal}' AND tjt.id='{$id_jenis_tanki}' ORDER BY DATE( tgl) ASC, waktu DESC";
+		} else {
+			$set 	= $this->HistoryDayTank();
+			$set['query']	= "WHERE MONTH(tgl)='$month' AND YEAR(tgl)='$year' AND tk.id='{$id_kapal}' AND tjt.id='{$id_jenis_tanki}' ORDER BY DATE( tgl) ASC, waktu DESC";
+		}
+
+		return database::join($set);
+	}
+
+
 	public function GetHistoryDayTankKanan($id_kapal, $month = null, $year = null)
 	{
 		if ($month == null && $year == null) {
@@ -124,7 +138,7 @@ class ModelKabid extends Controler
 		SELECT tgl FROM tbl_air_tawar ORDER BY tgl DESC LIMIT 0,1
 	) ORDER BY waktu DESC, tgl DESC";
 
-	return database::join($set);
+		return database::join($set);
 	}
 	public function GetDataSandar()
 	{
@@ -133,7 +147,7 @@ class ModelKabid extends Controler
 		SELECT tgl FROM tbl_sandar ORDER BY tgl DESC LIMIT 0,1
 	) ORDER BY waktu_awal DESC, tgl DESC";
 
-	return database::join($set);
+		return database::join($set);
 	}
 	public function GetStoryTangkiByIdKapal($id)
 	{
@@ -203,15 +217,15 @@ class ModelKabid extends Controler
 				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
 			}
 
-			// if ($temp < $datahist['liter']) {
-			// 	$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
+		// if ($temp < $datahist['liter']) {
+		// 	$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
 
-			// 	$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
-			// 	$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
-			// 	$temp = $datahist['liter'];
-			// } elseif ($temp > $datahist['liter']) {
-			// 	$temp = $datahist['liter'];
-			// }
+		// 	$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
+		// 	$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
+		// 	$temp = $datahist['liter'];
+		// } elseif ($temp > $datahist['liter']) {
+		// 	$temp = $datahist['liter'];
+		// }
 		endforeach;
 
 		$nDay = date('d');
@@ -228,12 +242,12 @@ class ModelKabid extends Controler
 			endforeach;
 		endfor;
 
-			// tools::console($newDataTank);
+		// tools::console($newDataTank);
 
 
 		return json_encode($newDataTank);
 	}
-	public function GetDataGrafikSaldoTotalByTahunBulan($dataHistory, $length=0)
+	public function GetDataGrafikSaldoTotalByTahunBulan($dataHistory, $length = 0)
 	{
 		$dataTank = (array) null;
 		$temp = 0;
@@ -266,7 +280,7 @@ class ModelKabid extends Controler
 			endforeach;
 		endfor;
 
-			// tools::console($newDataTank);
+		// tools::console($newDataTank);
 
 
 		return json_encode($newDataTank);
@@ -313,12 +327,31 @@ class ModelKabid extends Controler
 			endforeach;
 		endfor;
 
-			// tools::console($newDataTank);
+		// tools::console($newDataTank);
 
 
 		return json_encode($newDataTank);
 	}
 
+	public function HistoryTangkiKapalDinamic($id_kapal, $id_jenis_tanki)
+	{
+		$set 			 = $this->HistoryDayTank();
+
+		$set['query']	= "WHERE id_kapal='{$id_kapal}' AND tgl = DATE(SYSDATE())  AND id_jenis_tanki='{$id_jenis_tanki}' AND tgl=DATE(SYSDATE()) ORDER BY waktu ASC";
+
+
+		return database::join($set);
+	}
+
+	public function GetJenisTankiByKapal($id_kapal)
+	{
+		$set 			 = $this->KapalJoinTanki();
+
+		$set['query']	= "WHERE id_kapal='{$id_kapal}' ";
+
+
+		return database::join($set);
+	}
 
 	public function HistoryTangkiKananKapalDay($id)
 	{
@@ -361,11 +394,19 @@ class ModelKabid extends Controler
 	}
 	public function GetBbmKapalByFilter($id)
 	{
-		$countTgl = cal_days_in_month(CAL_GREGORIAN,$_POST['bulan'], $_POST['tahun']) ;
-		$dataCekArrayTank[0] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
-		$dataCekArrayTank[1] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
-		$dataCekArrayTank[2] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
-		$dataCekArrayTank[3] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl );
+		$countTgl = cal_days_in_month(CAL_GREGORIAN, $_POST['bulan'], $_POST['tahun']);
+
+		$dataCekArrayTank = [];
+		$dataJenisTanki = $this->GetJenisTankiByKapal($id);
+
+		foreach ($dataJenisTanki as $key => $djt) {
+			$dataCekArrayTank[$key] =  $this->GetDataGrafikSaldoTotalByTahunBulan($this->HistoryDayTangkiKapalDinamic($id, $djt['id_jenis_tanki'], $_POST['bulan'], $_POST['tahun']), $countTgl);
+		}
+
+		// $dataCekArrayTank[0] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
+		// $dataCekArrayTank[1] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
+		// $dataCekArrayTank[2] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
+		// $dataCekArrayTank[3] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
 
 		// proses mendapatkan dataTankTotal
 		$dataSaldo = [];
@@ -386,16 +427,15 @@ class ModelKabid extends Controler
 			}
 		}
 
-		$nilaiAkhir = 0 ;
+		$nilaiAkhir = 0;
 		foreach ($dataSaldo as $k => $d) :
-			
-			$dataSaldo[$k] = ($d != 0 ? intval($d) : $nilaiAkhir );
-			if ($d != 0 ):
+
+			$dataSaldo[$k] = ($d != 0 ? intval($d) : $nilaiAkhir);
+			if ($d != 0) :
 				$nilaiAkhir = intval($d);
 			endif;
 		endforeach;
 
-		return $dataSaldo ;
+		return $dataSaldo;
 	}
-	
 }

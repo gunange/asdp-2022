@@ -1,21 +1,21 @@
 <div class="row mt-4">
-  <div class="col-12 col-md-12">
-    <!-- Page Header -->
-    <div class="page-header mt-4 mb-5">
-      <div class="card card-small shadow-sm bx-shadow">
-        <div class="card-body">
-          <h5 class="text-secondary">Dashboard Settings</h5>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Home</a></li>
-              <li class="breadcrumb-item"><a href="<?= $this->gLink ?>/BbmKapalHistory/<?= $this->tahun ?>">List Data Per-Bulan</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div><!-- row breadcumb -->
-  </div>
+	<div class="col-12 col-md-12">
+		<!-- Page Header -->
+		<div class="page-header mt-4 mb-5">
+			<div class="card card-small shadow-sm bx-shadow">
+				<div class="card-body">
+					<h5 class="text-secondary">Dashboard Settings</h5>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#"><i class="bi bi-house-fill"></i> Home</a></li>
+							<li class="breadcrumb-item"><a href="<?= $this->gLink ?>/BbmKapalHistory/<?= $this->tahun ?>">List Data Per-Bulan</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Data</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div><!-- row breadcumb -->
+	</div>
 </div>
 
 <div class="row mt-4">
@@ -24,9 +24,9 @@
 			<div class="card-header border-bottom bg-white">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
 					<h6 class="m-0">
-						<i class="bi bi-box text-yellow-500 me-2"></i> History BBM Kapal 
+						<i class="bi bi-box text-yellow-500 me-2"></i> History BBM Kapal
 					</h6>
-					
+
 				</div>
 			</div><!-- card-header -->
 
@@ -36,11 +36,11 @@
 						<canvas id="dataMinyak" width="230px" height="230px"></canvas>
 					</section>
 				</div>
-				</div><!-- table-responsive -->
+			</div><!-- table-responsive -->
 
-			</div><!-- card-body -->
-		</div>
+		</div><!-- card-body -->
 	</div>
+</div>
 </div>
 
 

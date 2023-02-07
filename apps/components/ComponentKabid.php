@@ -28,7 +28,7 @@ trait ComponentKabid
 		endif;
 		$this->viewDash('settings/bbm-kapal-history');
 	}
-	public function SetDashboardByFilter($page = null, $bulan = null, $tahun = null, $id=null)
+	public function SetDashboardByFilter($page = null, $bulan = null, $tahun = null, $id = null)
 	{
 		$this->setPage = $page;
 		$this->id = $id;
@@ -45,23 +45,23 @@ trait ComponentKabid
 		$this->model->response['response'] = "noSwall";
 		$this->model->response['tutupModal'] = true;
 
-		if($page == "pdf"):
+		if ($page == "pdf") :
 			$this->model->response['function'] = [
 				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilterToPdf/" . $_POST['bulan'] . "/" . $this->tahun . "/" . $id . " ' )"
 			];
-		else:
+		else :
 			$this->model->response['function'] = [
-				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ", ". $_POST['bulan'] .", " . $this->tahun . ") ; } )"
+				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilter/" . $this->bulan . "/" . $this->tahun . " ', ()=>{setChart(" . json_encode($this->data) . ", " . $_POST['bulan'] . ", " . $this->tahun . ") ; } )"
 			];
 		endif;
 		$this->model->ResponseApi();
 	}
-	public function ViewDashbpard($page=null, $id=null, $bulan=null, $tahun=null)
+	public function ViewDashbpard($page = null, $id = null, $bulan = null, $tahun = null)
 	{
-		$this->page = $page ;
-		$this->id = $id ;
-		$this->bulan = $bulan ;
-		$this->tahun = $tahun ;
+		$this->page = $page;
+		$this->id = $id;
+		$this->bulan = $bulan;
+		$this->tahun = $tahun;
 		$this->viewDash('pdf/dashboard');
 	}
 }
