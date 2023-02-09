@@ -253,8 +253,8 @@ class ModelKabid extends Controler
 			}
 
 		endforeach;
-
-		$nDay = $length;
+		
+		$nDay = end($dataTank)['tanggal'];
 
 		$newDataTank = [];
 		for ($tgl = 0; $tgl < $nDay; $tgl++) :
