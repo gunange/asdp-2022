@@ -3,9 +3,9 @@
 <script type="text/javascript" src="<?= BaseAssets ?>plugin/jsPDF/jspdf.autotable.js"></script>
 
 <?php if ($this->page == "byFilter") : ?>
-	<?= $this->id ?>
+	<!-- <?= $this->id ?>
 	<?= $this->bulan ?>
-	<?= $this->tahun ?> 
+	<?= $this->tahun ?>  -->
 
 	<?php
 	$dataKapal = $this->model->sGetKapal("WHERE id = '{$this->id}'", "no_loop");
