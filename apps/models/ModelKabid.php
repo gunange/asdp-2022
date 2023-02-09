@@ -217,15 +217,7 @@ class ModelKabid extends Controler
 				$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
 			}
 
-		// if ($temp < $datahist['liter']) {
-		// 	$history[$datahist['tanggal']] = $history[$datahist['tanggal']] + ($datahist['liter'] - $temp);
-
-		// 	$dataTank[$ihis]['data'] = $history[$datahist['tanggal']];
-		// 	$dataTank[$ihis]['tanggal'] = $datahist['tanggal'];
-		// 	$temp = $datahist['liter'];
-		// } elseif ($temp > $datahist['liter']) {
-		// 	$temp = $datahist['liter'];
-		// }
+		
 		endforeach;
 
 		$nDay = date('d');
