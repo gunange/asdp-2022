@@ -233,10 +233,6 @@ class ModelKabid extends Controler
 				endif;
 			endforeach;
 		endfor;
-
-		// tools::console($newDataTank);
-
-
 		return json_encode($newDataTank);
 	}
 	public function GetDataGrafikSaldoTotalByTahunBulan($dataHistory, $length = 0)
@@ -392,12 +388,6 @@ class ModelKabid extends Controler
 			$dataCekArrayTank[$key] =  $this->GetDataGrafikSaldoTotalByTahunBulan($this->HistoryDayTangkiKapalDinamic($id, $djt['id_jenis_tanki'], $_POST['bulan'], $_POST['tahun']), $countTgl);
 		}
 
-		// $dataCekArrayTank[0] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
-		// $dataCekArrayTank[1] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryDayTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
-		// $dataCekArrayTank[2] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKanan($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
-		// $dataCekArrayTank[3] = $this->GetDataGrafikSaldoTotalByTahunBulan($this->GetHistoryIndukTankKiri($id, $_POST['bulan'], $_POST['tahun']), $countTgl);
-
-		// proses mendapatkan dataTankTotal
 		$dataSaldo = [];
 
 		$tempArrayTank = 0;
