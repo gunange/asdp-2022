@@ -3,58 +3,27 @@
 <script type="text/javascript" src="<?= BaseAssets ?>plugin/jsPDF/jspdf.autotable.js"></script>
 
 <?php if ($this->page == "byFilter") : ?>
-	<!-- 	<?= $this->id ?>
+	<?= $this->id ?>
 	<?= $this->bulan ?>
 	<?= $this->tahun ?> 
-	<?= $this->kapal ?> -->
 
 	<?php
-
-	$countTgl = cal_days_in_month(CAL_GREGORIAN, $this->bulan, $this->tahun);
-
-	$dataCekArrayTank[0] = $this->model->GetDataGrafikSaldoTotalByTahunBulan($this->model->GetHistoryDayTankKanan($this->id), $countTgl);
-	$dataCekArrayTank[1] = $this->model->GetDataGrafikSaldoTotalByTahunBulan($this->model->GetHistoryDayTankKiri($this->id), $countTgl);
-	$dataCekArrayTank[2] = $this->model->GetDataGrafikSaldoTotalByTahunBulan($this->model->GetHistoryIndukTankKanan($this->id), $countTgl);
-	$dataCekArrayTank[3] = $this->model->GetDataGrafikSaldoTotalByTahunBulan($this->model->GetHistoryIndukTankKiri($this->id), $countTgl);
-
-	// proses mendapatkan dataTankTotal
-	$dataSaldo = json_encode([]);
-
 	$dataKapal = $this->model->sGetKapal("WHERE id = '{$this->id}'", "no_loop");
-
-	$tempArrayTank = 0;
-	foreach ($dataCekArrayTank as $k => $val) {
-		if (count(json_decode($val)) !== 0) {
-			if ($tempArrayTank !== 0) {
-				$dataSaldo = json_decode($dataSaldo);
-				foreach (json_decode($dataCekArrayTank[$k], true) as $index => $datakanan) {
-					$dataSaldo[$index] = $datakanan + $tempArrayTank[$index];
-				}
-				$tempArrayTank = $dataSaldo;
-				$dataSaldo = json_encode($dataSaldo);
-			} else {
-				$tempArrayTank = json_decode($dataCekArrayTank[$k]);
-				$dataSaldo = json_encode($tempArrayTank);
-			}
-		}
-	}
+	$_POST['bulan'] = $this->bulan ;
+	$_POST['tahun'] = $this->tahun ;
+	
+	$dataSaldo = $this->model->GetBbmKapalByFilter($this->id);
 
 
-	$forTable = [];
-	$nilaiAkhir = 0 ;
-	foreach (json_decode($dataSaldo, true) as $k => $d) :
+	foreach ($dataSaldo as $k => $d) :
 		
 		$forTable[$k] = [
 			$k + 1,
 			tools::indoTime($this->tahun . "-" . $this->bulan . "-" . $k + 1),
-			($d != 0 ? intval($d) : $nilaiAkhir ),
+			$d,
 			'Litter',
 		];
-		if ($d != 0 ):
-			$nilaiAkhir = intval($d);
-		endif;
 	endforeach;
-
 	?>
 
 	<body>

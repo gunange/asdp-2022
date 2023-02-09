@@ -46,6 +46,7 @@ trait ComponentKabid
 		$this->model->response['tutupModal'] = true;
 
 		if ($page == "pdf") :
+			
 			$this->model->response['function'] = [
 				"openModalShow('#modal-center-xl', '" . BaseKabid . "SetDashboardByFilter/showDataPemakaianMinyakByFilterToPdf/" . $_POST['bulan'] . "/" . $this->tahun . "/" . $id . " ' )"
 			];

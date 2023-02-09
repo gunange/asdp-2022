@@ -279,10 +279,7 @@ class ModelKabid extends Controler
 				endif;
 			endforeach;
 		endfor;
-
-		// tools::console($newDataTank);
-
-
+		
 		return json_encode($newDataTank);
 	}
 
