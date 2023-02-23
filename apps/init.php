@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-date_default_timezone_set("Asia/Jayapura");
+
 require_once 'core/const.php';
 spl_autoload_register(function($file){
   $file = 'apps/app/' . $file . ".php" ;
