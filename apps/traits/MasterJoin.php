@@ -198,6 +198,7 @@ trait MasterJoin
 			nama_kapal,
 			dermaga,
 			debit_air,
+			tarif_air,
 			FORMAT(total_air_tawar, 0) total_air_tawar,
 			status,
 			tu.nama nama_admin,

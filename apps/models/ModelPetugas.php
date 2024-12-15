@@ -55,6 +55,7 @@ class ModelPetugas extends Controler
 			"tgl"				=> date("Y-m-d"),
 			"waktu"				=> date("h:i:s"),
 			"debit_air"			=> $_POST['debit_air'],
+			"tarif_air"			=> $_POST['tarif_air'],
 			"total_air_tawar"	=> $_POST['total_air_tawar'],
 			"status"      		=> $_POST['status'],
 		];

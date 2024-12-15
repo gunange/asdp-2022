@@ -38,10 +38,10 @@ $(window).on('load', function (e) { // makes sure the whole site is loaded
 
 
 
-function getLiter(id) {
+function getLiter(id, hargaTarif) {
 	var tarif = document.getElementById("totaltarifair" + id);
 	var debit = document.getElementById("debitair" + id);
-	tarif.value = (debit.value * 50);
+	tarif.value = (debit.value * hargaTarif);
 }
 
 function resetdebitair(id) {

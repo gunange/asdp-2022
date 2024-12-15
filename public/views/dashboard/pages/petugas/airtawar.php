@@ -54,7 +54,7 @@
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Debit Air</label>
                                     <div class="input-group input-group-sm">
-                                        <input name="debit_air" onkeyup="getLiter('<?= $dermaga['id'] ?>')" id="debitair<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm" placeholder="0" required autocomplete="off">
+                                        <input name="debit_air" onkeyup="getLiter('<?= $dermaga['id'] ?>', <?= $dermaga['tarif'] ?>)" id="debitair<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm" placeholder="0" required autocomplete="off">
                                         <div class="input-group-text input-group-sm">Liter</div>
                                     </div>
                                 </div>
@@ -64,6 +64,7 @@
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-text input-group-sm">Rp.</div>
 
+                                        <input name="tarif_air" id="tarif_air<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm d-none" placeholder="0" readonly value="<?= $dermaga['tarif'] ?>" >
                                         <input name="total_air_tawar" id="totaltarifair<?= $dermaga['id'] ?>" type="number" class="form-control form-control-sm" placeholder="0" required autocomplete="off" readonly>
                                     </div>
                                 </div>
