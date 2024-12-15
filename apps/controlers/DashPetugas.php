@@ -32,7 +32,8 @@ class DashPetugas extends Controler
 
 	public function Main()
 	{
-		$this->viewDashboard('bbm-kapal');
+		// $this->viewDashboard('bbm-kapal');
+		$this->viewDashboard('airtawar');
 	}
 
 	public function AirTawar()
@@ -56,10 +57,6 @@ class DashPetugas extends Controler
 		$this->viewDashboard('delayeddatasandar');
 	}
 
-	public function BbmKapal()
-	{
-		$this->viewDashboard('bbm-kapal');
-	}
 	public function PostFormTangkiBbmKapal()
 	{
 		$this->model->AddBbmTangki();
@@ -68,10 +65,7 @@ class DashPetugas extends Controler
 	{
 		$this->viewDashboard('sandar');
 	}
-	public function Dokumen()
-	{
-		$this->viewDashboard('dokumen');
-	}
+
 	public function PostFormDokumen()
 	{
 		$this->model->AddDokumen();
