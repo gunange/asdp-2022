@@ -24,7 +24,7 @@ class DashAdmin extends Controler
 
 	public function Main()
 	{
-		$this->viewDashboard('kapal');
+		$this->viewDashboard('dermaga');
 	}
 	public function Petugas()
 	{
@@ -34,33 +34,9 @@ class DashAdmin extends Controler
 	{
 		$this->viewDashboard('kabid');
 	}
-	public function Kapal()
-	{
-		$this->viewDashboard('kapal');
-	}
-	public function Dermaga()
+	public function Valve()
 	{
 		$this->viewDashboard('dermaga');
 	}
-	public function TangkiKapal($key = null)
-	{
-		$this->id = $key;
-		if (!is_null($key) && is_array(@$this->model->GetKapal()[$this->id])) :
-			$this->data = $this->model->GetKapal()[$this->id];
-		else :
-			$this->notFound = true;
-		endif;
-		$this->viewDashboard('tangki-kapal');
-	}
 
-
-	public function JenisTanki()
-	{
-		$this->viewDashboard('jenis-tanki');
-	}
-
-	public function JenisDokumen()
-	{
-		$this->viewDashboard('jenis-dokumen');
-	}
 }

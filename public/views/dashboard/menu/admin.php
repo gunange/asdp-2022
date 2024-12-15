@@ -17,31 +17,14 @@
 	<li class="header-menu">
 		<span>Management</span>
 	</li>
+	
 	<li>
-		<a href="<?= $this->gLink ?>Kapal">
+		<a href="<?= $this->gLink ?>Valve">
 			<i class="bi bi-grid"></i>
-			<span>Kapal</span>
+			<span>Valve</span>
 		</a>
 	</li>
-	<li>
-		<a href="<?= $this->gLink ?>Dermaga">
-			<i class="bi bi-grid"></i>
-			<span>Dermaga</span>
-		</a>
-	</li>
-	<li>
-		<a href="<?= $this->gLink ?>JenisTanki">
-			<i class="bi bi-grid"></i>
-			<span>Jenis Tanki</span>
-		</a>
-	</li>
-
-	<li>
-		<a href="<?= $this->gLink ?>JenisDokumen">
-			<i class="bi bi-grid"></i>
-			<span>Jenis Dokumen</span>
-		</a>
-	</li>
+	
 
 	<li class="header-menu">
 		<span>Pengaturan</span>
