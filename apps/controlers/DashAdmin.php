@@ -34,7 +34,7 @@ class DashAdmin extends Controler
 	{
 		$this->viewDashboard('kabid');
 	}
-	public function Valve()
+	public function AirTawar()
 	{
 		$this->viewDashboard('dermaga');
 	}

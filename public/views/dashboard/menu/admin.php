@@ -19,9 +19,9 @@
 	</li>
 	
 	<li>
-		<a href="<?= $this->gLink ?>Valve">
+		<a href="<?= $this->gLink ?>AirTawar">
 			<i class="bi bi-grid"></i>
-			<span>Valve</span>
+			<span>Air Tawar</span>
 		</a>
 	</li>
 	
