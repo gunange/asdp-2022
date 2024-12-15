@@ -9,23 +9,12 @@
 		</a>
 	</li>
 
-	<li>
-		<a href="<?= $this->gLink ?>Sandar">
-			<i class="bi bi-grid"></i>
-			<span>Sandar</span>
-		</a>
-	</li>
 	
 
 	<li class="header-menu">
 		<span>Invoice</span>
 	</li>
-	<li>
-		<a href="<?= $this->gLink ?>InvoiceDataSandar">
-			<i class="bi bi-receipt-cutoff"></i>
-			<span>Sandar</span>
-		</a>
-	</li>
+
 	<li>
 		<a href="<?= $this->gLink ?>InvoiceAirTawar">
 			<i class="bi bi-receipt-cutoff"></i>
@@ -36,13 +25,7 @@
 	<li class="header-menu">
 		<span>Delayed</span>
 	</li>
-	<li>
-		<a href="<?= $this->gLink ?>DelayedDataSandar">
-			<i class="bi bi-file-earmark-excel-fill"></i>
-			<span>Sandar</span>
-			<span class="badge badge-pill badge-dark"><?= count($this->model->GetDelayDataSandar()) ?></span>
-		</a>
-	</li>
+
 	<li>
 		<a href="<?= $this->gLink ?>DelayedAirTawar">
 			<i class="bi bi-file-earmark-excel-fill"></i>
