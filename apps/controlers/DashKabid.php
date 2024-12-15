@@ -26,10 +26,7 @@ class DashKabid extends Controler
 	{
 		$this->viewDashboard('dashboard');
 	}
-	public function BbmKapalHistory()
-	{
-		$this->viewDashboard('bbm-kapal-history');
-	}
+	
 	public function BbmKapalPerhari($id = null, $tahun = null, $bulan = null)
 	{
 		$this->id = $id;
