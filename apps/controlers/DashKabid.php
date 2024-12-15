@@ -53,16 +53,10 @@ class DashKabid extends Controler
 	{
 		$this->viewDashboard('delayed-air-tawar');
 	}
-	public function DelayedSandarKapal()
-	{
-		$this->viewDashboard('delayed-sandar');
-	}
+
 	public function InvoiceAirTawar()
 	{
 		$this->viewDashboard('invoice-air-tawar');
 	}
-	public function InvoiceSandarKapal()
-	{
-		$this->viewDashboard('invoice-sandar');
-	}
+
 }
