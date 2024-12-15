@@ -20,7 +20,7 @@
 <div class="row mt-4">
     <?php foreach ($this->model->GetDermaga() as $k => $dermaga) : ?>
 
-        <div class="col-6 col-md-6">
+        <div class="col-6 col-md-6 mb-4">
             <div class="card card-small shadow bx-shadow">
                 <form class="data-form" method="POST" action="<?= $this->gLink ?>SetAirTawar/postForm">
 
@@ -28,7 +28,7 @@
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-3">
                             <h6 class="m-0">
                                 <i class="bi bi-bricks   me-2"></i>
-                                Pompa <?= $dermaga['dermaga'] ?>
+                                <?= $dermaga['dermaga'] ?>
                             </h6>
 
                         </div>
