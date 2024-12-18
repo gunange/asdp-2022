@@ -111,7 +111,7 @@
                                                 LOGIN</button>
                                         </div>
                                         <div class="text-center p-t-12 ">
-                                            <span class="txt1">D-SSAT Cab. Ternate  v1.0</span>
+                                            <span class="txt1">D-SSAT Cab. Labuan Bajo  v1.0</span>
                                         </div>
                                     </form>
 
@@ -131,7 +131,7 @@
             <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
           </ul>
-          <span class="copyright ms-auto my-auto mr-2">  ASDPTernate v1.1 copyright © 2022-2023 by <a href="mailto:gunangeh7@gmail.com">ASDP Kantor Cabang Ternate</a></span>
+          <span class="copyright ms-auto my-auto mr-2">  Labuan Bajo v1.1 copyright © 2022-2023 by <a href="mailto:gunangeh7@gmail.com">Ecowater Labuan Bajo</a></span>
         </footer>
 
         <div class="social-fixed d-md-flex d-none fadeIn third">

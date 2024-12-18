@@ -62,7 +62,7 @@
 
 		});
 		doc.setFontSize(10);
-		doc.text(180,150, "Ternate, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
+		doc.text(180,150, "Labuan Bajo, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
 		doc.text(180,180, "Nama Penulis",  null, null, 'center');
 
 		document.getElementById('output').src = doc.output('datauristring');

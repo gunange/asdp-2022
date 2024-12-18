@@ -36,7 +36,7 @@
 
 			doc.addImage(img, 'jpeg', 20, 5, 30, 15);
 			doc.text(5, 25, "PT. ECO WATER");
-			doc.text(21, 30, "Cabang Ternate");
+			doc.text(21, 30, "Cabang Labuan Bajo");
 			doc.setFontSize(9);
 
 			doc.text(23, 35, "JASA SANDAR").setFont(undefined, 'bold');
@@ -149,7 +149,7 @@
 
 		});
 		doc.setFontSize(10);
-		doc.text(220, doc.lastAutoTable.finalY + 15, "Ternate, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
+		doc.text(220, doc.lastAutoTable.finalY + 15, "Labuan Bajo, <?= tools::indoTime(date('d-m-Y')) ?>", null, null, 'center');
 		doc.text(220, doc.lastAutoTable.finalY + 33, "<?= $this->model->user->nama ?>", null, null, 'center');
 
 		document.getElementById('output').src = doc.output('datauristring');
@@ -185,7 +185,7 @@
 
 			doc.addImage(img, 'jpeg', 20, 5, 30, 15);
 			doc.text(5, 25, "PT. ECO WATER");
-			doc.text(21, 30, "Cabang Ternate");
+			doc.text(21, 30, "Cabang Labuan Bajo");
 			doc.setFontSize(9);
 
 			doc.text(23, 35, "JASA SANDAR").setFont(undefined, 'bold');

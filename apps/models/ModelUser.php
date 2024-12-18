@@ -1,7 +1,7 @@
 <?php
 
 class ModelUser{
-	private $tokenName = 'ASDPTernate';
+	private $tokenName = 'ASDP-Labuha-bajo';
 	public $userAllow = [1,2,3];
 	public 
 		$token,
