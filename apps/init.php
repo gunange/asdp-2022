@@ -1,6 +1,11 @@
 <?php
 session_start(); 
 
+// set zona waktu
+// date_default_timezone_set('Asia/Jakarta');
+// echo date_default_timezone_get();
+
+
 require_once 'core/const.php';
 spl_autoload_register(function($file){
   $file = 'apps/app/' . $file . ".php" ;
