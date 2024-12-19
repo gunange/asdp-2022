@@ -18,7 +18,7 @@
 </div>
 
 <div class="row mt-3 dash-row small">
-	<div class="col-lg-3 col-sm-6 mt-3">
+	<div class="col-lg-6 col-sm-12 mt-3">
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-blue-400 text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
@@ -31,20 +31,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3 col-sm-6 mt-3">
-		<div class="card card-small shadow-sm bx-shadow px-3 bg-green-400 text-white">
-			<div class="d-flex px-4">
-				<div class="item-1">
-					<i class="bi bi-currency-exchange"></i>
-				</div>
-				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden">Rp. <?= tools::rupiah($this->model->GetPendatapanSandar()['pendapatan_sandar']); ?></h1>
-					<p class="text-hidden">Pendapatan Sandar</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-3 col-sm-6 mt-3">
+	
+	<div class="col-lg-6 col-sm-12 mt-3">
 		<div class="card card-small shadow-sm bx-shadow px-3 bg-purple text-white">
 			<div class="d-flex px-4">
 				<div class="item-1">
@@ -57,19 +45,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3 col-sm-6 mt-3">
-		<div class="card card-small shadow-sm bx-shadow px-3 bg-yellow-600 text-white">
-			<div class="d-flex px-4">
-				<div class="item-1">
-					<i class="bi bi-life-preserver"></i>
-				</div>
-				<div class="item-2 ps-3 py-4">
-					<h1 class="text-hidden"><?= $this->model->GetDelayedSandar()['delay']; ?></h1>
-					<p class="text-hidden">Delayed Sandar</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 
 <div class="row mt-4">
